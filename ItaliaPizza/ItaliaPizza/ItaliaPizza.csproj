@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Inicio.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,8 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Inicio.xaml.cs">
+      <DependentUpon>Inicio.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -93,6 +93,38 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Baja.png" />
+    <Resource Include="Recursos\Bebidas.png" />
+    <Resource Include="Recursos\Buscar.png" />
+    <Resource Include="Recursos\Clientes.png" />
+    <Resource Include="Recursos\Cocina.png" />
+    <Resource Include="Recursos\Editar.png" />
+    <Resource Include="Recursos\Eliminar.png" />
+    <Resource Include="Recursos\Empleado.png" />
+    <Resource Include="Recursos\Empleados.png" />
+    <Resource Include="Recursos\Ensalada.png" />
+    <Resource Include="Recursos\FondoInicioPizza.jpg" />
+    <Resource Include="Recursos\FondoInicioPizzaInvertido.jpg" />
+    <Resource Include="Recursos\Inventario.png" />
+    <Resource Include="Recursos\LogoItaliaPizza.png" />
+    <Resource Include="Recursos\Mas.png" />
+    <Resource Include="Recursos\Mesa.png" />
+    <Resource Include="Recursos\MesaBlanca.png" />
+    <Resource Include="Recursos\MesaRestaurant.png" />
+    <Resource Include="Recursos\Orden.png" />
+    <Resource Include="Recursos\Pasta.png" />
+    <Resource Include="Recursos\Pedido.png" />
+    <Resource Include="Recursos\Pedidos.png" />
+    <Resource Include="Recursos\Pizza.png" />
+    <Resource Include="Recursos\Postre.png" />
+    <Resource Include="Recursos\Producto.png" />
+    <Resource Include="Recursos\Receta.png" />
+    <Resource Include="Recursos\Regresar.png" />
+    <Resource Include="Recursos\Ventas.png" />
+    <Resource Include="Recursos\VerContraseñaInicio.png" />
+    <Resource Include="Recursos\VerMas.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

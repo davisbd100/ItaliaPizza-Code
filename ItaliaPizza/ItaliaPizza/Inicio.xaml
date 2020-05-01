@@ -1,0 +1,32 @@
+﻿<Window x:Name="Inicio1" x:Class="ItaliaPizza.Inicio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ItaliaPizza"
+        mc:Ignorable="d"
+        Title="ITALIA PIZZA" Height="680" Width="1280" Icon="Recursos/LogoItaliaPizza.png" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowState="Maximized">
+    <Window.Background>
+        <ImageBrush ImageSource="Recursos/FondoInicioPizza.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="501.153" Margin="683.899,94.398,0,0" VerticalAlignment="Top" Width="343.987">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFC3CCD4" Opacity="0.3"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image HorizontalAlignment="Left" Height="154.202" Margin="781.757,121.086,0,0" VerticalAlignment="Top" Width="148.271" Source="Recursos/LogoItaliaPizza.png"/>
+        <Label Content="INICIAR SESIÓN" HorizontalAlignment="Left" Margin="770.632,286.386,0,0" VerticalAlignment="Top" FontFamily="Candara" FontSize="24" FontWeight="Bold" Foreground="White"/>
+        <Label Content="Nombre de usuario:" HorizontalAlignment="Left" Margin="727.868,330.682,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="24" FontFamily="Calibri Light"/>
+        <TextBox x:Name="NombreUsuarioTextBox" HorizontalAlignment="Left" Margin="723.42,369.979,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
+        <Label Content="Contraseña:" HorizontalAlignment="Left" Margin="723.42,427.046,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="24" FontFamily="Calibri Light"/>
+        <PasswordBox x:Name="ContaseñaPasswordBox" HorizontalAlignment="Left" Margin="723.42,466.919,0,0" VerticalAlignment="Top" Width="264.433" Height="29"/>
+        <Button x:Name="IniciarButton" Content="INICIAR" HorizontalAlignment="Left" Height="35.584" Margin="781.757,525.123,0,0" VerticalAlignment="Top" Width="148.271" Background="#FF008050" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="20"/>
+        <Button x:Name="VerContraseñaButton" Content="" HorizontalAlignment="Left" Height="29.563" Margin="953.751,466.356,0,0" VerticalAlignment="Top" Width="34.102" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="Recursos/VerContraseñaInicio.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>
