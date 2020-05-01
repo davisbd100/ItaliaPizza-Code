@@ -1,0 +1,33 @@
+﻿<Window x:Class="ItaliaPizza.EditarCliente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ItaliaPizza"
+        mc:Ignorable="d"
+        Title="Editar cliente" Height="550" Width="500" Icon="Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="69" Margin="0,15,-0.333,0" VerticalAlignment="Top" Width="495" Fill="#FFB31423"/>
+        <Label Content="Editar cliente" HorizontalAlignment="Left" Margin="140.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>
+        <Button Content="" HorizontalAlignment="Left" Height="73.597" Margin="67.919,10,0,0" VerticalAlignment="Top" Width="72.333" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="Recursos/Editar.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Label Content="Nombre:" HorizontalAlignment="Left" Margin="82.891,129.767,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <TextBox x:Name="NombreTextBox" HorizontalAlignment="Left" Margin="170,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
+        <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="80.656,180.786,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <TextBox x:Name="CorreoTextBox" HorizontalAlignment="Left" Margin="170.303,238.986,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
+        <TextBox x:Name="TelefonoTextBox" HorizontalAlignment="Left" Margin="170.307,188.53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
+        <Label Content="Correo:" HorizontalAlignment="Left" Margin="95.777,231.242,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <TextBox x:Name="CiudadTextBox" HorizontalAlignment="Left" Margin="170.307,289.017,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
+        <Label Content="Ciudad:" HorizontalAlignment="Left" Margin="93.693,281.273,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+        <TextBox x:Name="DireccionTextBox" HorizontalAlignment="Left" Margin="170.307,339.601,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
+        <Label Content="Dirección:" HorizontalAlignment="Left" Margin="73.333,331.857,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
+        <TextBox x:Name="CodigoPostalTextBox" HorizontalAlignment="Left" Margin="170.303,390.058,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
+        <Label Content="Código postal:" HorizontalAlignment="Left" Margin="32.506,382.314,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+        <Button x:Name="EditarButton" Content="EDITAR" HorizontalAlignment="Left" Margin="276.02,466.666,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72"/>
+        <Button x:Name="CancelarButton" Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="170,467,0,0" VerticalAlignment="Top" Width="91" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
+
+    </Grid>
+</Window>
