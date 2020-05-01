@@ -58,6 +58,9 @@
     <Compile Include="Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DarDeBajaCliente.xaml.cs">
+      <DependentUpon>DarDeBajaCliente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DarDeBajaEmpleado.xaml.cs">
       <DependentUpon>DarDeBajaEmpleado.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
     </Compile>
     <Page Include="Clientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DarDeBajaCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
