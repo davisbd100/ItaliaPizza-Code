@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Editar empleado" Height="550" Width="800" Icon="Recursos/Editar.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="-4.5,14.576,0,0" VerticalAlignment="Top" Width="791.833" Fill="#FFB31423"/>
+        <Rectangle HorizontalAlignment="Left" Height="69" Margin="0,15,-0.333,0" VerticalAlignment="Top" Width="795" Fill="#FFB31423"/>
         <Label Content="Editar empleado" HorizontalAlignment="Left" Margin="140.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>
         <Button Content="" HorizontalAlignment="Left" Height="73.597" Margin="67.919,10,0,0" VerticalAlignment="Top" Width="72.333" BorderBrush="{x:Null}">
             <Button.Background>
@@ -26,7 +26,7 @@
         <Label Content="Dirección:" HorizontalAlignment="Left" Margin="73.333,331.857,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
         <TextBox x:Name="CodigoPostalTextBox" HorizontalAlignment="Left" Margin="170.303,390.058,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
         <Label Content="Código postal:" HorizontalAlignment="Left" Margin="32.506,382.314,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-        <Button x:Name="EditarButton" Content="EDITAR" HorizontalAlignment="Left" Margin="276,465,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="159"/>
+        <Button Content="EDITAR" HorizontalAlignment="Left" Margin="276,465,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="159"/>
         <Button x:Name="CancelarButton" Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="170,465,0,0" VerticalAlignment="Top" Width="91" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
         <Rectangle HorizontalAlignment="Left" Height="200.279" Margin="483.334,137.511,0,0" VerticalAlignment="Top" Width="242.666">
             <Rectangle.Fill>
