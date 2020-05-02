@@ -16,6 +16,7 @@ namespace BusinessLogic
         public int ExistenciaTotal { get; set; }
         public UnidadDeMedidaEnum UnidadDeMedida { get; set; }
 
+        public Inventario() { }
 
     }
 

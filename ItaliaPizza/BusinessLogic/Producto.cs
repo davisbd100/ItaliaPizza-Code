@@ -14,8 +14,7 @@ namespace BusinessLogic
         public string Restricción { get; set; }
 
         public Producto()
-        {
-            
+        {         
         }
 
     }
