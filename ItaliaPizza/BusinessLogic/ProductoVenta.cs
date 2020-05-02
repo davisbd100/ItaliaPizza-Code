@@ -22,7 +22,5 @@ namespace BusinessLogic
 
     public enum TipoProductoEnum
     {
-
- 
     }
 }
