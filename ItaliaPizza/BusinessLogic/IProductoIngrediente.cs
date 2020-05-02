@@ -11,7 +11,7 @@ namespace BusinessLogic
     interface IProductoIngrediente
     {
         List<ProductoIngrediente> GetProductosIngrediente();
-        List<ProductoIngrediente> ProdctoIngredienteBusqueda();
+        List<ProductoIngrediente> ProdctoIngredienteBusqueda(string busqueda);
         ProductoIngrediente ObtenerProductoIngredientePorId(string id);
         ResultadoOperacion AddProductoIngrediente(ProductoIngrediente productoIngrediente);
         ResultadoOperacion EliminarProducto(ProductoIngrediente productoIngrediente);
