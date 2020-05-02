@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static BusinessLogic.ResultEnum;
+using static BusinessLogic.ResultadoOperacionEnum;
 
 
 namespace BusinessLogic
 {
     interface IProductoIngrediente
     {
-        List<ProductoIngrediente> GetProductoIngredientes();
-        ResultOperation AddProductoIngrediente(ProductoIngrediente productoIngrediente);
-        ResultOperation EliminarProducto(ProductoIngrediente productoIngrediente);
+        List<ProductoIngrediente> GetProductosIngrediente();
+        List<ProductoIngrediente> ProdctoIngredienteBusqueda(string busqueda);
+        ProductoIngrediente ObtenerProductoIngredientePorId(string id);
+        ResultadoOperacion AddProductoIngrediente(ProductoIngrediente productoIngrediente);
+        ResultadoOperacion EliminarProducto(ProductoIngrediente productoIngrediente);
+        ResultadoOperacion EditarProducto(ProductoIngrediente productoIngrediente);
 
     }
 }
