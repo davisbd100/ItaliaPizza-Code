@@ -10,15 +10,15 @@ namespace BusinessLogic
 {
 
     /// <summary>Clase con una enumeracion para los posibles resultados de una operacion</summary>
-    public class ResultEnum
+    public class ResultadoOperacionEnum
     {
-        public enum ResultOperation
+        public enum ResultadoOperacion
         {
-            Success,
-            NullObject,
-            UnknowFail,
-            SQLFail,
-            ExistingRecord
+            Exito,
+            ObjetoNulo,
+            FallaDesconocida,
+            FalloSQL,
+            ObjetoExistente
         }
     }
 }
