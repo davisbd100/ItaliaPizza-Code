@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +45,7 @@
     <Compile Include="IInventario.cs" />
     <Compile Include="IProductoVenta.cs" />
     <Compile Include="IUbicación.cs" />
+    <Compile Include="ProductoVentaDAO.cs" />
     <Compile Include="ResultadoOperacionEnum.cs" />
     <Compile Include="Inventario.cs" />
     <Compile Include="IProductoIngrediente.cs" />
@@ -53,6 +55,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receta.cs" />
     <Compile Include="Ubicación.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseConnection\DatabaseConnection.csproj">
+      <Project>{6f8664e1-8d02-4025-9e57-46af83dcaab5}</Project>
+      <Name>DatabaseConnection</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
