@@ -8,7 +8,7 @@ namespace BusinessLogic
 {
     public class Receta
     {
-
+        public int id { get; set; }
 
         public Receta() { }
     }

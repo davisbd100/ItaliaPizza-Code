@@ -1,23 +1,20 @@
-﻿using System;
+﻿using DatabaseConnection;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Transactions;
-using DatabaseConnection;
 using static BusinessLogic.ResultadoOperacionEnum;
 
 namespace BusinessLogic
 {
-    public class ProductoVentaDAO : IProductoVenta
+    class ProductoIngredienteDAO : IProductoIngrediente
     {
-        public ResultadoOperacionEnum.ResultadoOperacion AddProductoVenta(ProductoVenta productoVenta)
+        public ResultadoOperacionEnum.ResultadoOperacion AddProductoIngrediente(ProductoIngrediente productoIngrediente)
         {
             const int VALORES_DUPLICADOS = 2601;
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
-
-
             DbConnection dbConnection = new DbConnection();
 
             using (SqlConnection connection = dbConnection.GetConnection())
@@ -25,7 +22,7 @@ namespace BusinessLogic
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
                 SqlTransaction transaction;
-                transaction = connection.BeginTransaction("InsertarProductoVenta");
+                transaction = connection.BeginTransaction("InsertarProductoIngrediente");
                 command.Connection = connection;
                 command.Transaction = transaction;
 
@@ -33,27 +30,23 @@ namespace BusinessLogic
                 {
                     command.CommandText =
                          "INSERT INTO dbo.Producto VALUES (@Codigo, @Nombre, @Descripcion, @Restriccion)";
-                    command.Parameters.Add(new SqlParameter("@Codigo", productoVenta.Código));
-                    command.Parameters.Add(new SqlParameter("@Nombre", productoVenta.Nombre));
-                    command.Parameters.Add(new SqlParameter("@Descripcion", productoVenta.Descripción));
-                    command.Parameters.Add(new SqlParameter("@Restriccion", productoVenta.Restricción));
+                    command.Parameters.Add(new SqlParameter("@Codigo", productoIngrediente.Código));
+                    command.Parameters.Add(new SqlParameter("@Nombre", productoIngrediente.Nombre));
+                    command.Parameters.Add(new SqlParameter("@Descripcion", productoIngrediente.Descripción));
+                    command.Parameters.Add(new SqlParameter("@Restriccion", productoIngrediente.Restricción));
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.ProductoVenta VALUES (@idProductoVenta, @PrecioPublico," +
-                        " @TipoProducto, @FotoProducto, @TieneReceta, @Receta)";
-                    command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
-                    command.Parameters.Add(new SqlParameter("@PrecioPublico", productoVenta.PrecioPúblico));
-                    command.Parameters.Add(new SqlParameter("@TipoProducto", productoVenta.TipoProducto));
-                    command.Parameters.Add(new SqlParameter("@Fotoproducto", productoVenta.FotoProducto));
-                    command.Parameters.Add(new SqlParameter("@TieneReceta", productoVenta.TieneReceta));
-                    command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.id));
+                        "INSERT INTO dbo.ProductoVenta VALUES (@idProductoIngrediente, @TipoIngrediente";
+                    command.Parameters.Add(new SqlParameter("@idProductoVenta", productoIngrediente.Código));
+                    command.Parameters.Add(new SqlParameter("@TipoIngrediente", productoIngrediente.tipoIngrediente));
+
 
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
 
                 }
-                catch(SqlException e)
+                catch (SqlException e)
                 {
                     transaction.Rollback();
 
@@ -68,32 +61,33 @@ namespace BusinessLogic
                     }
                 }
             }
+
             return resultado;
+
+
         }
 
-
-
-        public ResultadoOperacionEnum.ResultadoOperacion EditarProductoVenta(ProductoVenta productoVenta)
+        public ResultadoOperacionEnum.ResultadoOperacion EditarProducto(ProductoIngrediente productoIngrediente)
         {
             throw new NotImplementedException();
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion EliminarProductoVenta(ProductoVenta productoVenta)
+        public ResultadoOperacionEnum.ResultadoOperacion EliminarProducto(ProductoIngrediente productoIngrediente)
         {
             throw new NotImplementedException();
         }
 
-        public List<ProductoVenta> GetProductosVenta()
+        public List<ProductoIngrediente> GetProductosIngrediente()
         {
             throw new NotImplementedException();
         }
 
-        public ProductoVenta ObtenerProductoVentaPorid(string id)
+        public ProductoIngrediente ObtenerProductoIngredientePorId(string id)
         {
             throw new NotImplementedException();
         }
 
-        public List<ProductoVenta> ProductoVentaBusqueda(string busqueda)
+        public List<ProductoIngrediente> ProdctoIngredienteBusqueda(string busqueda)
         {
             throw new NotImplementedException();
         }
