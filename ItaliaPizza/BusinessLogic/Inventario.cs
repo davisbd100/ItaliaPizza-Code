@@ -8,6 +8,7 @@ namespace BusinessLogic
 {
     public class Inventario
     {
+        public int idInventario { get; set; }
         public Producto Producto { get; set; }
         public int CantidadIngreso { get; set; }
         public float PrecioCompra { get; set; }
