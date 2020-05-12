@@ -70,7 +70,36 @@ namespace BusinessLogic
 
         public ResultadoOperacionEnum.ResultadoOperacion EditarProducto(ProductoIngrediente productoIngrediente)
         {
-            throw new NotImplementedException();
+
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            DbConnection dbConnection = new DbConnection();
+
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoIngrediente SET Nombre = @Nombre, Descripcion = @Descripcion, " +
+                    "Restriccion = @Restriccion, TipoIngrediente = @TipoIngrediente) ", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Nombre", productoIngrediente.Nombre));
+                    command.Parameters.Add(new SqlParameter("@Descripcion", productoIngrediente.Descripción));
+                    command.Parameters.Add(new SqlParameter("@Restriccion", productoIngrediente.Restricción));
+                    command.Parameters.Add(new SqlParameter("@TipoIngrediente", productoIngrediente.tipoIngrediente.ToString()));
+
+                    try
+                    {
+                        SqlDataReader reader = command.ExecuteReader();
+
+                    }
+                    catch (SqlException)
+                    {
+                        resultado = ResultadoOperacion.FalloSQL;
+                        return resultado;
+                    }
+                }
+            }
+            return resultado;
         }
 
         public ResultadoOperacionEnum.ResultadoOperacion EliminarProducto(ProductoIngrediente productoIngrediente)
