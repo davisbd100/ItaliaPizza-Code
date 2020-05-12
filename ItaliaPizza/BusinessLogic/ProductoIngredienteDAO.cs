@@ -113,9 +113,37 @@ namespace BusinessLogic
 
         }
 
-        public ProductoIngrediente ObtenerProductoIngredientePorId(string id)
+        public ProductoIngrediente ObtenerProductoIngredientePorId(string codigo)
         {
-            throw new NotImplementedException();
+            ProductoIngrediente productoIngrediente = new ProductoIngrediente();
+            DbConnection dbconnection = new DbConnection();
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoIngrediente WHERE idProductoIngrediente = @Codigo", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Codigo", codigo));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Descripción = reader["Descripcion"].ToString();
+                        productoIngrediente.Nombre = reader["Nombre"].ToString();
+                        productoIngrediente.Restricción = reader["Restriccion"].ToString();
+
+                        productoIngrediente.tipoIngrediente = (TipoIngredienteEnum)Enum.Parse(typeof(TipoIngredienteEnum), reader["TipoProducto"].ToString());
+                    }
+                }
+                connection.Close();
+            }
+            return productoIngrediente;
         }
 
         public List<ProductoIngrediente> ProdctoIngredienteBusqueda(string busqueda)

@@ -44,8 +44,10 @@
   <ItemGroup>
     <Compile Include="IInventario.cs" />
     <Compile Include="InventarioDAO.cs" />
+    <Compile Include="IProducto.cs" />
     <Compile Include="IProductoVenta.cs" />
     <Compile Include="IUbicación.cs" />
+    <Compile Include="ProductoDAO.cs" />
     <Compile Include="ProductoIngredienteDAO.cs" />
     <Compile Include="ProductoVentaDAO.cs" />
     <Compile Include="ResultadoOperacionEnum.cs" />

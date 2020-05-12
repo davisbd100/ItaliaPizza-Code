@@ -119,9 +119,40 @@ namespace BusinessLogic
         }
 
 
-        public ProductoVenta ObtenerProductoVentaPorid(string id)
+        public ProductoVenta ObtenerProductoVentaPorid(string codigo)
         {
-            throw new NotImplementedException();
+
+            ProductoVenta productoVenta = new ProductoVenta();
+            DbConnection dbconnection = new DbConnection();
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta WHERE idProductoVenta = @Codigo", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Codigo", codigo));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        productoVenta.Código= reader["Codigo"].ToString();
+                        productoVenta.Descripción = reader["Descripcion"].ToString();
+                        productoVenta.Nombre = reader["Nombre"].ToString();
+                        productoVenta.Restricción = reader["Restriccion"].ToString();
+
+                        productoVenta.PrecioPúblico = float.Parse(reader["PrecioPublico"].ToString());
+                        productoVenta.TipoProducto = (TipoProductoEnum)Enum.Parse(typeof(TipoProductoEnum) , reader["TipoProducto"].ToString());
+                        productoVenta.FotoProducto = reader["FotoProducto"].ToString();
+                    }
+                }
+                connection.Close();
+            }
+            return productoVenta;
         }
 
         public List<ProductoVenta> ProductoVentaBusqueda(string busqueda)
