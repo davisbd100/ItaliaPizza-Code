@@ -53,7 +53,7 @@ namespace BusinessLogic
                     resultado = ResultadoOperacion.Exito;
 
                 }
-                catch(SqlException e)
+                catch (SqlException e)
                 {
                     transaction.Rollback();
 
@@ -83,10 +83,41 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public List<ProductoVenta> GetProductosVenta()
+
+        public List<ProductoVenta> GetProductosVenta(int rango)
         {
-            throw new NotImplementedException();
+            List<ProductoVenta> listaProductos = new List<ProductoVenta>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta ORDER BY Nombre LIMIT 20 OFFSET @Rango", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Rango", rango));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ProductoVenta productoVenta = new ProductoVenta();
+                        productoVenta.Código = reader["Codigo"].ToString();
+                        productoVenta.Nombre = reader["Nombre"].ToString();
+
+                        listaProductos.Add(productoVenta);
+                    }
+                }
+                connection.Close();
+            }
+            return listaProductos;
+
         }
+
 
         public ProductoVenta ObtenerProductoVentaPorid(string id)
         {

@@ -9,6 +9,7 @@ using static BusinessLogic.ResultadoOperacionEnum;
 
 namespace BusinessLogic
 {
+
     class ProductoIngredienteDAO : IProductoIngrediente
     {
         public ResultadoOperacionEnum.ResultadoOperacion AddProductoIngrediente(ProductoIngrediente productoIngrediente)
@@ -77,9 +78,39 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public List<ProductoIngrediente> GetProductosIngrediente()
+
+        public List<ProductoIngrediente> GetProductosIngrediente(int rango)
         {
-            throw new NotImplementedException();
+            List<ProductoIngrediente> listaProductos = new List<ProductoIngrediente>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoIngrediente ORDER BY Nombre LIMIT 20 OFFSET @Rango", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Rango", rango));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ProductoIngrediente productoIngrediente = new ProductoIngrediente();
+                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Nombre = reader["Nombre"].ToString();
+
+                        listaProductos.Add(productoIngrediente);
+                    }
+                }
+                connection.Close();
+            }
+            return listaProductos;
+
         }
 
         public ProductoIngrediente ObtenerProductoIngredientePorId(string id)
