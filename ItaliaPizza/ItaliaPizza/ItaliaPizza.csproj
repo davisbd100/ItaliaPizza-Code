@@ -70,6 +70,9 @@
     <Compile Include="EditarEmpleado.xaml.cs">
       <DependentUpon>EditarEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditarPedido.xaml.cs">
+      <DependentUpon>EditarPedido.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Empleados.xaml.cs">
       <DependentUpon>Empleados.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,10 @@
     <Page Include="EditarEmpleado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditarPedido.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Empleados.xaml">
       <SubType>Designer</SubType>
