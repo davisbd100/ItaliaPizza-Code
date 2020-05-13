@@ -85,8 +85,9 @@ namespace BusinessLogic
 
                 using (SqlCommand command = new SqlCommand("UPDATE dbo.Productoventa SET Nombre = @Nombre, Descripcion = @Descripcion, " +
                     "Restriccion = @Restriccion, TipoProducto = @TipoProducto, PrecioPublico = @PrecioPublico, " +
-                    "FotoProducto = @FotoProducto, TieneReceta = @TieneReceta, Receta = @Receta ) ", connection))
+                    "FotoProducto = @FotoProducto, TieneReceta = @TieneReceta, Receta = @Receta WHERE iProductoVenta = @idProductoVenta) ", connection))
                 {
+                    command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
                     command.Parameters.Add(new SqlParameter("@Nombre", productoVenta.Nombre));
                     command.Parameters.Add(new SqlParameter("@Descripcion", productoVenta.Descripción));
                     command.Parameters.Add(new SqlParameter("@Restriccion", productoVenta.Restricción));
