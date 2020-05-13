@@ -9,8 +9,9 @@ namespace BusinessLogic
 {
     interface IInventario
     {
-        List<Inventario> ObtenerInventarios();
+        List<Inventario> ObtenerInventarios(Producto producto);
         ResultadoOperacion AddInventario(Inventario inventario);
+        ResultadoOperacion ModificarInventario(Inventario inventario);
 
 
     }

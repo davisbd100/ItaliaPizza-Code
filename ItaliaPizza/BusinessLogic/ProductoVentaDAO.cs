@@ -75,7 +75,40 @@ namespace BusinessLogic
 
         public ResultadoOperacionEnum.ResultadoOperacion EditarProductoVenta(ProductoVenta productoVenta)
         {
-            throw new NotImplementedException();
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            DbConnection dbConnection = new DbConnection();
+
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("UPDATE dbo.Productoventa SET Nombre = @Nombre, Descripcion = @Descripcion, " +
+                    "Restriccion = @Restriccion, TipoProducto = @TipoProducto, PrecioPublico = @PrecioPublico, " +
+                    "FotoProducto = @FotoProducto, TieneReceta = @TieneReceta, Receta = @Receta WHERE iProductoVenta = @idProductoVenta) ", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
+                    command.Parameters.Add(new SqlParameter("@Nombre", productoVenta.Nombre));
+                    command.Parameters.Add(new SqlParameter("@Descripcion", productoVenta.Descripción));
+                    command.Parameters.Add(new SqlParameter("@Restriccion", productoVenta.Restricción));
+                    command.Parameters.Add(new SqlParameter("@TipoProducto", productoVenta.TipoProducto.ToString()));
+                    command.Parameters.Add(new SqlParameter("@PrecioPublico", productoVenta.PrecioPúblico));
+                    command.Parameters.Add(new SqlParameter("@FotoProducto", productoVenta.FotoProducto));
+                    command.Parameters.Add(new SqlParameter("@TieneReceta", productoVenta.TieneReceta));
+                    command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.id));
+                    try
+                    {
+                        SqlDataReader reader = command.ExecuteReader();
+
+                    }
+                    catch (SqlException)
+                    {
+                        resultado = ResultadoOperacion.FalloSQL;
+                        return resultado;
+                    }
+                }
+            }
+            return resultado;
         }
 
         public ResultadoOperacionEnum.ResultadoOperacion EliminarProductoVenta(ProductoVenta productoVenta)
