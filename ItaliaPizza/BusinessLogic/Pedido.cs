@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    class Pedido
+    public class Pedido
     {
         public int idPedido { get; set; }
         public DateTime FechaPedido { get; set; }
