@@ -106,6 +106,7 @@ namespace BusinessLogic
                         resultado = ResultadoOperacion.FalloSQL;
                         return resultado;
                     }
+                    resultado = ResultadoOperacion.Exito;
                 }
             }
             return resultado;
@@ -113,7 +114,32 @@ namespace BusinessLogic
 
         public ResultadoOperacionEnum.ResultadoOperacion EliminarProductoVenta(ProductoVenta productoVenta)
         {
-            throw new NotImplementedException();
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            DbConnection dbConnection = new DbConnection();
+
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("UPDATE dbo.Productoventa SET Visibilidad = Invisible  WHERE iProductoVenta = @idProductoVenta) ", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
+
+                    try
+                    {
+                        SqlDataReader reader = command.ExecuteReader();
+
+                    }
+                    catch (SqlException)
+                    {
+                        resultado = ResultadoOperacion.FalloSQL;
+                        return resultado;
+                    }
+                    resultado = ResultadoOperacion.Exito;
+                }
+            }
+            return resultado;
         }
 
 
