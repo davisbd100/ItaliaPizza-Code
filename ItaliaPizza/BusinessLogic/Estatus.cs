@@ -10,6 +10,5 @@ namespace BusinessLogic
     {
         public int idEstado { get; set; }
         public String NombreEstatus { get; set; }
-
     }
 }

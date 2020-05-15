@@ -42,11 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cliente.cs" />
+    <Compile Include="Empleado.cs" />
+    <Compile Include="Estatus.cs" />
     <Compile Include="IInventario.cs" />
+    <Compile Include="IPedido.cs" />
     <Compile Include="InventarioDAO.cs" />
     <Compile Include="IProducto.cs" />
     <Compile Include="IProductoVenta.cs" />
     <Compile Include="IUbicación.cs" />
+    <Compile Include="Pedido.cs" />
+    <Compile Include="PedidoDAO.cs" />
+    <Compile Include="Persona.cs" />
     <Compile Include="ProductoDAO.cs" />
     <Compile Include="ProductoIngredienteDAO.cs" />
     <Compile Include="ProductoVentaDAO.cs" />
@@ -58,6 +65,7 @@
     <Compile Include="ProductoVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receta.cs" />
+    <Compile Include="TipoEmpleado.cs" />
     <Compile Include="Ubicación.cs" />
   </ItemGroup>
   <ItemGroup>
