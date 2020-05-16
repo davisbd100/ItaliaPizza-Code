@@ -98,14 +98,44 @@ namespace BusinessLogic
                         resultado = ResultadoOperacion.FalloSQL;
                         return resultado;
                     }
+
                 }
+                resultado = ResultadoOperacion.Exito;
+
             }
             return resultado;
         }
 
         public ResultadoOperacionEnum.ResultadoOperacion EliminarProducto(ProductoIngrediente productoIngrediente)
         {
-            throw new NotImplementedException();
+
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            DbConnection dbConnection = new DbConnection();
+
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoIngrediente SET Visibilidad = Invisible WHERE idProductoIngrediente = @idProductoIngrediente) ", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@idProductoIngrediente", productoIngrediente.Código));
+
+                    try
+                    {
+                        SqlDataReader reader = command.ExecuteReader();
+
+                    }
+                    catch (SqlException)
+                    {
+                        resultado = ResultadoOperacion.FalloSQL;
+                        return resultado;
+                    }
+                }
+                resultado = ResultadoOperacion.Exito;
+
+            }
+            return resultado;
         }
 
 
