@@ -208,7 +208,35 @@ namespace BusinessLogic
 
         public List<ProductoIngrediente> ProdctoIngredienteBusqueda(string busqueda)
         {
-            throw new NotImplementedException();
+            List<ProductoIngrediente> listaProductos = new List<ProductoIngrediente>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoIngrediente WHERE Nombre LIKE @Busqueda", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ProductoIngrediente productoIngrediente = new ProductoIngrediente();
+                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Nombre = reader["Nombre"].ToString();
+
+                        listaProductos.Add(productoIngrediente);
+                    }
+                }
+                connection.Close();
+            }
+            return listaProductos;
         }
     }
 }
