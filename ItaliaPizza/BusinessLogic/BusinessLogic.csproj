@@ -46,10 +46,12 @@
     <Compile Include="InventarioDAO.cs" />
     <Compile Include="IProducto.cs" />
     <Compile Include="IProductoVenta.cs" />
+    <Compile Include="IReceta.cs" />
     <Compile Include="IUbicación.cs" />
     <Compile Include="ProductoDAO.cs" />
     <Compile Include="ProductoIngredienteDAO.cs" />
     <Compile Include="ProductoVentaDAO.cs" />
+    <Compile Include="RecetaDAO.cs" />
     <Compile Include="ResultadoOperacionEnum.cs" />
     <Compile Include="Inventario.cs" />
     <Compile Include="IProductoIngrediente.cs" />

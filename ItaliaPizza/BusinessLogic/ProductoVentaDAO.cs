@@ -47,7 +47,7 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@TipoProducto", productoVenta.TipoProducto));
                     command.Parameters.Add(new SqlParameter("@Fotoproducto", productoVenta.FotoProducto));
                     command.Parameters.Add(new SqlParameter("@TieneReceta", productoVenta.TieneReceta));
-                    command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.id));
+                    command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.IdReceta));
 
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
@@ -95,7 +95,7 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@PrecioPublico", productoVenta.PrecioPúblico));
                     command.Parameters.Add(new SqlParameter("@FotoProducto", productoVenta.FotoProducto));
                     command.Parameters.Add(new SqlParameter("@TieneReceta", productoVenta.TieneReceta));
-                    command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.id));
+                    command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.IdReceta));
                     try
                     {
                         SqlDataReader reader = command.ExecuteReader();
@@ -122,7 +122,7 @@ namespace BusinessLogic
 
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("UPDATE dbo.Productoventa SET Visibilidad = Invisible  WHERE iProductoVenta = @idProductoVenta) ", connection))
+                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoVenta SET Visibilidad = Invisible  WHERE iProductoVenta = @idProductoVenta) ", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
 
