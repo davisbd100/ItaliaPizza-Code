@@ -38,7 +38,7 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.ProductoVenta VALUES (@idProductoIngrediente, @TipoIngrediente";
+                        "INSERT INTO dbo.ProductoIngrediente VALUES (@idProductoIngrediente, @TipoIngrediente";
                     command.Parameters.Add(new SqlParameter("@idProductoIngrediente", productoIngrediente.Código));
                     command.Parameters.Add(new SqlParameter("@TipoIngrediente", productoIngrediente.tipoIngrediente));
 
