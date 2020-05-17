@@ -52,6 +52,7 @@
     <Compile Include="IProductoVenta.cs" />
     <Compile Include="IReceta.cs" />
     <Compile Include="IUbicación.cs" />
+    <Compile Include="ListaIngredientesReceta.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="PedidoDAO.cs" />
     <Compile Include="Persona.cs" />
