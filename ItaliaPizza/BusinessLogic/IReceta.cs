@@ -10,6 +10,10 @@ namespace BusinessLogic
     interface IReceta
     {
         ResultadoOperacion AddProductoVenta(Receta receta);
+        List<Receta> GetProductosIngrediente(int rango);
+        Receta ObtenerProductoIngredientePorId(string codigo);
+
+
 
     }
 }

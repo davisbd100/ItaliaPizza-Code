@@ -72,5 +72,43 @@ namespace BusinessLogic
             }
             return resultado;
         }
+
+        public List<Receta> GetProductosIngrediente(int rango)
+        {
+            List<Receta> listaReceta = new List<Receta>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Receta ORDER BY Nombre LIMIT 20 OFFSET @Rango", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Rango", rango));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Receta receta = new Receta();
+                        receta.IdReceta = int.Parse(reader["Codigo"].ToString());
+                        receta.Nombre = reader["Nombre"].ToString();
+
+                        listaReceta.Add(receta);
+                    }
+                }
+                connection.Close();
+            }
+            return listaReceta;
+        }
+
+        public Receta ObtenerProductoIngredientePorId(string codigo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
