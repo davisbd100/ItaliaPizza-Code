@@ -122,7 +122,7 @@ namespace BusinessLogic
 
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoVenta SET Visibilidad = Invisible  WHERE iProductoVenta = @idProductoVenta) ", connection))
+                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoVenta SET Visibilidad = Invisible  WHERE idProductoVenta = @idProductoVenta) ", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
 
