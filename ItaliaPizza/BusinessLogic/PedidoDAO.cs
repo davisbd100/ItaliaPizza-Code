@@ -12,7 +12,31 @@ namespace BusinessLogic
     {
         public ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(Pedido pedido, Estatus estatus)
         {
-            throw new NotImplementedException();
+            ResultadoOperacionEnum.ResultadoOperacion result = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
+
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    result = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("UPDATE Pedido SET Estatus = @estatus WHERE idPedido = @id ", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@id", pedido.idPedido));
+                    command.Parameters.Add(new SqlParameter("@estatuds", pedido.Estatus));
+                    command.ExecuteNonQuery();
+                    result = ResultadoOperacionEnum.ResultadoOperacion.Exito;
+                }
+                connection.Close();
+            }
+            return result;
         }
 
         public ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido)
@@ -57,6 +81,5 @@ namespace BusinessLogic
             }
             return pedido;
         }
-    }
     }
 }
