@@ -30,7 +30,7 @@ namespace BusinessLogic
                 using (SqlCommand command = new SqlCommand("UPDATE Pedido SET Estatus = @estatus WHERE idPedido = @id ", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@id", pedido.idPedido));
-                    command.Parameters.Add(new SqlParameter("@estatuds", pedido.Estatus));
+                    command.Parameters.Add(new SqlParameter("@estatus", pedido.Estatus));
                     command.ExecuteNonQuery();
                     result = ResultadoOperacionEnum.ResultadoOperacion.Exito;
                 }
