@@ -40,7 +40,7 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @TipoEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso";
+                        "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @TipoEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso)";
                     command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idPersona));
                     command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
                     command.Parameters.Add(new SqlParameter("NombreUsuario", empleado.NombreUsuario));

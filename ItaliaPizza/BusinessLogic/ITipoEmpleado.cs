@@ -4,6 +4,6 @@ namespace BusinessLogic
 {
     interface ITipoEmpleado
     {
-        ResultadoOperacion AgregarTipoEmpleado(TipoEmpleado empleado);
+        ResultadoOperacion AgregarTipoEmpleado(TipoEmpleado tipoEmpleado);
     }
 }
