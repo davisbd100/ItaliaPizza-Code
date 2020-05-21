@@ -77,7 +77,47 @@ namespace BusinessLogic
 
         public ResultadoOperacion EditarEmpleado(Empleado empleado)
         {
-            throw new NotImplementedException();
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            DbConnection dbConnection = new DbConnection();
+
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("UPDATE dbo.Empleado SET Nombre = @Nombre, Apellido = @Apellido, " +
+                    "Telefono = @Telefono, Email = @Email, Calle = @Calle, Numero = @Numero, CodigoPostal = @CodigoPostal" +
+                    "Colonia = @Colonia, Ciudad = @Ciudad, TipoEmpleado = @TipoEmpleado, NombreUsuario = @NombreUsuario" +
+                    "Contraseña = @Contrasena, FechaUltimoAcceso = @FechaUltimoAcceso WHERE idEmpleado = @idEmpleado", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idPersona));
+                    command.Parameters.Add(new SqlParameter("@Nombre", empleado.Nombre));
+                    command.Parameters.Add(new SqlParameter("@Apellido", empleado.Apellido));
+                    command.Parameters.Add(new SqlParameter("@Telefono", empleado.Telefono));
+                    command.Parameters.Add(new SqlParameter("@Email", empleado.Email));
+                    command.Parameters.Add(new SqlParameter("@Calle", empleado.Calle));
+                    command.Parameters.Add(new SqlParameter("@Numero", empleado.Numero));
+                    command.Parameters.Add(new SqlParameter("@CodigoPostal", empleado.CodigoPostal));
+                    command.Parameters.Add(new SqlParameter("@Colonia", empleado.Colonia));
+                    command.Parameters.Add(new SqlParameter("@Ciudad", empleado.Ciudad));
+                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado.ToString()));
+                    command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
+                    command.Parameters.Add(new SqlParameter("@Contrasena", empleado.Contraseña));
+                    command.Parameters.Add(new SqlParameter("@FechaUltimoAcceso", empleado.FechaUltimoAcceso));
+
+                    try
+                    {
+                        SqlDataReader reader = command.ExecuteReader();
+
+                    }
+                    catch (SqlException)
+                    {
+                        resultado = ResultadoOperacion.FalloSQL;
+                        return resultado;
+                    }
+                }
+            }
+            return resultado;
         }
 
         public List<Empleado> GetEmpleados()
