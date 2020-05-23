@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,12 @@ namespace PrototiposItaliaPizza
     /// </summary>
     public partial class EditarPedido : Window
     {
-        public EditarPedido()
+        public EditarPedido(Pedido pedido)
         {
             InitializeComponent();
+            lbIdPedido.Content = pedido.idPedido;
+            lbIdCliente.Content = pedido.Cliente.Nombre;
+            lbEstatus.Content = "En edición";
         }
     }
 }

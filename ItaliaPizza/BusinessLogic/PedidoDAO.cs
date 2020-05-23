@@ -1,10 +1,11 @@
-﻿using DatabaseConnection;
+using DatabaseConnection;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccess;
 
 namespace BusinessLogic
 {
@@ -12,14 +13,39 @@ namespace BusinessLogic
     {
         public ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(Pedido pedido, Estatus estatus)
         {
-            throw new NotImplementedException();
+            ResultadoOperacionEnum.ResultadoOperacion result = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
+
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    result = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("UPDATE Pedido SET Estatus = @estatus WHERE idPedido = @id ", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@id", pedido.idPedido));
+                    command.Parameters.Add(new SqlParameter("@estatus", pedido.Estatus));
+                    command.ExecuteNonQuery();
+                    result = ResultadoOperacionEnum.ResultadoOperacion.Exito;
+                }
+                connection.Close();
+            }
+            return result;
         }
 
         public ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido)
         {
             throw new NotImplementedException();
         }
-        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int idPedido, List<ProductoVenta> productos)
+
+        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int pedido, List<ProductoVenta> productos)
         {
             throw new NotImplementedException();
         }
@@ -58,5 +84,4 @@ namespace BusinessLogic
             return pedido;
         }
     }
-    
 }

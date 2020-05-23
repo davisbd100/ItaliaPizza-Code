@@ -19,12 +19,12 @@
         <Label Content="Cliente:" HorizontalAlignment="Left" Margin="89.265,234.567,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
         <Button Content="EDITAR" HorizontalAlignment="Left" Margin="276.016,550.972,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72"/>
         <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="67.919,550.972,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
-        <Label Content="Placeholder" HorizontalAlignment="Left" Margin="175.304,129.767,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
-        <Label Content="Placeholder" HorizontalAlignment="Left" Margin="173.732,180.786,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
+        <Label x:Name="lbIdPedido" Content="Placeholder" HorizontalAlignment="Left" Margin="175.304,129.767,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
+        <Label x:Name="lbEstatus" Content="Placeholder" HorizontalAlignment="Left" Margin="173.732,180.786,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
         <DataGrid HorizontalAlignment="Left" Height="412.215" Margin="491.799,129.767,0,0" VerticalAlignment="Top" Width="234.415"/>
         <Label Content="Productos de pedido:" HorizontalAlignment="Left" Margin="491.799,88.597,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="22" Foreground="Black" Background="{x:Null}" Height="36.17" Width="209.024"/>
         <Label Content="Total anterior:" HorizontalAlignment="Left" Margin="33.625,272.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-        <Label Content="Placeholder" HorizontalAlignment="Left" Margin="171.574,272.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
+        <Label x:Name="lbPrecioAnterior" Content="Placeholder" HorizontalAlignment="Left" Margin="171.574,272.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
         <Label Content="Productos:" HorizontalAlignment="Left" Margin="763.453,88.597,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="22" Foreground="Black" Background="{x:Null}" Height="36.17" Width="209.024"/>
         <Rectangle HorizontalAlignment="Left" Height="353.247" Margin="738.57,188.735,0,-101.182" Stroke="#FFB31423" VerticalAlignment="Top" Width="526.943">
             <Rectangle.Fill>
@@ -62,8 +62,8 @@
         <Button Content="$000.00" HorizontalAlignment="Left" Height="35.334" Margin="1098.18,464.735,0,-59.269" VerticalAlignment="Top" Width="138.666" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <TextBlock HorizontalAlignment="Left" Height="18.564" Margin="1098.18,446.171,0,-23.935" TextWrapping="Wrap" Text="Pizza" VerticalAlignment="Top" Width="138.666" Background="Gray" Foreground="White" TextAlignment="Center"/>
         <Label Content="Nuevo total:" HorizontalAlignment="Left" Margin="46.539,317.767,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-        <Label Content="Placeholder" HorizontalAlignment="Left" Margin="171.574,317.767,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
-        <Label Content="Placeholder" HorizontalAlignment="Left" Margin="175.304,234.567,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
+        <Label x:Name="lbNuevoPrecio" Content="Placeholder" HorizontalAlignment="Left" Margin="171.574,317.767,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
+        <Label x:Name="lbIdCliente" Content="Placeholder" HorizontalAlignment="Left" Margin="175.304,234.567,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
 
     </Grid>
 </Window>
