@@ -44,10 +44,11 @@ namespace BusinessLogic
                         " @TipoProducto, @FotoProducto, @TieneReceta, @Receta)";
                     command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
                     command.Parameters.Add(new SqlParameter("@PrecioPublico", productoVenta.PrecioPúblico));
-                    command.Parameters.Add(new SqlParameter("@TipoProducto", productoVenta.TipoProducto));
+                    command.Parameters.Add(new SqlParameter("@TipoProducto", productoVenta.TipoProducto.IdTipoProducto));
                     command.Parameters.Add(new SqlParameter("@Fotoproducto", productoVenta.FotoProducto));
                     command.Parameters.Add(new SqlParameter("@TieneReceta", productoVenta.TieneReceta));
                     command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.IdReceta));
+                    command.ExecuteNonQuery();
 
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
@@ -91,7 +92,7 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@Nombre", productoVenta.Nombre));
                     command.Parameters.Add(new SqlParameter("@Descripcion", productoVenta.Descripción));
                     command.Parameters.Add(new SqlParameter("@Restriccion", productoVenta.Restricción));
-                    command.Parameters.Add(new SqlParameter("@TipoProducto", productoVenta.TipoProducto.ToString()));
+                    command.Parameters.Add(new SqlParameter("@TipoProducto", productoVenta.TipoProducto.IdTipoProducto.ToString()));
                     command.Parameters.Add(new SqlParameter("@PrecioPublico", productoVenta.PrecioPúblico));
                     command.Parameters.Add(new SqlParameter("@FotoProducto", productoVenta.FotoProducto));
                     command.Parameters.Add(new SqlParameter("@TieneReceta", productoVenta.TieneReceta));
@@ -122,7 +123,7 @@ namespace BusinessLogic
 
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoVenta SET Visibilidad = Invisible  WHERE iProductoVenta = @idProductoVenta) ", connection))
+                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoVenta SET Visibilidad = Invisible  WHERE idProductoVenta = @idProductoVenta) ", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
 
@@ -205,7 +206,7 @@ namespace BusinessLogic
                         productoVenta.Restricción = reader["Restriccion"].ToString();
 
                         productoVenta.PrecioPúblico = float.Parse(reader["PrecioPublico"].ToString());
-                        productoVenta.TipoProducto = (TipoProductoEnum)Enum.Parse(typeof(TipoProductoEnum) , reader["TipoProducto"].ToString());
+                        productoVenta.TipoProducto.IdTipoProducto = int.Parse(reader["TipoProducto"].ToString());
                         productoVenta.FotoProducto = reader["FotoProducto"].ToString();
                     }
                 }

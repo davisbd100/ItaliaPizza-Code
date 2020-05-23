@@ -9,7 +9,13 @@ namespace BusinessLogic
 {
     interface IReceta
     {
-        ResultadoOperacion AddProductoVenta(Receta receta);
+        ResultadoOperacion AddReceta(Receta receta);
+        List<Receta> GetRecetas(int rango);
+        Receta ObtenerRecetaPorId(int idReceta);
+        ResultadoOperacion ElimiarReceta(Receta receta);
+        ResultadoOperacion ElimiarRecetaConProductos(Receta receta);
+        ResultadoOperacion EditarReceta(Receta receta);
+
 
     }
 }
