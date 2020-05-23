@@ -1,4 +1,5 @@
 ﻿using DatabaseConnection;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -44,7 +45,7 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int idPedido, List<ProductoVenta> productos)
+        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int pedido, List<ProductoVenta> productos)
         {
             throw new NotImplementedException();
         }
