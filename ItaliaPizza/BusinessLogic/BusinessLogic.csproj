@@ -85,10 +85,6 @@
     <Compile Include="Ubicación.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{426bbad0-6b0f-474f-85d0-13449cfc9e78}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DatabaseConnection\DatabaseConnection.csproj">
       <Project>{6f8664e1-8d02-4025-9e57-46af83dcaab5}</Project>
       <Name>DatabaseConnection</Name>
