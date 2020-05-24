@@ -89,6 +89,9 @@
     <Compile Include="Empleados.xaml.cs">
       <DependentUpon>Empleados.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InventarioActual.xaml.cs">
+      <DependentUpon>InventarioActual.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListaPedidoCocinero.xaml.cs">
       <DependentUpon>ListaPedidoCocinero.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValidarCampos.cs" />
+    <Page Include="CancelarPedido.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Clientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +149,10 @@
       <DependentUpon>Inicio.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="InventarioActual.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ListaPedidoCocinero.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
