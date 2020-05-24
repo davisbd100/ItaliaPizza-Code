@@ -54,8 +54,11 @@
       <Name>DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+=======
+>>>>>>> master
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ItaliaPizza
 {
@@ -23,6 +13,40 @@ namespace ItaliaPizza
         public Inicio()
         {
             InitializeComponent();
+        }
+
+        private void IniciarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private bool validarCampos(string nombreUsuario, string contraseñaUsuario)
+        {
+            bool camposValidos = false;
+
+            if ((nombreUsuario != "") && (contraseñaUsuario != ""))
+            {
+                camposValidos = true;
+                return camposValidos;
+            }
+            else
+            {
+                return camposValidos;
+            }
+        }
+
+        private void VerContraseñaButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            VerContraseñaTextBox.Visibility = Visibility.Visible;
+            ContaseñaPasswordBox.Visibility = Visibility.Hidden;
+            VerContraseñaTextBox.Text = ContaseñaPasswordBox.Password;
+        }
+
+        private void VerContraseñaButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            VerContraseñaTextBox.Visibility = Visibility.Hidden;
+            ContaseñaPasswordBox.Visibility = Visibility.Visible;
+            VerContraseñaTextBox.Text = String.Empty;
         }
     }
 }
