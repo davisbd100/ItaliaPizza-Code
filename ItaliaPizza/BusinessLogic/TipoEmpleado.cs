@@ -9,7 +9,7 @@ namespace BusinessLogic
     public class TipoEmpleado
     {
         public int idTipoEmpleado { get; set; }
-        public String TipoEmpleado { get; set; }
+        public String TipoEmp { get; set; }
 
 
         public TipoEmpleado()

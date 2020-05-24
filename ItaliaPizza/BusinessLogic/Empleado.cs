@@ -15,7 +15,7 @@ namespace BusinessLogic
 
         public Empleado(TipoEmpleado TipoEmpleado, string NombreUsuario, string Contraseña, DateTime FechaUltimoAcceso)
         {
-            this.TipoEmpleado = TipoEmpleado;
+            this.tipoEmpleado = TipoEmpleado;
             this.NombreUsuario = NombreUsuario;
             this.Contraseña = Contraseña;
             this.FechaUltimoAcceso = FechaUltimoAcceso;

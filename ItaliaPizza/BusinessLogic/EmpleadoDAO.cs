@@ -42,7 +42,7 @@ namespace BusinessLogic
                     command.CommandText =
                         "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @TipoEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso)";
                     command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idPersona));
-                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
+                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.tipoEmpleado));
                     command.Parameters.Add(new SqlParameter("NombreUsuario", empleado.NombreUsuario));
                     command.Parameters.Add(new SqlParameter("Contrasena", empleado.Contraseña));
                     command.Parameters.Add(new SqlParameter("FechaUltimoAcceso", empleado.FechaUltimoAcceso));
@@ -100,7 +100,7 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@CodigoPostal", empleado.CodigoPostal));
                     command.Parameters.Add(new SqlParameter("@Colonia", empleado.Colonia));
                     command.Parameters.Add(new SqlParameter("@Ciudad", empleado.Ciudad));
-                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado.ToString()));
+                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.tipoEmpleado.ToString()));
                     command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
                     command.Parameters.Add(new SqlParameter("@Contrasena", empleado.Contraseña));
                     command.Parameters.Add(new SqlParameter("@FechaUltimoAcceso", empleado.FechaUltimoAcceso));
