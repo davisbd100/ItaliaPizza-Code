@@ -10,7 +10,7 @@ using static BusinessLogic.ResultadoOperacionEnum;
 
 namespace BusinessLogic
 {
-    class InventarioDAO : IInventario
+    public class InventarioDAO : IInventario
     {
         public ResultadoOperacionEnum.ResultadoOperacion AddInventario(Inventario inventario)
         {
