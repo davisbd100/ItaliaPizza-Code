@@ -35,7 +35,7 @@ namespace Controller
             return resultado;
         }
 
-        public List<DataAccess.Pedido> obtenerPedidosCajero()
+        public List<DataAccess.Pedido> obtenerPedidosVendedor()
         {
             List<DataAccess.Pedido> resultado;
             PedidoDAO pedidoDAO = new PedidoDAO();
