@@ -23,5 +23,28 @@ namespace ItaliaPizza
         {
             InitializeComponent();
         }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrarEmpleado registrarEmpleado = new RegistrarEmpleado();
+            registrarEmpleado.ShowDialog();
+        }
+
+        private void EditarButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditarEmpleado editarEmpleado = new EditarEmpleado();
+            editarEmpleado.ShowDialog();
+        }
+
+        private void EliminarButton_Click(object sender, RoutedEventArgs e)
+        {
+            DarDeBajaEmpleado darDeBajaEmpleado = new DarDeBajaEmpleado();
+            darDeBajaEmpleado.ShowDialog();
+        }
     }
 }

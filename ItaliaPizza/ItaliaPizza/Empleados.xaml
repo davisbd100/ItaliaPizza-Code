@@ -14,31 +14,36 @@
             <RowDefinition Height="Auto" MinHeight="651.333"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
+        <Rectangle HorizontalAlignment="Left" Height="74" Margin="0,496,0,0" Stroke="Black" VerticalAlignment="Top" Width="120">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFA51D22" Opacity="0.5"/>
+            </Rectangle.Fill>
+        </Rectangle>
         <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1003.332">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="Empleados" HorizontalAlignment="Left" Margin="250.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132.397" Width="253.143" Background="{x:Null}"/>
-        <Button Content="" HorizontalAlignment="Left" Height="87.021" Margin="752,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}">
+        <Button x:Name="NuevoButton" Content="" HorizontalAlignment="Left" Height="87.021" Margin="752,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="NuevoButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Empleado.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Label Content="NUEVO" HorizontalAlignment="Left" Margin="782.999,86.586,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" Height="27.09" Width="51.887"/>
-        <Button Content="" HorizontalAlignment="Left" Height="87.11" Margin="870.333,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}">
+        <Button x:Name="EditarButton" Content="" HorizontalAlignment="Left" Height="87.11" Margin="870.333,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="EditarButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Editar.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="86.944" Margin="983.666,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}">
+        <Button x:Name="EliminarButton" Content="" HorizontalAlignment="Left" Height="86.944" Margin="983.666,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="EliminarButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Eliminar.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Label Content="EDITAR" HorizontalAlignment="Left" Margin="899.541,86.752,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="50.407"/>
         <Label Content="ELIMINAR" HorizontalAlignment="Left" Margin="1007.211,86.328,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="66.483"/>
-        <ListView HorizontalAlignment="Left" Height="358" Margin="185.057,238.667,0,0" VerticalAlignment="Top" Width="1002.61">
+        <ListView HorizontalAlignment="Left" Height="358" Margin="185.057,238.667,0,0" VerticalAlignment="Top" Width="1002.61" SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
@@ -50,9 +55,13 @@
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
-        <TextBox HorizontalAlignment="Left" Margin="298.667,165.396,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Ingresa el nombre a buscar" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="26.413" Background="White"/>
+        <TextBox HorizontalAlignment="Left" Margin="298.667,165.396,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Ingresa lo que deseas buscar" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="26.413" Background="White"/>
         <Label Content="Buscar:" HorizontalAlignment="Left" Margin="209.057,161.767,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}"/>
-        <ComboBox HorizontalAlignment="Left" Height="26.31" Margin="997.167,165.5,0,0" VerticalAlignment="Top" Width="173"/>
+        <ComboBox HorizontalAlignment="Left" Height="26.31" Margin="997.167,165.5,0,0" VerticalAlignment="Top" Width="173">
+            <ComboBoxItem Content="Nombre" FontSize="20"/>
+            <ComboBoxItem Content="Dirección" FontSize="20"/>
+            <ComboBoxItem Content="Télefono" FontSize="20"/>
+        </ComboBox>
         <Button Content="" HorizontalAlignment="Left" Height="17.643" Margin="975.833,170.5,0,0" VerticalAlignment="Top" Width="19.334" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Buscar.png" Stretch="Uniform"/>
