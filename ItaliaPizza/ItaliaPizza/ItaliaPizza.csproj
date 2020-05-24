@@ -79,6 +79,12 @@
     <Compile Include="Empleados.xaml.cs">
       <DependentUpon>Empleados.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListaPedidoCocinero.xaml.cs">
+      <DependentUpon>ListaPedidoCocinero.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListaPedidoVendedor.xaml.cs">
+      <DependentUpon>ListaPedidoVendedor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarCliente.xaml.cs">
       <DependentUpon>RegistrarCliente.xaml</DependentUpon>
     </Compile>

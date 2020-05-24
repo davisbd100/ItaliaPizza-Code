@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogic;
+using Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,12 @@ namespace PrototiposItaliaPizza
     /// </summary>
     public partial class ListaPedidoCocinero : Window
     {
+        public List<DataAccess.Pedido> pedidos { get; set; }
+        PedidoController PedidoController = new PedidoController();
         public ListaPedidoCocinero()
         {
             InitializeComponent();
+            pedidos = PedidoController.obtenerPedidosCocina();
         }
     }
 }
