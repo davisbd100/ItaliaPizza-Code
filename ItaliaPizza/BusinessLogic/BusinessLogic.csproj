@@ -63,7 +63,6 @@
     <Compile Include="IProducto.cs" />
     <Compile Include="IProductoVenta.cs" />
     <Compile Include="ITipoEmpleado.cs" />
-    <Compile Include="IUbicación.cs" />
     <Compile Include="IReceta.cs" />
     <Compile Include="ITipoProducto.cs" />
     <Compile Include="IUbicación.cs" />

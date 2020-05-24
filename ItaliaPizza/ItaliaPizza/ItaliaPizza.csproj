@@ -190,5 +190,15 @@
     <Resource Include="Recursos\VerContraseñaInicio.png" />
     <Resource Include="Recursos\VerMas.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{c1e97369-553e-481c-839d-459e7db21b48}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Controller\Controller.csproj">
+      <Project>{8a4c10f1-222b-47de-91e1-6ddfabea62f1}</Project>
+      <Name>Controller</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

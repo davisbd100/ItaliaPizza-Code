@@ -21,7 +21,7 @@ namespace BusinessLogic
                 using (SqlCommand command = new SqlCommand("INSERT INTO dbo.TipoEmpleado VALUES (@idEmpleado, @TipoEmpleado)", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@idTipoEmpleado", tipoEmpleado.idTipoEmpleado));
-                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", tipoEmpleado.TipoEmpleado));
+                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", tipoEmpleado.TipoEmp));
 
                     try
                     {
