@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    public class Cliente : Persona
+    interface ITipoProducto
     {
-
-        public Cliente()
-        {
-
-        }
+        ResultadoOperacionEnum.ResultadoOperacion addTipoProducto(TipoProducto tipoProducto);
     }
 }

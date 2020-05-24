@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    public class Cliente : Persona
+    public class Estatus
     {
-
-        public Cliente()
-        {
-
-        }
+        public int idEstado { get; set; }
+        public String NombreEstatus { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace BusinessLogic
 {
     public class Empleado : Persona
     {
-        public TipoEmpleado TipoEmpleado { get; set; }
+        public TipoEmpleado tipoEmpleado { get; set; }
         public String NombreUsuario { get; set; }
         public String Contraseña { get; set; }
         public DateTime FechaUltimoAcceso { get; set; }
@@ -20,7 +20,6 @@ namespace BusinessLogic
             this.Contraseña = Contraseña;
             this.FechaUltimoAcceso = FechaUltimoAcceso;
         }
-
         public Empleado()
         {
 

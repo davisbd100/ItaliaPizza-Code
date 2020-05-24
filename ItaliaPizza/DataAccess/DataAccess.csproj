@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C1E97369-553E-481C-839D-459E7DB21B48}</ProjectGuid>
+    <ProjectGuid>{3A363472-3787-445B-94A0-F67A532341C9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessLogic</RootNamespace>
-    <AssemblyName>BusinessLogic</AssemblyName>
+    <RootNamespace>DataAccess</RootNamespace>
+    <AssemblyName>DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -43,7 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Transactions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,56 +53,102 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cliente.cs" />
-    <Compile Include="Empleado.cs" />
-    <Compile Include="EmpleadoDAO.cs" />
-    <Compile Include="IEmpleado.cs" />
-    <Compile Include="Estatus.cs" />
-    <Compile Include="IInventario.cs" />
-    <Compile Include="IPedido.cs" />
-    <Compile Include="InventarioDAO.cs" />
-    <Compile Include="IProducto.cs" />
-    <Compile Include="IProductoVenta.cs" />
-    <Compile Include="ITipoEmpleado.cs" />
-    <Compile Include="IUbicación.cs" />
-    <Compile Include="IReceta.cs" />
-    <Compile Include="ITipoProducto.cs" />
-    <Compile Include="IUbicación.cs" />
-    <Compile Include="ListaIngredientesReceta.cs" />
-    <Compile Include="Pedido.cs" />
-    <Compile Include="PedidoDAO.cs" />
-    <Compile Include="Persona.cs" />
-    <Compile Include="ProductoDAO.cs" />
-    <Compile Include="ProductoIngredienteDAO.cs" />
-    <Compile Include="ProductoVentaDAO.cs" />
-    <Compile Include="RecetaDAO.cs" />
-    <Compile Include="ResultadoOperacionEnum.cs" />
-    <Compile Include="Inventario.cs" />
-    <Compile Include="IProductoIngrediente.cs" />
-    <Compile Include="Producto.cs" />
-    <Compile Include="ProductoIngrediente.cs" />
-    <Compile Include="ProductoVenta.cs" />
+    <Compile Include="Cliente.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empleado.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Estatus.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pedido.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PedidoDomicilio.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PedidoProducto.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Persona.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PizzaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PizzaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PizzaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Producto.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoIngrediente.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoInventario.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoVenta.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Receta.cs" />
-    <Compile Include="TipoEmpleado.cs" />
-    <Compile Include="TipoEmpleadoDAO.cs" />
-    <Compile Include="TipoProducto.cs" />
-    <Compile Include="TipoProductoDAO.cs" />
-    <Compile Include="Ubicación.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{3a363472-3787-445b-94a0-f67a532341c9}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DatabaseConnection\DatabaseConnection.csproj">
-      <Project>{6f8664e1-8d02-4025-9e57-46af83dcaab5}</Project>
-      <Name>DatabaseConnection</Name>
-    </ProjectReference>
+    <Compile Include="Receta.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecetaIngrediente.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoEmpleado.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoProducto.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ubicacion.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UbicacionProducto.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="PizzaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PizzaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="PizzaModel.edmx.diagram">
+      <DependentUpon>PizzaModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PizzaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PizzaModel.edmx</DependentUpon>
+      <LastGenOutput>PizzaModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PizzaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PizzaModel.edmx</DependentUpon>
+      <LastGenOutput>PizzaModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

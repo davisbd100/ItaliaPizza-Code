@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bde48abf5a6748559b1d7fa11c294da4" Name="Diagram1">
+        <EntityTypeShape EntityType="PizzaModel.Cliente" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Empleado" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Estatus" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Inventario" Width="1.5" PointX="6" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Pedido" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.PedidoDomicilio" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.PedidoProducto" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Persona" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Producto" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.ProductoIngrediente" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.ProductoInventario" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.ProductoVenta" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Receta" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.RecetaIngrediente" Width="1.5" PointX="7.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.TipoEmpleado" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.TipoProducto" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Ubicacion" Width="1.5" PointX="6" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.UbicacionProducto" Width="1.5" PointX="8.25" PointY="14.5" IsExpanded="true" />
+        <AssociationConnector Association="PizzaModel.FK__Cliente__idClien__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Pedido__Cliente__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Empleado__idEmpl__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Empleado__TipoEm__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Pedido__Empleado__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Pedido__Estatus__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__ProductoI__Inven__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__PedidoDom__idPed__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__PedidoPro__idPed__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__PedidoPro__idPro__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__ProductoI__idPro__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__ProductoI__Produ__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__ProductoV__idPro__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Ubicacion__Produ__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__RecetaIng__idPro__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__ProductoV__Recet__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__ProductoV__TipoP__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__RecetaIng__idRec__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Ubicacion__Ubica__49C3F6B7" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

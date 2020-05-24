@@ -38,7 +38,7 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.ProductoVenta VALUES (@idProductoIngrediente, @TipoIngrediente";
+                        "INSERT INTO dbo.ProductoIngrediente VALUES (@idProductoIngrediente, @TipoIngrediente";
                     command.Parameters.Add(new SqlParameter("@idProductoIngrediente", productoIngrediente.Código));
                     command.Parameters.Add(new SqlParameter("@TipoIngrediente", productoIngrediente.tipoIngrediente));
 
@@ -98,14 +98,44 @@ namespace BusinessLogic
                         resultado = ResultadoOperacion.FalloSQL;
                         return resultado;
                     }
+
                 }
+                resultado = ResultadoOperacion.Exito;
+
             }
             return resultado;
         }
 
         public ResultadoOperacionEnum.ResultadoOperacion EliminarProducto(ProductoIngrediente productoIngrediente)
         {
-            throw new NotImplementedException();
+
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            DbConnection dbConnection = new DbConnection();
+
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoIngrediente SET Visibilidad = Invisible WHERE idProductoIngrediente = @idProductoIngrediente) ", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@idProductoIngrediente", productoIngrediente.Código));
+
+                    try
+                    {
+                        SqlDataReader reader = command.ExecuteReader();
+
+                    }
+                    catch (SqlException)
+                    {
+                        resultado = ResultadoOperacion.FalloSQL;
+                        return resultado;
+                    }
+                }
+                resultado = ResultadoOperacion.Exito;
+
+            }
+            return resultado;
         }
 
 
@@ -178,7 +208,35 @@ namespace BusinessLogic
 
         public List<ProductoIngrediente> ProdctoIngredienteBusqueda(string busqueda)
         {
-            throw new NotImplementedException();
+            List<ProductoIngrediente> listaProductos = new List<ProductoIngrediente>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoIngrediente WHERE Nombre LIKE @Busqueda", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ProductoIngrediente productoIngrediente = new ProductoIngrediente();
+                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Nombre = reader["Nombre"].ToString();
+
+                        listaProductos.Add(productoIngrediente);
+                    }
+                }
+                connection.Close();
+            }
+            return listaProductos;
         }
     }
 }

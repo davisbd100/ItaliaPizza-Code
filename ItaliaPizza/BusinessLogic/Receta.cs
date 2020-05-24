@@ -8,9 +8,15 @@ namespace BusinessLogic
 {
     public class Receta
     {
-        public int id { get; set; }
+        public int IdReceta { get; set; }
+        public string Nombre { get; set; }
+        public string Procedimiento { get; set; }
+        public float Rendimiento { get; set; }
+        public List<ListaIngredientesReceta>  Ingredientes { get; set; }
 
-        public Receta() { }
+        public Receta() { 
+            
+        }
     }
     
 }

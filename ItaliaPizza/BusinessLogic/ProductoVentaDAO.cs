@@ -44,10 +44,11 @@ namespace BusinessLogic
                         " @TipoProducto, @FotoProducto, @TieneReceta, @Receta)";
                     command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
                     command.Parameters.Add(new SqlParameter("@PrecioPublico", productoVenta.PrecioPúblico));
-                    command.Parameters.Add(new SqlParameter("@TipoProducto", productoVenta.TipoProducto));
+                    command.Parameters.Add(new SqlParameter("@TipoProducto", productoVenta.TipoProducto.IdTipoProducto));
                     command.Parameters.Add(new SqlParameter("@Fotoproducto", productoVenta.FotoProducto));
                     command.Parameters.Add(new SqlParameter("@TieneReceta", productoVenta.TieneReceta));
-                    command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.id));
+                    command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.IdReceta));
+                    command.ExecuteNonQuery();
 
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
@@ -91,11 +92,11 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@Nombre", productoVenta.Nombre));
                     command.Parameters.Add(new SqlParameter("@Descripcion", productoVenta.Descripción));
                     command.Parameters.Add(new SqlParameter("@Restriccion", productoVenta.Restricción));
-                    command.Parameters.Add(new SqlParameter("@TipoProducto", productoVenta.TipoProducto.ToString()));
+                    command.Parameters.Add(new SqlParameter("@TipoProducto", productoVenta.TipoProducto.IdTipoProducto.ToString()));
                     command.Parameters.Add(new SqlParameter("@PrecioPublico", productoVenta.PrecioPúblico));
                     command.Parameters.Add(new SqlParameter("@FotoProducto", productoVenta.FotoProducto));
                     command.Parameters.Add(new SqlParameter("@TieneReceta", productoVenta.TieneReceta));
-                    command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.id));
+                    command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.IdReceta));
                     try
                     {
                         SqlDataReader reader = command.ExecuteReader();
@@ -106,6 +107,7 @@ namespace BusinessLogic
                         resultado = ResultadoOperacion.FalloSQL;
                         return resultado;
                     }
+                    resultado = ResultadoOperacion.Exito;
                 }
             }
             return resultado;
@@ -113,7 +115,32 @@ namespace BusinessLogic
 
         public ResultadoOperacionEnum.ResultadoOperacion EliminarProductoVenta(ProductoVenta productoVenta)
         {
-            throw new NotImplementedException();
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            DbConnection dbConnection = new DbConnection();
+
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoVenta SET Visibilidad = Invisible  WHERE idProductoVenta = @idProductoVenta) ", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
+
+                    try
+                    {
+                        SqlDataReader reader = command.ExecuteReader();
+
+                    }
+                    catch (SqlException)
+                    {
+                        resultado = ResultadoOperacion.FalloSQL;
+                        return resultado;
+                    }
+                    resultado = ResultadoOperacion.Exito;
+                }
+            }
+            return resultado;
         }
 
 
@@ -179,7 +206,7 @@ namespace BusinessLogic
                         productoVenta.Restricción = reader["Restriccion"].ToString();
 
                         productoVenta.PrecioPúblico = float.Parse(reader["PrecioPublico"].ToString());
-                        productoVenta.TipoProducto = (TipoProductoEnum)Enum.Parse(typeof(TipoProductoEnum) , reader["TipoProducto"].ToString());
+                        productoVenta.TipoProducto.IdTipoProducto = int.Parse(reader["TipoProducto"].ToString());
                         productoVenta.FotoProducto = reader["FotoProducto"].ToString();
                     }
                 }
@@ -190,7 +217,35 @@ namespace BusinessLogic
 
         public List<ProductoVenta> ProductoVentaBusqueda(string busqueda)
         {
-            throw new NotImplementedException();
+            List<ProductoVenta> listaProductos = new List<ProductoVenta>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta WHERE Nombre LIKE @Busqueda", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ProductoVenta productoVenta = new ProductoVenta();
+                        productoVenta.Código = reader["Codigo"].ToString();
+                        productoVenta.Nombre = reader["Nombre"].ToString();
+
+                        listaProductos.Add(productoVenta);
+                    }
+                }
+                connection.Close();
+            }
+            return listaProductos;
         }
     }
 }

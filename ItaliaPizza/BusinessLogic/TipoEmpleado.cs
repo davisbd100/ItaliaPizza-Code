@@ -11,6 +11,7 @@ namespace BusinessLogic
         public int idTipoEmpleado { get; set; }
         public String TipoEmpleado { get; set; }
 
+
         public TipoEmpleado()
         {
 
