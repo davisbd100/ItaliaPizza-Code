@@ -20,7 +20,7 @@ namespace Controller
             return resultado;
         }
 
-        public List<DataAccess.Pedido> obtenerPedidosCocina()
+        public List<DataAccess.Pedido> ObtenerPedidosCocina()
         {
             List<DataAccess.Pedido> resultado;
             PedidoDAO pedidoDAO = new PedidoDAO();
@@ -35,7 +35,7 @@ namespace Controller
             return resultado;
         }
 
-        public List<DataAccess.Pedido> obtenerPedidosVendedor()
+        public List<DataAccess.Pedido> ObtenerPedidosVendedor()
         {
             List<DataAccess.Pedido> resultado;
             PedidoDAO pedidoDAO = new PedidoDAO();

@@ -26,7 +26,7 @@ namespace PrototiposItaliaPizza
         public ListaPedidoCocinero()
         {
             InitializeComponent();
-            pedidos = PedidoController.obtenerPedidosCocina();
+            pedidos = PedidoController.ObtenerPedidosCocina();
         }
     }
 }

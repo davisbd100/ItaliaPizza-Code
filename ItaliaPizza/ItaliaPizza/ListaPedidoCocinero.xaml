@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrototiposItaliaPizza"
         mc:Ignorable="d"
-        Title="Pedido" Height="680" Width="1280" ResizeMode="NoResize" WindowState="Maximized" WindowStartupLocation="CenterScreen" Icon="LogoItaliaPizza.png">
+        Title="Pedido" Height="680" Width="1280" ResizeMode="NoResize" WindowState="Maximized" WindowStartupLocation="CenterScreen" Icon="Recursos/LogoItaliaPizza.png">
     <Window.Background>
-        <ImageBrush ImageSource="FondoInicioPizza - copia.jpg"/>
+        <ImageBrush ImageSource="Recursos/FondoInicioPizzaInvertido.jpg"/>
     </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -25,7 +25,7 @@
                 <SolidColorBrush Color="White" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Image HorizontalAlignment="Left" Height="80.603" Margin="166.201,152.011,0,0" VerticalAlignment="Top" Width="138.666" Source="FondoInicioPizza.jpg"/>
+        <Image HorizontalAlignment="Left" Height="80.603" Margin="166.201,152.011,0,0" VerticalAlignment="Top" Width="138.666" Source="Recursos/FondoInicioPizza.jpg"/>
         <Button Content="13:21" HorizontalAlignment="Left" Height="35.334" Margin="166.201,248.678,0,0" VerticalAlignment="Top" Width="138.666" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <Rectangle HorizontalAlignment="Left" Height="724.666" Stroke="White" VerticalAlignment="Top" Width="120.001" Margin="0,0,0,-73.333">
             <Rectangle.Fill>
@@ -34,46 +34,46 @@
         </Rectangle>
         <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,130,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" UseLayoutRounding="True">
             <Button.Background>
-                <ImageBrush ImageSource="Pizza.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Recursos/Pizza.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,203.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
             <Button.Background>
-                <ImageBrush ImageSource="Ensalada.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Recursos/Ensalada.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Image HorizontalAlignment="Left" Height="103.842" Margin="6,10,0,0" VerticalAlignment="Top" Width="110.001" Source="LogoItaliaPizza.png"/>
+        <Image HorizontalAlignment="Left" Height="103.842" Margin="6,10,0,0" VerticalAlignment="Top" Width="110.001" Source="Recursos/LogoItaliaPizza.png"/>
         <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,276.897,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
             <Button.Background>
-                <ImageBrush ImageSource="Pasta.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Recursos/Pasta.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,349.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
             <Button.Background>
-                <ImageBrush ImageSource="Postre.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Recursos/Postre.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Button HorizontalAlignment="Left" Height="73.936" Margin="0,422.396,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
             <Button.Background>
-                <ImageBrush ImageSource="Bebidas.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Recursos/Bebidas.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Label Content="Pedidos" HorizontalAlignment="Left" Margin="250.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132.397" Width="253.143" Background="{x:Null}"/>
-        <Image HorizontalAlignment="Left" Height="60.443" Margin="163.001,40.821,0,0" VerticalAlignment="Top" Width="84.251" Source="Pedido.png"/>
+        <Image HorizontalAlignment="Left" Height="60.443" Margin="163.001,40.821,0,0" VerticalAlignment="Top" Width="84.251" Source="Recursos/Pedido.png"/>
         <TextBlock HorizontalAlignment="Left" Height="18.564" Margin="166.201,230.114,0,0" TextWrapping="Wrap" Text="Pedido #1" VerticalAlignment="Top" Width="138.666" Background="Gray" Foreground="White" TextAlignment="Center"/>
-        <Image HorizontalAlignment="Left" Height="80.603" Margin="333.534,152.011,0,0" VerticalAlignment="Top" Width="138.666" Source="FondoInicioPizza.jpg"/>
+        <Image HorizontalAlignment="Left" Height="80.603" Margin="333.534,152.011,0,0" VerticalAlignment="Top" Width="138.666" Source="Recursos/FondoInicioPizza.jpg"/>
         <Button Content="13:22" HorizontalAlignment="Left" Height="35.334" Margin="333.534,248.678,0,0" VerticalAlignment="Top" Width="138.666" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <TextBlock HorizontalAlignment="Left" Height="18.564" Margin="333.534,230.114,0,0" TextWrapping="Wrap" Text="Pedido #2" VerticalAlignment="Top" Width="138.666" Background="Gray" Foreground="White" TextAlignment="Center"/>
-        <Image HorizontalAlignment="Left" Height="80.603" Margin="501.867,152.011,0,0" VerticalAlignment="Top" Width="138.666" Source="FondoInicioPizza.jpg"/>
+        <Image HorizontalAlignment="Left" Height="80.603" Margin="501.867,152.011,0,0" VerticalAlignment="Top" Width="138.666" Source="Recursos/FondoInicioPizza.jpg"/>
         <Button Content="13:23" HorizontalAlignment="Left" Height="35.334" Margin="501.867,248.678,0,0" VerticalAlignment="Top" Width="138.666" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <TextBlock HorizontalAlignment="Left" Height="18.564" Margin="501.867,230.114,0,0" TextWrapping="Wrap" Text="Pedido #3" VerticalAlignment="Top" Width="138.666" Background="Gray" Foreground="White" TextAlignment="Center"/>
-        <Image HorizontalAlignment="Left" Height="80.603" Margin="166.201,315.344,0,0" VerticalAlignment="Top" Width="138.666" Source="FondoInicioPizza.jpg"/>
+        <Image HorizontalAlignment="Left" Height="80.603" Margin="166.201,315.344,0,0" VerticalAlignment="Top" Width="138.666" Source="Recursos/FondoInicioPizza.jpg"/>
         <Button Content="13:24" HorizontalAlignment="Left" Height="35.334" Margin="166.201,412.011,0,0" VerticalAlignment="Top" Width="138.666" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <TextBlock HorizontalAlignment="Left" Height="18.564" Margin="166.201,393.447,0,0" TextWrapping="Wrap" Text="Pedido #4" VerticalAlignment="Top" Width="138.666" Background="Gray" Foreground="White" TextAlignment="Center"/>
-        <Image HorizontalAlignment="Left" Height="80.603" Margin="333.534,315.344,0,0" VerticalAlignment="Top" Width="138.666" Source="FondoInicioPizza.jpg"/>
+        <Image HorizontalAlignment="Left" Height="80.603" Margin="333.534,315.344,0,0" VerticalAlignment="Top" Width="138.666" Source="Recursos/FondoInicioPizza.jpg"/>
         <Button Content="13:25" HorizontalAlignment="Left" Height="35.334" Margin="333.534,412.011,0,0" VerticalAlignment="Top" Width="138.666" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <TextBlock HorizontalAlignment="Left" Height="18.564" Margin="333.534,393.447,0,0" TextWrapping="Wrap" Text="Pedido #5" VerticalAlignment="Top" Width="138.666" Background="Gray" Foreground="White" TextAlignment="Center"/>
-        <Image HorizontalAlignment="Left" Height="80.603" Margin="501.867,315.344,0,0" VerticalAlignment="Top" Width="138.666" Source="FondoInicioPizza.jpg"/>
+        <Image HorizontalAlignment="Left" Height="80.603" Margin="501.867,315.344,0,0" VerticalAlignment="Top" Width="138.666" Source="Recursos/FondoInicioPizza.jpg"/>
         <Button Content="13:26" HorizontalAlignment="Left" Height="35.334" Margin="501.867,412.011,0,0" VerticalAlignment="Top" Width="138.666" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <TextBlock HorizontalAlignment="Left" Height="18.564" Margin="501.867,393.447,0,0" TextWrapping="Wrap" Text="Pedido #6" VerticalAlignment="Top" Width="138.666" Background="Gray" Foreground="White" TextAlignment="Center"/>
         <Rectangle HorizontalAlignment="Left" Height="410.644" Margin="10,130,0,0" Stroke="#FFB31423" VerticalAlignment="Top" Width="526.943" Grid.Column="1">
@@ -95,13 +95,13 @@
         <Label Content="PASTA" HorizontalAlignment="Left" Margin="43.942,333.081,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="POSTRES / HELADO" HorizontalAlignment="Left" Margin="19.266,406.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="BEBIDAS" HorizontalAlignment="Left" Margin="42.278,478.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Image HorizontalAlignment="Left" Height="80.603" Margin="166.201,476.541,0,0" VerticalAlignment="Top" Width="138.666" Source="FondoInicioPizza.jpg"/>
+        <Image HorizontalAlignment="Left" Height="80.603" Margin="166.201,476.541,0,0" VerticalAlignment="Top" Width="138.666" Source="Recursos/FondoInicioPizza.jpg"/>
         <Button Content="13:27" HorizontalAlignment="Left" Height="35.334" Margin="166.201,573.208,0,0" VerticalAlignment="Top" Width="138.666" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <TextBlock HorizontalAlignment="Left" Height="18.564" Margin="166.201,554.644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138.666" Background="Gray" Foreground="White" TextAlignment="Center"><Run Text="Pedido #"/><Run Text="7"/></TextBlock>
-        <Image HorizontalAlignment="Left" Height="80.603" Margin="333.534,476.541,0,0" VerticalAlignment="Top" Width="138.666" Source="FondoInicioPizza.jpg"/>
+        <Image HorizontalAlignment="Left" Height="80.603" Margin="333.534,476.541,0,0" VerticalAlignment="Top" Width="138.666" Source="Recursos/FondoInicioPizza.jpg"/>
         <Button Content="13:28" HorizontalAlignment="Left" Height="35.334" Margin="333.534,573.208,0,0" VerticalAlignment="Top" Width="138.666" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <TextBlock HorizontalAlignment="Left" Height="18.564" Margin="333.534,554.644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138.666" Background="Gray" Foreground="White" TextAlignment="Center"><Run Text="Pedido #"/><Run Text="8"/></TextBlock>
-        <Image HorizontalAlignment="Left" Height="80.603" Margin="501.867,476.541,0,0" VerticalAlignment="Top" Width="138.666" Source="FondoInicioPizza.jpg"/>
+        <Image HorizontalAlignment="Left" Height="80.603" Margin="501.867,476.541,0,0" VerticalAlignment="Top" Width="138.666" Source="Recursos/FondoInicioPizza.jpg"/>
         <Button Content="14:00" HorizontalAlignment="Left" Height="35.334" Margin="501.867,573.208,0,0" VerticalAlignment="Top" Width="138.666" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <TextBlock HorizontalAlignment="Left" Height="18.564" Margin="501.867,554.644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138.666" Background="Gray" Foreground="White" TextAlignment="Center"><Run Text="Pedido #"/><Run Text="9"/></TextBlock>
         <ScrollBar HorizontalAlignment="Left" Margin="645.533,130,0,0" Style="{DynamicResource SimpleScrollBar}" VerticalAlignment="Top" Height="477.311" Width="19.867"/>

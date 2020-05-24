@@ -25,7 +25,7 @@ namespace PrototiposItaliaPizza
         public ListaPedidoVendedor()
         {
             InitializeComponent();
-            pedidos = PedidoController.obtenerPedidosVendedor();
+            pedidos = PedidoController.ObtenerPedidosVendedor();
             InitializeComponent();
         }
     }
