@@ -13,6 +13,13 @@ namespace BusinessLogic
         public String Contraseña { get; set; }
         public DateTime FechaUltimoAcceso { get; set; }
 
+        public Empleado(TipoEmpleado TipoEmpleado, string NombreUsuario, string Contraseña, DateTime FechaUltimoAcceso)
+        {
+            this.TipoEmpleado = TipoEmpleado;
+            this.NombreUsuario = NombreUsuario;
+            this.Contraseña = Contraseña;
+            this.FechaUltimoAcceso = FechaUltimoAcceso;
+        }
         public Empleado()
         {
 

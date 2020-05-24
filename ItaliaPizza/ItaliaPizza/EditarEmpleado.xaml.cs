@@ -23,5 +23,10 @@ namespace ItaliaPizza
         {
             InitializeComponent();
         }
+
+        private void CancelarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
