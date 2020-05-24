@@ -76,11 +76,17 @@
     <Compile Include="Empleados.xaml.cs">
       <DependentUpon>Empleados.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Productos.xaml.cs">
+      <DependentUpon>Productos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarCliente.xaml.cs">
       <DependentUpon>RegistrarCliente.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarProducto.xaml.cs">
+      <DependentUpon>RegistrarProducto.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValidarCampos.cs" />
     <Page Include="Clientes.xaml">
@@ -123,11 +129,19 @@
       <DependentUpon>Inicio.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Productos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RegistrarCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegistrarEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrarProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
