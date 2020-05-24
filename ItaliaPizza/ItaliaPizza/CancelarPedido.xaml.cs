@@ -11,8 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using
-using DataAccess;
+using BusinessLogic;
+using Controller;
 
 namespace PrototiposItaliaPizza
 {
@@ -27,6 +27,25 @@ namespace PrototiposItaliaPizza
         {
             localPedido = pedido;
             InitializeComponent();
+        }
+
+        private void btAceptar_Click(object sender, RoutedEventArgs e)
+        {
+            PedidoController controller = new PedidoController();
+            ResultadoOperacionEnum.ResultadoOperacion resultado = controller.CancelarPedido(localPedido);
+            if (resultado == ResultadoOperacionEnum.ResultadoOperacion.Exito)
+            {
+                MessageBox.Show("Pedido Cancelado");
+            }else if(resultado == ResultadoOperacionEnum.ResultadoOperacion.FalloSQL)
+            {
+                MessageBox.Show("Error con la base de datos, reintentar mas tarde");
+            }
+            this.Close();
+        }
+
+        private void btCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

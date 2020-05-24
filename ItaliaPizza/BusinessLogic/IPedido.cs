@@ -12,5 +12,6 @@ namespace BusinessLogic
         ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(Pedido pedido, DataAccess.Estatus estatus);
         ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido);
         ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int idPedido, List<ProductoVenta> productos);
+        DataAccess.Estatus ObtenerEstatusPorNombre(String estatus);
     }
 }

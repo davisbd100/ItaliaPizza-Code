@@ -10,7 +10,7 @@ using System.Data.Entity.Core;
 
 namespace BusinessLogic
 {
-    class PedidoDAO : IPedido
+    public class PedidoDAO : IPedido
     {
         public ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(Pedido pedido, DataAccess.Estatus estatus)
         {
@@ -77,6 +77,27 @@ namespace BusinessLogic
                 connection.Close();
             }
             return pedido;
+        }
+
+        public DataAccess.Estatus ObtenerEstatusPorNombre(string estatus)
+        {
+            DataAccess.Estatus resultado = new DataAccess.Estatus();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    var tempEstatus = context.Estatus
+                                    .Where(b => b.NombreEstatus == estatus)
+                                    .FirstOrDefault();
+
+                    resultado = tempEstatus;
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("No se pudo obtener el estatus");
+                }
+                return resultado;
+            }
         }
     }
 }
