@@ -6,38 +6,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess;
+using System.Data.Entity.Core;
 
 namespace BusinessLogic
 {
     class PedidoDAO : IPedido
     {
-        public ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(Pedido pedido, Estatus estatus)
+        public ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(Pedido pedido, DataAccess.Estatus estatus)
         {
-            ResultadoOperacionEnum.ResultadoOperacion result = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
-
-            DbConnection dbconnection = new DbConnection();
-
-            using (SqlConnection connection = dbconnection.GetConnection())
+            ResultadoOperacionEnum.ResultadoOperacion resultado = new ResultadoOperacionEnum.ResultadoOperacion();
+            using (var context = new PizzaEntities())
             {
                 try
                 {
-                    connection.Open();
-                }
-                catch (SqlException ex)
+                var tempPedido = context.Pedido
+                                .Where(b => b.idPedido == pedido.idPedido)
+                                .FirstOrDefault();
+
+                    tempPedido.Estatus1 = estatus;
+                    context.SaveChanges();
+
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;
+                }catch (EntityException)
                 {
-                    result = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
-                    throw (ex);
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
                 }
-                using (SqlCommand command = new SqlCommand("UPDATE Pedido SET Estatus = @estatus WHERE idPedido = @id ", connection))
-                {
-                    command.Parameters.Add(new SqlParameter("@id", pedido.idPedido));
-                    command.Parameters.Add(new SqlParameter("@estatus", pedido.Estatus));
-                    command.ExecuteNonQuery();
-                    result = ResultadoOperacionEnum.ResultadoOperacion.Exito;
-                }
-                connection.Close();
+                return resultado;
             }
-            return result;
         }
 
         public ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido)

@@ -9,7 +9,7 @@ namespace BusinessLogic
     interface IPedido
     {
         Pedido GetPedidoPorId(int id);
-        ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(Pedido pedido, Estatus estatus);
+        ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(Pedido pedido, DataAccess.Estatus estatus);
         ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido);
         ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int idPedido, List<ProductoVenta> productos);
     }
