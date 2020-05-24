@@ -79,6 +79,7 @@
     <Compile Include="RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ValidarCampos.cs" />
     <Page Include="Clientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
