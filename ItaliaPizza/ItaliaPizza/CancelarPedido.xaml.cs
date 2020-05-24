@@ -47,10 +47,5 @@ namespace PrototiposItaliaPizza
         {
             this.Close();
         }
-
-        private void btAceptar_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
