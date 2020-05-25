@@ -18,5 +18,13 @@ namespace Controller
             return resultado;
         }
 
+        public ResultadoOperacionEnum.ResultadoOperacion ActualizarExistencias(List<DataAccess.Inventario> inventarios)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            resultado = inventarioDAO.ActualizarInventario(inventarios);
+            return resultado;
+        }
+
     }
 }
