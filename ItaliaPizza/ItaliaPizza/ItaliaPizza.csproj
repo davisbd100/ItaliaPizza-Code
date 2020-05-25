@@ -92,6 +92,9 @@
     <Compile Include="InventarioActual.xaml.cs">
       <DependentUpon>InventarioActual.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InventarioFinal.xaml.cs">
+      <DependentUpon>InventarioFinal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListaPedidoCocinero.xaml.cs">
       <DependentUpon>ListaPedidoCocinero.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="InventarioActual.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InventarioFinal.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
