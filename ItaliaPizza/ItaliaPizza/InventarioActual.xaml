@@ -74,12 +74,16 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="Inventario actual:" HorizontalAlignment="Left" Margin="125.001,113.753,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Height="61.922" Width="301.143" Background="{x:Null}"/>
-        <DataGrid x:Name="dgInventario" HorizontalAlignment="Left" Height="366.271" Margin="145.252,203.397,0,0" VerticalAlignment="Top" Width="759.888" Grid.Column="3"/>
+        <DataGrid x:Name="dgInventario" HorizontalAlignment="Left" Height="366.271" Margin="145.252,203.397,0,0" VerticalAlignment="Top" Width="759.888" Grid.Column="3" FontSize="24" ColumnWidth="*" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Producto" Binding="{Binding Nombre}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Existencia" Binding="{Binding ExistenciaTotal}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Medida" Binding="{Binding UnidadMedida}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Nueva Existencia" Binding="{Binding InventarioActual}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Content="GUARDAR" HorizontalAlignment="Left" Margin="746.42,601.893,0,12.583" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Width="158.72"/>
-        <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="588.266,603.943,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
-        <DataGridColumnHeader Content="Producto" HorizontalAlignment="Left" Margin="145.252,203.397,0,0" VerticalAlignment="Top" FontSize="36"/>
-        <DataGridColumnHeader Content="Existencia" HorizontalAlignment="Left" Margin="364.877,203.227,0,0" VerticalAlignment="Top" FontSize="36"/>
-        <DataGridColumnHeader Content="Existencia actual" HorizontalAlignment="Left" Margin="588.266,203.397,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="588.266,603.943,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="Button_Click"/>
         <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Height="46" Margin="526,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" FontSize="36"/>
 
     </Grid>

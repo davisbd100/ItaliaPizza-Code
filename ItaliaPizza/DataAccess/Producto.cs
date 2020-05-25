@@ -19,6 +19,7 @@ namespace DataAccess
         {
             this.ProductoInventario = new HashSet<ProductoInventario>();
             this.UbicacionProducto = new HashSet<UbicacionProducto>();
+            this.Inventario = new HashSet<Inventario>();
         }
     
         public int Codigo { get; set; }
@@ -32,5 +33,7 @@ namespace DataAccess
         public virtual ProductoVenta ProductoVenta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UbicacionProducto> UbicacionProducto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Inventario> Inventario { get; set; }
     }
 }

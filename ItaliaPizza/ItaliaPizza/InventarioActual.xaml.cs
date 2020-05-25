@@ -16,7 +16,12 @@ namespace ItaliaPizza
         {
             InitializeComponent();
             inventario = controller.ObtenerInventario();
-            dgInventario.DataContext = inventario;
+            dgInventario.ItemsSource = inventario;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
