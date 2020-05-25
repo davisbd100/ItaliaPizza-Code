@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Controller;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using static BusinessLogic.ResultadoOperacionEnum;
+using static Controller.EmpleadoController;
 
 namespace ItaliaPizza
 {
@@ -44,8 +36,11 @@ namespace ItaliaPizza
         private CheckResult ValidarCamposLlenos()
         {
             CheckResult check = CheckResult.Failed;
-            if (comboBoxTipoEmpleado.Text == String.Empty || textBoxNombre.Text == String.Empty || textBoxTelefono.Text == String.Empty || textBoxCorreo.Text == String.Empty || textBoxCiudad.Text == String.Empty ||
-                textBoxDireccion.Text == String.Empty || textBoxCodigoPostal.Text == String.Empty)
+            if (comboBoxTipoEmpleado.Text == String.Empty || textBoxNombre.Text == String.Empty || 
+                textBoxApellido.Text == String.Empty || textBoxTelefono.Text == String.Empty || 
+                textBoxCorreo.Text == String.Empty || textBoxCiudad.Text == String.Empty ||
+                textBoxCalle.Text == String.Empty || textBoxNúmero.Text == String.Empty ||
+                textBoxColonia.Text == String.Empty || textBoxCodigoPostal.Text == String.Empty)
             {
                 check = CheckResult.Failed;
             }
@@ -75,6 +70,10 @@ namespace ItaliaPizza
             {
                 MessageBox.Show("El nombre del empleado es incorrecto \n Verifica que no tenga números o caracteres inválidos.");
             }
+            else if (validarCampos.ValidiarApellido(textBoxApellido.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.ApellidoInválido)
+            {
+                MessageBox.Show("El apellido del empleado es incorrecto \n Verifica que no tenga números o caracteres inválidos.");
+            }
             else if (validarCampos.ValidarTelefono(textBoxTelefono.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.TelefónoInválido)
             {
                 MessageBox.Show("El telefono es incorrecto \n Verifica que no tenga letras.");
@@ -92,29 +91,6 @@ namespace ItaliaPizza
                 check = CheckResult.Passed;
             }
             return check;
-        }
-
-        /// <summary>Comprueba el resultado de la operacion.</summary>
-        /// <param name="result">El resultado.</param>
-        private void ComprobarResultado(OperationResult result)
-        {
-            if (result == OperationResult.Success)
-            {
-                MessageBox.Show("Añadido con exito");
-                this.Close();
-            }
-            else if (result == OperationResult.UnknowFail)
-            {
-                MessageBox.Show("Error desconocido");
-            }
-            else if (result == OperationResult.SQLFail)
-            {
-                MessageBox.Show("Error de la base de datos, intente mas tarde");
-            }
-            else if (result == OperationResult.ExistingRecord)
-            {
-                MessageBox.Show("El empleado ya existe en el sistema");
-            }
         }
 
         private void GenerarUsuario(string tipoEmpleado, string nombre)
@@ -149,7 +125,6 @@ namespace ItaliaPizza
                 letra = caracteres[rdn.Next(longitud)];
                 contraseniaAleatoria += letra.ToString();
             }
-
             textBoxContraseña.Text = contraseniaAleatoria;
         }
 
@@ -173,16 +148,49 @@ namespace ItaliaPizza
 
         private void RegistrarButton_Click(object sender, RoutedEventArgs e)
         {
+            string nombre = textBoxNombre.Text;
+            string apellido = textBoxApellido.Text;
+            string telefono = textBoxTelefono.Text;
+            string correo = textBoxCorreo.Text;
+            string ciudad = textBoxCiudad.Text;
+            string calle = textBoxCalle.Text;
+            string numero = textBoxNúmero.Text;
+            string colonia = textBoxColonia.Text;
+            string codigoPostal = textBoxCodigoPostal.Text;
+            string usuario = textBoxUsuario.Text;
+            string contraseña = textBoxContraseña.Text;
+            string tipoEmpleado = comboBoxTipoEmpleado.Text;
+
             if (ValidarCampos() == CheckResult.Passed)
             {
 
-                MessageBox.Show("Hola");
-                //        UsuarioController usuarioController = new UsuarioController();
-                //        ComprobarResultado((OperationResult)usuarioController.AddUsuario(textboxName.Text, textboxEmail.Text, comboboxUserType.Text, textboxUserName.Text, passwordBoxUserPass.Password));
+                EmpleadoController empleadoController = new EmpleadoController();
+                ComprobarResultado((ResultadoOperacion)empleadoController.AgregarEmpleado(nombre, apellido, telefono, correo, ciudad, calle, numero, colonia, codigoPostal, usuario, contraseña, tipoEmpleado));
             }
         }
 
-    private void GenerarUsuarioContraseñaButton_Click(object sender, RoutedEventArgs e)
+        private void ComprobarResultado(ResultadoOperacion resultado)
+        {
+            if (resultado == ResultadoOperacion.Exito)
+            {
+                MessageBox.Show("Añadido con exito");
+                this.Close();
+            }
+            else if (resultado == ResultadoOperacion.FallaDesconocida)
+            {
+                MessageBox.Show("Error desconocido");
+            }
+            else if (resultado == ResultadoOperacion.FalloSQL)
+            {
+                MessageBox.Show("Error de la base de datos, intente mas tarde");
+            }
+            else if (resultado == ResultadoOperacion.ObjetoExistente)
+            {
+                MessageBox.Show("El empleado ya existe en el sistema");
+            }
+        }
+
+        private void GenerarUsuarioContraseñaButton_Click(object sender, RoutedEventArgs e)
         {
             if (ValidarCampos() == CheckResult.Passed)
             {
