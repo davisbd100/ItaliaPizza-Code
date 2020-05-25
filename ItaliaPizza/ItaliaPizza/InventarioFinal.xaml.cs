@@ -49,12 +49,22 @@ namespace PrototiposItaliaPizza
             {
                 cv.Filter = o =>
                 {
-                    Inventario p = o as Inventario;
+                    DataAccess.Inventario p = o as DataAccess.Inventario;
                     if (tbBusqueda.Name == "tbBusqueda")
                         return (p.Producto1.Nombre == filter);
                     return (p.Producto1.Nombre.ToUpper().StartsWith(filter.ToUpper()));
                 };
             }
+        }
+
+        private void btCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btAceptar_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

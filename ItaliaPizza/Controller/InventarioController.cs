@@ -26,5 +26,15 @@ namespace Controller
             return resultado;
         }
 
+        public ResultadoOperacionEnum.ResultadoOperacion ComprobarInventarioFinal(List<DataAccess.Inventario> inventarios)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            //pedidoDAO.ObtenerPedidosPorFecha();
+            resultado = inventarioDAO.ActualizarInventario(inventarios);
+            return resultado;
+        }
+
     }
 }
