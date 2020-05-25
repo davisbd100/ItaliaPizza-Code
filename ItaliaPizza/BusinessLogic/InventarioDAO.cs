@@ -172,7 +172,11 @@ namespace BusinessLogic
             {
                 try
                 {
-                    inventarios = context.Inventario.ToList();
+                    foreach (var inventario in context.Inventario)
+                    {
+                        inventario.Producto1 = inventario.Producto1;
+                        inventarios.Add(inventario);
+                    }
                 }
                 catch (EntityException)
                 {
