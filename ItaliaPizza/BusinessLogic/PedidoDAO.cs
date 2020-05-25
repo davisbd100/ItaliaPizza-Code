@@ -129,6 +129,12 @@ namespace BusinessLogic
                     {
                         if(pedido.FechaPedido >= inicial && pedido.FechaPedido <= final)
                         {
+                            pedido.PedidoProducto = pedido.PedidoProducto;
+                            foreach (var pedidoProducto in pedido.PedidoProducto)
+                            {
+                                pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
+                                pedidoProducto.ProductoVenta.Receta1 = pedidoProducto.ProductoVenta.Receta1;
+                            }
                             pedidos.Add(pedido);
                         }
                     }

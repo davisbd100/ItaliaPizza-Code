@@ -64,7 +64,7 @@ namespace PrototiposItaliaPizza
 
         private void btAceptar_Click(object sender, RoutedEventArgs e)
         {
-            
+            controller.ComprobarInventarioFinal(inventario);
         }
     }
 }
