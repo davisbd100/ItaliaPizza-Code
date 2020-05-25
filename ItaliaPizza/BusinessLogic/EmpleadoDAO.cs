@@ -42,7 +42,7 @@ namespace BusinessLogic
                     command.CommandText =
                         "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @TipoEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso)";
                     command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idPersona));
-                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
+                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.tipoEmpleado));
                     command.Parameters.Add(new SqlParameter("NombreUsuario", empleado.NombreUsuario));
                     command.Parameters.Add(new SqlParameter("Contrasena", empleado.Contraseña));
                     command.Parameters.Add(new SqlParameter("FechaUltimoAcceso", empleado.FechaUltimoAcceso));
@@ -100,7 +100,7 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@CodigoPostal", empleado.CodigoPostal));
                     command.Parameters.Add(new SqlParameter("@Colonia", empleado.Colonia));
                     command.Parameters.Add(new SqlParameter("@Ciudad", empleado.Ciudad));
-                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado.ToString()));
+                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.tipoEmpleado.ToString()));
                     command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
                     command.Parameters.Add(new SqlParameter("@Contrasena", empleado.Contraseña));
                     command.Parameters.Add(new SqlParameter("@FechaUltimoAcceso", empleado.FechaUltimoAcceso));
@@ -118,6 +118,34 @@ namespace BusinessLogic
                 }
             }
             return resultado;
+        }
+
+        public Empleado GetEmpleadoByUsername(String username)
+        {
+            Empleado empleado = new Empleado();
+            DbConnection dbconnection = new DbConnection();
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Empleado WHERE NombreUsuario = @usernameToSearch", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("usernameToSearch", username));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        empleado.NombreUsuario = reader["Nombre"].ToString();
+                    }
+                }
+                connection.Close();
+            }
+            return empleado;
         }
 
         public List<Empleado> GetEmpleados()
