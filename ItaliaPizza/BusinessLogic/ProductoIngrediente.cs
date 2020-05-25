@@ -13,5 +13,19 @@ namespace BusinessLogic
 
     public enum TipoIngredienteEnum
     {
+        Aceite,
+        Bebida,
+        Carne,
+        Cereal,
+        Especia,
+        Fruta,
+        Harina,
+        Hongo,
+        Legumbre,
+        Lácteo,
+        Marisco,
+        Salsa,
+        Verdura,
+        Otro
     }
 }

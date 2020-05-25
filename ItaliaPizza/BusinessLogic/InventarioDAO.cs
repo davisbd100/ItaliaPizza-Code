@@ -9,7 +9,7 @@ using static BusinessLogic.ResultadoOperacionEnum;
 
 namespace BusinessLogic
 {
-    class InventarioDAO : IInventario
+    public class InventarioDAO : IInventario
     {
         public ResultadoOperacionEnum.ResultadoOperacion AddInventario(Inventario inventario)
         {
@@ -153,8 +153,9 @@ namespace BusinessLogic
                         inventario.PrecioCompra = float.Parse(reader["Precio"].ToString());
                         DateTime fechaIngreso = DateTime.Parse(reader["FechaIngreso"].ToString());
                         inventario.FechaIngreso = fechaIngreso;
-                        DateTime caducidad = DateTime.Parse(reader["Caducidad"].ToString());
-                        inventario.Caducidad = caducidad;
+                        //  DateTime caducidad = DateTime.Parse(reader["Caducidad"].ToString());
+                        // inventario.Caducidad = caducidad;
+                        inventario.Caducidad = reader["caducidad"].ToString();
                         inventarios.Add(inventario);
                     }
                 }

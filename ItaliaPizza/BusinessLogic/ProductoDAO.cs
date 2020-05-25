@@ -34,7 +34,7 @@ namespace BusinessLogic
                     while (reader.Read())
                     {
                         Producto producto = new Producto();
-                        producto.Código = reader["Codigo"].ToString();
+                        producto.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         producto.Nombre = reader["Nombre"].ToString();
                         
                         

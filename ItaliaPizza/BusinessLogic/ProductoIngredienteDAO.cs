@@ -161,7 +161,7 @@ namespace BusinessLogic
                     while (reader.Read())
                     {
                         ProductoIngrediente productoIngrediente = new ProductoIngrediente();
-                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         productoIngrediente.Nombre = reader["Nombre"].ToString();
 
                         listaProductos.Add(productoIngrediente);
@@ -193,7 +193,7 @@ namespace BusinessLogic
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         productoIngrediente.Descripción = reader["Descripcion"].ToString();
                         productoIngrediente.Nombre = reader["Nombre"].ToString();
                         productoIngrediente.Restricción = reader["Restriccion"].ToString();
@@ -228,7 +228,7 @@ namespace BusinessLogic
                     while (reader.Read())
                     {
                         ProductoIngrediente productoIngrediente = new ProductoIngrediente();
-                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         productoIngrediente.Nombre = reader["Nombre"].ToString();
 
                         listaProductos.Add(productoIngrediente);
