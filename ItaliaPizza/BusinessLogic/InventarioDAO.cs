@@ -186,5 +186,27 @@ namespace BusinessLogic
 
             return inventarios;
         }
+        public ResultadoOperacion ActualizarInventario(List<DataAccess.Inventario> inventarios)
+        {
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var inventario in context.Inventario)
+                    {
+                        DataAccess.Inventario tempInventario = inventarios.FirstOrDefault(b => b.idInventario == inventario.idInventario);
+                        inventario.ExistenciaTotal = tempInventario.ExistenciaTotal;
+                    }
+                    context.SaveChanges();
+                }
+                catch (EntityException)
+                {
+                    resultado = ResultadoOperacion.FalloSQL;
+                }
+            }
+
+            return resultado;
+        }
     }
 }

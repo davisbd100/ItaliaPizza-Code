@@ -77,13 +77,13 @@
         <DataGrid x:Name="dgInventario" HorizontalAlignment="Left" Height="366.271" Margin="145.252,203.397,0,0" VerticalAlignment="Top" Width="759.888" Grid.Column="3" FontSize="24" ColumnWidth="*" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Producto" Binding="{Binding Producto1.Nombre}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Existencia" Binding="{Binding ExistenciaTotal}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Medida" Binding="{Binding UnidadMedida}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Nueva Existencia" Binding="{Binding InventarioActual}" />
+                <DataGridTextColumn x:Name="ColumnExistencia" Header="Existencia" Binding="{Binding ExistenciaTotal}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="ColumnNuevaExistencia" Header="Nueva Existencia" Binding="{Binding ExistenciaTotal}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="GUARDAR" HorizontalAlignment="Left" Margin="746.42,601.893,0,12.583" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Width="158.72"/>
-        <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="588.266,603.943,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="Button_Click"/>
+        <Button x:Name="btGuardar" Content="GUARDAR" HorizontalAlignment="Left" Margin="746.42,601.893,0,12.583" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Width="158.72" Click="Button_Click_1"/>
+        <Button x:Name="btCancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="588.266,603.943,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="Button_Click"/>
         <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Height="46" Margin="526,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" FontSize="36"/>
 
     </Grid>

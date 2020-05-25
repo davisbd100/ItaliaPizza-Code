@@ -1,6 +1,9 @@
 ﻿using Controller;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Documents;
 
 namespace ItaliaPizza
@@ -16,12 +19,25 @@ namespace ItaliaPizza
         {
             InitializeComponent();
             inventario = controller.ObtenerInventario();
-            dgInventario.ItemsSource = inventario;
+            if (!inventario.Any())
+            {
+                MessageBox.Show("No se tienen productos registrados");
+                this.Close();
+            }
+            else
+            {
+                dgInventario.ItemsSource = inventario;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
