@@ -14,6 +14,8 @@ namespace ItaliaPizza
         {
             NombreVálido,
             NombreInválido,
+            ApellidoVálido,
+            ApellidoInválido,
             TelefonoVálido,
             TelefónoInválido,
             CorreoVálido,
@@ -38,6 +40,16 @@ namespace ItaliaPizza
                 return ResultadosValidación.NombreVálido;
             }
             return ResultadosValidación.NombreInválido;
+        }
+
+        public ResultadosValidación ValidiarApellido(string apellido)
+        {
+            string patrón = @"^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$";
+            if (Regex.IsMatch(apellido, patrón))
+            {
+                return ResultadosValidación.ApellidoVálido;
+            }
+            return ResultadosValidación.ApellidoInválido;
         }
 
         public ResultadosValidación ValidarTelefono(string telefono)
