@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d965a9b4a4ff470f9b40723776efc342" Name="Diagram1">
+        <EntityTypeShape EntityType="PizzaModel.Cliente" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Empleado" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Estatus" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Inventario" Width="1.5" PointX="5.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Pedido" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.PedidoDomicilio" Width="1.5" PointX="7.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.PedidoProducto" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Persona" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Producto" Width="1.5" PointX="5.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.ProductoIngrediente" Width="1.5" PointX="8" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.ProductoInventario" Width="1.5" PointX="8" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Receta" Width="1.5" PointX="8" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.RecetaIngrediente" Width="1.5" PointX="10.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.TipoProducto" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.Ubicacion" Width="1.5" PointX="5.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PizzaModel.UbicacionProducto" Width="1.5" PointX="8" PointY="14.375" IsExpanded="true" />
+        <AssociationConnector Association="PizzaModel.FK__Cliente__idClien__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Pedido__Cliente__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Empleado__idEmpl__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Pedido__Estatus__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__ProductoI__Inven__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__PedidoDom__idPed__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__PedidoPro__idPed__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__ProductoI__idPro__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__ProductoI__Produ__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Ubicacion__Produ__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__RecetaIng__idPro__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__RecetaIng__idRec__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Ubicacion__Ubica__47DBAE45" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

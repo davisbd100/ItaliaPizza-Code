@@ -32,20 +32,21 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@Apellido", empleado.Apellido));
                     command.Parameters.Add(new SqlParameter("@Telefono", empleado.Telefono));
                     command.Parameters.Add(new SqlParameter("@Email", empleado.Email));
-                    command.Parameters.Add(new SqlParameter("Calle", empleado.Calle));
-                    command.Parameters.Add(new SqlParameter("Numero", empleado.Numero));
-                    command.Parameters.Add(new SqlParameter("CodigoPostal", empleado.CodigoPostal));
-                    command.Parameters.Add(new SqlParameter("Colonia", empleado.Colonia));
-                    command.Parameters.Add(new SqlParameter("Ciudad", empleado.Ciudad));
-                    command.ExecuteNonQuery();
+                    command.Parameters.Add(new SqlParameter("@Calle", empleado.Calle));
+                    command.Parameters.Add(new SqlParameter("@Numero", empleado.Numero));
+                    command.Parameters.Add(new SqlParameter("@CodigoPostal", empleado.CodigoPostal));
+                    command.Parameters.Add(new SqlParameter("@Colonia", empleado.Colonia));
+                    command.Parameters.Add(new SqlParameter("@Ciudad", empleado.Ciudad));
+                   command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @TipoEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso)";
+                        "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso @TipoEmpleado)";
                     command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idPersona));
-                    command.Parameters.Add(new SqlParameter("NombreUsuario", empleado.NombreUsuario));
-                    command.Parameters.Add(new SqlParameter("Contrasena", empleado.Contraseña));
-                    command.Parameters.Add(new SqlParameter("FechaUltimoAcceso", empleado.FechaUltimoAcceso));
+                    command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
+                    command.Parameters.Add(new SqlParameter("@Contrasena", empleado.Contraseña));
+                    command.Parameters.Add(new SqlParameter("@FechaUltimoAcceso", empleado.FechaUltimoAcceso));
                     command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
+                    command.ExecuteNonQuery();
 
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;

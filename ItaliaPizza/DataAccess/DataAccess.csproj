@@ -77,20 +77,30 @@
     <Compile Include="Persona.cs">
       <DependentUpon>PizzaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PizzaModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PizzaModel.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="PizzaModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="PizzaModel.Designer.cs">
+      <DependentUpon>PizzaModel.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="PizzaModel1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PizzaModel.edmx</DependentUpon>
+      <DependentUpon>PizzaModel1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PizzaModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PizzaModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaModel1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Producto.cs">
       <DependentUpon>PizzaModel.tt</DependentUpon>
@@ -111,6 +121,9 @@
     <Compile Include="RecetaIngrediente.cs">
       <DependentUpon>PizzaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>PizzaModel1.tt</DependentUpon>
+    </Compile>
     <Compile Include="TipoEmpleado.cs">
       <DependentUpon>PizzaModel.tt</DependentUpon>
     </Compile>
@@ -125,30 +138,40 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <EntityDeploy Include="PizzaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PizzaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="PizzaModel.edmx.diagram">
-      <DependentUpon>PizzaModel.edmx</DependentUpon>
+    <EntityDeploy Include="PizzaModel1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PizzaModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="PizzaModel1.edmx.diagram">
+      <DependentUpon>PizzaModel1.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PizzaModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PizzaModel.edmx</DependentUpon>
-      <LastGenOutput>PizzaModel.Context.cs</LastGenOutput>
-    </Content>
     <Content Include="PizzaModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PizzaModel.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PizzaModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="PizzaModel1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PizzaModel1.edmx</DependentUpon>
+      <LastGenOutput>PizzaModel1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PizzaModel1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PizzaModel1.edmx</DependentUpon>
+      <LastGenOutput>PizzaModel1.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
