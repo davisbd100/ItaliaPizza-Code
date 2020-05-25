@@ -84,6 +84,12 @@
         </DataGrid>
         <Button Content="Aceptar" HorizontalAlignment="Left" Margin="746.42,601.893,0,12.583" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Width="158.72"/>
         <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="588.266,603.943,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
+        <Button x:Name="btBusqueda" Content="" HorizontalAlignment="Left" Height="46" Margin="838,130,0,0" VerticalAlignment="Top" Width="67" BorderBrush="{x:Null}" Click="btBusqueda_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="Recursos/Buscar.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Height="46" Margin="526,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" FontSize="36"/>
 
     </Grid>
 </Window>
