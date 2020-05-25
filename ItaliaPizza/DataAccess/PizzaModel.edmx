@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PizzaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PizzaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="idCliente" />
@@ -33,6 +33,7 @@
             <PropertyRef Name="idInventario" />
           </Key>
           <Property Name="idInventario" Type="int" Nullable="false" />
+          <Property Name="Producto" Type="int" />
           <Property Name="ExistenciaTotal" Type="int" />
           <Property Name="UnidadMedida" Type="nvarchar" MaxLength="255" />
         </EntityType>
@@ -169,7 +170,7 @@
           <Property Name="Producto" Type="int" Nullable="false" />
           <Property Name="Cantidad" Type="int" />
         </EntityType>
-        <Association Name="FK__Cliente__idClien__44FF419A">
+        <Association Name="FK__Cliente__idClien__0E391C95">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -181,7 +182,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__idEmpl__45F365D3">
+        <Association Name="FK__Cliente__idClien__2180FB33">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__idClien__318258D2">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__idClien__45BE5BA9">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__idClien__56B3DD81">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__idClien__69FBBC1F">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__idClien__7D439ABD">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__idEmpl__0F2D40CE">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -193,7 +266,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__TipoEm__46E78A0C">
+        <Association Name="FK__Empleado__idEmpl__22751F6C">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__idEmpl__32767D0B">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__idEmpl__46B27FE2">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__idEmpl__57A801BA">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__idEmpl__6AEFE058">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__idEmpl__7E37BEF6">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__TipoEm__10216507">
           <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -205,7 +350,91 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pedido__Cliente__52593CB8">
+        <Association Name="FK__Empleado__TipoEm__236943A5">
+          <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEmpleado">
+              <PropertyRef Name="idTipoEmpleado" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__TipoEm__336AA144">
+          <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEmpleado">
+              <PropertyRef Name="idTipoEmpleado" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__TipoEm__47A6A41B">
+          <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEmpleado">
+              <PropertyRef Name="idTipoEmpleado" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__TipoEm__589C25F3">
+          <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEmpleado">
+              <PropertyRef Name="idTipoEmpleado" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__TipoEm__6BE40491">
+          <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEmpleado">
+              <PropertyRef Name="idTipoEmpleado" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__TipoEm__7F2BE32F">
+          <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEmpleado">
+              <PropertyRef Name="idTipoEmpleado" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="TipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventari__Produ__59904A2C">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="Inventario" Type="Self.Inventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Inventario">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Cliente__0B91BA14">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
           <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
           <ReferentialConstraint>
@@ -217,7 +446,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pedido__Empleado__534D60F1">
+        <Association Name="FK__Pedido__Cliente__1B9317B3">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Cliente__2FCF1A8A">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Cliente__3EDC53F0">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Cliente__531856C7">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Cliente__6501FCD8">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Cliente__7755B73D">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Empleado__0C85DE4D">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
           <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
           <ReferentialConstraint>
@@ -229,7 +530,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pedido__Estatus__5165187F">
+        <Association Name="FK__Pedido__Empleado__1C873BEC">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Empleado__30C33EC3">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Empleado__3FD07829">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Empleado__540C7B00">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Empleado__65F62111">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Empleado__7849DB76">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Estatus__0A9D95DB">
           <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
           <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
           <ReferentialConstraint>
@@ -241,7 +614,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PedidoDom__idPed__5629CD9C">
+        <Association Name="FK__Pedido__Estatus__1A9EF37A">
+          <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estatus">
+              <PropertyRef Name="idEstatus" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Estatus__2EDAF651">
+          <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estatus">
+              <PropertyRef Name="idEstatus" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Estatus__3DE82FB7">
+          <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estatus">
+              <PropertyRef Name="idEstatus" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Estatus__5224328E">
+          <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estatus">
+              <PropertyRef Name="idEstatus" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Estatus__640DD89F">
+          <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estatus">
+              <PropertyRef Name="idEstatus" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pedido__Estatus__76619304">
+          <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estatus">
+              <PropertyRef Name="idEstatus" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoDom__idPed__0F624AF8">
           <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
           <End Role="PedidoDomicilio" Type="Self.PedidoDomicilio" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -253,7 +698,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PedidoPro__idPed__5441852A">
+        <Association Name="FK__PedidoDom__idPed__1F63A897">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoDomicilio" Type="Self.PedidoDomicilio" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoDomicilio">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoDom__idPed__339FAB6E">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoDomicilio" Type="Self.PedidoDomicilio" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoDomicilio">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoDom__idPed__42ACE4D4">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoDomicilio" Type="Self.PedidoDomicilio" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoDomicilio">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoDom__idPed__56E8E7AB">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoDomicilio" Type="Self.PedidoDomicilio" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoDomicilio">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoDom__idPed__68D28DBC">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoDomicilio" Type="Self.PedidoDomicilio" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoDomicilio">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoDom__idPed__7B264821">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoDomicilio" Type="Self.PedidoDomicilio" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoDomicilio">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPed__0D7A0286">
           <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
           <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -265,7 +782,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PedidoPro__idPro__5535A963">
+        <Association Name="FK__PedidoPro__idPed__1D7B6025">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPed__31B762FC">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPed__40C49C62">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPed__55009F39">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPed__66EA454A">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPed__793DFFAF">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPro__0E6E26BF">
           <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="1" />
           <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -277,7 +866,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductoI__idPro__4E88ABD4">
+        <Association Name="FK__PedidoPro__idPro__1E6F845E">
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPro__32AB8735">
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPro__41B8C09B">
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPro__55F4C372">
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPro__67DE6983">
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PedidoPro__idPro__7A3223E8">
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="1" />
+          <End Role="PedidoProducto" Type="Self.PedidoProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Principal>
+            <Dependent Role="PedidoProducto">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoI__idPro__07C12930">
           <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -289,7 +950,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductoI__Inven__47DBAE45">
+        <Association Name="FK__ProductoI__idPro__17C286CF">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoI__idPro__2BFE89A6">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoI__idPro__3B0BC30C">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoI__idPro__4F47C5E3">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoI__idPro__61316BF4">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoI__idPro__73852659">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoI__Inven__5A846E65">
           <End Role="Inventario" Type="Self.Inventario" Multiplicity="1" />
           <End Role="ProductoInventario" Type="Self.ProductoInventario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -301,7 +1034,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductoI__Produ__48CFD27E">
+        <Association Name="FK__ProductoI__Produ__5B78929E">
           <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="ProductoInventario" Type="Self.ProductoInventario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -313,7 +1046,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductoV__idPro__4BAC3F29">
+        <Association Name="FK__ProductoV__idPro__04E4BC85">
           <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -325,7 +1058,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductoV__Recet__4D94879B">
+        <Association Name="FK__ProductoV__idPro__14E61A24">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__idPro__29221CFB">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__idPro__382F5661">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__idPro__4C6B5938">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__idPro__5E54FF49">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__idPro__70A8B9AE">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="idProductoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__Recet__06CD04F7">
           <End Role="Receta" Type="Self.Receta" Multiplicity="0..1" />
           <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -337,7 +1142,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ProductoV__TipoP__4CA06362">
+        <Association Name="FK__ProductoV__Recet__16CE6296">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="Receta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__Recet__2B0A656D">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="Receta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__Recet__3A179ED3">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="Receta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__Recet__4E53A1AA">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="Receta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__Recet__603D47BB">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="Receta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__Recet__72910220">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="Receta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__TipoP__05D8E0BE">
           <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="0..1" />
           <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
           <ReferentialConstraint>
@@ -349,7 +1226,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RecetaIng__idPro__5070F446">
+        <Association Name="FK__ProductoV__TipoP__15DA3E5D">
+          <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoProducto">
+              <PropertyRef Name="idTipoProducto" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="TipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__TipoP__2A164134">
+          <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoProducto">
+              <PropertyRef Name="idTipoProducto" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="TipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__TipoP__39237A9A">
+          <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoProducto">
+              <PropertyRef Name="idTipoProducto" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="TipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__TipoP__4D5F7D71">
+          <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoProducto">
+              <PropertyRef Name="idTipoProducto" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="TipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__TipoP__5F492382">
+          <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoProducto">
+              <PropertyRef Name="idTipoProducto" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="TipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductoV__TipoP__719CDDE7">
+          <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="0..1" />
+          <End Role="ProductoVenta" Type="Self.ProductoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoProducto">
+              <PropertyRef Name="idTipoProducto" />
+            </Principal>
+            <Dependent Role="ProductoVenta">
+              <PropertyRef Name="TipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idPro__09A971A2">
           <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="1" />
           <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -361,7 +1310,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RecetaIng__idRec__4F7CD00D">
+        <Association Name="FK__RecetaIng__idPro__19AACF41">
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idPro__2DE6D218">
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idPro__3CF40B7E">
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idPro__51300E55">
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idPro__6319B466">
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idPro__756D6ECB">
+          <End Role="ProductoIngrediente" Type="Self.ProductoIngrediente" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductoIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idProductoIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idRec__08B54D69">
           <End Role="Receta" Type="Self.Receta" Multiplicity="1" />
           <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -373,7 +1394,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ubicacion__Produ__4AB81AF0">
+        <Association Name="FK__RecetaIng__idRec__18B6AB08">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idReceta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idRec__2CF2ADDF">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idReceta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idRec__3BFFE745">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idReceta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idRec__503BEA1C">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idReceta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idRec__6225902D">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idReceta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RecetaIng__idRec__74794A92">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="1" />
+          <End Role="RecetaIngrediente" Type="Self.RecetaIngrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idReceta" />
+            </Principal>
+            <Dependent Role="RecetaIngrediente">
+              <PropertyRef Name="idReceta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Produ__03F0984C">
           <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -385,7 +1478,151 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ubicacion__Ubica__49C3F6B7">
+        <Association Name="FK__Ubicacion__Produ__13F1F5EB">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Produ__282DF8C2">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Produ__373B3228">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Produ__4B7734FF">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Produ__5D60DB10">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Produ__6FB49575">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Ubica__02FC7413">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="idUbicacion" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Ubica__12FDD1B2">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="idUbicacion" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Ubica__2739D489">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="idUbicacion" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Ubica__36470DEF">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="idUbicacion" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Ubica__4A8310C6">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="idUbicacion" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Ubica__5C6CB6D7">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+          <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="idUbicacion" />
+            </Principal>
+            <Dependent Role="UbicacionProducto">
+              <PropertyRef Name="Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ubicacion__Ubica__6EC0713C">
           <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
           <End Role="UbicacionProducto" Type="Self.UbicacionProducto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -416,85 +1653,496 @@
           <EntitySet Name="TipoProducto" EntityType="Self.TipoProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UbicacionProducto" EntityType="Self.UbicacionProducto" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Cliente__idClien__44FF419A" Association="Self.FK__Cliente__idClien__44FF419A">
+          <AssociationSet Name="FK__Cliente__idClien__0E391C95" Association="Self.FK__Cliente__idClien__0E391C95">
             <End Role="Persona" EntitySet="Persona" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__idEmpl__45F365D3" Association="Self.FK__Empleado__idEmpl__45F365D3">
+          <AssociationSet Name="FK__Cliente__idClien__2180FB33" Association="Self.FK__Cliente__idClien__2180FB33">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__idClien__318258D2" Association="Self.FK__Cliente__idClien__318258D2">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__idClien__45BE5BA9" Association="Self.FK__Cliente__idClien__45BE5BA9">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__idClien__56B3DD81" Association="Self.FK__Cliente__idClien__56B3DD81">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__idClien__69FBBC1F" Association="Self.FK__Cliente__idClien__69FBBC1F">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__idClien__7D439ABD" Association="Self.FK__Cliente__idClien__7D439ABD">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__idEmpl__0F2D40CE" Association="Self.FK__Empleado__idEmpl__0F2D40CE">
             <End Role="Persona" EntitySet="Persona" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__TipoEm__46E78A0C" Association="Self.FK__Empleado__TipoEm__46E78A0C">
+          <AssociationSet Name="FK__Empleado__idEmpl__22751F6C" Association="Self.FK__Empleado__idEmpl__22751F6C">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__idEmpl__32767D0B" Association="Self.FK__Empleado__idEmpl__32767D0B">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__idEmpl__46B27FE2" Association="Self.FK__Empleado__idEmpl__46B27FE2">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__idEmpl__57A801BA" Association="Self.FK__Empleado__idEmpl__57A801BA">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__idEmpl__6AEFE058" Association="Self.FK__Empleado__idEmpl__6AEFE058">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__idEmpl__7E37BEF6" Association="Self.FK__Empleado__idEmpl__7E37BEF6">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__TipoEm__10216507" Association="Self.FK__Empleado__TipoEm__10216507">
             <End Role="TipoEmpleado" EntitySet="TipoEmpleado" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pedido__Cliente__52593CB8" Association="Self.FK__Pedido__Cliente__52593CB8">
+          <AssociationSet Name="FK__Empleado__TipoEm__236943A5" Association="Self.FK__Empleado__TipoEm__236943A5">
+            <End Role="TipoEmpleado" EntitySet="TipoEmpleado" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__TipoEm__336AA144" Association="Self.FK__Empleado__TipoEm__336AA144">
+            <End Role="TipoEmpleado" EntitySet="TipoEmpleado" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__TipoEm__47A6A41B" Association="Self.FK__Empleado__TipoEm__47A6A41B">
+            <End Role="TipoEmpleado" EntitySet="TipoEmpleado" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__TipoEm__589C25F3" Association="Self.FK__Empleado__TipoEm__589C25F3">
+            <End Role="TipoEmpleado" EntitySet="TipoEmpleado" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__TipoEm__6BE40491" Association="Self.FK__Empleado__TipoEm__6BE40491">
+            <End Role="TipoEmpleado" EntitySet="TipoEmpleado" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__TipoEm__7F2BE32F" Association="Self.FK__Empleado__TipoEm__7F2BE32F">
+            <End Role="TipoEmpleado" EntitySet="TipoEmpleado" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventari__Produ__59904A2C" Association="Self.FK__Inventari__Produ__59904A2C">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Inventario" EntitySet="Inventario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Cliente__0B91BA14" Association="Self.FK__Pedido__Cliente__0B91BA14">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Pedido" EntitySet="Pedido" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pedido__Empleado__534D60F1" Association="Self.FK__Pedido__Empleado__534D60F1">
+          <AssociationSet Name="FK__Pedido__Cliente__1B9317B3" Association="Self.FK__Pedido__Cliente__1B9317B3">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Cliente__2FCF1A8A" Association="Self.FK__Pedido__Cliente__2FCF1A8A">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Cliente__3EDC53F0" Association="Self.FK__Pedido__Cliente__3EDC53F0">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Cliente__531856C7" Association="Self.FK__Pedido__Cliente__531856C7">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Cliente__6501FCD8" Association="Self.FK__Pedido__Cliente__6501FCD8">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Cliente__7755B73D" Association="Self.FK__Pedido__Cliente__7755B73D">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Empleado__0C85DE4D" Association="Self.FK__Pedido__Empleado__0C85DE4D">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Pedido" EntitySet="Pedido" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pedido__Estatus__5165187F" Association="Self.FK__Pedido__Estatus__5165187F">
+          <AssociationSet Name="FK__Pedido__Empleado__1C873BEC" Association="Self.FK__Pedido__Empleado__1C873BEC">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Empleado__30C33EC3" Association="Self.FK__Pedido__Empleado__30C33EC3">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Empleado__3FD07829" Association="Self.FK__Pedido__Empleado__3FD07829">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Empleado__540C7B00" Association="Self.FK__Pedido__Empleado__540C7B00">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Empleado__65F62111" Association="Self.FK__Pedido__Empleado__65F62111">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Empleado__7849DB76" Association="Self.FK__Pedido__Empleado__7849DB76">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Estatus__0A9D95DB" Association="Self.FK__Pedido__Estatus__0A9D95DB">
             <End Role="Estatus" EntitySet="Estatus" />
             <End Role="Pedido" EntitySet="Pedido" />
           </AssociationSet>
-          <AssociationSet Name="FK__PedidoDom__idPed__5629CD9C" Association="Self.FK__PedidoDom__idPed__5629CD9C">
+          <AssociationSet Name="FK__Pedido__Estatus__1A9EF37A" Association="Self.FK__Pedido__Estatus__1A9EF37A">
+            <End Role="Estatus" EntitySet="Estatus" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Estatus__2EDAF651" Association="Self.FK__Pedido__Estatus__2EDAF651">
+            <End Role="Estatus" EntitySet="Estatus" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Estatus__3DE82FB7" Association="Self.FK__Pedido__Estatus__3DE82FB7">
+            <End Role="Estatus" EntitySet="Estatus" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Estatus__5224328E" Association="Self.FK__Pedido__Estatus__5224328E">
+            <End Role="Estatus" EntitySet="Estatus" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Estatus__640DD89F" Association="Self.FK__Pedido__Estatus__640DD89F">
+            <End Role="Estatus" EntitySet="Estatus" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pedido__Estatus__76619304" Association="Self.FK__Pedido__Estatus__76619304">
+            <End Role="Estatus" EntitySet="Estatus" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoDom__idPed__0F624AF8" Association="Self.FK__PedidoDom__idPed__0F624AF8">
             <End Role="Pedido" EntitySet="Pedido" />
             <End Role="PedidoDomicilio" EntitySet="PedidoDomicilio" />
           </AssociationSet>
-          <AssociationSet Name="FK__PedidoPro__idPed__5441852A" Association="Self.FK__PedidoPro__idPed__5441852A">
+          <AssociationSet Name="FK__PedidoDom__idPed__1F63A897" Association="Self.FK__PedidoDom__idPed__1F63A897">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoDomicilio" EntitySet="PedidoDomicilio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoDom__idPed__339FAB6E" Association="Self.FK__PedidoDom__idPed__339FAB6E">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoDomicilio" EntitySet="PedidoDomicilio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoDom__idPed__42ACE4D4" Association="Self.FK__PedidoDom__idPed__42ACE4D4">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoDomicilio" EntitySet="PedidoDomicilio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoDom__idPed__56E8E7AB" Association="Self.FK__PedidoDom__idPed__56E8E7AB">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoDomicilio" EntitySet="PedidoDomicilio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoDom__idPed__68D28DBC" Association="Self.FK__PedidoDom__idPed__68D28DBC">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoDomicilio" EntitySet="PedidoDomicilio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoDom__idPed__7B264821" Association="Self.FK__PedidoDom__idPed__7B264821">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoDomicilio" EntitySet="PedidoDomicilio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPed__0D7A0286" Association="Self.FK__PedidoPro__idPed__0D7A0286">
             <End Role="Pedido" EntitySet="Pedido" />
             <End Role="PedidoProducto" EntitySet="PedidoProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__PedidoPro__idPro__5535A963" Association="Self.FK__PedidoPro__idPro__5535A963">
+          <AssociationSet Name="FK__PedidoPro__idPed__1D7B6025" Association="Self.FK__PedidoPro__idPed__1D7B6025">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPed__31B762FC" Association="Self.FK__PedidoPro__idPed__31B762FC">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPed__40C49C62" Association="Self.FK__PedidoPro__idPed__40C49C62">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPed__55009F39" Association="Self.FK__PedidoPro__idPed__55009F39">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPed__66EA454A" Association="Self.FK__PedidoPro__idPed__66EA454A">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPed__793DFFAF" Association="Self.FK__PedidoPro__idPed__793DFFAF">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPro__0E6E26BF" Association="Self.FK__PedidoPro__idPro__0E6E26BF">
             <End Role="ProductoVenta" EntitySet="ProductoVenta" />
             <End Role="PedidoProducto" EntitySet="PedidoProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductoI__idPro__4E88ABD4" Association="Self.FK__ProductoI__idPro__4E88ABD4">
+          <AssociationSet Name="FK__PedidoPro__idPro__1E6F845E" Association="Self.FK__PedidoPro__idPro__1E6F845E">
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPro__32AB8735" Association="Self.FK__PedidoPro__idPro__32AB8735">
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPro__41B8C09B" Association="Self.FK__PedidoPro__idPro__41B8C09B">
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPro__55F4C372" Association="Self.FK__PedidoPro__idPro__55F4C372">
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPro__67DE6983" Association="Self.FK__PedidoPro__idPro__67DE6983">
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PedidoPro__idPro__7A3223E8" Association="Self.FK__PedidoPro__idPro__7A3223E8">
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+            <End Role="PedidoProducto" EntitySet="PedidoProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoI__idPro__07C12930" Association="Self.FK__ProductoI__idPro__07C12930">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductoI__Inven__47DBAE45" Association="Self.FK__ProductoI__Inven__47DBAE45">
+          <AssociationSet Name="FK__ProductoI__idPro__17C286CF" Association="Self.FK__ProductoI__idPro__17C286CF">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoI__idPro__2BFE89A6" Association="Self.FK__ProductoI__idPro__2BFE89A6">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoI__idPro__3B0BC30C" Association="Self.FK__ProductoI__idPro__3B0BC30C">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoI__idPro__4F47C5E3" Association="Self.FK__ProductoI__idPro__4F47C5E3">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoI__idPro__61316BF4" Association="Self.FK__ProductoI__idPro__61316BF4">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoI__idPro__73852659" Association="Self.FK__ProductoI__idPro__73852659">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoI__Inven__5A846E65" Association="Self.FK__ProductoI__Inven__5A846E65">
             <End Role="Inventario" EntitySet="Inventario" />
             <End Role="ProductoInventario" EntitySet="ProductoInventario" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductoI__Produ__48CFD27E" Association="Self.FK__ProductoI__Produ__48CFD27E">
+          <AssociationSet Name="FK__ProductoI__Produ__5B78929E" Association="Self.FK__ProductoI__Produ__5B78929E">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="ProductoInventario" EntitySet="ProductoInventario" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductoV__idPro__4BAC3F29" Association="Self.FK__ProductoV__idPro__4BAC3F29">
+          <AssociationSet Name="FK__ProductoV__idPro__04E4BC85" Association="Self.FK__ProductoV__idPro__04E4BC85">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="ProductoVenta" EntitySet="ProductoVenta" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductoV__Recet__4D94879B" Association="Self.FK__ProductoV__Recet__4D94879B">
+          <AssociationSet Name="FK__ProductoV__idPro__14E61A24" Association="Self.FK__ProductoV__idPro__14E61A24">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__idPro__29221CFB" Association="Self.FK__ProductoV__idPro__29221CFB">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__idPro__382F5661" Association="Self.FK__ProductoV__idPro__382F5661">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__idPro__4C6B5938" Association="Self.FK__ProductoV__idPro__4C6B5938">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__idPro__5E54FF49" Association="Self.FK__ProductoV__idPro__5E54FF49">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__idPro__70A8B9AE" Association="Self.FK__ProductoV__idPro__70A8B9AE">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__Recet__06CD04F7" Association="Self.FK__ProductoV__Recet__06CD04F7">
             <End Role="Receta" EntitySet="Receta" />
             <End Role="ProductoVenta" EntitySet="ProductoVenta" />
           </AssociationSet>
-          <AssociationSet Name="FK__ProductoV__TipoP__4CA06362" Association="Self.FK__ProductoV__TipoP__4CA06362">
+          <AssociationSet Name="FK__ProductoV__Recet__16CE6296" Association="Self.FK__ProductoV__Recet__16CE6296">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__Recet__2B0A656D" Association="Self.FK__ProductoV__Recet__2B0A656D">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__Recet__3A179ED3" Association="Self.FK__ProductoV__Recet__3A179ED3">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__Recet__4E53A1AA" Association="Self.FK__ProductoV__Recet__4E53A1AA">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__Recet__603D47BB" Association="Self.FK__ProductoV__Recet__603D47BB">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__Recet__72910220" Association="Self.FK__ProductoV__Recet__72910220">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__TipoP__05D8E0BE" Association="Self.FK__ProductoV__TipoP__05D8E0BE">
             <End Role="TipoProducto" EntitySet="TipoProducto" />
             <End Role="ProductoVenta" EntitySet="ProductoVenta" />
           </AssociationSet>
-          <AssociationSet Name="FK__RecetaIng__idPro__5070F446" Association="Self.FK__RecetaIng__idPro__5070F446">
+          <AssociationSet Name="FK__ProductoV__TipoP__15DA3E5D" Association="Self.FK__ProductoV__TipoP__15DA3E5D">
+            <End Role="TipoProducto" EntitySet="TipoProducto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__TipoP__2A164134" Association="Self.FK__ProductoV__TipoP__2A164134">
+            <End Role="TipoProducto" EntitySet="TipoProducto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__TipoP__39237A9A" Association="Self.FK__ProductoV__TipoP__39237A9A">
+            <End Role="TipoProducto" EntitySet="TipoProducto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__TipoP__4D5F7D71" Association="Self.FK__ProductoV__TipoP__4D5F7D71">
+            <End Role="TipoProducto" EntitySet="TipoProducto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__TipoP__5F492382" Association="Self.FK__ProductoV__TipoP__5F492382">
+            <End Role="TipoProducto" EntitySet="TipoProducto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductoV__TipoP__719CDDE7" Association="Self.FK__ProductoV__TipoP__719CDDE7">
+            <End Role="TipoProducto" EntitySet="TipoProducto" />
+            <End Role="ProductoVenta" EntitySet="ProductoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idPro__09A971A2" Association="Self.FK__RecetaIng__idPro__09A971A2">
             <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
             <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
           </AssociationSet>
-          <AssociationSet Name="FK__RecetaIng__idRec__4F7CD00D" Association="Self.FK__RecetaIng__idRec__4F7CD00D">
+          <AssociationSet Name="FK__RecetaIng__idPro__19AACF41" Association="Self.FK__RecetaIng__idPro__19AACF41">
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idPro__2DE6D218" Association="Self.FK__RecetaIng__idPro__2DE6D218">
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idPro__3CF40B7E" Association="Self.FK__RecetaIng__idPro__3CF40B7E">
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idPro__51300E55" Association="Self.FK__RecetaIng__idPro__51300E55">
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idPro__6319B466" Association="Self.FK__RecetaIng__idPro__6319B466">
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idPro__756D6ECB" Association="Self.FK__RecetaIng__idPro__756D6ECB">
+            <End Role="ProductoIngrediente" EntitySet="ProductoIngrediente" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idRec__08B54D69" Association="Self.FK__RecetaIng__idRec__08B54D69">
             <End Role="Receta" EntitySet="Receta" />
             <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ubicacion__Produ__4AB81AF0" Association="Self.FK__Ubicacion__Produ__4AB81AF0">
+          <AssociationSet Name="FK__RecetaIng__idRec__18B6AB08" Association="Self.FK__RecetaIng__idRec__18B6AB08">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idRec__2CF2ADDF" Association="Self.FK__RecetaIng__idRec__2CF2ADDF">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idRec__3BFFE745" Association="Self.FK__RecetaIng__idRec__3BFFE745">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idRec__503BEA1C" Association="Self.FK__RecetaIng__idRec__503BEA1C">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idRec__6225902D" Association="Self.FK__RecetaIng__idRec__6225902D">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RecetaIng__idRec__74794A92" Association="Self.FK__RecetaIng__idRec__74794A92">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="RecetaIngrediente" EntitySet="RecetaIngrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Produ__03F0984C" Association="Self.FK__Ubicacion__Produ__03F0984C">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ubicacion__Ubica__49C3F6B7" Association="Self.FK__Ubicacion__Ubica__49C3F6B7">
+          <AssociationSet Name="FK__Ubicacion__Produ__13F1F5EB" Association="Self.FK__Ubicacion__Produ__13F1F5EB">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Produ__282DF8C2" Association="Self.FK__Ubicacion__Produ__282DF8C2">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Produ__373B3228" Association="Self.FK__Ubicacion__Produ__373B3228">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Produ__4B7734FF" Association="Self.FK__Ubicacion__Produ__4B7734FF">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Produ__5D60DB10" Association="Self.FK__Ubicacion__Produ__5D60DB10">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Produ__6FB49575" Association="Self.FK__Ubicacion__Produ__6FB49575">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Ubica__02FC7413" Association="Self.FK__Ubicacion__Ubica__02FC7413">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Ubica__12FDD1B2" Association="Self.FK__Ubicacion__Ubica__12FDD1B2">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Ubica__2739D489" Association="Self.FK__Ubicacion__Ubica__2739D489">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Ubica__36470DEF" Association="Self.FK__Ubicacion__Ubica__36470DEF">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Ubica__4A8310C6" Association="Self.FK__Ubicacion__Ubica__4A8310C6">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Ubica__5C6CB6D7" Association="Self.FK__Ubicacion__Ubica__5C6CB6D7">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ubicacion__Ubica__6EC0713C" Association="Self.FK__Ubicacion__Ubica__6EC0713C">
             <End Role="Ubicacion" EntitySet="Ubicacion" />
             <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PizzaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -535,6 +2183,8 @@
           <Property Name="ExistenciaTotal" Type="Int32" />
           <Property Name="UnidadMedida" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProductoInventario" Relationship="Self.FK__ProductoI__Inven__47DBAE45" FromRole="Inventario" ToRole="ProductoInventario" />
+          <Property Name="Producto" Type="Int32" />
+          <NavigationProperty Name="Producto1" Relationship="PizzaModel.FK__Inventari__Produ__59904A2C" FromRole="Inventario" ToRole="Producto" />
         </EntityType>
         <EntityType Name="Pedido">
           <Key>
@@ -603,6 +2253,7 @@
           <NavigationProperty Name="ProductoInventario" Relationship="Self.FK__ProductoI__Produ__48CFD27E" FromRole="Producto" ToRole="ProductoInventario" />
           <NavigationProperty Name="ProductoVenta" Relationship="Self.FK__ProductoV__idPro__4BAC3F29" FromRole="Producto" ToRole="ProductoVenta" />
           <NavigationProperty Name="UbicacionProducto" Relationship="Self.FK__Ubicacion__Produ__4AB81AF0" FromRole="Producto" ToRole="UbicacionProducto" />
+          <NavigationProperty Name="Inventario" Relationship="PizzaModel.FK__Inventari__Produ__59904A2C" FromRole="Producto" ToRole="Inventario" />
         </EntityType>
         <EntityType Name="ProductoIngrediente">
           <Key>
@@ -1023,7 +2674,23 @@
             <End Role="Ubicacion" EntitySet="Ubicacion" />
             <End Role="UbicacionProducto" EntitySet="UbicacionProducto" />
           </AssociationSet>
+          <AssociationSet Name="FK__Inventari__Produ__59904A2C" Association="PizzaModel.FK__Inventari__Produ__59904A2C">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Inventario" EntitySet="Inventario" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__Inventari__Produ__59904A2C">
+          <End Type="PizzaModel.Producto" Role="Producto" Multiplicity="0..1" />
+          <End Type="PizzaModel.Inventario" Role="Inventario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Inventario">
+              <PropertyRef Name="Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1059,6 +2726,7 @@
           <EntitySetMapping Name="Inventario">
             <EntityTypeMapping TypeName="PizzaModel.Inventario">
               <MappingFragment StoreEntitySet="Inventario">
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
                 <ScalarProperty Name="idInventario" ColumnName="idInventario" />
                 <ScalarProperty Name="ExistenciaTotal" ColumnName="ExistenciaTotal" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />

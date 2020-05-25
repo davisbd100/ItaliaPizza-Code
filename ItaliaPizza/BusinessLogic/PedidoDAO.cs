@@ -99,5 +99,23 @@ namespace BusinessLogic
                 return resultado;
             }
         }
+
+        public List<DataAccess.Pedido> ObtenerListaPedidos()
+        {
+            List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    pedidos = context.Pedido.ToList();
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los pedidos");
+                }
+            }
+
+            return pedidos;
+        }
     }
 }
