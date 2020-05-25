@@ -12,7 +12,7 @@ namespace BusinessLogic
 {
     public class ProductoVentaDAO : IProductoVenta
     {
-        public ResultadoOperacionEnum.ResultadoOperacion AddProductoVenta(ProductoVenta productoVenta)
+        public ResultadoOperacionEnum.ResultadoOperacion AddProductoVenta(ProductoVenta productoVenta, Inventario inventario)
         {
             const int VALORES_DUPLICADOS = 2601;
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
@@ -48,6 +48,23 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@Fotoproducto", productoVenta.FotoProducto));
                     command.Parameters.Add(new SqlParameter("@TieneReceta", productoVenta.TieneReceta));
                     command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.IdReceta));
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                         "INSERT INTO dbo.ProductoInventario VALUES (@Inventario, @Producto, @CantidadIngreso, @PrecioCompra, @FechaIngreso, @Caducidad)";
+                    command.Parameters.Add(new SqlParameter("@Inventario", inventario.idInventario));
+                    command.Parameters.Add(new SqlParameter("@Producto", inventario.Producto.Código));
+                    command.Parameters.Add(new SqlParameter("@CantidadIngreso", inventario.CantidadIngreso));
+                    command.Parameters.Add(new SqlParameter("@PrecioCompra", inventario.PrecioCompra));
+                    command.Parameters.Add(new SqlParameter("@FechaIngreso", inventario.FechaIngreso));
+                    command.Parameters.Add(new SqlParameter("@Caducidad", inventario.Caducidad));
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida)";
+                    command.Parameters.Add(new SqlParameter("@idInventario", inventario.idInventario));
+                    command.Parameters.Add(new SqlParameter("@ExistenciaTotal", inventario.ExistenciaTotal));
+                    command.Parameters.Add(new SqlParameter("@UnidadMedida", inventario.UnidadDeMedida));
                     command.ExecuteNonQuery();
 
                     transaction.Commit();

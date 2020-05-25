@@ -34,6 +34,7 @@ namespace Controller
 
             Inventario inventario = new Inventario();
             // inventario.Caducidad = DateTime.Parse(caducidad);
+            inventario.idInventario = codigo;
             inventario.Caducidad = caducidad;
             inventario.CantidadIngreso = cantidad;
             inventario.PrecioCompra = precioUnitario;
@@ -43,11 +44,11 @@ namespace Controller
             inventario.FechaIngreso = DateTime.Now;
 
 
-            resultadoOperacion = productoVentaDAO.AddProductoVenta(productoVenta);
+            resultadoOperacion = productoVentaDAO.AddProductoVenta(productoVenta, inventario);
 
             if (resultadoOperacion == ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
-                inventarioDAO.AddInventario(inventario);
+                //inventarioDAO.AddInventario(inventario);
             }
 
             return resultadoOperacion;
