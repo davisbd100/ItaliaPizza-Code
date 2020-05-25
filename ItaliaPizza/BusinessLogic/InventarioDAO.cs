@@ -40,10 +40,11 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida";
+                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida)";
                     command.Parameters.Add(new SqlParameter("@idInventario", inventario.idInventario));
                     command.Parameters.Add(new SqlParameter("@ExistenciaTotal", inventario.ExistenciaTotal));
                     command.Parameters.Add(new SqlParameter("@UnidadMedida", inventario.UnidadDeMedida));
+                    command.ExecuteNonQuery();
 
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
