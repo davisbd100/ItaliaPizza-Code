@@ -34,7 +34,7 @@ namespace ItaliaPizza
 
         public ResultadosValidación ValidiarNombre(string nombre)
         {
-            string patrón = @"^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$";
+            string patrón = @"^[a-z-A-Z\D]+$";
             if (Regex.IsMatch(nombre, patrón))
             {
                 return ResultadosValidación.NombreVálido;
