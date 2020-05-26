@@ -14,16 +14,7 @@ namespace DataAccess
     
     public partial class TipoProducto
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoProducto()
-        {
-            this.ProductoVenta = new HashSet<ProductoVenta>();
-        }
-    
         public int idTipoProducto { get; set; }
         public string NombreTipoProducto { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductoVenta> ProductoVenta { get; set; }
     }
 }

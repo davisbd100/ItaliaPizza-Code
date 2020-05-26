@@ -1,4 +1,5 @@
-﻿using Controller;
+﻿using BusinessLogic;
+using Controller;
 using System;
 using System.Windows;
 using static BusinessLogic.ResultadoOperacionEnum;
@@ -128,9 +129,6 @@ namespace ItaliaPizza
             textBoxContraseña.Text = contraseniaAleatoria;
         }
 
-
-
-
         private void CancelarButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("¿Está seguro que desea cancelar?", "Cancelar", MessageBoxButton.YesNo);
@@ -163,7 +161,6 @@ namespace ItaliaPizza
 
             if (ValidarCampos() == CheckResult.Passed)
             {
-
                 EmpleadoController empleadoController = new EmpleadoController();
                 ComprobarResultado((ResultadoOperacion)empleadoController.AgregarEmpleado(nombre, apellido, telefono, correo, ciudad, calle, numero, colonia, codigoPostal, usuario, contraseña, tipoEmpleado));
             }
@@ -196,6 +193,9 @@ namespace ItaliaPizza
             {
                 GenerarUsuario(comboBoxTipoEmpleado.Text, textBoxNombre.Text);
                 GenerarContraseñaAleatoria();
+
+                DateTime fechaAcceso = DateTime.Now;
+                textBoxFecha.Text = DateTime.Now.ToString();
                 RegistrarButton.IsEnabled = true;
             }
         }

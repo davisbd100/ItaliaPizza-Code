@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using System;
+using System.Collections.Generic;
 using static BusinessLogic.ResultadoOperacionEnum;
 
 namespace Controller
@@ -8,7 +9,8 @@ namespace Controller
 	{
 		public ResultadoOperacion AgregarEmpleado(String nombre, String apellido,
 			String telefono, String email, String ciudad, String calle, String numero,
-			String colonia, String codigoPostal, String usuario, String contrasena, String tipoEmpleado)
+			String colonia, String codigoPostal, String usuario, String contrasena, 
+			String tipoEmpleado)
 		{
 			ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
 
@@ -24,8 +26,10 @@ namespace Controller
 				empleado.Numero = numero;
 				empleado.Colonia = colonia;
 				empleado.CodigoPostal = codigoPostal;
+				empleado.idEmpleado = empleado.idPersona;
 				empleado.NombreUsuario = usuario;
 				empleado.Contraseña = contrasena;
+				empleado.FechaUltimoAcceso = DateTime.Now;
 				empleado.TipoEmpleado = tipoEmpleado;
 				EmpleadoDAO empleadoDAO = new EmpleadoDAO();
 				resultado = (ResultadoOperacion)empleadoDAO.AgregarEmpleado(empleado);
@@ -42,6 +46,13 @@ namespace Controller
 		{
 			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
 			return empleadoDAO.GetEmpleadoByUsername(username);
+		}
+
+		public List<Empleado> GetEmpleado()
+		{
+			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+			List<Empleado> empleados = empleadoDAO.GetEmpleados();
+			return empleados;
 		}
 	}
 }

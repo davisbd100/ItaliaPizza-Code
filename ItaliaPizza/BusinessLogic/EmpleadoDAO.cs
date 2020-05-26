@@ -26,8 +26,7 @@ namespace BusinessLogic
                 try
                 {
                     command.CommandText =
-                         "INSERT INTO dbo.Persona VALUES (@idPersona, @Nombre, @Apellido, @Telefono, @Email, @Calle, @Numero, @CodigoPostal, @Colonia, @Ciudad)";
-                    command.Parameters.Add(new SqlParameter("@idPersona", empleado.idPersona));
+                         "INSERT INTO dbo.Persona VALUES (@Nombre, @Apellido, @Telefono, @Email, @Calle, @Numero, @CodigoPostal, @Colonia, @Ciudad)";
                     command.Parameters.Add(new SqlParameter("@Nombre", empleado.Nombre));
                     command.Parameters.Add(new SqlParameter("@Apellido", empleado.Apellido));
                     command.Parameters.Add(new SqlParameter("@Telefono", empleado.Telefono));
@@ -37,10 +36,10 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@CodigoPostal", empleado.CodigoPostal));
                     command.Parameters.Add(new SqlParameter("@Colonia", empleado.Colonia));
                     command.Parameters.Add(new SqlParameter("@Ciudad", empleado.Ciudad));
-                   command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso @TipoEmpleado)";
+                        "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso, @TipoEmpleado)";
                     command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idPersona));
                     command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
                     command.Parameters.Add(new SqlParameter("@Contrasena", empleado.Contraseña));
@@ -63,6 +62,7 @@ namespace BusinessLogic
                             break;
                         default:
                             resultado = ResultadoOperacion.FalloSQL;
+                            Console.WriteLine("El problema es: " + e);
                             break;
                     }
                 }
@@ -141,7 +141,7 @@ namespace BusinessLogic
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        empleado.NombreUsuario = reader["Nombre"].ToString();
+                        empleado.NombreUsuario = reader["NombreUsuario"].ToString();
                     }
                 }
                 connection.Close();
@@ -151,7 +151,45 @@ namespace BusinessLogic
 
         public List<Empleado> GetEmpleados()
         {
-            throw new NotImplementedException();
+            List<Empleado> listaEmpleados = new List<Empleado>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Empleado", connection))
+                {
+                    command.Parameters.Add(new SqlParameter());
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Empleado empleado = new Empleado();
+                        empleado.idPersona = int.Parse(reader["idPersona"].ToString());
+                        empleado.Nombre = reader["Nombre"].ToString();
+                        empleado.Apellido = reader["Apellido"].ToString();
+                        empleado.Telefono = reader["Telefono"].ToString();
+                        empleado.Email = reader["Email"].ToString();
+                        empleado.Calle = reader["Calle"].ToString();
+                        empleado.Numero = reader["Numero"].ToString();
+                        empleado.CodigoPostal = reader["CodigoPostal"].ToString();
+                        empleado.Colonia = reader["Colonia"].ToString();
+                        empleado.NombreUsuario = reader["NombreUsuario"].ToString();
+                        empleado.Contraseña = reader["Contrasena"].ToString();
+                        empleado.FechaUltimoAcceso = DateTime.Parse(reader["FechaUltimoAcceso"].ToString());
+                        empleado.TipoEmpleado = reader["TipoEmpleado"].ToString();
+                        listaEmpleados.Add(empleado);
+                    }
+                }
+                connection.Close();
+            }
+            return listaEmpleados;
         }
 
         public List<Empleado> GetEmpleadosByDireccion(string Direccion)

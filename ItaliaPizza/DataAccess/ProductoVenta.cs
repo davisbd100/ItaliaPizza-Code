@@ -24,13 +24,11 @@ namespace DataAccess
         public Nullable<double> PrecioPublico { get; set; }
         public Nullable<int> TipoProducto { get; set; }
         public string FotoProducto { get; set; }
-        public Nullable<bool> TieneReceta { get; set; }
         public Nullable<int> Receta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PedidoProducto> PedidoProducto { get; set; }
         public virtual Producto Producto { get; set; }
         public virtual Receta Receta1 { get; set; }
-        public virtual TipoProducto TipoProducto1 { get; set; }
     }
 }

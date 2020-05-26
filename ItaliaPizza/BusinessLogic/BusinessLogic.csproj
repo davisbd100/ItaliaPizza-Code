@@ -68,7 +68,6 @@
     <Compile Include="IUbicación.cs" />
     <Compile Include="ListaIngredientesReceta.cs" />
     <Compile Include="Pedido.cs" />
-    <Compile Include="PedidoDAO.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="ProductoDAO.cs" />
     <Compile Include="ProductoIngredienteDAO.cs" />

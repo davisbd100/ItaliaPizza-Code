@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using Controller;
 
 namespace ItaliaPizza
 {
@@ -11,11 +13,22 @@ namespace ItaliaPizza
         public Empleados()
         {
             InitializeComponent();
+            //UpdateGrid();
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>Actualiza el grid si contiene datos.</summary>
+        private void UpdateGrid()
         {
-
+            //EmpleadoController empleadoController = new EmpleadoController();
+            //DataGridEmpleados.ItemsSource = null;
+            //if (empleadoController.GetEmpleado().Any())
+            //{
+            //    DataGridEmpleados.ItemsSource = empleadoController.GetEmpleado();
+            //}
+            //else
+            //{
+            //    this.Close();
+            //}
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)

@@ -21,13 +21,12 @@ namespace DataAccess
         }
     
         public int idEmpleado { get; set; }
-        public Nullable<int> TipoEmpleado { get; set; }
+        public string TipoEmpleado { get; set; }
         public string NombreUsuario { get; set; }
         public string Contrasena { get; set; }
         public Nullable<System.DateTime> FechaUltimoAcceso { get; set; }
     
         public virtual Persona Persona { get; set; }
-        public virtual TipoEmpleado TipoEmpleado1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido> Pedido { get; set; }
     }
