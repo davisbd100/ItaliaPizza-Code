@@ -53,5 +53,14 @@ namespace Controller
 
             return resultadoOperacion;
         }
+
+
+        public List<ProductoVenta> ObtenerProductoVenta(int rango)
+        {
+            ProductoVentaDAO productoVentaDAO = new ProductoVentaDAO();
+
+            List < ProductoVenta > productoVentas = productoVentaDAO.GetProductosVenta(rango);
+            return productoVentas;
+        }
     }
 }

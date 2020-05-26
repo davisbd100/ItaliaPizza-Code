@@ -42,5 +42,11 @@ namespace Controller
 
 
         }
+
+
+        public List<ProductoIngrediente> ObtenerProductoIngrediente(int rango)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
