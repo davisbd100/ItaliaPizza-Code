@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseTests", "DataBaseTests\DataBaseTests.csproj", "{6108CBCF-1F05-4EAF-8D4B-5F73B597EA45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutenticacionInicioSesion", "AutenticacionInicioSesion\AutenticacionInicioSesion.csproj", "{39B7CAD8-96A5-4336-A3DF-2286C175A0DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{6108CBCF-1F05-4EAF-8D4B-5F73B597EA45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6108CBCF-1F05-4EAF-8D4B-5F73B597EA45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6108CBCF-1F05-4EAF-8D4B-5F73B597EA45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B7CAD8-96A5-4336-A3DF-2286C175A0DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B7CAD8-96A5-4336-A3DF-2286C175A0DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B7CAD8-96A5-4336-A3DF-2286C175A0DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B7CAD8-96A5-4336-A3DF-2286C175A0DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

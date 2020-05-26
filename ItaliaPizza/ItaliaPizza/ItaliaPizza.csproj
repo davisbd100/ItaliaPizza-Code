@@ -185,6 +185,10 @@
     <Resource Include="Recursos\VerMas.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AutenticacionInicioSesion\AutenticacionInicioSesion.csproj">
+      <Project>{39B7CAD8-96A5-4336-A3DF-2286C175A0DB}</Project>
+      <Name>AutenticacionInicioSesion</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
       <Project>{c1e97369-553e-481c-839d-459e7db21b48}</Project>
       <Name>BusinessLogic</Name>
