@@ -15,7 +15,7 @@
             </Button.Background>
         </Button>
         <Label Content="Ubicación de&#xD;&#xA; descarga" HorizontalAlignment="Left" Margin="67.919,106.596,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-        <Button x:Name="btGuardar" Content="GUARDAR" HorizontalAlignment="Left" Margin="234.905,281.066,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72" IsEnabled="False"/>
+        <Button x:Name="btGuardar" Content="GUARDAR" HorizontalAlignment="Left" Margin="234.905,281.066,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72" IsEnabled="False" Click="btGuardar_Click"/>
         <Button x:Name="btCancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="67.919,281.066,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
         <TextBox x:Name="tbRuta" HorizontalAlignment="Left" Height="32.71" Margin="197.509,128.126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btExaminar" Content="Examinar" HorizontalAlignment="Left" Margin="322.509,126.379,0,0" VerticalAlignment="Top" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="34.457" Width="101.12" Click="btExaminar_Click"/>

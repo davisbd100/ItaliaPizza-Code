@@ -48,9 +48,25 @@ namespace PrototiposItaliaPizza
         private void btGuardar_Click(object sender, RoutedEventArgs e)
         {
             BaseDeDatosController controller = new BaseDeDatosController();
-            if (Directory.Exists(tbRuta.Text))
+            if (!Directory.Exists(tbRuta.Text))
             {
                 MessageBox.Show("La ruta ingresada no existe");
+            }
+            else
+            {
+                switch (controller.IniciarRespaldo(tbRuta.Text))
+                {
+                    case BusinessLogic.ResultadoOperacionEnum.ResultadoOperacion.FalloSQL:
+                        MessageBox.Show("No se pudo obtener el respaldo");
+                        break;
+                    case BusinessLogic.ResultadoOperacionEnum.ResultadoOperacion.Exito:
+                        MessageBox.Show("Respaldo realizado con exito");
+                        this.Close();
+                        break;
+                    case BusinessLogic.ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida:
+                        MessageBox.Show("Error no identificado");
+                        break;
+                }
             }
         }
     }
