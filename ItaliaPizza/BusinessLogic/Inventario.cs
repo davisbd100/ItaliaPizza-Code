@@ -29,7 +29,8 @@ namespace BusinessLogic
         Mililitro,
         Cucharada,
         Taza,
-        Galón
+        Galón,
+        Unidad
     }
 
 }
