@@ -117,5 +117,35 @@ namespace BusinessLogic
 
             return pedidos;
         }
+
+        public List<DataAccess.Pedido> ObtenerPedidosPorFecha(DateTime inicial, DateTime final)
+        {
+            List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    foreach (var pedido in context.Pedido)
+                    {
+                        if(pedido.FechaPedido >= inicial && pedido.FechaPedido <= final)
+                        {
+                            pedido.PedidoProducto = pedido.PedidoProducto;
+                            foreach (var pedidoProducto in pedido.PedidoProducto)
+                            {
+                                pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
+                                pedidoProducto.ProductoVenta.Receta1 = pedidoProducto.ProductoVenta.Receta1;
+                            }
+                            pedidos.Add(pedido);
+                        }
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los pedidos");
+                }
+            }
+
+            return pedidos;
+        }
     }
 }

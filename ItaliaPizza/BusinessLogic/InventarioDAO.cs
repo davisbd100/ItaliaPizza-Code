@@ -196,7 +196,7 @@ namespace BusinessLogic
                     foreach (var inventario in context.Inventario)
                     {
                         DataAccess.Inventario tempInventario = inventarios.FirstOrDefault(b => b.idInventario == inventario.idInventario);
-                        inventario.ExistenciaTotal = tempInventario.ExistenciaTotal;
+                        inventario.ExistenciaInicial = tempInventario.ExistenciaTotal;
                     }
                     context.SaveChanges();
                 }
