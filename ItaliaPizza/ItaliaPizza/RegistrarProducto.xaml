@@ -42,12 +42,12 @@
             <TextBox x:Name="txb_Cantidad" HorizontalAlignment="Left" Margin="202.539,798.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
             <Label Content="Caducidad" HorizontalAlignment="Left" Margin="26.311,850.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
             <TextBox x:Name="txb_Caducidad" HorizontalAlignment="Left" Margin="202.539,858.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <Grid x:Name="GridIngrediente" Visibility="Collapsed" >
+            <Grid x:Name="GridIngrediente" >
                 <Label Content="Tipo de ingrediente" HorizontalAlignment="Left" Margin="18.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
                 <ComboBox x:Name="cbb_TipoIngrediente" HorizontalAlignment="Left" Margin="224,526.842,0,0" VerticalAlignment="Top" Width="254" Height="23.6"/>
 
             </Grid>
-            <Grid x:Name="GridProductoVenta" Visibility="Visible" >
+            <Grid x:Name="GridProductoVenta" Visibility="Hidden" >
                 <Label Content="Precio de venta" HorizontalAlignment="Left" Margin="32.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
                 <TextBox x:Name="txb_PrecioVenta" HorizontalAlignment="Left" Margin="207.736,521.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
                 <Label Content="Foto" HorizontalAlignment="Left" Margin="32.905,621.066,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>

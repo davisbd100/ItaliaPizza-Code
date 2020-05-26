@@ -78,7 +78,7 @@ namespace ItaliaPizza
             {
                MessageBox.Show("Debe ingresar el tipo de ingrediente");
             }
-            return 1;
+            return 0;
            
         }
 
@@ -89,6 +89,7 @@ namespace ItaliaPizza
             {
                 if(tipoIngrediente == 0)
                 {
+                    RegistrarProductoingrediente();
 
                 }else if (tipoIngrediente == 1)
                 {
@@ -121,7 +122,11 @@ namespace ItaliaPizza
 
         private void RegistrarProductoingrediente()
         {
+            ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
 
+            if (productoIngredienteController.crearProductoIngrediente(txb_Nombre.Text, Convert.ToInt32(txb_Codigo.Text), txb_Descripcion.Text, float.Parse(txb_Preciounitario.Text), 
+                txb_Restricción.Text, txb_UnidadMedida.Text, txb_Ubicacion.Text,
+                Convert.ToInt32(txb_Cantidad.Text), txb_Caducidad.Text, "example") == BusinessLogic.ResultadoOperacionEnum.ResultadoOperacion.Exito) ;
         }
 
 
