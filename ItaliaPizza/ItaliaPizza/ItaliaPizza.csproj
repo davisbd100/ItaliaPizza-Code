@@ -107,6 +107,9 @@
     <Compile Include="RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RespaldarInformacion.xaml.cs">
+      <DependentUpon>RespaldarInformacion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValidarCampos.cs" />
     <Page Include="CancelarPedido.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -175,6 +178,10 @@
     <Page Include="RegistrarEmpleado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RespaldarInformacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
