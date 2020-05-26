@@ -30,15 +30,18 @@ namespace ItaliaPizza
         private void LlenarGrid()
         {
             List<Producto> productos = new List<Producto>();
-
             List<ProductoVenta> listaProductosVenta = RecuperarProductoVenta();
+            List<ProductoIngrediente> listaProductosIngrediente = RecuperarProductoIngrediente();
+            productos.AddRange(listaProductosIngrediente);
             productos.AddRange(listaProductosVenta);
             dtg_Productos.ItemsSource = productos;
         }
 
         private List<ProductoIngrediente> RecuperarProductoIngrediente()
         {
-            throw new NotImplementedException();
+            ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
+            List<ProductoIngrediente> productos = productoIngredienteController.ObtenerProductoIngrediente(0);
+            return productos;
         }
 
         private List<ProductoVenta> RecuperarProductoVenta()
