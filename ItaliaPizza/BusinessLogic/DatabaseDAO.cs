@@ -14,7 +14,7 @@ namespace BusinessLogic
         {
             ResultadoOperacionEnum.ResultadoOperacion resultado = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
             DbConnection dbConnection = new DbConnection();
-            string comando = "BACKUP DATABASE [Pizza] TO DISK " + ruta + "\\Pizza-" + DateTime.Now.ToString() + ".bak";
+            string comando = "BACKUP DATABASE Pizza TO DISK = '" + ruta + "Pizza-" + DateTime.Now.ToString("yyyy-MM-dd--HH-mm-ss") + ".bak'";
 
             using (SqlConnection sqlConnection = dbConnection.GetConnection())
             {
@@ -28,7 +28,7 @@ namespace BusinessLogic
                     }
                     resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;
                 }
-                catch (SqlException)
+                catch (SqlException e)
                 {
                     resultado = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
                 }
