@@ -29,16 +29,38 @@ namespace ItaliaPizza
 
         private void LlenarGrid()
         {
+            dtg_Productos.ItemsSource = null;
             List<Producto> productos = new List<Producto>();
+            List<ProductoVenta> listaProductosVenta = RecuperarProductoVenta();
+            List<ProductoIngrediente> listaProductosIngrediente = RecuperarProductoIngrediente();
+            productos.AddRange(listaProductosIngrediente);
+            productos.AddRange(listaProductosVenta);
+            dtg_Productos.ItemsSource = productos;
+        }
 
+        private void LlenarGridProductoVenta()
+        {
+            dtg_Productos.ItemsSource = null;
+            List<Producto> productos = new List<Producto>();
             List<ProductoVenta> listaProductosVenta = RecuperarProductoVenta();
             productos.AddRange(listaProductosVenta);
             dtg_Productos.ItemsSource = productos;
         }
 
+        private void LlenarGridIngrediente()
+        {
+            dtg_Productos.ItemsSource = null;
+            List<Producto> productos = new List<Producto>();   
+            List<ProductoIngrediente> listaProductosIngrediente = RecuperarProductoIngrediente();
+            productos.AddRange(listaProductosIngrediente);
+            dtg_Productos.ItemsSource = productos;
+        }
+
         private List<ProductoIngrediente> RecuperarProductoIngrediente()
         {
-            throw new NotImplementedException();
+            ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
+            List<ProductoIngrediente> productos = productoIngredienteController.ObtenerProductoIngrediente(0);
+            return productos;
         }
 
         private List<ProductoVenta> RecuperarProductoVenta()
@@ -46,6 +68,24 @@ namespace ItaliaPizza
             ProductoVentaController productoVentaController = new ProductoVentaController();
             List < ProductoVenta > productos = productoVentaController.ObtenerProductoVenta(0);
             return productos;
+        }
+
+        private void btn_actualizarBusqueda_Click(object sender, RoutedEventArgs e)
+        {
+            if(chkb_Ingredientes.IsChecked == true && chkb_ProductosVenta.IsChecked == true)
+            {
+                LlenarGrid();
+            }
+            else if(chkb_Ingredientes.IsChecked == true && chkb_ProductosVenta.IsChecked == false)
+            {
+                LlenarGridIngrediente();
+            }
+            else if (chkb_Ingredientes.IsChecked == false && chkb_ProductosVenta.IsChecked == true)
+            {
+                LlenarGridProductoVenta();
+            }
+
+
         }
     }
 }

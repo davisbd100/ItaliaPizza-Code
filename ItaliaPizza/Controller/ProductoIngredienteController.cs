@@ -46,7 +46,9 @@ namespace Controller
 
         public List<ProductoIngrediente> ObtenerProductoIngrediente(int rango)
         {
-            throw new NotImplementedException();
+            ProductoIngredienteDAO productoIngredienteDAO = new ProductoIngredienteDAO();
+            List<ProductoIngrediente> productoIngredientes = productoIngredienteDAO.GetProductosIngrediente(rango);
+            return productoIngredientes;
         }
     }
 }

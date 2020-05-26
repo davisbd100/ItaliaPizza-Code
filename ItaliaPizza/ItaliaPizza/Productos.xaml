@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto" MinHeight="651.333"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1003.332">
+        <Rectangle HorizontalAlignment="Left" Height="87" Margin="121,27,0,0" VerticalAlignment="Top" Width="1065">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
@@ -39,7 +39,7 @@
         </Button>
         <Label Content="EDITAR" HorizontalAlignment="Left" Margin="899.541,86.752,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="50.407"/>
         <Label Content="ELIMINAR" HorizontalAlignment="Left" Margin="1007.211,86.328,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="66.483"/>
-        <Rectangle HorizontalAlignment="Left" Height="94.879" Margin="183.057,134.298,0,0" VerticalAlignment="Top" Width="1002.61">
+        <Rectangle HorizontalAlignment="Left" Height="120" Margin="183,134,0,0" VerticalAlignment="Top" Width="1003">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
@@ -47,8 +47,8 @@
         <TextBox HorizontalAlignment="Left" Margin="296.667,145.292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Ingresa el nombre a buscar" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="28.757" Background="White"/>
         <Label Content="Buscar:" HorizontalAlignment="Left" Margin="207.057,141.341,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="37.467" FontWeight="Bold" Background="{x:Null}"/>
         <ComboBox HorizontalAlignment="Left" Height="28.645" Margin="995.167,145.405,0,0" VerticalAlignment="Top" Width="173"/>
-        <CheckBox Content="Ingredientes" HorizontalAlignment="Left" Margin="217.207,190.78,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White" FontWeight="Bold"/>
-        <CheckBox Content="Productos para venta" HorizontalAlignment="Left" Margin="391.606,190.78,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White" FontWeight="Bold"/>
+        <CheckBox x:Name="chkb_Ingredientes" Content="Ingredientes" HorizontalAlignment="Left" Margin="217.207,190.78,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White" FontWeight="Bold" IsChecked="True"  />
+        <CheckBox x:Name="chkb_ProductosVenta" Content="Productos para venta" HorizontalAlignment="Left" Margin="379,194,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White" FontWeight="Bold" IsChecked="True" />
         <Button Content="" HorizontalAlignment="Left" Height="19.209" Margin="973.833,150.849,0,0" VerticalAlignment="Top" Width="19.334" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/recursos/Buscar.png" Stretch="Uniform"/>
@@ -59,7 +59,7 @@
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Image HorizontalAlignment="Left" Height="103.842" Margin="6,10,0,0" VerticalAlignment="Top" Width="110.001" Source="LogoItaliaPizza.png"/>
+        <Image HorizontalAlignment="Left" Height="103.842" Margin="6,10,0,0" VerticalAlignment="Top" Width="110.001" Source="Recursos/LogoItaliaPizza.png"/>
         <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,130.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
             <Button.Background>
                 <ImageBrush ImageSource="/recursos/Producto.png" Stretch="Uniform"/>
@@ -90,7 +90,7 @@
                 <ImageBrush ImageSource="/recursos/Empleados.png"/>
             </Button.Background>
         </Button>
-        <Image HorizontalAlignment="Left" Height="87.11" Margin="125.001,26.732,0,0" VerticalAlignment="Top" Width="120.251" Source="/recursos/Empleados.png"/>
+        <Image HorizontalAlignment="Left" Height="87.11" Margin="125.001,26.732,0,0" VerticalAlignment="Top" Width="120.251" Source="/recursos/Producto.png"/>
         <Label Content="PRODUCTOS" HorizontalAlignment="Left" Margin="31.832,185.764,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8" RenderTransformOrigin="0.515,0.466"/>
         <Label Content="RECETAS" HorizontalAlignment="Left" Margin="39.832,259.383,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
         <Label Content="INVENTARIO" HorizontalAlignment="Left" Margin="32.936,331.447,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
@@ -102,9 +102,7 @@
                 <DataGridTextColumn Header="Código" Binding="{Binding Código}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
             </DataGrid.Columns>
-
-
-
         </DataGrid>
+        <Button x:Name="btn_actualizarBusqueda" Content="Actualizar" HorizontalAlignment="Left" Margin="328,220,0,0" VerticalAlignment="Top" Width="92" Height="29" Click="btn_actualizarBusqueda_Click" />
     </Grid>
 </Window>
