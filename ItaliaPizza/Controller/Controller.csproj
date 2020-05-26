@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDeDatosController.cs" />
+    <Compile Include="InventarioController.cs" />
     <Compile Include="PedidoController.cs" />
     <Compile Include="ProductoIngredienteController.cs" />
     <Compile Include="ProductoVentaController.cs" />
@@ -55,6 +57,9 @@
       <Project>{3a363472-3787-445b-94a0-f67a532341c9}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,7 @@
 ﻿using DatabaseConnection;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -164,6 +165,50 @@ namespace BusinessLogic
             }
 
             return inventarios;
+        }
+
+        public List<DataAccess.Inventario> ObtenerTodosLosInventarios()
+        {
+            List<DataAccess.Inventario> inventarios = new List<DataAccess.Inventario>();
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var inventario in context.Inventario)
+                    {
+                        inventario.Producto1 = inventario.Producto1;
+                        inventarios.Add(inventario);
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los Inventarios");
+                }
+            }
+
+            return inventarios;
+        }
+        public ResultadoOperacion ActualizarInventario(List<DataAccess.Inventario> inventarios)
+        {
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var inventario in context.Inventario)
+                    {
+                        DataAccess.Inventario tempInventario = inventarios.FirstOrDefault(b => b.idInventario == inventario.idInventario);
+                        inventario.ExistenciaInicial = tempInventario.ExistenciaTotal;
+                    }
+                    context.SaveChanges();
+                }
+                catch (EntityException)
+                {
+                    resultado = ResultadoOperacion.FalloSQL;
+                }
+            }
+
+            return resultado;
         }
     }
 }

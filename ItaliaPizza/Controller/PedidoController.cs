@@ -19,5 +19,28 @@ namespace Controller
             resultado = pedidoDAO.CambiarEstadoPedido(pedido, pedidoDAO.ObtenerEstatusPorNombre("Cancelado"));
             return resultado;
         }
+
+        public List<DataAccess.Pedido> ObtenerPedidosCocina()
+        {
+            List<DataAccess.Pedido> resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.ObtenerListaPedidos();
+            foreach (var item in resultado)
+            {
+                if (item.Estatus1.NombreEstatus != "En espera" || item.Estatus1.NombreEstatus != "En Preparación")
+                {
+                    resultado.Remove(item);
+                }
+            }
+            return resultado;
+        }
+
+        public List<DataAccess.Pedido> ObtenerPedidosVendedor()
+        {
+            List<DataAccess.Pedido> resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.ObtenerListaPedidos();
+            return resultado;
+        }
     }
 }

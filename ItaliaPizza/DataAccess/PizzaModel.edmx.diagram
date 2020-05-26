@@ -42,6 +42,7 @@
         <AssociationConnector Association="PizzaModel.FK__ProductoV__TipoP__4CA06362" ManuallyRouted="false" />
         <AssociationConnector Association="PizzaModel.FK__RecetaIng__idRec__4F7CD00D" ManuallyRouted="false" />
         <AssociationConnector Association="PizzaModel.FK__Ubicacion__Ubica__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="PizzaModel.FK__Inventari__Produ__59904A2C" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
