@@ -27,7 +27,7 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta FULL OUTER JOIN dbo.ProductoIngrediente ON dbo.ProductoVenta.Codigo = dbo.ProductoIngrediente.Codigo ORDER BY Nombre LIMIT 20 OFFSET @Rango", connection))
+                using (SqlCommand command = new SqlCommand("select * from dbo.Producto order by Nombre offset @Rango rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
