@@ -16,8 +16,8 @@ namespace DatabaseConnection
         public DbConnection()
 
         {
-            connectionString = ConfigurationManager.ConnectionStrings["ConnectionToSQL"].ConnectionString;
-
+            connectionString = ConfigurationManager.ConnectionStrings["SqlConnection"].ConnectionString;
+            
             connection = new SqlConnection(connectionString);
 
         }

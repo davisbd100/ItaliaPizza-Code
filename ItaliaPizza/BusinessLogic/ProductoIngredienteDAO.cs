@@ -10,9 +10,9 @@ using static BusinessLogic.ResultadoOperacionEnum;
 namespace BusinessLogic
 {
 
-    class ProductoIngredienteDAO : IProductoIngrediente
+   public class ProductoIngredienteDAO : IProductoIngrediente
     {
-        public ResultadoOperacionEnum.ResultadoOperacion AddProductoIngrediente(ProductoIngrediente productoIngrediente)
+        public ResultadoOperacionEnum.ResultadoOperacion AddProductoIngrediente(ProductoIngrediente productoIngrediente, Inventario inventario)
         {
             const int VALORES_DUPLICADOS = 2601;
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
@@ -38,10 +38,27 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.ProductoIngrediente VALUES (@idProductoIngrediente, @TipoIngrediente";
+                        "INSERT INTO dbo.ProductoIngrediente VALUES (@idProductoIngrediente, @TipoIngrediente)";
                     command.Parameters.Add(new SqlParameter("@idProductoIngrediente", productoIngrediente.Código));
                     command.Parameters.Add(new SqlParameter("@TipoIngrediente", productoIngrediente.tipoIngrediente));
+                    command.ExecuteNonQuery();
 
+                    command.CommandText =
+                         "INSERT INTO dbo.ProductoInventario VALUES (@Inventario, @Producto, @CantidadIngreso, @PrecioCompra, @FechaIngreso, @Caducidad)";
+                    command.Parameters.Add(new SqlParameter("@Inventario", inventario.idInventario));
+                    command.Parameters.Add(new SqlParameter("@Producto", inventario.Producto.Código));
+                    command.Parameters.Add(new SqlParameter("@CantidadIngreso", inventario.CantidadIngreso));
+                    command.Parameters.Add(new SqlParameter("@PrecioCompra", inventario.PrecioCompra));
+                    command.Parameters.Add(new SqlParameter("@FechaIngreso", inventario.FechaIngreso));
+                    command.Parameters.Add(new SqlParameter("@Caducidad", inventario.Caducidad));
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida)";
+                    command.Parameters.Add(new SqlParameter("@idInventario", inventario.idInventario));
+                    command.Parameters.Add(new SqlParameter("@ExistenciaTotal", inventario.ExistenciaTotal));
+                    command.Parameters.Add(new SqlParameter("@UnidadMedida", inventario.UnidadDeMedida));
+                    command.ExecuteNonQuery();
 
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
@@ -154,14 +171,15 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoIngrediente ORDER BY Nombre LIMIT 20 OFFSET @Rango", connection))
+                using (SqlCommand command = new SqlCommand("select Codigo, Nombre  from dbo.Producto left join dbo.ProductoVenta on dbo.Producto.Codigo " +
+                    "= dbo.ProductoVenta.idProductoIngrediente order by Nombre offset 0 rows fetch next 5 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         ProductoIngrediente productoIngrediente = new ProductoIngrediente();
-                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         productoIngrediente.Nombre = reader["Nombre"].ToString();
 
                         listaProductos.Add(productoIngrediente);
@@ -193,7 +211,7 @@ namespace BusinessLogic
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         productoIngrediente.Descripción = reader["Descripcion"].ToString();
                         productoIngrediente.Nombre = reader["Nombre"].ToString();
                         productoIngrediente.Restricción = reader["Restriccion"].ToString();
@@ -228,7 +246,7 @@ namespace BusinessLogic
                     while (reader.Read())
                     {
                         ProductoIngrediente productoIngrediente = new ProductoIngrediente();
-                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         productoIngrediente.Nombre = reader["Nombre"].ToString();
 
                         listaProductos.Add(productoIngrediente);

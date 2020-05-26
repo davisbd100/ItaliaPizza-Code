@@ -44,6 +44,8 @@
     <Compile Include="BaseDeDatosController.cs" />
     <Compile Include="InventarioController.cs" />
     <Compile Include="PedidoController.cs" />
+    <Compile Include="ProductoIngredienteController.cs" />
+    <Compile Include="ProductoVentaController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
