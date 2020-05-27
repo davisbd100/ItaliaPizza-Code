@@ -59,5 +59,7 @@
         <Label Content="Colonia:" HorizontalAlignment="Left" Margin="89,508,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
         <Label Content="Fecha de ultimo acceso:" HorizontalAlignment="Left" Margin="507,407,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="16" RenderTransformOrigin="0.779,1.457"/>
         <TextBox x:Name="textBoxFecha" HorizontalAlignment="Left" Margin="507,438,0,0" VerticalAlignment="Top" Width="195" FontFamily="Calibri Light" FontSize="22" IsReadOnly="True"/>
+        <TextBox x:Name="textBoxIdEmpleado" HorizontalAlignment="Left" Margin="547,97,0,0" VerticalAlignment="Top" Width="179" FontFamily="Calibri Light" FontSize="22" IsReadOnly="True"/>
+        <Label Content="ID:" HorizontalAlignment="Left" Margin="508,89,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
     </Grid>
 </Window>

@@ -7,9 +7,9 @@ namespace Controller
 {
 	public class EmpleadoController
 	{
-		public ResultadoOperacion AgregarEmpleado(String nombre, String apellido,
+		public ResultadoOperacion AgregarEmpleado(String idPersona, String nombre, String apellido,
 			String telefono, String email, String ciudad, String calle, String numero,
-			String colonia, String codigoPostal, String usuario, String contrasena, 
+			String colonia, String codigoPostal, String idEmpleado, String usuario, String contrasena, 
 			String tipoEmpleado)
 		{
 			ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
@@ -17,6 +17,7 @@ namespace Controller
 			if (GetEmpleadoByUsername(usuario).NombreUsuario == null)
 			{
 				Empleado empleado = new Empleado();
+				empleado.idPersona = idPersona;
 				empleado.Nombre = nombre;
 				empleado.Apellido = apellido;
 				empleado.Telefono = telefono;

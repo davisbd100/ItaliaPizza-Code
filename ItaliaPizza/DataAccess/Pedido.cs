@@ -27,8 +27,6 @@ namespace DataAccess
         public Nullable<int> Cliente { get; set; }
         public Nullable<int> Empleado { get; set; }
     
-        public virtual Cliente Cliente1 { get; set; }
-        public virtual Empleado Empleado1 { get; set; }
         public virtual Estatus Estatus1 { get; set; }
         public virtual PedidoDomicilio PedidoDomicilio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

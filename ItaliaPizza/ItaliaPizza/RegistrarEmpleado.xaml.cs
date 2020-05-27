@@ -37,8 +37,8 @@ namespace ItaliaPizza
         private CheckResult ValidarCamposLlenos()
         {
             CheckResult check = CheckResult.Failed;
-            if (comboBoxTipoEmpleado.Text == String.Empty || textBoxNombre.Text == String.Empty || 
-                textBoxApellido.Text == String.Empty || textBoxTelefono.Text == String.Empty || 
+            if (comboBoxTipoEmpleado.Text == String.Empty || textBoxNombre.Text == String.Empty ||
+                textBoxApellido.Text == String.Empty || textBoxTelefono.Text == String.Empty ||
                 textBoxCorreo.Text == String.Empty || textBoxCiudad.Text == String.Empty ||
                 textBoxCalle.Text == String.Empty || textBoxNúmero.Text == String.Empty ||
                 textBoxColonia.Text == String.Empty || textBoxCodigoPostal.Text == String.Empty)
@@ -104,7 +104,7 @@ namespace ItaliaPizza
             int longitudNombre = nombre.Length;
             string usuarioAleatorio = string.Empty;
 
-            for(int i = 0; i < longitudNombreUsuario; i++)
+            for (int i = 0; i < longitudNombreUsuario; i++)
             {
                 nombreUsuario = nombre[random.Next(longitudNombre)];
                 usuarioAleatorio += nombreUsuario.ToString();
@@ -129,6 +129,22 @@ namespace ItaliaPizza
             textBoxContraseña.Text = contraseniaAleatoria;
         }
 
+        private void GenerarIdEmpleado()
+        {
+            Random rdn = new Random();
+            string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890%$#@";
+            int longitud = caracteres.Length;
+            char letra;
+            int longitudId = 10;
+            string idAleatorio = string.Empty;
+            for (int i = 0; i < longitudId; i++)
+            {
+                letra = caracteres[rdn.Next(longitud)];
+                idAleatorio+= letra.ToString();
+            }
+            textBoxIdEmpleado.Text = comboBoxTipoEmpleado.Text.ToUpper() + idAleatorio;
+        }
+
         private void CancelarButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("¿Está seguro que desea cancelar?", "Cancelar", MessageBoxButton.YesNo);
@@ -146,23 +162,27 @@ namespace ItaliaPizza
 
         private void RegistrarButton_Click(object sender, RoutedEventArgs e)
         {
-            string nombre = textBoxNombre.Text;
-            string apellido = textBoxApellido.Text;
-            string telefono = textBoxTelefono.Text;
-            string correo = textBoxCorreo.Text;
-            string ciudad = textBoxCiudad.Text;
-            string calle = textBoxCalle.Text;
-            string numero = textBoxNúmero.Text;
-            string colonia = textBoxColonia.Text;
-            string codigoPostal = textBoxCodigoPostal.Text;
-            string usuario = textBoxUsuario.Text;
-            string contraseña = textBoxContraseña.Text;
-            string tipoEmpleado = comboBoxTipoEmpleado.Text;
+            string idPersona = textBoxIdEmpleado.Text.Trim();
+            string nombre = textBoxNombre.Text.Trim() ;
+            string apellido = textBoxApellido.Text.Trim();
+            string telefono = textBoxTelefono.Text.Trim();
+            string correo = textBoxCorreo.Text.Trim();
+            string ciudad = textBoxCiudad.Text.Trim();
+            string calle = textBoxCalle.Text.Trim();
+            string numero = textBoxNúmero.Text.Trim();
+            string colonia = textBoxColonia.Text.Trim();
+            string codigoPostal = textBoxCodigoPostal.Text.Trim();
+            string idEmpleado = textBoxIdEmpleado.Text.Trim();
+            string usuario = textBoxUsuario.Text.Trim();
+            string contraseña = textBoxContraseña.Text.Trim();
+            string tipoEmpleado = comboBoxTipoEmpleado.Text.Trim();
 
             if (ValidarCampos() == CheckResult.Passed)
             {
                 EmpleadoController empleadoController = new EmpleadoController();
-                ComprobarResultado((ResultadoOperacion)empleadoController.AgregarEmpleado(nombre, apellido, telefono, correo, ciudad, calle, numero, colonia, codigoPostal, usuario, contraseña, tipoEmpleado));
+                ComprobarResultado((ResultadoOperacion)empleadoController.AgregarEmpleado(
+                    idPersona, nombre, apellido, telefono, correo, ciudad, calle, numero, 
+                    colonia, codigoPostal, idEmpleado, usuario, contraseña, tipoEmpleado));
             }
         }
 
@@ -193,7 +213,7 @@ namespace ItaliaPizza
             {
                 GenerarUsuario(comboBoxTipoEmpleado.Text, textBoxNombre.Text);
                 GenerarContraseñaAleatoria();
-
+                GenerarIdEmpleado();
                 DateTime fechaAcceso = DateTime.Now;
                 textBoxFecha.Text = DateTime.Now.ToString();
                 RegistrarButton.IsEnabled = true;
@@ -201,3 +221,4 @@ namespace ItaliaPizza
         }
     }
 }
+

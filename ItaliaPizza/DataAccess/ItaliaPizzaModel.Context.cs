@@ -13,10 +13,10 @@ namespace DataAccess
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ItaliaPizzaEntities : DbContext
+    public partial class ItaliaPizzadbEntities : DbContext
     {
-        public ItaliaPizzaEntities()
-            : base("name=ItaliaPizzaEntities")
+        public ItaliaPizzadbEntities()
+            : base("name=ItaliaPizzadbEntities")
         {
         }
     
@@ -36,7 +36,6 @@ namespace DataAccess
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<ProductoIngrediente> ProductoIngrediente { get; set; }
         public virtual DbSet<ProductoInventario> ProductoInventario { get; set; }
-        public virtual DbSet<ProductoVenta> ProductoVenta { get; set; }
         public virtual DbSet<Receta> Receta { get; set; }
         public virtual DbSet<RecetaIngrediente> RecetaIngrediente { get; set; }
         public virtual DbSet<TipoProducto> TipoProducto { get; set; }

@@ -20,6 +20,5 @@ namespace DataAccess
         public Nullable<double> Precio { get; set; }
     
         public virtual Pedido Pedido { get; set; }
-        public virtual ProductoVenta ProductoVenta { get; set; }
     }
 }

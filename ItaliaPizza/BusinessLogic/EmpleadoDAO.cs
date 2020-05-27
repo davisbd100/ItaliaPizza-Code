@@ -11,6 +11,8 @@ namespace BusinessLogic
         public ResultadoOperacion AgregarEmpleado(Empleado empleado)
         {
             const int VALORES_DUPLICADOS = 2601;
+            //string FechaUltimoAcceso = DateTime.Now.Date.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
             DbConnection dbconnection = new DbConnection();
 
@@ -26,7 +28,8 @@ namespace BusinessLogic
                 try
                 {
                     command.CommandText =
-                         "INSERT INTO dbo.Persona VALUES (@Nombre, @Apellido, @Telefono, @Email, @Calle, @Numero, @CodigoPostal, @Colonia, @Ciudad)";
+                         "INSERT INTO dbo.Persona VALUES (@idPersona, @Nombre, @Apellido, @Telefono, @Email, @Calle, @Numero, @CodigoPostal, @Colonia, @Ciudad)";
+                    command.Parameters.Add(new SqlParameter("@idPersona", empleado.idPersona));
                     command.Parameters.Add(new SqlParameter("@Nombre", empleado.Nombre));
                     command.Parameters.Add(new SqlParameter("@Apellido", empleado.Apellido));
                     command.Parameters.Add(new SqlParameter("@Telefono", empleado.Telefono));
@@ -39,12 +42,12 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso, @TipoEmpleado)";
-                    command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idPersona));
+                        "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @TipoEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso)";
+                    command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idEmpleado));
+                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
                     command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
                     command.Parameters.Add(new SqlParameter("@Contrasena", empleado.Contraseña));
                     command.Parameters.Add(new SqlParameter("@FechaUltimoAcceso", empleado.FechaUltimoAcceso));
-                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
                     command.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -62,6 +65,7 @@ namespace BusinessLogic
                             break;
                         default:
                             resultado = ResultadoOperacion.FalloSQL;
+                            Console.WriteLine("La tonta fecha es: " + empleado.FechaUltimoAcceso.ToString());
                             Console.WriteLine("El problema es: " + e);
                             break;
                     }
@@ -171,7 +175,7 @@ namespace BusinessLogic
                     while (reader.Read())
                     {
                         Empleado empleado = new Empleado();
-                        empleado.idPersona = int.Parse(reader["idPersona"].ToString());
+                        empleado.idPersona = reader["idPersona"].ToString();
                         empleado.Nombre = reader["Nombre"].ToString();
                         empleado.Apellido = reader["Apellido"].ToString();
                         empleado.Telefono = reader["Telefono"].ToString();

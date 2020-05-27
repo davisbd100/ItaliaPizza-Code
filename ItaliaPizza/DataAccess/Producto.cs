@@ -29,7 +29,6 @@ namespace DataAccess
         public virtual ProductoIngrediente ProductoIngrediente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductoInventario> ProductoInventario { get; set; }
-        public virtual ProductoVenta ProductoVenta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UbicacionProducto> UbicacionProducto { get; set; }
     }

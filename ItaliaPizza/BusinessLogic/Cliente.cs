@@ -8,6 +8,7 @@ namespace BusinessLogic
 {
     public class Cliente : Persona
     {
+        String idCliente;
 
         public Cliente()
         {
