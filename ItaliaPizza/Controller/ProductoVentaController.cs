@@ -64,5 +64,15 @@ namespace Controller
             List < ProductoVenta > productoVentas = productoVentaDAO.GetProductosVenta(rango);
             return productoVentas;
         }
+
+
+        public ProductoVenta BuscarProductoVenta(int id)
+        {
+            ProductoVentaDAO productoVentaDAO = new ProductoVentaDAO();
+
+            ProductoVenta productoVenta = productoVentaDAO.ObtenerProductoVentaPorid(id);
+            return productoVenta;
+ 
+        }
     }
 }

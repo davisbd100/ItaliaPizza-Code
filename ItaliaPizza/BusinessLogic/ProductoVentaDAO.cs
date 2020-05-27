@@ -197,7 +197,7 @@ namespace BusinessLogic
         }
 
 
-        public ProductoVenta ObtenerProductoVentaPorid(string codigo)
+        public ProductoVenta ObtenerProductoVentaPorid(int codigo)
         {
 
             ProductoVenta productoVenta = new ProductoVenta();
@@ -212,19 +212,20 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta WHERE idProductoVenta = @Codigo", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta left join dbo.Producto on " +
+                    " dbo.Producto.Codigo = dbo.ProductoVenta.idProductoVenta WHERE idProductoVenta = @Codigo", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Codigo", codigo));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        productoVenta.Código= Convert.ToInt32( reader["Codigo"].ToString());
+                        productoVenta.Código =  (int)reader["Codigo"];
                         productoVenta.Descripción = reader["Descripcion"].ToString();
                         productoVenta.Nombre = reader["Nombre"].ToString();
                         productoVenta.Restricción = reader["Restriccion"].ToString();
 
                         productoVenta.PrecioPúblico = float.Parse(reader["PrecioPublico"].ToString());
-                        productoVenta.TipoProducto.IdTipoProducto = int.Parse(reader["TipoProducto"].ToString());
+                        //productoVenta.TipoProducto.IdTipoProducto = int.Parse(reader["TipoProducto"].ToString());
                         productoVenta.FotoProducto = reader["FotoProducto"].ToString();
                     }
                 }

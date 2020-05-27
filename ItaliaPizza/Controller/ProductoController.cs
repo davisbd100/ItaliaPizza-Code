@@ -26,7 +26,6 @@ namespace Controller
         {
             ProductoDAO productoDAO = new ProductoDAO();
             List < Producto >  productos = productoDAO.BuscarProducto(busqueda + "%");
-
             return productos;
         }
     }
