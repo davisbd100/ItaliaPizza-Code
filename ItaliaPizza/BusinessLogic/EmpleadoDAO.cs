@@ -166,7 +166,7 @@ namespace BusinessLogic
             return empleado;
         }
 
-        public List<Empleado> GetEmpleados()
+        public List<Empleado> GetEmpleados(int rango)
         {
             List<Empleado> listaEmpleados = new List<Empleado>();
             DbConnection dbconnection = new DbConnection();
@@ -181,9 +181,12 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Empleado", connection))
+                using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
+                    "Numero, CodigoPostal, Colonia, Ciudad, TipoEmpleado, NombreUsuario, FechaUltimoAcceso FROM dbo.Persona left join " +
+                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado order by Nombre offset @Rango " +
+                    "rows fetch next 20 rows only", connection))
                 {
-                    command.Parameters.Add(new SqlParameter());
+                    command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -197,10 +200,10 @@ namespace BusinessLogic
                         empleado.Numero = reader["Numero"].ToString();
                         empleado.CodigoPostal = reader["CodigoPostal"].ToString();
                         empleado.Colonia = reader["Colonia"].ToString();
-                        empleado.NombreUsuario = reader["NombreUsuario"].ToString();
-                        empleado.Contraseña = reader["Contrasena"].ToString();
-                        empleado.FechaUltimoAcceso = DateTime.Parse(reader["FechaUltimoAcceso"].ToString());
+                        empleado.Ciudad = reader["Ciudad"].ToString();
                         empleado.TipoEmpleado = reader["TipoEmpleado"].ToString();
+                        empleado.NombreUsuario = reader["NombreUsuario"].ToString();
+                        empleado.FechaUltimoAcceso = DateTime.Parse(reader["FechaUltimoAcceso"].ToString());
                         listaEmpleados.Add(empleado);
                     }
                 }

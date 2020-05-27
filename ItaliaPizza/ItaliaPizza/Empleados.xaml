@@ -103,7 +103,23 @@
         <Label Content="VENTAS" HorizontalAlignment="Left" Margin="41.832,404.446,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
         <Label Content="CLIENTES" HorizontalAlignment="Left" Margin="39.165,478.699,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
         <Label Content="EMPLEADOS" HorizontalAlignment="Left" Margin="33.162,553.035,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
-        <DataGrid x:Name="DataGridEmpleados" HorizontalAlignment="Left" Height="379" Margin="185,235,0,0" VerticalAlignment="Top" Width="1003"/>
-
+        <DataGrid x:Name="DataGridEmpleados" HorizontalAlignment="Left" Height="379" Margin="185,235,0,0" VerticalAlignment="Top" Width="1003" FontFamily="Calibri Light" FontSize="16"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Background="White" Foreground="#FF6D7276">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding idPersona}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Apellido" Binding="{Binding Apellido}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Correo" Binding="{Binding Email}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Calle" Binding="{Binding Calle}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Número" Binding="{Binding Numero}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Colonia" Binding="{Binding Colonia}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Codigo Postal" Binding="{Binding CodigoPostal}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Ciudad" Binding="{Binding Ciudad}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Tipo empleado" Binding="{Binding TipoEmpleado}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Usuario" Binding="{Binding NombreUsuario}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Fecha último acceso" Binding="{Binding FechaUltimoAcceso}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock x:Name="TextBlockPagina" HorizontalAlignment="Left" Height="33" Margin="185,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="920" Text="1"/>
     </Grid>
 </Window>

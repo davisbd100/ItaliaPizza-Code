@@ -1,6 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
+using BusinessLogic;
 using Controller;
 
 namespace ItaliaPizza
@@ -13,22 +17,16 @@ namespace ItaliaPizza
         public Empleados()
         {
             InitializeComponent();
-            //UpdateGrid();
+            LlenarGrid();
         }
 
         /// <summary>Actualiza el grid si contiene datos.</summary>
-        private void UpdateGrid()
+        private void LlenarGrid()
         {
-            //EmpleadoController empleadoController = new EmpleadoController();
-            //DataGridEmpleados.ItemsSource = null;
-            //if (empleadoController.GetEmpleado().Any())
-            //{
-            //    DataGridEmpleados.ItemsSource = empleadoController.GetEmpleado();
-            //}
-            //else
-            //{
-            //    this.Close();
-            //}
+            DataGridEmpleados.ItemsSource = null;
+            EmpleadoController empleadoController = new EmpleadoController();
+            List<Empleado> empleados = empleadoController.GetEmpleado(Convert.ToInt32(TextBlockPagina.Text.ToString()));
+            DataGridEmpleados.ItemsSource = empleados;
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)

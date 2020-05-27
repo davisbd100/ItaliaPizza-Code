@@ -49,10 +49,14 @@ namespace Controller
 			return empleadoDAO.GetEmpleadoByUsername(username);
 		}
 
-		public List<Empleado> GetEmpleado()
+		public List<Empleado> GetEmpleado(int rango)
 		{
+			const int Num_RESULTADOS = 19;
+			rango -= 1;
+			rango *= Num_RESULTADOS;
+
 			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-			List<Empleado> empleados = empleadoDAO.GetEmpleados();
+			List<Empleado> empleados = empleadoDAO.GetEmpleados(rango);
 			return empleados;
 		}
 	}
