@@ -91,7 +91,9 @@
     </Compile>
         <Compile Include="Productos.xaml.cs">
       <DependentUpon>Productos.xaml</DependentUpon>
-    <Compile Include="InventarioActual.xaml.cs">
+        </Compile>
+
+        <Compile Include="InventarioActual.xaml.cs">
       <DependentUpon>InventarioActual.xaml</DependentUpon>
     </Compile>
     <Compile Include="InventarioFinal.xaml.cs">
@@ -111,6 +113,7 @@
     </Compile>
     <Compile Include="RegistrarProducto.xaml.cs">
       <DependentUpon>RegistrarProducto.xaml</DependentUpon>
+    </Compile>
 
     <Compile Include="RespaldarInformacion.xaml.cs">
       <DependentUpon>RespaldarInformacion.xaml</DependentUpon>          
@@ -164,8 +167,9 @@
        <Page Include="Productos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+       </Page>
 
-    <Page Include="InventarioActual.xaml">
+       <Page Include="InventarioActual.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -192,6 +196,7 @@
     <Page Include="RegistrarProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
 
     <Page Include="RespaldarInformacion.xaml">
       <Generator>MSBuild:Compile</Generator>
