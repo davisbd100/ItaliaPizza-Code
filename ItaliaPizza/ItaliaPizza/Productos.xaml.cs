@@ -87,5 +87,14 @@ namespace ItaliaPizza
             ActualizarLista();
 
         }
+
+        private void btn_buscar_Click(object sender, RoutedEventArgs e)
+        {
+            ProductoController productoController = new ProductoController();
+            List < Producto > productos = productoController.Buscarproducto(txb_busqueda.Text);
+            dtg_Productos.ItemsSource = null;
+            dtg_Productos.ItemsSource = productos;
+
+        }
     }
 }

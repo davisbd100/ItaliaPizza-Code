@@ -44,12 +44,12 @@
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
-        <TextBox HorizontalAlignment="Left" Margin="296.667,145.292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Ingresa el nombre a buscar" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="28.757" Background="White"/>
+        <TextBox x:Name="txb_busqueda" HorizontalAlignment="Left" Margin="296.667,145.292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="28.757" Background="White"/>
         <Label Content="Buscar:" HorizontalAlignment="Left" Margin="207.057,141.341,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="37.467" FontWeight="Bold" Background="{x:Null}"/>
         <ComboBox HorizontalAlignment="Left" Height="28.645" Margin="995.167,145.405,0,0" VerticalAlignment="Top" Width="173"/>
         <CheckBox x:Name="chkb_Ingredientes" Content="Ingredientes" HorizontalAlignment="Left" Margin="217.207,190.78,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White" FontWeight="Bold" IsChecked="True"  />
         <CheckBox x:Name="chkb_ProductosVenta" Content="Productos para venta" HorizontalAlignment="Left" Margin="379,194,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White" FontWeight="Bold" IsChecked="True" />
-        <Button Content="" HorizontalAlignment="Left" Height="19.209" Margin="973.833,150.849,0,0" VerticalAlignment="Top" Width="19.334" BorderBrush="{x:Null}">
+        <Button x:Name="btn_buscar" HorizontalAlignment="Left" Height="19.209" Margin="973.833,150.849,0,0" VerticalAlignment="Top" Width="19.334" BorderBrush="{x:Null}"  Click="btn_buscar_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/recursos/Buscar.png" Stretch="Uniform"/>
             </Button.Background>
