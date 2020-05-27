@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 using DatabaseConnection;
 using static BusinessLogic.ResultadoOperacionEnum;
 
@@ -8,6 +10,19 @@ namespace BusinessLogic
 {
     public class EmpleadoDAO : IEmpleado
     {
+        public String PassHash(String data)
+        {
+            SHA1 sha = SHA1.Create();
+            byte[] hashData = sha.ComputeHash(Encoding.Default.GetBytes(data));
+            StringBuilder stringBuilderValue = new StringBuilder();
+
+            for (int i = 0; i < hashData.Length; i++)
+            {
+                stringBuilderValue.Append(hashData[i].ToString());
+            }
+            return stringBuilderValue.ToString();
+        }
+
         public ResultadoOperacion AgregarEmpleado(Empleado empleado)
         {
             const int VALORES_DUPLICADOS = 2601;
@@ -46,7 +61,7 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idEmpleado));
                     command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
                     command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
-                    command.Parameters.Add(new SqlParameter("@Contrasena", empleado.Contraseña));
+                    command.Parameters.Add(new SqlParameter("@Contrasena", PassHash(empleado.Contraseña)));
                     command.Parameters.Add(new SqlParameter("@FechaUltimoAcceso", empleado.FechaUltimoAcceso));
                     command.ExecuteNonQuery();
 
@@ -65,8 +80,6 @@ namespace BusinessLogic
                             break;
                         default:
                             resultado = ResultadoOperacion.FalloSQL;
-                            Console.WriteLine("La tonta fecha es: " + empleado.FechaUltimoAcceso.ToString());
-                            Console.WriteLine("El problema es: " + e);
                             break;
                     }
                 }

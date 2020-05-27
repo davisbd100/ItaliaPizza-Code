@@ -55,19 +55,29 @@ namespace ItaliaPizza
                     this.Close();
                     break;
                 case "Administrador BD":
-                    
+                    Empleados empleadosA = new Empleados();
+                    empleadosA.Show();
+                    this.Close();
                     break;
                 case "Cajero":
-                    
+                    Empleados empleadosC = new Empleados();
+                    empleadosC.Show();
+                    this.Close();
                     break;
                 case "Call Center":
-
+                    Empleados empleadosCC = new Empleados();
+                    empleadosCC.Show();
+                    this.Close();
                     break;
                 case "Cocinero":
-
+                    Empleados empleadosCo = new Empleados();
+                    empleadosCo.Show();
+                    this.Close();
                     break;
                 case "Mesero":
-
+                    Empleados empleadosM = new Empleados();
+                    empleadosM.Show();
+                    this.Close();
                     break;
             }
         }

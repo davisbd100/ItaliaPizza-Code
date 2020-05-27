@@ -17,9 +17,6 @@ namespace AutenticacionInicioSesion
             PasswordIncorrect
         }
 
-        /// <summary>Hashea un parametro ingresado.</summary>
-        /// <param name="data">El parametro.</param>
-        /// <returns>El parametro en SHA1</returns>
         private String PassHash(String data)
         {
             SHA1 sha = SHA1.Create();
@@ -44,7 +41,7 @@ namespace AutenticacionInicioSesion
                 using (SqlCommand command = new SqlCommand("SELECT [TipoEmpleado] FROM [dbo].[Empleado] WHERE NombreUsuario = @NombreUsuario AND Contrasena = @Contraseña", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@NombreUsuario", user));
-                    command.Parameters.Add(new SqlParameter("@Contraseña", pass));
+                    command.Parameters.Add(new SqlParameter("@Contraseña", PassHash(pass)));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -76,7 +73,7 @@ namespace AutenticacionInicioSesion
                 using (SqlCommand command = new SqlCommand("SELECT [TipoEmpleado] FROM [dbo].[Empleado] WHERE NombreUsuario = @NombreUsuario AND Contrasena = @Contraseña", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@NombreUsuario", user));
-                    command.Parameters.Add(new SqlParameter("@Contraseña", pass));
+                    command.Parameters.Add(new SqlParameter("@Contraseña", PassHash(pass)));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
@@ -99,7 +96,7 @@ namespace AutenticacionInicioSesion
                 using (SqlCommand command = new SqlCommand("SELECT [NombreUsuario] FROM [dbo].[Empleado] WHERE NombreUsuario = @NombreUsuario AND Contrasena = @Contraseña", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@NombreUsuario", user));
-                    command.Parameters.Add(new SqlParameter("@Contraseña", pass));
+                    command.Parameters.Add(new SqlParameter("@Contraseña", PassHash(pass)));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
