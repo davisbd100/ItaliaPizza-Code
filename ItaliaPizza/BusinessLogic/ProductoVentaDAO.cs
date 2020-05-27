@@ -248,7 +248,7 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta WHERE Nombre LIKE @Busqueda", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Producto WHERE Nombre LIKE @Busqueda", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
                     SqlDataReader reader = command.ExecuteReader();
