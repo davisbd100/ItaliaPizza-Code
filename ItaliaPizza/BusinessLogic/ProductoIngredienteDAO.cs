@@ -172,7 +172,7 @@ namespace BusinessLogic
                     throw (ex);
                 }
                 using (SqlCommand command = new SqlCommand("select Codigo, Nombre  from dbo.ProductoIngrediente left join dbo.Producto  " +
-                    "on dbo.Producto.Codigo = dbo.ProductoIngrediente.idProductoIngrediente order by Nombre offset 0 rows fetch next 5 rows only", connection))
+                    "on dbo.Producto.Codigo = dbo.ProductoIngrediente.idProductoIngrediente order by Nombre offset @Rango rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
