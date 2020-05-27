@@ -57,8 +57,10 @@ namespace Controller
 
         public List<ProductoVenta> ObtenerProductoVenta(int rango)
         {
+            const int NUM_RESULTADOS = 19;
+            rango -= 1;
+            rango *= NUM_RESULTADOS;
             ProductoVentaDAO productoVentaDAO = new ProductoVentaDAO();
-
             List < ProductoVenta > productoVentas = productoVentaDAO.GetProductosVenta(rango);
             return productoVentas;
         }
