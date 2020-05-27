@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrototiposItaliaPizza"
         mc:Ignorable="d"
-        Title="Productos" Height="680" Width="1280" Icon="/recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="Productos" Height="680" Width="1280" Icon="/recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="/recursos/FondoInicioPizza.jpg"/>
     </Window.Background>
@@ -104,5 +104,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="btn_actualizarBusqueda" Content="Actualizar" HorizontalAlignment="Left" Margin="328,220,0,0" VerticalAlignment="Top" Width="92" Height="29" Click="btn_actualizarBusqueda_Click" />
+        <TextBlock x:Name="txb_Pagina" HorizontalAlignment="Left" Margin="670,594,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
+        <Button x:Name="btn_AntPag" Content="Anterior" HorizontalAlignment="Left" Margin="525,594,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.513,1.575"/>
+        <Button x:Name="btn_SigPag" Content="Siguiente" HorizontalAlignment="Left" Margin="745,594,0,0" VerticalAlignment="Top" Width="75" Click="btn_SigPag_Click"/>
     </Grid>
 </Window>
