@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrototiposItaliaPizza"
         mc:Ignorable="d"
-        Title="Producto" Height="1100" Width="562" Icon="/recursos/LogoItaliaPizza.png" ResizeMode="NoResize">
+        Title="Registrar ingrediente" Height="1100" Width="562" Icon="/recursos/LogoItaliaPizza.png" ResizeMode="NoResize">
     <ScrollViewer>
         <Grid>
             <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="0,14.576,0,0" VerticalAlignment="Top" Width="558.574" Fill="#FFB31423"/>
