@@ -22,35 +22,64 @@ namespace ItaliaPizza
     /// </summary>
     public partial class DarDeBajaProducto : Window
     {
-        public DarDeBajaProducto()
+        public DarDeBajaProducto(BusinessLogic.Producto productoPasado, string tipo)
         {
             InitializeComponent();
-            BuscarProducto();
+            TipoProducto = tipo;
+            producto = productoPasado;
         }
 
-        private string TIPO_PRODUCTO = "";
+        BusinessLogic.Producto producto = new BusinessLogic.Producto();
+        string TipoProducto = "";
 
-        private void BuscarProducto()
+
+        private void EliminarProductoventa()
         {
             ProductoVentaController productoVentaController = new ProductoVentaController();
-            BusinessLogic.ProductoVenta productoVenta = productoVentaController.BuscarProductoVenta(3123123);
-
-            if(productoVenta.Nombre != null)
+            if(productoVentaController.EliminarproductoVenta(producto) == ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
-                TIPO_PRODUCTO = "Venta";
+                MessageBox.Show("Producto eliminado con éxito");
             }
             else
             {
-                TIPO_PRODUCTO = "Ingrediente";
+                MessageBox.Show("No se pudo eliminar el producto");
             }
         }
 
-        private void EliminarProductoVenta()
+        private void EliminarProductoIngrediente()
         {
-
+            ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
+            if(productoIngredienteController.EliminarProductoIngrediente(producto) == ResultadoOperacionEnum.ResultadoOperacion.Exito)
+            {
+                MessageBox.Show("Producto eliminado con éxito");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo eliminar el producto");
+            }
         }
 
+        private void btn_aceptar_Click(object sender, RoutedEventArgs e)
+        {
+            if(TipoProducto == "Venta")
+            {
+                EliminarProductoventa();
+            }
+            else if(TipoProducto == "Ingrediente")
+            {
+                EliminarProductoIngrediente();
+            }
 
+            else
+            {
+                MessageBox.Show("producto desconocido");
+                this.Close();
+            }
+        }
 
+        private void btn_cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

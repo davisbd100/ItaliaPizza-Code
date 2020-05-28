@@ -15,8 +15,8 @@
             </Button.Background>
         </Button>
         <Label Content="¿Está seguro que desea &#xA;dar de baja el Producto?" HorizontalAlignment="Left" Margin="111,122.596,0,0" VerticalAlignment="Top" Foreground="#FF707880" FontSize="22" FontWeight="Bold" Background="{x:Null}"/>
-        <Button x:Name="btn_aceptar" Content="ACEPTAR" HorizontalAlignment="Left" Margin="250.246,249.396,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72"/>
-        <Button x:Name="btn_cancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="89.919,249.396,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
+        <Button x:Name="btn_aceptar" Content="ACEPTAR" HorizontalAlignment="Left" Margin="250.246,249.396,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72" Click="btn_aceptar_Click"/>
+        <Button x:Name="btn_cancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="89.919,249.396,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btn_cancelar_Click"/>
 
     </Grid>
 </Window>

@@ -27,12 +27,12 @@
             </Button.Background>
         </Button>
         <Label Content="NUEVO" HorizontalAlignment="Left" Margin="782.999,86.586,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" Height="27.09" Width="51.887"/>
-        <Button Content="" HorizontalAlignment="Left" Height="87.11" Margin="870.333,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}">
+        <Button x:Name="btn_Editar" Content="" HorizontalAlignment="Left" Height="87.11" Margin="870.333,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="btn_Editar_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/recursos/Editar.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="86.944" Margin="983.666,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}">
+        <Button x:Name="btn_eliminar" Content="" HorizontalAlignment="Left" Height="86.944" Margin="983.666,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="btn_eliminar_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/recursos/Eliminar.png" Stretch="Uniform"/>
             </Button.Background>

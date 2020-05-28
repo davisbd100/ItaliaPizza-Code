@@ -26,6 +26,23 @@ namespace ItaliaPizza
             InitializeComponent();
             LlenarGrid();
         }
+        const int POSICION_FUERA_RANGO = -1;
+        private string TIPO_PRODUCTO = "";
+
+        private void BuscarProducto(Producto producto)
+        {
+            ProductoVentaController productoVentaController = new ProductoVentaController();
+            BusinessLogic.ProductoVenta productoVenta = productoVentaController.BuscarProductoVenta(producto.Código);
+
+            if (productoVenta.Nombre != null)
+            {
+                TIPO_PRODUCTO = "Venta";
+            }
+            else
+            {
+                TIPO_PRODUCTO = "Ingrediente";
+            }
+        }
 
         private void LlenarGrid()
         {
@@ -95,6 +112,31 @@ namespace ItaliaPizza
             dtg_Productos.ItemsSource = null;
             dtg_Productos.ItemsSource = productos;
 
+        }
+
+        private void btn_Editar_Click(object sender, RoutedEventArgs e)
+        {
+
+
+
+        }
+
+        private void btn_eliminar_Click(object sender, RoutedEventArgs e)
+        {
+
+            int posicion = dtg_Productos.SelectedIndex;
+
+            if (posicion != POSICION_FUERA_RANGO)
+            {
+                Producto producto = (Producto)dtg_Productos.SelectedItem;
+                BuscarProducto(producto);
+                DarDeBajaProducto darDeBajaProducto = new DarDeBajaProducto(producto, TIPO_PRODUCTO);
+                darDeBajaProducto.Show();
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar un producto");
+            }
         }
     }
 }
