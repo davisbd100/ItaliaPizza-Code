@@ -88,6 +88,17 @@ namespace ItaliaPizza
             }
         }
 
+        private bool ValidarSeleccion()
+        {
+            bool resultado = false;
+            if (dtg_Productos.SelectedItems.Count == 1)
+            {
+                resultado = true;
+            }
+
+            return resultado;
+        }
+
 
         private void btn_actualizarBusqueda_Click(object sender, RoutedEventArgs e)
         {
@@ -126,7 +137,7 @@ namespace ItaliaPizza
 
             int posicion = dtg_Productos.SelectedIndex;
 
-            if (posicion != POSICION_FUERA_RANGO)
+            if (posicion != POSICION_FUERA_RANGO && ValidarSeleccion())
             {
                 Producto producto = (Producto)dtg_Productos.SelectedItem;
                 BuscarProducto(producto);
@@ -135,7 +146,7 @@ namespace ItaliaPizza
             }
             else
             {
-                MessageBox.Show("Debes seleccionar un producto");
+                MessageBox.Show("Debes seleccionar solo un producto");
             }
         }
     }
