@@ -7,6 +7,7 @@ namespace BusinessLogic
     interface IEmpleado
     {
         List<Empleado> GetEmpleados(int rango);
+        List<Empleado> BuscarEmpleado(string busqueda);
         List<Empleado> GetEmpleadosByNombre(String Nombre);
         List<Empleado> GetEmpleadosByTelefono(String Telefono);
         List<Empleado> GetEmpleadosByDireccion(String Direccion);

@@ -48,14 +48,14 @@
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
-        <TextBox HorizontalAlignment="Left" Margin="298.667,165.396,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Ingresa lo que deseas buscar" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="26.413" Background="White"/>
+        <TextBox x:Name="TextBoxBuscar" HorizontalAlignment="Left" Margin="298.667,165.396,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="26.413" Background="White"/>
         <Label Content="Buscar:" HorizontalAlignment="Left" Margin="209.057,161.767,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}"/>
-        <ComboBox HorizontalAlignment="Left" Height="26.31" Margin="997.167,165.5,0,0" VerticalAlignment="Top" Width="173">
+        <ComboBox x:Name="ComboBoxBuscar" HorizontalAlignment="Left" Height="26.31" Margin="997.167,165.5,0,0" VerticalAlignment="Top" Width="173">
             <ComboBoxItem Content="Nombre" FontSize="20"/>
-            <ComboBoxItem Content="Dirección" FontSize="20"/>
+            <ComboBoxItem Content="Calle" FontSize="20"/>
             <ComboBoxItem Content="Télefono" FontSize="20"/>
         </ComboBox>
-        <Button Content="" HorizontalAlignment="Left" Height="17.643" Margin="975.833,170.5,0,0" VerticalAlignment="Top" Width="19.334" BorderBrush="{x:Null}">
+        <Button x:Name="ButtonBuscar" Content="" HorizontalAlignment="Left" Height="17.643" Margin="975.833,170.5,0,0" VerticalAlignment="Top" Width="19.334" BorderBrush="{x:Null}" Click="ButtonBuscar_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Buscar.png" Stretch="Uniform"/>
             </Button.Background>

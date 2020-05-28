@@ -59,5 +59,26 @@ namespace Controller
 			List<Empleado> empleados = empleadoDAO.GetEmpleados(rango);
 			return empleados;
 		}
+
+		public List<Empleado> BuscarEmpleado(string busqueda)
+		{
+			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+			List<Empleado> empleados = empleadoDAO.BuscarEmpleado(busqueda + "%");
+			return empleados;
+		}
+
+		public List<Empleado> BuscarEmpleadoDireccion(string busqueda)
+		{
+			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+			List<Empleado> empleados = empleadoDAO.BuscarEmpleadoDireccion(busqueda + "%");
+			return empleados;
+		}
+
+		public List<Empleado> BuscarEmpleadoTelefono(string busqueda)
+		{
+			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+			List<Empleado> empleados = empleadoDAO.BuscarEmpleadoTelefono(busqueda + "%");
+			return empleados;
+		}
 	}
 }

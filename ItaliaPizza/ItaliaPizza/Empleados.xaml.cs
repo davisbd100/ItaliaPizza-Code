@@ -62,5 +62,33 @@ namespace ItaliaPizza
             TextBlockPagina.Text = pagina.ToString();
             LlenarGrid();
         }
+
+        private void ButtonBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboBoxBuscar.Text == "Nombre")
+            {
+                EmpleadoController empleadoController = new EmpleadoController();
+                List<Empleado> empleados = empleadoController.BuscarEmpleado(TextBoxBuscar.Text);
+                DataGridEmpleados.ItemsSource = null;
+                DataGridEmpleados.ItemsSource = empleados;
+            } else if (ComboBoxBuscar.Text == "Calle")
+            {
+                EmpleadoController empleadoController = new EmpleadoController();
+                List<Empleado> empleados = empleadoController.BuscarEmpleadoDireccion(TextBoxBuscar.Text);
+                DataGridEmpleados.ItemsSource = null;
+                DataGridEmpleados.ItemsSource = empleados;
+            }
+            else if (ComboBoxBuscar.Text == "Télefono")
+            {
+                EmpleadoController empleadoController = new EmpleadoController();
+                List<Empleado> empleados = empleadoController.BuscarEmpleadoTelefono(TextBoxBuscar.Text);
+                DataGridEmpleados.ItemsSource = null;
+                DataGridEmpleados.ItemsSource = empleados;
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una opcion del filtro");
+            }
+        }
     }
 }

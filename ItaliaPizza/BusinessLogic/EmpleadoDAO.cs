@@ -226,5 +226,140 @@ namespace BusinessLogic
         {
             throw new NotImplementedException();
         }
+
+        public List<Empleado> BuscarEmpleado(string busqueda)
+        {
+            List<Empleado> listaEmpleados = new List<Empleado>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
+                    "Numero, CodigoPostal, Colonia, Ciudad, TipoEmpleado, NombreUsuario, FechaUltimoAcceso FROM dbo.Persona left join " +
+                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado WHERE Nombre LIKE @Busqueda", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Empleado empleado = new Empleado();
+                        empleado.idPersona = reader["idPersona"].ToString();
+                        empleado.Nombre = reader["Nombre"].ToString();
+                        empleado.Apellido = reader["Apellido"].ToString();
+                        empleado.Telefono = reader["Telefono"].ToString();
+                        empleado.Email = reader["Email"].ToString();
+                        empleado.Calle = reader["Calle"].ToString();
+                        empleado.Numero = reader["Numero"].ToString();
+                        empleado.CodigoPostal = reader["CodigoPostal"].ToString();
+                        empleado.Colonia = reader["Colonia"].ToString();
+                        empleado.Ciudad = reader["Ciudad"].ToString();
+                        empleado.TipoEmpleado = reader["TipoEmpleado"].ToString();
+                        empleado.NombreUsuario = reader["NombreUsuario"].ToString();
+                        empleado.FechaUltimoAcceso = DateTime.Parse(reader["FechaUltimoAcceso"].ToString());
+                        listaEmpleados.Add(empleado);
+                    }
+                }
+                connection.Close();
+            }
+            return listaEmpleados;
+        }
+
+        public List<Empleado> BuscarEmpleadoDireccion(string busqueda)
+        {
+            List<Empleado> listaEmpleados = new List<Empleado>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
+                    "Numero, CodigoPostal, Colonia, Ciudad, TipoEmpleado, NombreUsuario, FechaUltimoAcceso FROM dbo.Persona left join " +
+                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado WHERE Calle LIKE @Busqueda", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Empleado empleado = new Empleado();
+                        empleado.idPersona = reader["idPersona"].ToString();
+                        empleado.Nombre = reader["Nombre"].ToString();
+                        empleado.Apellido = reader["Apellido"].ToString();
+                        empleado.Telefono = reader["Telefono"].ToString();
+                        empleado.Email = reader["Email"].ToString();
+                        empleado.Calle = reader["Calle"].ToString();
+                        empleado.Numero = reader["Numero"].ToString();
+                        empleado.CodigoPostal = reader["CodigoPostal"].ToString();
+                        empleado.Colonia = reader["Colonia"].ToString();
+                        empleado.Ciudad = reader["Ciudad"].ToString();
+                        empleado.TipoEmpleado = reader["TipoEmpleado"].ToString();
+                        empleado.NombreUsuario = reader["NombreUsuario"].ToString();
+                        empleado.FechaUltimoAcceso = DateTime.Parse(reader["FechaUltimoAcceso"].ToString());
+                        listaEmpleados.Add(empleado);
+                    }
+                }
+                connection.Close();
+            }
+            return listaEmpleados;
+        }
+
+        public List<Empleado> BuscarEmpleadoTelefono(string busqueda)
+        {
+            List<Empleado> listaEmpleados = new List<Empleado>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
+                    "Numero, CodigoPostal, Colonia, Ciudad, TipoEmpleado, NombreUsuario, FechaUltimoAcceso FROM dbo.Persona left join " +
+                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado WHERE Telefono LIKE @Busqueda", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Empleado empleado = new Empleado();
+                        empleado.idPersona = reader["idPersona"].ToString();
+                        empleado.Nombre = reader["Nombre"].ToString();
+                        empleado.Apellido = reader["Apellido"].ToString();
+                        empleado.Telefono = reader["Telefono"].ToString();
+                        empleado.Email = reader["Email"].ToString();
+                        empleado.Calle = reader["Calle"].ToString();
+                        empleado.Numero = reader["Numero"].ToString();
+                        empleado.CodigoPostal = reader["CodigoPostal"].ToString();
+                        empleado.Colonia = reader["Colonia"].ToString();
+                        empleado.Ciudad = reader["Ciudad"].ToString();
+                        empleado.TipoEmpleado = reader["TipoEmpleado"].ToString();
+                        empleado.NombreUsuario = reader["NombreUsuario"].ToString();
+                        empleado.FechaUltimoAcceso = DateTime.Parse(reader["FechaUltimoAcceso"].ToString());
+                        listaEmpleados.Add(empleado);
+                    }
+                }
+                connection.Close();
+            }
+            return listaEmpleados;
+        }
     }
   }
