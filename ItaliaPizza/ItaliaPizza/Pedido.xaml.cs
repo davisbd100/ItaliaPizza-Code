@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Controller;
 
 namespace PrototiposItaliaPizza
 {
@@ -19,9 +20,16 @@ namespace PrototiposItaliaPizza
     /// </summary>
     public partial class Pedido : Window
     {
+        InventarioController controller = new InventarioController();
         public Pedido()
         {
             InitializeComponent();
+
+        }
+
+        private void btCerrarDia_Click(object sender, RoutedEventArgs e)
+        {
+            controller.ActualizarExistencias(controller.ObtenerInventario());
         }
     }
 }
