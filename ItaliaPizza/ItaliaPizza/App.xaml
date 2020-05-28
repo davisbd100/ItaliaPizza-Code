@@ -4,9 +4,6 @@
              xmlns:local="clr-namespace:ItaliaPizza"
 
              StartupUri="Productos.xaml">
-
-
-             StartupUri="RespaldarInformacion.xaml">
     <Application.Resources>
          
     </Application.Resources>

@@ -77,6 +77,9 @@
     <Compile Include="DarDeBajaEmpleado.xaml.cs">
       <DependentUpon>DarDeBajaEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DarDeBajaProducto.xaml.cs">
+      <DependentUpon>DarDeBajaProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditarCliente.xaml.cs">
       <DependentUpon>EditarCliente.xaml</DependentUpon>
     </Compile>
@@ -89,11 +92,10 @@
     <Compile Include="Empleados.xaml.cs">
       <DependentUpon>Empleados.xaml</DependentUpon>
     </Compile>
-        <Compile Include="Productos.xaml.cs">
+    <Compile Include="Productos.xaml.cs">
       <DependentUpon>Productos.xaml</DependentUpon>
-        </Compile>
-
-        <Compile Include="InventarioActual.xaml.cs">
+    </Compile>
+    <Compile Include="InventarioActual.xaml.cs">
       <DependentUpon>InventarioActual.xaml</DependentUpon>
     </Compile>
     <Compile Include="InventarioFinal.xaml.cs">
@@ -114,9 +116,8 @@
     <Compile Include="RegistrarProducto.xaml.cs">
       <DependentUpon>RegistrarProducto.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="RespaldarInformacion.xaml.cs">
-      <DependentUpon>RespaldarInformacion.xaml</DependentUpon>          
+      <DependentUpon>RespaldarInformacion.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValidarCampos.cs" />
     <Page Include="CancelarPedido.xaml">
@@ -132,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DarDeBajaEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DarDeBajaProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,13 +168,11 @@
       <DependentUpon>Inicio.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-
-       <Page Include="Productos.xaml">
+    <Page Include="Productos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-       </Page>
-
-       <Page Include="InventarioActual.xaml">
+    </Page>
+    <Page Include="InventarioActual.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -183,7 +186,7 @@
     </Page>
     <Page Include="ListaPedidoVendedor.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>   
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="RegistrarCliente.xaml">
       <SubType>Designer</SubType>
@@ -197,7 +200,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
     <Page Include="RespaldarInformacion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

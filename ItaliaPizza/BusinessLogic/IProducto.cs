@@ -9,5 +9,6 @@ namespace BusinessLogic
     interface IProducto
     {
         List<Producto> getProductos(int rango);
+        List<Producto> BuscarProducto(string busqueda);
     }
 }

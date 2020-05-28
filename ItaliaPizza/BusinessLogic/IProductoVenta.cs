@@ -12,9 +12,9 @@ namespace BusinessLogic
     {
         List<ProductoVenta> GetProductosVenta(int rango);
         List<ProductoVenta> ProductoVentaBusqueda(string busqueda);
-        ProductoVenta ObtenerProductoVentaPorid(string codigo);
+        ProductoVenta ObtenerProductoVentaPorid(int codigo);
         ResultadoOperacion AddProductoVenta(ProductoVenta productoVenta, Inventario inventario);
-        ResultadoOperacion EliminarProductoVenta(ProductoVenta productoVenta);
+        ResultadoOperacion EliminarProductoVenta(int productoVenta);
         ResultadoOperacion EditarProductoVenta(ProductoVenta productoVenta);
     }
 }

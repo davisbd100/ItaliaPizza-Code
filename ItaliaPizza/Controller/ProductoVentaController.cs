@@ -57,10 +57,29 @@ namespace Controller
 
         public List<ProductoVenta> ObtenerProductoVenta(int rango)
         {
+            const int NUM_RESULTADOS = 19;
+            rango -= 1;
+            rango *= NUM_RESULTADOS;
             ProductoVentaDAO productoVentaDAO = new ProductoVentaDAO();
-
             List < ProductoVenta > productoVentas = productoVentaDAO.GetProductosVenta(rango);
             return productoVentas;
+        }
+
+
+        public ProductoVenta BuscarProductoVenta(int id)
+        {
+            ProductoVentaDAO productoVentaDAO = new ProductoVentaDAO();
+
+            ProductoVenta productoVenta = productoVentaDAO.ObtenerProductoVentaPorid(id);
+            return productoVenta;
+ 
+        }
+
+        public ResultadoOperacion EliminarproductoVenta(Producto producto)
+        {
+            ProductoVentaDAO productoVentaDAO = new ProductoVentaDAO();
+            ResultadoOperacion resultado = productoVentaDAO.EliminarProductoVenta(producto.Código);
+            return resultado;
         }
     }
 }

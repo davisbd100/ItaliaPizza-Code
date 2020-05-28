@@ -26,23 +26,38 @@ namespace ItaliaPizza
             InitializeComponent();
             LlenarGrid();
         }
+        const int POSICION_FUERA_RANGO = -1;
+        private string TIPO_PRODUCTO = "";
+
+        private void BuscarProducto(Producto producto)
+        {
+            ProductoVentaController productoVentaController = new ProductoVentaController();
+            BusinessLogic.ProductoVenta productoVenta = productoVentaController.BuscarProductoVenta(producto.Código);
+
+            if (productoVenta.Nombre != null)
+            {
+                TIPO_PRODUCTO = "Venta";
+            }
+            else
+            {
+                TIPO_PRODUCTO = "Ingrediente";
+            }
+        }
 
         private void LlenarGrid()
         {
             dtg_Productos.ItemsSource = null;
-            List<Producto> productos = new List<Producto>();
-            List<ProductoVenta> listaProductosVenta = RecuperarProductoVenta();
-            List<ProductoIngrediente> listaProductosIngrediente = RecuperarProductoIngrediente();
-            productos.AddRange(listaProductosIngrediente);
-            productos.AddRange(listaProductosVenta);
+            ProductoController productoController = new ProductoController();
+            List<Producto> productos = productoController.ObtenerProducto( Convert.ToInt32 ( txb_Pagina.Text.ToString()));
             dtg_Productos.ItemsSource = productos;
         }
 
         private void LlenarGridProductoVenta()
         {
             dtg_Productos.ItemsSource = null;
+            ProductoVentaController productoVentaController = new ProductoVentaController();
             List<Producto> productos = new List<Producto>();
-            List<ProductoVenta> listaProductosVenta = RecuperarProductoVenta();
+            List<ProductoVenta> listaProductosVenta = productoVentaController.ObtenerProductoVenta(Convert.ToInt32(txb_Pagina.Text.ToString()));
             productos.AddRange(listaProductosVenta);
             dtg_Productos.ItemsSource = productos;
         }
@@ -50,33 +65,20 @@ namespace ItaliaPizza
         private void LlenarGridIngrediente()
         {
             dtg_Productos.ItemsSource = null;
+            ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
             List<Producto> productos = new List<Producto>();   
-            List<ProductoIngrediente> listaProductosIngrediente = RecuperarProductoIngrediente();
+            List<ProductoIngrediente> listaProductosIngrediente = productoIngredienteController.ObtenerProductoIngrediente(Convert.ToInt32(txb_Pagina.Text.ToString()));
             productos.AddRange(listaProductosIngrediente);
             dtg_Productos.ItemsSource = productos;
         }
 
-        private List<ProductoIngrediente> RecuperarProductoIngrediente()
+        private void ActualizarLista()
         {
-            ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
-            List<ProductoIngrediente> productos = productoIngredienteController.ObtenerProductoIngrediente(0);
-            return productos;
-        }
-
-        private List<ProductoVenta> RecuperarProductoVenta()
-        {
-            ProductoVentaController productoVentaController = new ProductoVentaController();
-            List < ProductoVenta > productos = productoVentaController.ObtenerProductoVenta(0);
-            return productos;
-        }
-
-        private void btn_actualizarBusqueda_Click(object sender, RoutedEventArgs e)
-        {
-            if(chkb_Ingredientes.IsChecked == true && chkb_ProductosVenta.IsChecked == true)
+            if (chkb_Ingredientes.IsChecked == true && chkb_ProductosVenta.IsChecked == true)
             {
                 LlenarGrid();
             }
-            else if(chkb_Ingredientes.IsChecked == true && chkb_ProductosVenta.IsChecked == false)
+            else if (chkb_Ingredientes.IsChecked == true && chkb_ProductosVenta.IsChecked == false)
             {
                 LlenarGridIngrediente();
             }
@@ -84,8 +86,57 @@ namespace ItaliaPizza
             {
                 LlenarGridProductoVenta();
             }
+        }
 
 
+        private void btn_actualizarBusqueda_Click(object sender, RoutedEventArgs e)
+        {
+            txb_Pagina.Text = "1";
+            ActualizarLista();
+
+        }
+
+        private void btn_SigPag_Click(object sender, RoutedEventArgs e)
+        {
+            int pagina = int.Parse( txb_Pagina.Text);
+            pagina++;
+            txb_Pagina.Text = pagina.ToString();
+            ActualizarLista();
+
+        }
+
+        private void btn_buscar_Click(object sender, RoutedEventArgs e)
+        {
+            ProductoController productoController = new ProductoController();
+            List < Producto > productos = productoController.Buscarproducto(txb_busqueda.Text);
+            dtg_Productos.ItemsSource = null;
+            dtg_Productos.ItemsSource = productos;
+
+        }
+
+        private void btn_Editar_Click(object sender, RoutedEventArgs e)
+        {
+
+
+
+        }
+
+        private void btn_eliminar_Click(object sender, RoutedEventArgs e)
+        {
+
+            int posicion = dtg_Productos.SelectedIndex;
+
+            if (posicion != POSICION_FUERA_RANGO)
+            {
+                Producto producto = (Producto)dtg_Productos.SelectedItem;
+                BuscarProducto(producto);
+                DarDeBajaProducto darDeBajaProducto = new DarDeBajaProducto(producto, TIPO_PRODUCTO);
+                darDeBajaProducto.Show();
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar un producto");
+            }
         }
     }
 }
