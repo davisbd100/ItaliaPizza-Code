@@ -39,7 +39,7 @@ namespace ItaliaPizza
 
             if (txb_Nombre.Text == String.Empty || txb_Codigo.Text == String.Empty || txb_Descripcion.Text == String.Empty
                 || txb_Preciounitario.Text == String.Empty || txb_Restricción.Text == String.Empty || txb_UnidadMedida.Text == String.Empty
-                || txb_Ubicacion.Text == String.Empty || txb_Cantidad.Text == String.Empty || txb_Caducidad.Text == String.Empty)
+                || txb_Ubicacion.Text == String.Empty || txb_Cantidad.Text == String.Empty || dtp_Caducidad.Text == String.Empty)
             {
                 resultado = false;
             }
@@ -91,7 +91,7 @@ namespace ItaliaPizza
 
             if (productoVentaController.crearProducto(txb_Nombre.Text, Convert.ToInt32(txb_Codigo.Text), txb_Descripcion.Text, float.Parse(txb_Preciounitario.Text),
                 txb_Restricción.Text, txb_UnidadMedida.Text, float.Parse(txb_PrecioVenta.Text), requiereReceta, "url de la foto", txb_Ubicacion.Text,
-                Convert.ToInt32(txb_Cantidad.Text), txb_Caducidad.Text, "Example") == BusinessLogic.ResultadoOperacionEnum.ResultadoOperacion.Exito)
+                Convert.ToInt32(txb_Cantidad.Text), dtp_Caducidad.SelectedDate.Value.ToString("yyyy/MM/dd"), "Example") == BusinessLogic.ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
                 MessageBox.Show("Producto registrado con éxito");
             }

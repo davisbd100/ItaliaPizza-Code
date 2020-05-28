@@ -36,10 +36,10 @@
             <Label Content="Cantidad" HorizontalAlignment="Left" Margin="33,760,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
             <TextBox x:Name="txb_Cantidad" HorizontalAlignment="Left" Margin="203,768,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
             <Label Content="Caducidad" HorizontalAlignment="Left" Margin="26,832,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-            <TextBox x:Name="txb_Caducidad" HorizontalAlignment="Left" Margin="203,840,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
             <Grid x:Name="GridIngrediente" >
                 <Label Content="Tipo de ingrediente" HorizontalAlignment="Left" Margin="18.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
                 <ComboBox x:Name="cbb_TipoIngrediente" HorizontalAlignment="Left" Margin="224,526.842,0,0" VerticalAlignment="Top" Width="254" Height="23.6"/>
+                <DatePicker x:Name="dtp_Caducidad" HorizontalAlignment="Left" Margin="203,842,0,0" VerticalAlignment="Top" Width="267" Text="Selecciona la fecha" IsTodayHighlighted="False" SelectedDateFormat="Short" />
             </Grid>
 
             <Label Content="" HorizontalAlignment="Left" Margin="230,947,0,0" VerticalAlignment="Top"/>

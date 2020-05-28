@@ -1,4 +1,5 @@
-﻿using Controller;
+﻿using BusinessLogic;
+using Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +24,19 @@ namespace ItaliaPizza
         public RegistrarProducto()
         {
             InitializeComponent();
+            LlenarTipoIngrediente();
         }
         private enum CheckResult
         {
             Passed,
             Failed
+        }
+
+
+        private void LlenarTipoIngrediente()
+        {
+
+            cbb_TipoIngrediente.ItemsSource = Enum.GetValues(typeof(TipoIngredienteEnum));
         }
 
         private bool VerificarCamposVacios()
@@ -36,7 +45,7 @@ namespace ItaliaPizza
 
             if (txb_Nombre.Text == String.Empty || txb_Codigo.Text == String.Empty || txb_Descripcion.Text == String.Empty
                 || txb_Preciounitario.Text == String.Empty || txb_Restricción.Text == String.Empty || txb_UnidadMedida.Text == String.Empty
-                || txb_Ubicacion.Text == String.Empty || txb_Cantidad.Text == String.Empty || txb_Caducidad.Text == String.Empty )
+                || txb_Ubicacion.Text == String.Empty || txb_Cantidad.Text == String.Empty || dtp_Caducidad.Text ==  String.Empty )
             {
                 resultado = false;
             }
@@ -80,15 +89,17 @@ namespace ItaliaPizza
 
         }
 
-  
+        
+
 
         private void RegistrarProductoingrediente()
         {
             ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
+            
 
             if (productoIngredienteController.crearProductoIngrediente(txb_Nombre.Text, Convert.ToInt32(txb_Codigo.Text), txb_Descripcion.Text, float.Parse(txb_Preciounitario.Text), 
                 txb_Restricción.Text, txb_UnidadMedida.Text, txb_Ubicacion.Text,
-                Convert.ToInt32(txb_Cantidad.Text), txb_Caducidad.Text, "example") == BusinessLogic.ResultadoOperacionEnum.ResultadoOperacion.Exito)
+                Convert.ToInt32(txb_Cantidad.Text), dtp_Caducidad.SelectedDate.Value.ToString("yyyy/MM/dd") , cbb_TipoIngrediente.SelectedItem.ToString() ) == BusinessLogic.ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
                 MessageBox.Show("Producto registrado con éxito");
             }

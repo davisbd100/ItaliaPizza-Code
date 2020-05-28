@@ -36,15 +36,15 @@
             <Label Content="Cantidad" HorizontalAlignment="Left" Margin="32.905,790.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
             <TextBox x:Name="txb_Cantidad" HorizontalAlignment="Left" Margin="202.539,798.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
             <Label Content="Caducidad" HorizontalAlignment="Left" Margin="26.311,850.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-            <TextBox x:Name="txb_Caducidad" HorizontalAlignment="Left" Margin="202.539,858.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
 
-                <Label Content="Precio de venta" HorizontalAlignment="Left" Margin="32.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+            <Label Content="Precio de venta" HorizontalAlignment="Left" Margin="32.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
                 <TextBox x:Name="txb_PrecioVenta" HorizontalAlignment="Left" Margin="207.736,521.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
                 <Label Content="Foto" HorizontalAlignment="Left" Margin="32.905,621.066,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
                 <Image HorizontalAlignment="Left" Height="49" Margin="207.736,608.666,0,0" VerticalAlignment="Top" Width="53" Source="/recursos/SubirImagen.png"/>
                 <CheckBox x:Name="cb_RequiereReceta" Content="Requiere receta" HorizontalAlignment="Left" Margin="32.905,577.332,0,0" VerticalAlignment="Top" FontSize="20" Foreground="#FF707880"/>
 
             <Label Content="" HorizontalAlignment="Left" Margin="230,947,0,0" VerticalAlignment="Top"/>
+            <DatePicker x:Name="dtp_Caducidad" HorizontalAlignment="Left" Margin="203,864,0,0" VerticalAlignment="Top" Width="264" Text="Selecciona la fecha"/>
 
         </Grid>
 
