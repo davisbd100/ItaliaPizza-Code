@@ -95,6 +95,9 @@
     <Compile Include="EditarProductoVenta.xaml.cs">
       <DependentUpon>EditarProductoVenta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ElegirNuevoProducto.xaml.cs">
+      <DependentUpon>ElegirNuevoProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Empleados.xaml.cs">
       <DependentUpon>Empleados.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditarProductoVenta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElegirNuevoProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

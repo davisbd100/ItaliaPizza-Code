@@ -169,5 +169,11 @@ namespace ItaliaPizza
                 MessageBox.Show("Debes seleccionar solo un producto");
             }
         }
+
+        private void btn_NuevoProducto_Click(object sender, RoutedEventArgs e)
+        {
+            ElegirNuevoProducto elegirNuevoProducto = new ElegirNuevoProducto();
+            elegirNuevoProducto.Show();
+        }
     }
 }
