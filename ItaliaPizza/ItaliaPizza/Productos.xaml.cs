@@ -57,7 +57,7 @@ namespace ItaliaPizza
             dtg_Productos.ItemsSource = null;
             ProductoVentaController productoVentaController = new ProductoVentaController();
             List<Producto> productos = new List<Producto>();
-            List<ProductoVenta> listaProductosVenta = productoVentaController.ObtenerProductoVenta(Convert.ToInt32(txb_Pagina.Text.ToString()));
+            List<ProductoVenta> listaProductosVenta = productoVentaController.ObtenerProductosVenta(Convert.ToInt32(txb_Pagina.Text.ToString()));
             productos.AddRange(listaProductosVenta);
             dtg_Productos.ItemsSource = productos;
         }
@@ -67,7 +67,7 @@ namespace ItaliaPizza
             dtg_Productos.ItemsSource = null;
             ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
             List<Producto> productos = new List<Producto>();   
-            List<ProductoIngrediente> listaProductosIngrediente = productoIngredienteController.ObtenerProductoIngrediente(Convert.ToInt32(txb_Pagina.Text.ToString()));
+            List<ProductoIngrediente> listaProductosIngrediente = productoIngredienteController.ObtenerProductosIngrediente(Convert.ToInt32(txb_Pagina.Text.ToString()));
             productos.AddRange(listaProductosIngrediente);
             dtg_Productos.ItemsSource = productos;
         }

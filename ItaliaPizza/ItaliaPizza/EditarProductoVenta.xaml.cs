@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,24 @@ namespace ItaliaPizza
         public EditarProductoVenta(Producto producto)
         {
             InitializeComponent();
+            productoCargar = producto;
+            CargarCampos();
+        }
+
+        Producto productoCargar = new Producto();
+
+        
+
+        private void CargarCampos()
+        {
+            ProductoVentaController productoVentaController = new ProductoVentaController();
+            ProductoVenta productoVenta = productoVentaController.BuscarProductoVenta(productoCargar.Código);
+            txb_nombre.Text = productoVenta.Nombre;
+            txb_codigo.Text = productoVenta.Código.ToString();
+            txb_descripcion.Text = productoVenta.Descripción;
+            txb_restriccion.Text = productoVenta.Restricción;
+            txb_precioPublico.Text = productoVenta.PrecioPúblico.ToString();
+
         }
     }
 }

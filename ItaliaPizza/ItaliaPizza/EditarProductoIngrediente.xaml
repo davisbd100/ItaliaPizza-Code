@@ -18,18 +18,14 @@
             </Button>
 
             <Label Content="Nombre:" HorizontalAlignment="Left" Margin="20.187,129.766,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-            <TextBox HorizontalAlignment="Left" Margin="218.736,137.51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
+            <TextBox x:Name="txb_nombre" HorizontalAlignment="Left" Margin="218.736,137.51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
             <Label Content="Código:" HorizontalAlignment="Left" Margin="20.187,180.785,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-            <TextBox HorizontalAlignment="Left" Margin="218.736,238.985,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <TextBox HorizontalAlignment="Left" Margin="218.736,188.529,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
+            <TextBox x:Name="txb_descripcion" HorizontalAlignment="Left" Margin="218.736,238.985,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
+            <TextBox x:Name="txb_codigo" HorizontalAlignment="Left" Margin="218.736,188.529,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
             <Label Content="Descripción:" HorizontalAlignment="Left" Margin="20.187,231.241,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-            <TextBox HorizontalAlignment="Left" Margin="218.736,289.016,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <Label Content="Precio Unitario:" HorizontalAlignment="Left" Margin="20.187,281.272,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-            <TextBox HorizontalAlignment="Left" Margin="218.736,339.6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <Label Content="Restricción:" HorizontalAlignment="Left" Margin="20.187,331.856,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
-            <TextBox HorizontalAlignment="Left" Margin="218.736,390.057,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <Label Content="Unidad de medida:" HorizontalAlignment="Left" Margin="20.187,382.313,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-            <Button Content="Editar" HorizontalAlignment="Left" Margin="324.449,908.357,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72"/>
+            <TextBox x:Name="txb_Restricción" HorizontalAlignment="Left" Margin="219,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
+            <Label Content="Restricción:" HorizontalAlignment="Left" Margin="20,291,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
+            <Button x:Name="btn_Editar" Content="Editar" HorizontalAlignment="Left" Margin="324.449,908.357,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72"/>
             <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="167.695,908.357,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
             <Label Content="Inventario" HorizontalAlignment="Left" Margin="32.905,683.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF191819" FontSize="20" RenderTransformOrigin="0.307,0.537" FontWeight="SemiBold"/>
             <Grid x:Name="GridIngrediente" Visibility="Collapsed" >
