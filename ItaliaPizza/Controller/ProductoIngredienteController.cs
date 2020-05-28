@@ -21,7 +21,7 @@ namespace Controller
             productoIngrediente.Código = codigo;
             productoIngrediente.Descripción = descripcion;
             productoIngrediente.Restricción = restriccion;
-            productoIngrediente.tipoIngrediente = TipoIngredienteEnum.Aceite;
+            productoIngrediente.tipoIngrediente = (TipoIngredienteEnum)Enum.Parse(typeof(TipoIngredienteEnum), tipoIngrediente);
 
             Inventario inventario = new Inventario();
             // inventario.Caducidad = DateTime.Parse(caducidad);
@@ -34,9 +34,10 @@ namespace Controller
             inventario.UnidadDeMedida = unidadMedida;
             inventario.FechaIngreso = DateTime.Now;
 
+
             ProductoIngredienteDAO productoIngredienteDAO = new ProductoIngredienteDAO();
 
-            resultadoOperacion = productoIngredienteDAO.AddProductoIngrediente(productoIngrediente, inventario);
+           resultadoOperacion = productoIngredienteDAO.AddProductoIngrediente(productoIngrediente, inventario);
 
             return resultadoOperacion;
 
