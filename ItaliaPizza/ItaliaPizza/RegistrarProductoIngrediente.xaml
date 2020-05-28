@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrototiposItaliaPizza"
         mc:Ignorable="d"
-        Title="Producto" Height="1100" Width="562" Icon="/recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Registrar ingrediente" Height="1100" Width="562" Icon="/recursos/LogoItaliaPizza.png" ResizeMode="NoResize">
     <ScrollViewer>
         <Grid>
             <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="0,14.576,0,0" VerticalAlignment="Top" Width="558.574" Fill="#FFB31423"/>
@@ -30,31 +30,18 @@
             <Label Content="Unidad de medida:" HorizontalAlignment="Left" Margin="20.187,382.313,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
             <Button Content="REGISTRAR" HorizontalAlignment="Left" Margin="324.449,908.357,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72" Click="Button_Click"/>
             <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="167.695,908.357,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
-            <Label Content="Tipo de producto" HorizontalAlignment="Left" Margin="20.187,441.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-            <ComboBox x:Name="cbb_TipoProducto" HorizontalAlignment="Left" Margin="218.736,454.464,0,0" VerticalAlignment="Top" Width="264.433" Height="23.978">
-                <ComboBoxItem Content="Ingrediente" HorizontalAlignment="Left" Width="262.433"/>
-                <ComboBoxItem Content="Producto para venta" HorizontalAlignment="Left" Width="262.433"/>
-            </ComboBox>
-            <Label Content="Inventario" HorizontalAlignment="Left" Margin="32.905,683.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF191819" FontSize="20" RenderTransformOrigin="0.307,0.537" FontWeight="SemiBold"/>
-            <Label Content="Ubicación" HorizontalAlignment="Left" Margin="32.905,736.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-            <TextBox x:Name="txb_Ubicacion" HorizontalAlignment="Left" Margin="202.539,744.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <Label Content="Cantidad" HorizontalAlignment="Left" Margin="32.905,790.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-            <TextBox x:Name="txb_Cantidad" HorizontalAlignment="Left" Margin="202.539,798.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <Label Content="Caducidad" HorizontalAlignment="Left" Margin="26.311,850.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-            <TextBox x:Name="txb_Caducidad" HorizontalAlignment="Left" Margin="202.539,858.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
+            <Label Content="Inventario" HorizontalAlignment="Left" Margin="33,643,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF191819" FontSize="20" RenderTransformOrigin="0.307,0.537" FontWeight="SemiBold"/>
+            <Label Content="Ubicación" HorizontalAlignment="Left" Margin="32,692,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+            <TextBox x:Name="txb_Ubicacion" HorizontalAlignment="Left" Margin="203,700,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
+            <Label Content="Cantidad" HorizontalAlignment="Left" Margin="33,760,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+            <TextBox x:Name="txb_Cantidad" HorizontalAlignment="Left" Margin="203,768,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
+            <Label Content="Caducidad" HorizontalAlignment="Left" Margin="26,832,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
             <Grid x:Name="GridIngrediente" >
                 <Label Content="Tipo de ingrediente" HorizontalAlignment="Left" Margin="18.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
                 <ComboBox x:Name="cbb_TipoIngrediente" HorizontalAlignment="Left" Margin="224,526.842,0,0" VerticalAlignment="Top" Width="254" Height="23.6"/>
-
+                <DatePicker x:Name="dtp_Caducidad" HorizontalAlignment="Left" Margin="203,842,0,0" VerticalAlignment="Top" Width="267" Text="Selecciona la fecha" IsTodayHighlighted="False" SelectedDateFormat="Short" />
             </Grid>
-            <Grid x:Name="GridProductoVenta" Visibility="Hidden" >
-                <Label Content="Precio de venta" HorizontalAlignment="Left" Margin="32.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-                <TextBox x:Name="txb_PrecioVenta" HorizontalAlignment="Left" Margin="207.736,521.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-                <Label Content="Foto" HorizontalAlignment="Left" Margin="32.905,621.066,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-                <Image HorizontalAlignment="Left" Height="49" Margin="207.736,608.666,0,0" VerticalAlignment="Top" Width="53" Source="/recursos/SubirImagen.png"/>
-                <CheckBox x:Name="cb_RequiereReceta" Content="Requiere receta" HorizontalAlignment="Left" Margin="32.905,577.332,0,0" VerticalAlignment="Top" FontSize="20" Foreground="#FF707880"/>
 
-            </Grid>
             <Label Content="" HorizontalAlignment="Left" Margin="230,947,0,0" VerticalAlignment="Top"/>
 
         </Grid>

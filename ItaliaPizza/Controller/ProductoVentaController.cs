@@ -33,7 +33,7 @@ namespace Controller
             productoVenta.Receta = receta;
 
             Inventario inventario = new Inventario();
-            // inventario.Caducidad = DateTime.Parse(caducidad);
+          //  inventario.Caducidad = DateTime.Parse(caducidad);
             inventario.idInventario = codigo;
             inventario.Caducidad = caducidad;
             inventario.CantidadIngreso = cantidad;
@@ -55,7 +55,7 @@ namespace Controller
         }
 
 
-        public List<ProductoVenta> ObtenerProductoVenta(int rango)
+        public List<ProductoVenta> ObtenerProductosVenta(int rango)
         {
             const int NUM_RESULTADOS = 19;
             rango -= 1;

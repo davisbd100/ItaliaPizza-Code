@@ -15,6 +15,7 @@ namespace BusinessLogic
         public ResultadoOperacionEnum.ResultadoOperacion AddProductoVenta(ProductoVenta productoVenta, Inventario inventario)
         {
             const int VALORES_DUPLICADOS = 2601;
+            const int VALOR_EXISTENTE = 2627;
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
 
 
@@ -78,6 +79,9 @@ namespace BusinessLogic
                     switch (e.Number)
                     {
                         case VALORES_DUPLICADOS:
+                            resultado = ResultadoOperacion.ObjetoExistente;
+                            break;
+                        case VALOR_EXISTENTE:
                             resultado = ResultadoOperacion.ObjetoExistente;
                             break;
                         default:

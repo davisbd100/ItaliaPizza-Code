@@ -89,6 +89,12 @@
     <Compile Include="EditarPedido.xaml.cs">
       <DependentUpon>EditarPedido.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditarProductoIngrediente.xaml.cs">
+      <DependentUpon>EditarProductoIngrediente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditarProductoVenta.xaml.cs">
+      <DependentUpon>EditarProductoVenta.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Empleados.xaml.cs">
       <DependentUpon>Empleados.xaml</DependentUpon>
     </Compile>
@@ -113,8 +119,11 @@
     <Compile Include="RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegistrarProducto.xaml.cs">
-      <DependentUpon>RegistrarProducto.xaml</DependentUpon>
+    <Compile Include="RegistrarProductoIngrediente.xaml.cs">
+      <DependentUpon>RegistrarProductoIngrediente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarProductoVenta.xaml.cs">
+      <DependentUpon>RegistrarProductoVenta.xaml</DependentUpon>
     </Compile>
     <Compile Include="RespaldarInformacion.xaml.cs">
       <DependentUpon>RespaldarInformacion.xaml</DependentUpon>
@@ -151,6 +160,14 @@
     <Page Include="EditarPedido.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EditarProductoIngrediente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditarProductoVenta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Empleados.xaml">
       <SubType>Designer</SubType>
@@ -196,7 +213,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RegistrarProducto.xaml">
+    <Page Include="RegistrarProductoIngrediente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrarProductoVenta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

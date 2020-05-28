@@ -57,7 +57,7 @@ namespace ItaliaPizza
             dtg_Productos.ItemsSource = null;
             ProductoVentaController productoVentaController = new ProductoVentaController();
             List<Producto> productos = new List<Producto>();
-            List<ProductoVenta> listaProductosVenta = productoVentaController.ObtenerProductoVenta(Convert.ToInt32(txb_Pagina.Text.ToString()));
+            List<ProductoVenta> listaProductosVenta = productoVentaController.ObtenerProductosVenta(Convert.ToInt32(txb_Pagina.Text.ToString()));
             productos.AddRange(listaProductosVenta);
             dtg_Productos.ItemsSource = productos;
         }
@@ -67,7 +67,7 @@ namespace ItaliaPizza
             dtg_Productos.ItemsSource = null;
             ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
             List<Producto> productos = new List<Producto>();   
-            List<ProductoIngrediente> listaProductosIngrediente = productoIngredienteController.ObtenerProductoIngrediente(Convert.ToInt32(txb_Pagina.Text.ToString()));
+            List<ProductoIngrediente> listaProductosIngrediente = productoIngredienteController.ObtenerProductosIngrediente(Convert.ToInt32(txb_Pagina.Text.ToString()));
             productos.AddRange(listaProductosIngrediente);
             dtg_Productos.ItemsSource = productos;
         }
@@ -86,6 +86,17 @@ namespace ItaliaPizza
             {
                 LlenarGridProductoVenta();
             }
+        }
+
+        private bool ValidarSeleccion()
+        {
+            bool resultado = false;
+            if (dtg_Productos.SelectedItems.Count == 1)
+            {
+                resultado = true;
+            }
+
+            return resultado;
         }
 
 
@@ -116,8 +127,28 @@ namespace ItaliaPizza
 
         private void btn_Editar_Click(object sender, RoutedEventArgs e)
         {
+            int posicion = dtg_Productos.SelectedIndex;
 
+            if (posicion != POSICION_FUERA_RANGO && ValidarSeleccion())
+            {
+                Producto producto = (Producto)dtg_Productos.SelectedItem;
+                BuscarProducto(producto);
+                if(TIPO_PRODUCTO == "Venta")
+                {
+                    EditarProductoVenta editarProductoVenta = new EditarProductoVenta(producto);
+                    editarProductoVenta.Show();
+                }
+                else
+                {
+                    EditarProductoIngrediente editarProductoIngrediente = new EditarProductoIngrediente(producto);
+                    editarProductoIngrediente.Show();
+                }
 
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar solo un producto");
+            }
 
         }
 
@@ -126,7 +157,7 @@ namespace ItaliaPizza
 
             int posicion = dtg_Productos.SelectedIndex;
 
-            if (posicion != POSICION_FUERA_RANGO)
+            if (posicion != POSICION_FUERA_RANGO && ValidarSeleccion())
             {
                 Producto producto = (Producto)dtg_Productos.SelectedItem;
                 BuscarProducto(producto);
@@ -135,7 +166,7 @@ namespace ItaliaPizza
             }
             else
             {
-                MessageBox.Show("Debes seleccionar un producto");
+                MessageBox.Show("Debes seleccionar solo un producto");
             }
         }
     }
