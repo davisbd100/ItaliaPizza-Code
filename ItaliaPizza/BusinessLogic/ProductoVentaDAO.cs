@@ -130,33 +130,69 @@ namespace BusinessLogic
             return resultado;
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion EliminarProductoVenta(ProductoVenta productoVenta)
+        public ResultadoOperacionEnum.ResultadoOperacion EliminarProductoVenta(int productoVenta)
         {
+            const int VALORES_DUPLICADOS = 2601;
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
             DbConnection dbConnection = new DbConnection();
 
             using (SqlConnection connection = dbConnection.GetConnection())
             {
-
                 connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+                transaction = connection.BeginTransaction("InsertarProductoIngrediente");
+                command.Connection = connection;
+                command.Transaction = transaction;
 
-                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoVenta SET Visibilidad = Invisible  WHERE idProductoVenta = @idProductoVenta) ", connection))
+                try
                 {
-                    command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
+                    command.CommandText =
+                         "DELETE FROM dbo.Producto WHERE Codigo = @Codigo";
+                    command.Parameters.Add(new SqlParameter("@Codigo", productoVenta));
 
-                    try
-                    {
-                        SqlDataReader reader = command.ExecuteReader();
+                    command.ExecuteNonQuery();
 
-                    }
-                    catch (SqlException)
-                    {
-                        resultado = ResultadoOperacion.FalloSQL;
-                        return resultado;
-                    }
+                    command.CommandText =
+                        "DELETE FROM dbo.ProductoVenta WHERE idProductoVenta =  @idProductoVenta";
+                    command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta));
+
+
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                         "DELETE FROM dbo.ProductoInventario WHERE Producto = @Producto ";
+                    command.Parameters.Add(new SqlParameter("@Producto", productoVenta));
+
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                        "DELETE FROM dbo.Inventario WHERE idInventario =@idInventario";
+                    command.Parameters.Add(new SqlParameter("@idInventario", productoVenta));
+
+
+                    command.ExecuteNonQuery();
+
+                    transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
+
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+
+                    switch (e.Number)
+                    {
+                        case VALORES_DUPLICADOS:
+                            resultado = ResultadoOperacion.ObjetoExistente;
+                            break;
+                        default:
+                            resultado = ResultadoOperacion.FalloSQL;
+                            break;
+                    }
                 }
             }
+
             return resultado;
         }
 

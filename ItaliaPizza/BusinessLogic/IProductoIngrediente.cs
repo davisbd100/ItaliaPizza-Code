@@ -14,7 +14,7 @@ namespace BusinessLogic
         List<ProductoIngrediente> ProdctoIngredienteBusqueda(string busqueda);
         ProductoIngrediente ObtenerProductoIngredientePorId(string codigo);
         ResultadoOperacion AddProductoIngrediente(ProductoIngrediente productoIngrediente, Inventario inventario);
-        ResultadoOperacion EliminarProducto(ProductoIngrediente productoIngrediente);
+        ResultadoOperacion EliminarProducto(int productoIngrediente);
         ResultadoOperacion EditarProducto(ProductoIngrediente productoIngrediente);
 
     }
