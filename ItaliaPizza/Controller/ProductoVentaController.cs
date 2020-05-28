@@ -74,5 +74,12 @@ namespace Controller
             return productoVenta;
  
         }
+
+        public ResultadoOperacion EliminarproductoVenta(Producto producto)
+        {
+            ProductoVentaDAO productoVentaDAO = new ProductoVentaDAO();
+            ResultadoOperacion resultado = productoVentaDAO.EliminarProductoVenta(producto.Código);
+            return resultado;
+        }
     }
 }

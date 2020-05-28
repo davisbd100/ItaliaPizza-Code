@@ -53,5 +53,13 @@ namespace Controller
             List<ProductoIngrediente> productoIngredientes = productoIngredienteDAO.GetProductosIngrediente(rango);
             return productoIngredientes;
         }
+
+
+        public ResultadoOperacion EliminarProductoIngrediente(Producto producto)
+        {
+            ProductoIngredienteDAO productoIngredienteDAO = new ProductoIngredienteDAO();
+            ResultadoOperacion resultado = productoIngredienteDAO.EliminarProducto(producto.Código);
+            return resultado;
+        }
     }
 }
