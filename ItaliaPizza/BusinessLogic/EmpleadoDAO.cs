@@ -88,11 +88,6 @@ namespace BusinessLogic
             return resultado;
         }
 
-        public ResultadoOperacion DarDeBajaEmpleado(Empleado empleado)
-        {
-            throw new NotImplementedException();
-        }
-
         public ResultadoOperacion EditarEmpleado(Empleado empleado)
         {
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
@@ -106,9 +101,9 @@ namespace BusinessLogic
                 using (SqlCommand command = new SqlCommand("UPDATE dbo.Empleado SET Nombre = @Nombre, Apellido = @Apellido, " +
                     "Telefono = @Telefono, Email = @Email, Calle = @Calle, Numero = @Numero, CodigoPostal = @CodigoPostal" +
                     "Colonia = @Colonia, Ciudad = @Ciudad, TipoEmpleado = @TipoEmpleado, NombreUsuario = @NombreUsuario" +
-                    "Contraseña = @Contrasena, FechaUltimoAcceso = @FechaUltimoAcceso WHERE idEmpleado = @idEmpleado", connection))
+                    "Contraseña = @Contrasena, FechaUltimoAcceso = @FechaUltimoAcceso WHERE idEmpleado = @idPersona", connection))
                 {
-                    command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idPersona));
+                    command.Parameters.Add(new SqlParameter("@idPersona", empleado.idPersona));
                     command.Parameters.Add(new SqlParameter("@Nombre", empleado.Nombre));
                     command.Parameters.Add(new SqlParameter("@Apellido", empleado.Apellido));
                     command.Parameters.Add(new SqlParameter("@Telefono", empleado.Telefono));
@@ -119,7 +114,7 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@Colonia", empleado.Colonia));
                     command.Parameters.Add(new SqlParameter("@Ciudad", empleado.Ciudad));
                     command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
-                    command.Parameters.Add(new SqlParameter("@Contrasena", empleado.Contraseña));
+                    command.Parameters.Add(new SqlParameter("@Contrasena", PassHash(empleado.Contraseña)));
                     command.Parameters.Add(new SqlParameter("@FechaUltimoAcceso", empleado.FechaUltimoAcceso));
                     command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
 
@@ -158,6 +153,45 @@ namespace BusinessLogic
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+                        empleado.NombreUsuario = reader["NombreUsuario"].ToString();
+                    }
+                }
+                connection.Close();
+            }
+            return empleado;
+        }
+
+        public Empleado GetEmpleadoId(String idEmpleado)
+        {
+            Empleado empleado = new Empleado();
+            DbConnection dbconnection = new DbConnection();
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Empleado WHERE idEmpleado = @IdEmpleadoToSearch", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("idEmpleadoToSearch", idEmpleado));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        empleado.NombreUsuario = reader["idEmpleado"].ToString();
+                        empleado.Nombre = reader["Nombre"].ToString();
+                        empleado.Apellido = reader["Apellido"].ToString();
+                        empleado.Telefono = reader["Telefono"].ToString();
+                        empleado.Email = reader["Email"].ToString();
+                        empleado.Calle = reader["Calle"].ToString();
+                        empleado.Numero = reader["Numero"].ToString();
+                        empleado.CodigoPostal = reader["CodigoPostal"].ToString();
+                        empleado.Colonia = reader["Colonia"].ToString();
+                        empleado.Ciudad = reader["Ciudad"].ToString();
+                        empleado.TipoEmpleado = reader["TipoEmpleado"].ToString();
                         empleado.NombreUsuario = reader["NombreUsuario"].ToString();
                     }
                 }
@@ -210,21 +244,6 @@ namespace BusinessLogic
                 connection.Close();
             }
             return listaEmpleados;
-        }
-
-        public List<Empleado> GetEmpleadosByDireccion(string Direccion)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Empleado> GetEmpleadosByNombre(string Nombre)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Empleado> GetEmpleadosByTelefono(string Telefono)
-        {
-            throw new NotImplementedException();
         }
 
         public List<Empleado> BuscarEmpleado(string busqueda)
@@ -360,6 +379,55 @@ namespace BusinessLogic
                 connection.Close();
             }
             return listaEmpleados;
+        }
+
+        public ResultadoOperacion EliminarEmpleado(string idEmpleado)
+        {
+            const int VALORES_DUPLICADOS = 2601;
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            DbConnection dbConnection = new DbConnection();
+
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+                transaction = connection.BeginTransaction("EliminarEmpleado");
+                command.Connection = connection;
+                command.Transaction = transaction;
+
+                try
+                {
+                    command.CommandText =
+                         "DELETE FROM dbo.Persona WHERE idPersona = @idPersona";
+                    command.Parameters.Add(new SqlParameter("@idPersona", idEmpleado));
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                        "DELETE FROM dbo.Empleado WHERE idEmpleado =  @idEmpleado";
+                    command.Parameters.Add(new SqlParameter("@idEmpleado", idEmpleado));
+                    command.ExecuteNonQuery();
+
+                    transaction.Commit();
+                    resultado = ResultadoOperacion.Exito;
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+
+                    switch (e.Number)
+                    {
+                        case VALORES_DUPLICADOS:
+                            resultado = ResultadoOperacion.ObjetoExistente;
+                            break;
+                        default:
+                            resultado = ResultadoOperacion.FalloSQL;
+                            break;
+                    }
+                }
+            }
+
+            return resultado;
         }
     }
   }

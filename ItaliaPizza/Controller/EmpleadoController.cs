@@ -43,7 +43,13 @@ namespace Controller
 			return resultado;
 		}
 
-		public Empleado GetEmpleadoByUsername(String username)
+        public Empleado GetEmpleadoId(string id)
+        {
+			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+			return empleadoDAO.GetEmpleadoId(id);
+		}
+
+        public Empleado GetEmpleadoByUsername(String username)
 		{
 			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
 			return empleadoDAO.GetEmpleadoByUsername(username);
@@ -79,6 +85,13 @@ namespace Controller
 			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
 			List<Empleado> empleados = empleadoDAO.BuscarEmpleadoTelefono(busqueda + "%");
 			return empleados;
+		}
+
+		public ResultadoOperacion EliminarEmpleado(Empleado empleado)
+		{
+			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+			ResultadoOperacion resultado = empleadoDAO.EliminarEmpleado(empleado.idEmpleado);
+			return resultado;
 		}
 	}
 }

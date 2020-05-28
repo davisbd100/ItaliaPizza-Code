@@ -6,13 +6,14 @@ namespace BusinessLogic
 {
     interface IEmpleado
     {
-        List<Empleado> GetEmpleados(int rango);
-        List<Empleado> BuscarEmpleado(string busqueda);
-        List<Empleado> GetEmpleadosByNombre(String Nombre);
-        List<Empleado> GetEmpleadosByTelefono(String Telefono);
-        List<Empleado> GetEmpleadosByDireccion(String Direccion);
         ResultadoOperacion AgregarEmpleado(Empleado empleado);
         ResultadoOperacion EditarEmpleado(Empleado empleado);
-        ResultadoOperacion DarDeBajaEmpleado(Empleado empleado);
+        Empleado GetEmpleadoByUsername(String username);
+        Empleado GetEmpleadoId(String idEmpleado);
+        List<Empleado> GetEmpleados(int rango);
+        List<Empleado> BuscarEmpleado(string busqueda);
+        List<Empleado> BuscarEmpleadoDireccion(string busqueda);
+        List<Empleado> BuscarEmpleadoTelefono(string busqueda);
+        ResultadoOperacion EliminarEmpleado(string idEmpleado);
     }
 }

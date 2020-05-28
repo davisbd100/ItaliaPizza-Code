@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +15,8 @@ namespace ItaliaPizza
     /// </summary>
     public partial class Empleados : Window
     {
+        private int POSICION_FUERA_RANGO = -1;
+
         public Empleados()
         {
             InitializeComponent();
@@ -37,14 +40,46 @@ namespace ItaliaPizza
 
         private void EditarButton_Click(object sender, RoutedEventArgs e)
         {
-            EditarEmpleado editarEmpleado = new EditarEmpleado();
-            editarEmpleado.ShowDialog();
+            int posicion = DataGridEmpleados.SelectedIndex;
+
+            if (posicion != POSICION_FUERA_RANGO && ValidarSeleccion())
+            {
+                Empleado empleado = (Empleado)DataGridEmpleados.SelectedItem;
+                EditarEmpleado editarEmpleado = new EditarEmpleado(empleado);
+                editarEmpleado.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar solo un empleado");
+            }
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            DarDeBajaEmpleado darDeBajaEmpleado = new DarDeBajaEmpleado();
-            darDeBajaEmpleado.ShowDialog();
+            int posicion = DataGridEmpleados.SelectedIndex;
+            
+            if (posicion != POSICION_FUERA_RANGO && ValidarSeleccion())
+            {
+                Empleado empleado = (Empleado)DataGridEmpleados.SelectedItem;
+
+                DarDeBajaEmpleado darDeBajaEmpleado = new DarDeBajaEmpleado(empleado);
+                darDeBajaEmpleado.ShowDialog();
+
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar solo un empleado");
+            }
+        }
+
+        private bool ValidarSeleccion()
+        {
+            bool resultado = false;
+            if(DataGridEmpleados.SelectedItems.Count == 1)
+            {
+                resultado = true;
+            }
+            return resultado;
         }
 
         private void ButtonSiguierntePagina_Click(object sender, RoutedEventArgs e)
