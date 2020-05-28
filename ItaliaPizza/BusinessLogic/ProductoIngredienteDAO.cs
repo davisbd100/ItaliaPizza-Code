@@ -230,7 +230,7 @@ namespace BusinessLogic
 
         }
 
-        public ProductoIngrediente ObtenerProductoIngredientePorId(string codigo)
+        public ProductoIngrediente ObtenerProductoIngredientePorId(int codigo)
         {
             ProductoIngrediente productoIngrediente = new ProductoIngrediente();
             DbConnection dbconnection = new DbConnection();
@@ -244,7 +244,8 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoIngrediente WHERE idProductoIngrediente = @Codigo", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoIngrediente left join dbo.Producto on " +
+                    " dbo.Producto.Codigo = dbo.ProductoIngrediente.idProductoIngrediente WHERE idProductoIngrediente = @Codigo", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Codigo", codigo));
                     SqlDataReader reader = command.ExecuteReader();
@@ -255,7 +256,7 @@ namespace BusinessLogic
                         productoIngrediente.Nombre = reader["Nombre"].ToString();
                         productoIngrediente.Restricción = reader["Restriccion"].ToString();
 
-                        productoIngrediente.tipoIngrediente = (TipoIngredienteEnum)Enum.Parse(typeof(TipoIngredienteEnum), reader["TipoProducto"].ToString());
+                       // productoIngrediente.tipoIngrediente = (TipoIngredienteEnum)Enum.Parse(typeof(TipoIngredienteEnum), reader["TipoProducto"].ToString());
                     }
                 }
                 connection.Close();
