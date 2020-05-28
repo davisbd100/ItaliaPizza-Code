@@ -127,8 +127,28 @@ namespace ItaliaPizza
 
         private void btn_Editar_Click(object sender, RoutedEventArgs e)
         {
+            int posicion = dtg_Productos.SelectedIndex;
 
+            if (posicion != POSICION_FUERA_RANGO && ValidarSeleccion())
+            {
+                Producto producto = (Producto)dtg_Productos.SelectedItem;
+                BuscarProducto(producto);
+                if(TIPO_PRODUCTO == "Venta")
+                {
+                    EditarProductoVenta editarProductoVenta = new EditarProductoVenta(producto);
+                    editarProductoVenta.Show();
+                }
+                else
+                {
+                    EditarProductoIngrediente editarProductoIngrediente = new EditarProductoIngrediente(producto);
+                    editarProductoIngrediente.Show();
+                }
 
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar solo un producto");
+            }
 
         }
 
