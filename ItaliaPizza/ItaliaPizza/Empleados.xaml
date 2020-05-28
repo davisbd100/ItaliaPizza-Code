@@ -103,7 +103,7 @@
         <Label Content="VENTAS" HorizontalAlignment="Left" Margin="41.832,404.446,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
         <Label Content="CLIENTES" HorizontalAlignment="Left" Margin="39.165,478.699,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
         <Label Content="EMPLEADOS" HorizontalAlignment="Left" Margin="33.162,553.035,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
-        <DataGrid x:Name="DataGridEmpleados" HorizontalAlignment="Left" Height="379" Margin="185,235,0,0" VerticalAlignment="Top" Width="1003" FontFamily="Calibri Light" FontSize="16"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Background="White" Foreground="#FF6D7276">
+        <DataGrid x:Name="DataGridEmpleados" HorizontalAlignment="Left" Height="335" Margin="185,235,0,0" VerticalAlignment="Top" Width="1003" FontFamily="Calibri Light" FontSize="16"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Background="White" Foreground="#FF6D7276">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding idPersona}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
@@ -120,6 +120,8 @@
                 <DataGridTextColumn Header="Fecha último acceso" Binding="{Binding FechaUltimoAcceso}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="TextBlockPagina" HorizontalAlignment="Left" Height="33" Margin="185,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="920" Text="1"/>
+        <TextBlock x:Name="TextBlockPagina" HorizontalAlignment="Left" Height="33" Margin="185,585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="318" Text="1"/>
+        <Button x:Name="ButtonSiguierntePagina" Content="Siguiente" HorizontalAlignment="Left" Height="32" Margin="976,587,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonSiguierntePagina_Click"/>
+        <Button x:Name="ButtonAnteriorPagina" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="738,586,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonAnteriorPagina_Click"/>
     </Grid>
 </Window>
