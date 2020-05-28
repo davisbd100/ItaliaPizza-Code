@@ -45,7 +45,7 @@ namespace Controller
         }
 
 
-        public List<ProductoIngrediente> ObtenerProductoIngrediente(int rango)
+        public List<ProductoIngrediente> ObtenerProductosIngrediente(int rango)
         {
             const int NUM_RESULTADOS = 19;
             rango -= 1;
@@ -61,6 +61,13 @@ namespace Controller
             ProductoIngredienteDAO productoIngredienteDAO = new ProductoIngredienteDAO();
             ResultadoOperacion resultado = productoIngredienteDAO.EliminarProducto(producto.Código);
             return resultado;
+        }
+
+        public ProductoIngrediente buscarProductoIngredientePorId(int id)
+        {
+            ProductoIngredienteDAO productoIngredienteDAO = new ProductoIngredienteDAO();
+            ProductoIngrediente productoIngrediente = productoIngredienteDAO.ObtenerProductoIngredientePorId(id);
+            return productoIngrediente;
         }
     }
 }

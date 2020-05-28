@@ -55,7 +55,7 @@ namespace Controller
         }
 
 
-        public List<ProductoVenta> ObtenerProductoVenta(int rango)
+        public List<ProductoVenta> ObtenerProductosVenta(int rango)
         {
             const int NUM_RESULTADOS = 19;
             rango -= 1;
