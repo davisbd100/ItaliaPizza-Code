@@ -20,21 +20,29 @@ namespace ItaliaPizza
 
         private void IniciarButton_Click(object sender, RoutedEventArgs e)
         {
-            Login();
+            if(validarCampos(NombreUsuarioTextBox.Text, ContraseñaPasswordBox.Password) == true)
+            {
+                Login();
+            }
+            else
+            {
+                MessageBox.Show("Existen campos vacíos, asegurate de que todos estén llenos", "Campos vacíos");
+            }
+            
         }
 
         private void Login()
         {
             AutenticacionController autenticacion = new AutenticacionController();
-            DatosLogin datosLogin = autenticacion.AutenticacionEmpleado(NombreUsuarioTextBox.Text.ToString(), ContaseñaPasswordBox.Password);
+            DatosLogin datosLogin = autenticacion.AutenticacionEmpleado(NombreUsuarioTextBox.Text.ToString(), ContraseñaPasswordBox.Password);
             if (datosLogin.Result.Equals(validationResult.PasswordIncorrect))
             {
                 MessageBox.Show("Usuario y/o contraseña incorrecto");
-                ContaseñaPasswordBox.Password = String.Empty;
+                ContraseñaPasswordBox.Password = String.Empty;
             } else if (datosLogin.Result.Equals(validationResult.Success))
             {
-                Properties.Settings.Default.EmpleadoID = autenticacion.GetUserName(NombreUsuarioTextBox.Text.ToString(), ContaseñaPasswordBox.Password);
-                Properties.Settings.Default.EmpleadoType = autenticacion.GetUserType(NombreUsuarioTextBox.Text.ToString(), ContaseñaPasswordBox.Password);
+                Properties.Settings.Default.EmpleadoID = autenticacion.GetUserName(NombreUsuarioTextBox.Text.ToString(), ContraseñaPasswordBox.Password);
+                Properties.Settings.Default.EmpleadoType = autenticacion.GetUserType(NombreUsuarioTextBox.Text.ToString(), ContraseñaPasswordBox.Password);
                 AbrirVentana();
                 this.Close();
             }
@@ -100,14 +108,14 @@ namespace ItaliaPizza
         private void VerContraseñaButton_MouseEnter(object sender, MouseEventArgs e)
         {
             VerContraseñaTextBox.Visibility = Visibility.Visible;
-            ContaseñaPasswordBox.Visibility = Visibility.Hidden;
-            VerContraseñaTextBox.Text = ContaseñaPasswordBox.Password;
+            ContraseñaPasswordBox.Visibility = Visibility.Hidden;
+            VerContraseñaTextBox.Text = ContraseñaPasswordBox.Password;
         }
 
         private void VerContraseñaButton_MouseLeave(object sender, MouseEventArgs e)
         {
             VerContraseñaTextBox.Visibility = Visibility.Hidden;
-            ContaseñaPasswordBox.Visibility = Visibility.Visible;
+            ContraseñaPasswordBox.Visibility = Visibility.Visible;
             VerContraseñaTextBox.Text = String.Empty;
         }
     }
