@@ -161,7 +161,7 @@ namespace BusinessLogic
             return empleado;
         }
 
-        public Empleado GetEmpleadoId(String idEmpleado)
+        public Empleado GetEmpleadoid(String idEmpleado)
         {
             Empleado empleado = new Empleado();
             DbConnection dbconnection = new DbConnection();
@@ -175,13 +175,14 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Empleado WHERE idEmpleado = @IdEmpleadoToSearch", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Persona left join " +
+                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado WHERE idPersona = @idEmpleado", connection))
                 {
-                    command.Parameters.Add(new SqlParameter("idEmpleadoToSearch", idEmpleado));
+                    command.Parameters.Add(new SqlParameter("@idEmpleado", idEmpleado));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        empleado.NombreUsuario = reader["idEmpleado"].ToString();
+                        empleado.idPersona = reader["idPersona"].ToString();
                         empleado.Nombre = reader["Nombre"].ToString();
                         empleado.Apellido = reader["Apellido"].ToString();
                         empleado.Telefono = reader["Telefono"].ToString();
@@ -191,8 +192,11 @@ namespace BusinessLogic
                         empleado.CodigoPostal = reader["CodigoPostal"].ToString();
                         empleado.Colonia = reader["Colonia"].ToString();
                         empleado.Ciudad = reader["Ciudad"].ToString();
+                        empleado.idEmpleado = reader["idEmpleado"].ToString();
                         empleado.TipoEmpleado = reader["TipoEmpleado"].ToString();
                         empleado.NombreUsuario = reader["NombreUsuario"].ToString();
+                        empleado.Contraseña = PassHash(reader["Contrasena"].ToString());
+                        empleado.FechaUltimoAcceso = DateTime.Parse(reader["FechaUltimoAcceso"].ToString());
                     }
                 }
                 connection.Close();

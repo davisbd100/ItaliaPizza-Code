@@ -43,13 +43,14 @@ namespace Controller
 			return resultado;
 		}
 
-        public Empleado GetEmpleadoId(string id)
-        {
+		public Empleado GetEmpleadoId(String idEmpleado)
+		{
 			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-			return empleadoDAO.GetEmpleadoId(id);
+			Empleado empleado = empleadoDAO.GetEmpleadoid(idEmpleado);
+			return empleado;
 		}
 
-        public Empleado GetEmpleadoByUsername(String username)
+		public Empleado GetEmpleadoByUsername(String username)
 		{
 			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
 			return empleadoDAO.GetEmpleadoByUsername(username);

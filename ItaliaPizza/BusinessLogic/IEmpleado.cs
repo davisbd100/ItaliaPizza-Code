@@ -9,7 +9,6 @@ namespace BusinessLogic
         ResultadoOperacion AgregarEmpleado(Empleado empleado);
         ResultadoOperacion EditarEmpleado(Empleado empleado);
         Empleado GetEmpleadoByUsername(String username);
-        Empleado GetEmpleadoId(String idEmpleado);
         List<Empleado> GetEmpleados(int rango);
         List<Empleado> BuscarEmpleado(string busqueda);
         List<Empleado> BuscarEmpleadoDireccion(string busqueda);

@@ -1,18 +1,6 @@
 ﻿using BusinessLogic;
 using Controller;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ItaliaPizza
 {
@@ -25,28 +13,28 @@ namespace ItaliaPizza
         {
             InitializeComponent();
             empleadoEditar = empleado;
-            CargarCampos(empleadoEditar.idEmpleado);
+            CargarCampos();
         }
 
         Empleado empleadoEditar = new Empleado();
 
-        private void CargarCampos(string id)
+        private void CargarCampos()
         {
             EmpleadoController empleadoController = new EmpleadoController();
-            Empleado empleado = empleadoController.GetEmpleadoId(id);
-            comboBoxTipoEmpleado.Text = empleado.TipoEmpleado;
-            textBoxNombre.Text = empleado.Nombre;
-            textBoxApellido.Text = empleado.Apellido;
-            textBoxTelefono.Text = empleado.Telefono;
-            textBoxCorreo.Text = empleado.Email;
-            textBoxCiudad.Text = empleado.Ciudad;
-            textBoxCalle.Text = empleado.Calle;
-            textBoxNúmero.Text = empleado.Numero;
-            textBoxColonia.Text = empleado.Colonia;
-            textBoxCodigoPostal.Text = empleado.CodigoPostal;
-            textBoxIdEmpleado.Text = empleado.idEmpleado;
-            textBoxUsuario.Text = empleado.NombreUsuario;
-            textBoxContraseña.Text = empleado.Contraseña;
+            Empleado datosEmpleado = empleadoController.GetEmpleadoId(empleadoEditar.idEmpleado);
+            comboBoxTipoEmpleado.Text = datosEmpleado.TipoEmpleado;
+            textBoxNombre.Text = datosEmpleado.Nombre;
+            textBoxApellido.Text = datosEmpleado.Apellido;
+            textBoxTelefono.Text = datosEmpleado.Telefono;
+            textBoxCorreo.Text = datosEmpleado.Email;
+            textBoxCiudad.Text = datosEmpleado.Ciudad;
+            textBoxCalle.Text = datosEmpleado.Calle;
+            textBoxNúmero.Text = datosEmpleado.Numero;
+            textBoxColonia.Text = datosEmpleado.Colonia;
+            textBoxCodigoPostal.Text = datosEmpleado.CodigoPostal;
+            textBoxIdEmpleado.Text = datosEmpleado.idEmpleado;
+            textBoxUsuario.Text = datosEmpleado.NombreUsuario;
+            textBoxContraseña.Text = datosEmpleado.Contraseña;
         }
 
         private void CancelarButton_Click(object sender, RoutedEventArgs e)
