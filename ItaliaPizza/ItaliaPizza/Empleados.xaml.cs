@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -36,6 +37,7 @@ namespace ItaliaPizza
         {
             RegistrarEmpleado registrarEmpleado = new RegistrarEmpleado();
             registrarEmpleado.ShowDialog();
+            LlenarGrid();
         }
 
         private void EditarButton_Click(object sender, RoutedEventArgs e)
@@ -47,6 +49,7 @@ namespace ItaliaPizza
                 Empleado empleado = (Empleado)DataGridEmpleados.SelectedItem;
                 EditarEmpleado editarEmpleado = new EditarEmpleado(empleado);
                 editarEmpleado.ShowDialog();
+                LlenarGrid();
             }
             else
             {
@@ -57,14 +60,14 @@ namespace ItaliaPizza
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             int posicion = DataGridEmpleados.SelectedIndex;
-            
+
             if (posicion != POSICION_FUERA_RANGO && ValidarSeleccion())
             {
                 Empleado empleado = (Empleado)DataGridEmpleados.SelectedItem;
 
                 DarDeBajaEmpleado darDeBajaEmpleado = new DarDeBajaEmpleado(empleado);
                 darDeBajaEmpleado.ShowDialog();
-
+                LlenarGrid();
             }
             else
             {
@@ -75,7 +78,7 @@ namespace ItaliaPizza
         private bool ValidarSeleccion()
         {
             bool resultado = false;
-            if(DataGridEmpleados.SelectedItems.Count == 1)
+            if (DataGridEmpleados.SelectedItems.Count == 1)
             {
                 resultado = true;
             }
@@ -106,7 +109,8 @@ namespace ItaliaPizza
                 List<Empleado> empleados = empleadoController.BuscarEmpleado(TextBoxBuscar.Text);
                 DataGridEmpleados.ItemsSource = null;
                 DataGridEmpleados.ItemsSource = empleados;
-            } else if (ComboBoxBuscar.Text == "Calle")
+            }
+            else if (ComboBoxBuscar.Text == "Calle")
             {
                 EmpleadoController empleadoController = new EmpleadoController();
                 List<Empleado> empleados = empleadoController.BuscarEmpleadoDireccion(TextBoxBuscar.Text);
@@ -122,8 +126,16 @@ namespace ItaliaPizza
             }
             else
             {
-                MessageBox.Show("Seleccione una opcion del filtro");
+                EmpleadoController empleadoController = new EmpleadoController();
+                List<Empleado> empleados = empleadoController.BuscarEmpleado(TextBoxBuscar.Text);
+                DataGridEmpleados.ItemsSource = null;
+                DataGridEmpleados.ItemsSource = empleados;
             }
+        }
+
+        private void SalirButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
