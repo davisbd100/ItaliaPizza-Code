@@ -41,10 +41,11 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida";
+                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida)";
                     command.Parameters.Add(new SqlParameter("@idInventario", inventario.idInventario));
                     command.Parameters.Add(new SqlParameter("@ExistenciaTotal", inventario.ExistenciaTotal));
                     command.Parameters.Add(new SqlParameter("@UnidadMedida", inventario.UnidadDeMedida));
+                    command.ExecuteNonQuery();
 
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
@@ -154,8 +155,9 @@ namespace BusinessLogic
                         inventario.PrecioCompra = float.Parse(reader["Precio"].ToString());
                         DateTime fechaIngreso = DateTime.Parse(reader["FechaIngreso"].ToString());
                         inventario.FechaIngreso = fechaIngreso;
-                        DateTime caducidad = DateTime.Parse(reader["Caducidad"].ToString());
-                        inventario.Caducidad = caducidad;
+                        //  DateTime caducidad = DateTime.Parse(reader["Caducidad"].ToString());
+                        // inventario.Caducidad = caducidad;
+                        inventario.Caducidad = reader["caducidad"].ToString();
                         inventarios.Add(inventario);
                     }
                 }

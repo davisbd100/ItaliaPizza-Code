@@ -10,11 +10,12 @@ using static BusinessLogic.ResultadoOperacionEnum;
 namespace BusinessLogic
 {
 
-    class ProductoIngredienteDAO : IProductoIngrediente
+   public class ProductoIngredienteDAO : IProductoIngrediente
     {
-        public ResultadoOperacionEnum.ResultadoOperacion AddProductoIngrediente(ProductoIngrediente productoIngrediente)
+        public ResultadoOperacionEnum.ResultadoOperacion AddProductoIngrediente(ProductoIngrediente productoIngrediente, Inventario inventario)
         {
             const int VALORES_DUPLICADOS = 2601;
+            const int VALOR_EXISTENTE = 2627;
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
             DbConnection dbConnection = new DbConnection();
 
@@ -38,10 +39,27 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.ProductoIngrediente VALUES (@idProductoIngrediente, @TipoIngrediente";
+                        "INSERT INTO dbo.ProductoIngrediente VALUES (@idProductoIngrediente, @TipoIngrediente)";
                     command.Parameters.Add(new SqlParameter("@idProductoIngrediente", productoIngrediente.Código));
                     command.Parameters.Add(new SqlParameter("@TipoIngrediente", productoIngrediente.tipoIngrediente));
+                    command.ExecuteNonQuery();
 
+                    command.CommandText =
+                         "INSERT INTO dbo.ProductoInventario VALUES (@Inventario, @Producto, @CantidadIngreso, @PrecioCompra, @FechaIngreso, @Caducidad)";
+                    command.Parameters.Add(new SqlParameter("@Inventario", inventario.idInventario));
+                    command.Parameters.Add(new SqlParameter("@Producto", inventario.Producto.Código));
+                    command.Parameters.Add(new SqlParameter("@CantidadIngreso", inventario.CantidadIngreso));
+                    command.Parameters.Add(new SqlParameter("@PrecioCompra", inventario.PrecioCompra));
+                    command.Parameters.Add(new SqlParameter("@FechaIngreso", inventario.FechaIngreso));
+                    command.Parameters.Add(new SqlParameter("@Caducidad", inventario.Caducidad));
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida)";
+                    command.Parameters.Add(new SqlParameter("@idInventario", inventario.idInventario));
+                    command.Parameters.Add(new SqlParameter("@ExistenciaTotal", inventario.ExistenciaTotal));
+                    command.Parameters.Add(new SqlParameter("@UnidadMedida", inventario.UnidadDeMedida));
+                    command.ExecuteNonQuery();
 
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
@@ -54,6 +72,9 @@ namespace BusinessLogic
                     switch (e.Number)
                     {
                         case VALORES_DUPLICADOS:
+                            resultado = ResultadoOperacion.ObjetoExistente;
+                            break;
+                        case VALOR_EXISTENTE:
                             resultado = ResultadoOperacion.ObjetoExistente;
                             break;
                         default:
@@ -106,36 +127,71 @@ namespace BusinessLogic
             return resultado;
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion EliminarProducto(ProductoIngrediente productoIngrediente)
+        public ResultadoOperacionEnum.ResultadoOperacion EliminarProducto(int productoIngrediente)
         {
-
+            const int VALORES_DUPLICADOS = 2601;
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
             DbConnection dbConnection = new DbConnection();
 
             using (SqlConnection connection = dbConnection.GetConnection())
             {
-
                 connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+                transaction = connection.BeginTransaction("InsertarProductoIngrediente");
+                command.Connection = connection;
+                command.Transaction = transaction;
 
-                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoIngrediente SET Visibilidad = Invisible WHERE idProductoIngrediente = @idProductoIngrediente) ", connection))
+                try
                 {
-                    command.Parameters.Add(new SqlParameter("@idProductoIngrediente", productoIngrediente.Código));
+                    command.CommandText =
+                         "DELETE FROM dbo.Producto WHERE Codigo = @Codigo";
+                    command.Parameters.Add(new SqlParameter("@Codigo", productoIngrediente));
+   
+                    command.ExecuteNonQuery();
 
-                    try
-                    {
-                        SqlDataReader reader = command.ExecuteReader();
+                    command.CommandText =
+                        "DELETE FROM dbo.ProductoIngrediente WHERE idProductoIngrediente =  @idProductoIngrediente";
+                    command.Parameters.Add(new SqlParameter("@idProductoIngrediente", productoIngrediente));
 
-                    }
-                    catch (SqlException)
+
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                         "DELETE FROM dbo.ProductoInventario WHERE Producto = @Producto ";
+                    command.Parameters.Add(new SqlParameter("@Producto", productoIngrediente));
+
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                        "DELETE FROM dbo.Inventario WHERE idInventario =@idInventario";
+                    command.Parameters.Add(new SqlParameter("@idInventario", productoIngrediente));
+
+
+                    command.ExecuteNonQuery();
+
+                    transaction.Commit();
+                    resultado = ResultadoOperacion.Exito;
+
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+
+                    switch (e.Number)
                     {
-                        resultado = ResultadoOperacion.FalloSQL;
-                        return resultado;
+                        case VALORES_DUPLICADOS:
+                            resultado = ResultadoOperacion.ObjetoExistente;
+                            break;
+                        default:
+                            resultado = ResultadoOperacion.FalloSQL;
+                            break;
                     }
                 }
-                resultado = ResultadoOperacion.Exito;
-
             }
+
             return resultado;
+
         }
 
 
@@ -154,14 +210,15 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoIngrediente ORDER BY Nombre LIMIT 20 OFFSET @Rango", connection))
+                using (SqlCommand command = new SqlCommand("select Codigo, Nombre  from dbo.ProductoIngrediente left join dbo.Producto  " +
+                    "on dbo.Producto.Codigo = dbo.ProductoIngrediente.idProductoIngrediente order by Nombre offset @Rango rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         ProductoIngrediente productoIngrediente = new ProductoIngrediente();
-                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         productoIngrediente.Nombre = reader["Nombre"].ToString();
 
                         listaProductos.Add(productoIngrediente);
@@ -173,7 +230,7 @@ namespace BusinessLogic
 
         }
 
-        public ProductoIngrediente ObtenerProductoIngredientePorId(string codigo)
+        public ProductoIngrediente ObtenerProductoIngredientePorId(int codigo)
         {
             ProductoIngrediente productoIngrediente = new ProductoIngrediente();
             DbConnection dbconnection = new DbConnection();
@@ -187,18 +244,19 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoIngrediente WHERE idProductoIngrediente = @Codigo", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoIngrediente left join dbo.Producto on " +
+                    " dbo.Producto.Codigo = dbo.ProductoIngrediente.idProductoIngrediente WHERE idProductoIngrediente = @Codigo", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Codigo", codigo));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         productoIngrediente.Descripción = reader["Descripcion"].ToString();
                         productoIngrediente.Nombre = reader["Nombre"].ToString();
                         productoIngrediente.Restricción = reader["Restriccion"].ToString();
 
-                        productoIngrediente.tipoIngrediente = (TipoIngredienteEnum)Enum.Parse(typeof(TipoIngredienteEnum), reader["TipoProducto"].ToString());
+                       // productoIngrediente.tipoIngrediente = (TipoIngredienteEnum)Enum.Parse(typeof(TipoIngredienteEnum), reader["TipoProducto"].ToString());
                     }
                 }
                 connection.Close();
@@ -221,14 +279,14 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoIngrediente WHERE Nombre LIKE @Busqueda", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Producto WHERE Nombre LIKE @Busqueda", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         ProductoIngrediente productoIngrediente = new ProductoIngrediente();
-                        productoIngrediente.Código = reader["Codigo"].ToString();
+                        productoIngrediente.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         productoIngrediente.Nombre = reader["Nombre"].ToString();
 
                         listaProductos.Add(productoIngrediente);

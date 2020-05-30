@@ -11,6 +11,39 @@ namespace BusinessLogic
 {
     public class ProductoDAO : IProducto
     {
+        public List<Producto> BuscarProducto(string busqueda)
+        {
+            List<Producto> listaProductos = new List<Producto>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Producto WHERE Nombre LIKE @Busqueda", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ProductoVenta productoVenta = new ProductoVenta();
+                        productoVenta.Código = Convert.ToInt32(reader["Codigo"].ToString());
+                        productoVenta.Nombre = reader["Nombre"].ToString();
+
+                        listaProductos.Add(productoVenta);
+                    }
+                }
+                connection.Close();
+            }
+            return listaProductos;
+        }
+
         public List<Producto> getProductos(int rango)
         {
             List<Producto> listaProductos = new List<Producto>();
@@ -27,14 +60,17 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta FULL OUTER JOIN dbo.ProductoIngrediente ON dbo.ProductoVenta.Codigo = dbo.ProductoIngrediente.Codigo ORDER BY Nombre LIMIT 20 OFFSET @Rango", connection))
+                using (SqlCommand command = new SqlCommand("select Codigo, Nombre  from dbo.Producto left join dbo.ProductoVenta  on dbo.Producto.Codigo =" +
+                    " dbo.ProductoVenta.idProductoVenta " +
+                    "left join dbo.ProductoIngrediente  on dbo.Producto.Codigo =" +
+                    " dbo.ProductoIngrediente.idProductoIngrediente order by Nombre offset @Rango rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         Producto producto = new Producto();
-                        producto.Código = reader["Codigo"].ToString();
+                        producto.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         producto.Nombre = reader["Nombre"].ToString();
                         
                         

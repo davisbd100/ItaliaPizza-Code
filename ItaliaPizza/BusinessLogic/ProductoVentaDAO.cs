@@ -12,9 +12,10 @@ namespace BusinessLogic
 {
     public class ProductoVentaDAO : IProductoVenta
     {
-        public ResultadoOperacionEnum.ResultadoOperacion AddProductoVenta(ProductoVenta productoVenta)
+        public ResultadoOperacionEnum.ResultadoOperacion AddProductoVenta(ProductoVenta productoVenta, Inventario inventario)
         {
             const int VALORES_DUPLICADOS = 2601;
+            const int VALOR_EXISTENTE = 2627;
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
 
 
@@ -50,6 +51,23 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@Receta", productoVenta.Receta.IdReceta));
                     command.ExecuteNonQuery();
 
+                    command.CommandText =
+                         "INSERT INTO dbo.ProductoInventario VALUES (@Inventario, @Producto, @CantidadIngreso, @PrecioCompra, @FechaIngreso, @Caducidad)";
+                    command.Parameters.Add(new SqlParameter("@Inventario", inventario.idInventario));
+                    command.Parameters.Add(new SqlParameter("@Producto", inventario.Producto.Código));
+                    command.Parameters.Add(new SqlParameter("@CantidadIngreso", inventario.CantidadIngreso));
+                    command.Parameters.Add(new SqlParameter("@PrecioCompra", inventario.PrecioCompra));
+                    command.Parameters.Add(new SqlParameter("@FechaIngreso", inventario.FechaIngreso));
+                    command.Parameters.Add(new SqlParameter("@Caducidad", inventario.Caducidad));
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida)";
+                    command.Parameters.Add(new SqlParameter("@idInventario", inventario.idInventario));
+                    command.Parameters.Add(new SqlParameter("@ExistenciaTotal", inventario.ExistenciaTotal));
+                    command.Parameters.Add(new SqlParameter("@UnidadMedida", inventario.UnidadDeMedida));
+                    command.ExecuteNonQuery();
+
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
 
@@ -61,6 +79,9 @@ namespace BusinessLogic
                     switch (e.Number)
                     {
                         case VALORES_DUPLICADOS:
+                            resultado = ResultadoOperacion.ObjetoExistente;
+                            break;
+                        case VALOR_EXISTENTE:
                             resultado = ResultadoOperacion.ObjetoExistente;
                             break;
                         default:
@@ -113,33 +134,69 @@ namespace BusinessLogic
             return resultado;
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion EliminarProductoVenta(ProductoVenta productoVenta)
+        public ResultadoOperacionEnum.ResultadoOperacion EliminarProductoVenta(int productoVenta)
         {
+            const int VALORES_DUPLICADOS = 2601;
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
             DbConnection dbConnection = new DbConnection();
 
             using (SqlConnection connection = dbConnection.GetConnection())
             {
-
                 connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+                transaction = connection.BeginTransaction("InsertarProductoIngrediente");
+                command.Connection = connection;
+                command.Transaction = transaction;
 
-                using (SqlCommand command = new SqlCommand("UPDATE dbo.ProductoVenta SET Visibilidad = Invisible  WHERE idProductoVenta = @idProductoVenta) ", connection))
+                try
                 {
-                    command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
+                    command.CommandText =
+                         "DELETE FROM dbo.Producto WHERE Codigo = @Codigo";
+                    command.Parameters.Add(new SqlParameter("@Codigo", productoVenta));
 
-                    try
-                    {
-                        SqlDataReader reader = command.ExecuteReader();
+                    command.ExecuteNonQuery();
 
-                    }
-                    catch (SqlException)
-                    {
-                        resultado = ResultadoOperacion.FalloSQL;
-                        return resultado;
-                    }
+                    command.CommandText =
+                        "DELETE FROM dbo.ProductoVenta WHERE idProductoVenta =  @idProductoVenta";
+                    command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta));
+
+
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                         "DELETE FROM dbo.ProductoInventario WHERE Producto = @Producto ";
+                    command.Parameters.Add(new SqlParameter("@Producto", productoVenta));
+
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                        "DELETE FROM dbo.Inventario WHERE idInventario =@idInventario";
+                    command.Parameters.Add(new SqlParameter("@idInventario", productoVenta));
+
+
+                    command.ExecuteNonQuery();
+
+                    transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
+
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+
+                    switch (e.Number)
+                    {
+                        case VALORES_DUPLICADOS:
+                            resultado = ResultadoOperacion.ObjetoExistente;
+                            break;
+                        default:
+                            resultado = ResultadoOperacion.FalloSQL;
+                            break;
+                    }
                 }
             }
+
             return resultado;
         }
 
@@ -159,14 +216,15 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta ORDER BY Nombre LIMIT 20 OFFSET @Rango", connection))
+                using (SqlCommand command = new SqlCommand("select Codigo, Nombre  from dbo.ProductoVenta left join dbo.Producto  on" +
+                    " dbo.Producto.Codigo = dbo.ProductoVenta.idProductoVenta order by Nombre offset @Rango rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         ProductoVenta productoVenta = new ProductoVenta();
-                        productoVenta.Código = reader["Codigo"].ToString();
+                        productoVenta.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         productoVenta.Nombre = reader["Nombre"].ToString();
 
                         listaProductos.Add(productoVenta);
@@ -179,7 +237,7 @@ namespace BusinessLogic
         }
 
 
-        public ProductoVenta ObtenerProductoVentaPorid(string codigo)
+        public ProductoVenta ObtenerProductoVentaPorid(int codigo)
         {
 
             ProductoVenta productoVenta = new ProductoVenta();
@@ -194,19 +252,20 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta WHERE idProductoVenta = @Codigo", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta left join dbo.Producto on " +
+                    " dbo.Producto.Codigo = dbo.ProductoVenta.idProductoVenta WHERE idProductoVenta = @Codigo", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Codigo", codigo));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        productoVenta.Código= reader["Codigo"].ToString();
+                        productoVenta.Código =  (int)reader["Codigo"];
                         productoVenta.Descripción = reader["Descripcion"].ToString();
                         productoVenta.Nombre = reader["Nombre"].ToString();
                         productoVenta.Restricción = reader["Restriccion"].ToString();
 
                         productoVenta.PrecioPúblico = float.Parse(reader["PrecioPublico"].ToString());
-                        productoVenta.TipoProducto.IdTipoProducto = int.Parse(reader["TipoProducto"].ToString());
+                        //productoVenta.TipoProducto.IdTipoProducto = int.Parse(reader["TipoProducto"].ToString());
                         productoVenta.FotoProducto = reader["FotoProducto"].ToString();
                     }
                 }
@@ -230,14 +289,14 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta WHERE Nombre LIKE @Busqueda", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Producto WHERE Nombre LIKE @Busqueda", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         ProductoVenta productoVenta = new ProductoVenta();
-                        productoVenta.Código = reader["Codigo"].ToString();
+                        productoVenta.Código = Convert.ToInt32( reader["Codigo"].ToString());
                         productoVenta.Nombre = reader["Nombre"].ToString();
 
                         listaProductos.Add(productoVenta);

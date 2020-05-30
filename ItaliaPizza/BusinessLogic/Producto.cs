@@ -8,7 +8,7 @@ namespace BusinessLogic
 {
     public class Producto
     {
-        public string Código { get; set; }
+        public int Código { get; set; }
         public string Nombre { get; set; }
         public string Descripción { get; set; }
         public string Restricción { get; set; }
