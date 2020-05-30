@@ -210,5 +210,28 @@ namespace BusinessLogic
 
             return resultado;
         }
+
+        public List<DataAccess.Inventario> ObtenerTodosLosInventariosConIngreso()
+        {
+            List<DataAccess.Inventario> inventarios = new List<DataAccess.Inventario>();
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var inventario in context.Inventario)
+                    {
+                        inventario.Producto1 = inventario.Producto1;
+                        inventario.ProductoInventario = inventario.ProductoInventario;
+                        inventarios.Add(inventario);
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los Inventarios");
+                }
+            }
+
+            return inventarios;
+        }
     }
 }
