@@ -25,7 +25,7 @@
                 <SolidColorBrush Color="White" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Button x:Name="btCerrarDia" HorizontalAlignment="Left" Height="74.443" Margin="333.411,33.043,0,0" VerticalAlignment="Top" Width="80.011" RenderTransformOrigin="0.579,0.373" Grid.Column="1" Click="btCerrarDia_Click">
+        <Button x:Name="btCerrarDia" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Height="74.443" Margin="333.411,33.043,0,0" BorderThickness="0" VerticalAlignment="Top" Width="80.011" RenderTransformOrigin="0.579,0.373" Grid.Column="1" Click="btCerrarDia_Click">
             <Image Name="imgCerrarDia" Source="Recursos/Pedidos.png" RenderTransformOrigin="0.579,0.373"/>
         </Button>
         <Image HorizontalAlignment="Left" Height="80.603" Margin="163.001,203.397,0,0" VerticalAlignment="Top" Width="138.666" Source="Recursos/FondoInicioPizza.jpg"/>

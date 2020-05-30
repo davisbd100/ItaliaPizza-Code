@@ -23,8 +23,8 @@ namespace PrototiposItaliaPizza
         public EditarPedido(Pedido pedido)
         {
             InitializeComponent();
-            lbIdPedido.Content = pedido.idPedido;
-            lbIdCliente.Content = pedido.Cliente.Nombre;
+            //lbIdPedido.Content = pedido.idPedido;
+            //lbIdCliente.Content = pedido.Cliente.Nombre;
             lbEstatus.Content = "En edición";
         }
     }

@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using BusinessLogic;
 using Controller;
 
-namespace PrototiposItaliaPizza
+namespace ItaliaPizza
 {
     /// <summary>
     /// Lógica de interacción para DarDeBajaCliente.xaml
@@ -23,9 +23,12 @@ namespace PrototiposItaliaPizza
     {
 
         Pedido localPedido { get; set; }
-        public CancelarPedido(Pedido pedido)
+        public CancelarPedido()
         {
-            localPedido = pedido;
+            localPedido = new Pedido()
+            {
+                idPedido = 1
+            };
             InitializeComponent();
         }
 
