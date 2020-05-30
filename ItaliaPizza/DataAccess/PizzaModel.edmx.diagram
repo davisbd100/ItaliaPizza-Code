@@ -43,6 +43,9 @@
         <AssociationConnector Association="PizzaModel.FK__RecetaIng__idRec__4F7CD00D" ManuallyRouted="false" />
         <AssociationConnector Association="PizzaModel.FK__Ubicacion__Ubica__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="PizzaModel.FK__Inventari__Produ__59904A2C" />
+        <EntityTypeShape EntityType="PizzaModel.DiaVenta" Width="1.5" PointX="10.375" PointY="0.875" />
+        <AssociationConnector Association="PizzaModel.FK__Pedido__DiaVenta__4AA30C57" />
+        <AssociationConnector Association="PizzaModel.FK__Pedido__DiaVenta__70C8B53F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

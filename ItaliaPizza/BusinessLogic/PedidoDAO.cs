@@ -23,7 +23,7 @@ namespace BusinessLogic
                                 .Where(b => b.idPedido == pedido.idPedido)
                                 .FirstOrDefault();
 
-                    tempPedido.Estatus1 = estatus;
+                    tempPedido.Estatus = estatus.idEstatus;
                     context.SaveChanges();
 
                     resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;

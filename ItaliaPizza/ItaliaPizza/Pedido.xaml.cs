@@ -29,7 +29,8 @@ namespace PrototiposItaliaPizza
 
         private void btCerrarDia_Click(object sender, RoutedEventArgs e)
         {
-            controller.ActualizarExistencias(controller.ObtenerInventario());
+            controller.CerrarDia();
+            this.Close();
         }
     }
 }

@@ -26,34 +26,28 @@ namespace Controller
             return resultado;
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion ComprobarInventarioFinal(List<DataAccess.Inventario> inventarios)
+        public ResultadoOperacionEnum.ResultadoOperacion CerrarDia()
         {
             ResultadoOperacionEnum.ResultadoOperacion resultado = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
-            InventarioDAO inventarioDAO = new InventarioDAO();
-            List<DataAccess.Inventario> inventarioBD = inventarioDAO.ObtenerTodosLosInventarios();
             PedidoDAO pedidoDAO = new PedidoDAO();
-            List<DataAccess.Pedido> pedidos = pedidoDAO.ObtenerPedidosPorFecha(DateTime.Now.AddDays(-1), DateTime.Now);
+            List<DataAccess.Pedido> pedidos = pedidoDAO.ObtenerPedidosPorFecha((DateTime.Now.AddDays(-1)), DateTime.Now);
+            DataAccess.DiaVenta diaVenta = new DataAccess.DiaVenta();
+            diaVenta.Ingresos = 0;
+            diaVenta.Fecha = DateTime.Now;
             foreach (var pedido in pedidos)
             {
-                foreach (var pedidoProducto in pedido.PedidoProducto)
+                if (pedido.Estatus1.NombreEstatus == "Finalizado")
                 {
-                    for (int i = 0; i < pedidoProducto.Cantidad; i++)
+                    foreach (var pedidoProducto in pedido.PedidoProducto)
                     {
-                        if (pedidoProducto.ProductoVenta.TieneReceta == true)
-                        {
-
-                        }
-                        else
-                        {
-                            foreach (var ingrediente in pedidoProducto.ProductoVenta.Receta1.RecetaIngrediente)
-                            {
-                            
-                            }
-                        }
+                        diaVenta.Ingresos += pedidoProducto.Precio;
                     }
+                    diaVenta.Pedido.Add(pedido);
                 }
             }
-            resultado = inventarioDAO.ActualizarInventario(inventarios);
+            VentaDAO ventaDAO = new VentaDAO();
+            resultado = ventaDAO.GuardarDiaVenta(diaVenta);
+
             return resultado;
         }
 

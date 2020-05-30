@@ -28,7 +28,7 @@ namespace BusinessLogic
                     }
                     resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;
                 }
-                catch (SqlException e)
+                catch (SqlException)
                 {
                     resultado = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
                 }
