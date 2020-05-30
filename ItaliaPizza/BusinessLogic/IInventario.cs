@@ -13,6 +13,7 @@ namespace BusinessLogic
         ResultadoOperacion AddInventario(Inventario inventario);
         ResultadoOperacion ModificarInventario(Inventario inventario);
         List<DataAccess.Inventario> ObtenerTodosLosInventarios();
+        List<DataAccess.Inventario> ObtenerTodosLosInventariosConIngreso();
         ResultadoOperacion ActualizarInventario(List<DataAccess.Inventario> inventarios);
 
     }

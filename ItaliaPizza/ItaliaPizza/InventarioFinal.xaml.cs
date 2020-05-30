@@ -21,12 +21,14 @@ namespace PrototiposItaliaPizza
     /// </summary>
     public partial class InventarioFinal : Window
     {
+        const int POSICION_FUERA_RANGO = -1;
+
         List<DataAccess.Inventario> inventario = new List<DataAccess.Inventario>();
         InventarioController controller = new InventarioController();
         public InventarioFinal()
         {
             InitializeComponent();
-            inventario = controller.ObtenerInventario();
+            inventario = controller.ObtenerIngresosInventario();
             if (!inventario.Any())
             {
                 MessageBox.Show("No se tienen productos registrados");
@@ -64,6 +66,22 @@ namespace PrototiposItaliaPizza
 
         private void btAceptar_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void dgInventario_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            int posicion = dgInventario.SelectedIndex;
+
+            if (posicion != POSICION_FUERA_RANGO)
+            {
+                dgPedidoProducto.ItemsSource = null;
+                dgPedidoProducto.ItemsSource = ((DataAccess.Inventario)dgInventario.SelectedItem).ProductoInventario;
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar solo un producto");
+            }
         }
     }
 }
