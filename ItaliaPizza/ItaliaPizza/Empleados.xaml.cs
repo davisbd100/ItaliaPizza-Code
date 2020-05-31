@@ -53,7 +53,7 @@ namespace ItaliaPizza
             }
             else
             {
-                MessageBox.Show("Debes seleccionar solo un empleado");
+                MessageBox.Show("Debes seleccionar solo un empleado", "Error");
             }
         }
 
@@ -71,7 +71,7 @@ namespace ItaliaPizza
             }
             else
             {
-                MessageBox.Show("Debes seleccionar solo un empleado");
+                MessageBox.Show("Debes seleccionar solo un empleado", "Error");
             }
         }
 

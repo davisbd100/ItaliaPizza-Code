@@ -55,28 +55,13 @@ namespace ItaliaPizza
             EmpleadoController empleadoController = new EmpleadoController();
             if(empleadoController.EliminarEmpleado(empleadoE) == ResultadoOperacion.Exito)
             { 
-                MessageBox.Show("Producto eliminado con éxito");
+                MessageBox.Show("Empleado eliminado con éxito", "Éxito");
+                this.Close();
             }
             else
             {
-                MessageBox.Show("No se pudo eliminar el producto");
-            }
-        }
-
-        private void ComprobarResultado(OperationResult result)
-        {
-            if (result == OperationResult.Success)
-            {
-                MessageBox.Show("Operacion realizada con exito");
+                MessageBox.Show("No se pudo eliminar el empleado", "Error");
                 this.Close();
-            }
-            else if (result == OperationResult.UnknowFail)
-            {
-                MessageBox.Show("Error desconocido");
-            }
-            else if (result == OperationResult.SQLFail)
-            {
-                MessageBox.Show("Error de la base de datos, intente mas tarde");
             }
         }
     }

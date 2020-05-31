@@ -24,6 +24,7 @@ namespace DataAccess
         public string CodigoPostal { get; set; }
         public string Colonia { get; set; }
         public string Ciudad { get; set; }
+        public Nullable<bool> Visibilidad { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         public virtual Empleado Empleado { get; set; }

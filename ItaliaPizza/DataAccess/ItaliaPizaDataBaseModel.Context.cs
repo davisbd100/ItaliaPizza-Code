@@ -13,10 +13,10 @@ namespace DataAccess
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ItaliaPizzadbEntities : DbContext
+    public partial class ItaliaPizzaDataBaseEntities : DbContext
     {
-        public ItaliaPizzadbEntities()
-            : base("name=ItaliaPizzadbEntities")
+        public ItaliaPizzaDataBaseEntities()
+            : base("name=ItaliaPizzaDataBaseEntities")
         {
         }
     

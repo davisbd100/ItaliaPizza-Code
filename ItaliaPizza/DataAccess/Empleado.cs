@@ -19,6 +19,7 @@ namespace DataAccess
         public string NombreUsuario { get; set; }
         public string Contrasena { get; set; }
         public Nullable<System.DateTime> FechaUltimoAcceso { get; set; }
+        public Nullable<bool> Visibilidad { get; set; }
     
         public virtual Persona Persona { get; set; }
     }

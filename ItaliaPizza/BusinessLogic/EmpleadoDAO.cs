@@ -26,7 +26,6 @@ namespace BusinessLogic
         public ResultadoOperacion AgregarEmpleado(Empleado empleado)
         {
             const int VALORES_DUPLICADOS = 2601;
-            //string FechaUltimoAcceso = DateTime.Now.Date.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
             DbConnection dbconnection = new DbConnection();
@@ -43,7 +42,7 @@ namespace BusinessLogic
                 try
                 {
                     command.CommandText =
-                         "INSERT INTO dbo.Persona VALUES (@idPersona, @Nombre, @Apellido, @Telefono, @Email, @Calle, @Numero, @CodigoPostal, @Colonia, @Ciudad)";
+                         "INSERT INTO dbo.Persona VALUES (@idPersona, @Nombre, @Apellido, @Telefono, @Email, @Calle, @Numero, @CodigoPostal, @Colonia, @Ciudad, 'TRUE')";
                     command.Parameters.Add(new SqlParameter("@idPersona", empleado.idPersona));
                     command.Parameters.Add(new SqlParameter("@Nombre", empleado.Nombre));
                     command.Parameters.Add(new SqlParameter("@Apellido", empleado.Apellido));
@@ -57,7 +56,7 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @TipoEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso)";
+                        "INSERT INTO dbo.Empleado VALUES (@idEmpleado, @TipoEmpleado, @NombreUsuario, @Contrasena, @FechaUltimoAcceso, 'TRUE')";
                     command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idEmpleado));
                     command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
                     command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
@@ -98,10 +97,10 @@ namespace BusinessLogic
 
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("UPDATE dbo.Empleado SET Nombre = @Nombre, Apellido = @Apellido, " +
+                using (SqlCommand command = new SqlCommand("UPDATE dbo.Persona SET Nombre = @Nombre, Apellido = @Apellido, " +
                     "Telefono = @Telefono, Email = @Email, Calle = @Calle, Numero = @Numero, CodigoPostal = @CodigoPostal" +
                     "Colonia = @Colonia, Ciudad = @Ciudad, TipoEmpleado = @TipoEmpleado, NombreUsuario = @NombreUsuario" +
-                    "Contraseña = @Contrasena, FechaUltimoAcceso = @FechaUltimoAcceso WHERE idEmpleado = @idPersona", connection))
+                    "FechaUltimoAcceso = @FechaUltimoAcceso WHERE idEmpleado = @idPersona", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@idPersona", empleado.idPersona));
                     command.Parameters.Add(new SqlParameter("@Nombre", empleado.Nombre));
@@ -221,7 +220,7 @@ namespace BusinessLogic
                 }
                 using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
                     "Numero, CodigoPostal, Colonia, Ciudad, TipoEmpleado, NombreUsuario, FechaUltimoAcceso FROM dbo.Persona left join " +
-                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado order by Nombre offset @Rango " +
+                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado  WHERE dbo.Persona.Visibilidad = 'TRUE' order by Nombre offset @Rango " +
                     "rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
@@ -403,12 +402,12 @@ namespace BusinessLogic
                 try
                 {
                     command.CommandText =
-                         "DELETE FROM dbo.Persona WHERE idPersona = @idPersona";
+                         "UPDATE dbo.Persona SET VISIBILIDAD = 'FALSE' WHERE idPersona = @idPersona";
                     command.Parameters.Add(new SqlParameter("@idPersona", idEmpleado));
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "DELETE FROM dbo.Empleado WHERE idEmpleado =  @idEmpleado";
+                        "UPDATE dbo.Empleado SET VISIBILIDAD = 'FALSE' WHERE idEmpleado = @idEmpleado";
                     command.Parameters.Add(new SqlParameter("@idEmpleado", idEmpleado));
                     command.ExecuteNonQuery();
 

@@ -26,7 +26,7 @@
         <Label Content="Calle:" HorizontalAlignment="Left" Margin="90,407,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
         <TextBox x:Name="textBoxNúmero" HorizontalAlignment="Left" Margin="170,464,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
         <Label Content="Número:" HorizontalAlignment="Left" Margin="84,454,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-        <Button x:Name="AceptarButton" Content="ACEPTAR" HorizontalAlignment="Left" Margin="589,541,0,-56" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="137"/>
+        <Button x:Name="AceptarButton" Content="ACEPTAR" HorizontalAlignment="Left" Margin="589,541,0,-56" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="137" Click="AceptarButton_Click"/>
         <Button x:Name="CancelarButton" Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="483,542,0,-57" VerticalAlignment="Top" Width="91" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="CancelarButton_Click"/>
         <Rectangle HorizontalAlignment="Left" Height="200.279" Margin="483.334,137.511,0,0" VerticalAlignment="Top" Width="242.666">
             <Rectangle.Fill>
@@ -35,7 +35,7 @@
         </Rectangle>
         <TextBox x:Name="textBoxUsuario" HorizontalAlignment="Left" Margin="507,204,0,0" VerticalAlignment="Top" Width="195" FontFamily="Calibri Light" FontSize="22" IsReadOnly="True" IsEnabled="False"/>
         <Label Content="Usuario:" HorizontalAlignment="Left" Margin="507,167,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
-        <TextBox x:Name="textBoxContraseña" HorizontalAlignment="Left" Margin="508.334,277.859,0,0" VerticalAlignment="Top" Width="195" FontFamily="Calibri Light" FontSize="22" IsReadOnly="True" IsEnabled="False"/>
+        <TextBox x:Name="textBoxContraseña" HorizontalAlignment="Left" Margin="508.334,277.859,0,0" VerticalAlignment="Top" Width="195" FontFamily="Calibri Light" FontSize="22" IsReadOnly="True"/>
         <Label Content="Contraseña:" HorizontalAlignment="Left" Margin="508.334,241.259,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
         <Label Content="Tipo Empleado:" HorizontalAlignment="Left" Margin="23,101,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" Height="37" Width="147"/>
         <ComboBox x:Name="comboBoxTipoEmpleado" HorizontalAlignment="Left" Margin="169,109,0,0" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="20" Height="29">

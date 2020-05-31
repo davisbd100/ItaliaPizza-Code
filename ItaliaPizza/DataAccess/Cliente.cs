@@ -15,6 +15,7 @@ namespace DataAccess
     public partial class Cliente
     {
         public string idCliente { get; set; }
+        public Nullable<bool> Visibilidad { get; set; }
     
         public virtual Persona Persona { get; set; }
     }
