@@ -176,7 +176,7 @@ namespace BusinessLogic
             return pedidos;
         }
 
-        public List<DataAccess.Pedido> ObtenerPedidosPorRangoCocinero(int rango, int page)
+        public List<DataAccess.Pedido> ObtenerPedidosPorRangoCocinero(int rango, int pagina)
         {
             List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
             using (var context = new PizzaEntities())
@@ -185,7 +185,7 @@ namespace BusinessLogic
                 {
                     pedidos = context.Pedido
                         .Where(b => b.Estatus1.NombreEstatus == "En espera" || b.Estatus1.NombreEstatus == "En preparación")
-                        .Skip(rango * page)
+                        .Skip(rango * pagina)
                         .Take(rango)
                         .ToList();
                 }

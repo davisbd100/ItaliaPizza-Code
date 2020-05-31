@@ -16,6 +16,6 @@ namespace BusinessLogic
         DataAccess.Estatus ObtenerEstatusPorNombre(String estatus);
         List<DataAccess.Pedido> ObtenerListaPedidos();
         List<DataAccess.Pedido> ObtenerPedidosPorFecha(DateTime inicial, DateTime final);
-        List<DataAccess.Pedido> ObtenerPedidosPorRangoCocinero(int rango);
+        List<DataAccess.Pedido> ObtenerPedidosPorRangoCocinero(int rango, int pagina);
     }
 }

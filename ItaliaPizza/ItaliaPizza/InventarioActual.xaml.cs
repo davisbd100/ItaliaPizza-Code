@@ -18,10 +18,13 @@ namespace ItaliaPizza
     {
         List<DataAccess.Inventario> inventario = new List<DataAccess.Inventario>();
         InventarioController controller = new InventarioController();
+        int PaginaActual = 1;
+        int PaginaTotal = 1;
+
         public InventarioActual()
         {
             InitializeComponent();
-            inventario = controller.ObtenerInventario();
+            inventario = controller.ObtenerInventarioPorRango(PaginaActual);
             if (!inventario.Any())
             {
                 MessageBox.Show("No se tienen productos registrados");
@@ -29,6 +32,9 @@ namespace ItaliaPizza
             }
             else
             {
+                tbPaginaActual.Text = PaginaActual.ToString();
+                PaginaTotal = controller.ObtenerPaginasDeTablaInventario();
+                tbPaginaTotal.Text = PaginaTotal.ToString();
                 dgInventario.ItemsSource = inventario;
             }
         }
@@ -58,6 +64,41 @@ namespace ItaliaPizza
                         return (p.Producto1.Nombre == filter);
                     return (p.Producto1.Nombre.ToUpper().StartsWith(filter.ToUpper()));
                 };
+            }
+        }
+
+        private void btPaginaAnterior_Click(object sender, RoutedEventArgs e)
+        {
+            if ((PaginaActual - 1) < 1)
+            {
+                MessageBox.Show("No se puede regresar mas");
+            }
+            else
+            {
+                PaginaActual--;
+                inventario = controller.ObtenerInventarioPorRango(PaginaActual);
+                tbPaginaActual.Text = PaginaActual.ToString();
+                dgInventario.ItemsSource = null;
+                dgInventario.ItemsSource = inventario;
+
+            }
+        }
+
+        private void btPaginaSiguiente_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (PaginaActual == PaginaTotal)
+            {
+                MessageBox.Show("No se puede avanzar mas");
+            }
+            else
+            {
+                PaginaActual++;
+                inventario = controller.ObtenerInventarioPorRango(PaginaActual);
+                tbPaginaActual.Text = PaginaActual.ToString();
+                dgInventario.ItemsSource = null;
+                dgInventario.ItemsSource = inventario;
+
             }
         }
     }

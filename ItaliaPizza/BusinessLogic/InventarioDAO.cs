@@ -233,5 +233,53 @@ namespace BusinessLogic
 
             return inventarios;
         }
+
+        public int ObtenerPaginasDeTablaInventario(int elementosPorPagina)
+        {
+            int paginas = 0;
+
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT CEILING((COUNT(*) / @elementos)) AS total FROM dbo.Inventario", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@elementos", (float)elementosPorPagina));
+                    paginas = int.Parse(command.ExecuteScalar().ToString());
+                }
+                connection.Close();
+            }
+            return paginas;
+        }
+
+        public List<DataAccess.Inventario> ObtenerInventarioPorRango(int rango, int pagina)
+        {
+            List<DataAccess.Inventario> inventarios = new List<DataAccess.Inventario>();
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var inventario in (context.Inventario.OrderBy(b => b.Producto1.Nombre).Skip(rango * (pagina - 1)).Take(rango)))
+                    {
+                        inventario.Producto1 = inventario.Producto1;
+                        inventarios.Add(inventario);
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los Inventarios");
+                }
+            }
+
+            return inventarios;
+        }
     }
 }
