@@ -14,7 +14,7 @@
                 <ImageBrush ImageSource="Recursos/Empleado.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Label Content="Nombre:" HorizontalAlignment="Left" Margin="82.891,129.767,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <Label Content="*Nombre:" HorizontalAlignment="Left" Margin="75,130,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
         <TextBox x:Name="NombreTextBox" HorizontalAlignment="Left" Margin="170.306,137.511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
         <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="80.656,180.786,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
         <TextBox x:Name="CorreoTextBox" HorizontalAlignment="Left" Margin="170.303,238.986,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
