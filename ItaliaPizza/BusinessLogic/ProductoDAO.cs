@@ -32,8 +32,9 @@ namespace BusinessLogic
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        ProductoVenta productoVenta = new ProductoVenta();
-                        productoVenta.Código = Convert.ToInt32(reader["Codigo"].ToString());
+                        Producto productoVenta = new Producto();
+                        productoVenta.idProducto = Convert.ToInt32(reader["idProducto"].ToString());
+                        productoVenta.Código = reader["Codigo"].ToString();
                         productoVenta.Nombre = reader["Nombre"].ToString();
 
                         listaProductos.Add(productoVenta);
@@ -60,18 +61,20 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("select Codigo, Nombre  from dbo.Producto left join dbo.ProductoVenta  on dbo.Producto.Codigo =" +
-                    " dbo.ProductoVenta.idProductoVenta " +
-                    "left join dbo.ProductoIngrediente  on dbo.Producto.Codigo =" +
-                    " dbo.ProductoIngrediente.idProductoIngrediente order by Nombre offset @Rango rows fetch next 20 rows only", connection))
+                using (SqlCommand command = new SqlCommand("select *  from dbo.Producto " +
+                    "left join dbo.ProductoVenta  on dbo.Producto.idProducto = dbo.ProductoVenta.idProductoVenta " +
+                    "left join dbo.ProductoIngrediente  on dbo.Producto.idProducto = dbo.ProductoIngrediente.idProductoIngrediente" +
+                    " WHERE dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset 1 rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         Producto producto = new Producto();
-                        producto.Código = Convert.ToInt32( reader["Codigo"].ToString());
+                        producto.idProducto = Convert.ToInt32(reader["idProducto"].ToString());
+                        producto.Código = reader["Codigo"].ToString();
                         producto.Nombre = reader["Nombre"].ToString();
+                        producto.Descripción = reader["Descripcion"].ToString();
                         
                         
                         listaProductos.Add(producto);

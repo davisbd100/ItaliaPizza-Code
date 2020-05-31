@@ -32,7 +32,7 @@ namespace ItaliaPizza
         private void BuscarProducto(Producto producto)
         {
             ProductoVentaController productoVentaController = new ProductoVentaController();
-            BusinessLogic.ProductoVenta productoVenta = productoVentaController.BuscarProductoVenta(producto.Código);
+            BusinessLogic.ProductoVenta productoVenta = productoVentaController.BuscarProductoVenta(producto.idProducto);
 
             if (productoVenta.Nombre != null)
             {
@@ -168,6 +168,12 @@ namespace ItaliaPizza
             {
                 MessageBox.Show("Debes seleccionar solo un producto");
             }
+        }
+
+        private void btn_NuevoProducto_Click(object sender, RoutedEventArgs e)
+        {
+            ElegirNuevoProducto elegirNuevoProducto = new ElegirNuevoProducto();
+            elegirNuevoProducto.Show();
         }
     }
 }
