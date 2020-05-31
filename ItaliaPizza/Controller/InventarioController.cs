@@ -9,7 +9,7 @@ namespace Controller
 {
     public class InventarioController
     {
-
+        const int ElementosPorPagina = 20;
         public List<DataAccess.Inventario> ObtenerInventario()
         {
             List<DataAccess.Inventario> resultado = new List<DataAccess.Inventario>();
@@ -18,11 +18,11 @@ namespace Controller
             return resultado;
         }
 
-        public List<DataAccess.Inventario> ObtenerIngresosInventario()
+        public List<DataAccess.Inventario> ObtenerIngresosInventario(int pagina)
         {
             List<DataAccess.Inventario> resultado = new List<DataAccess.Inventario>();
             InventarioDAO inventarioDAO = new InventarioDAO();
-            resultado = inventarioDAO.ObtenerTodosLosInventariosConIngreso();
+            resultado = inventarioDAO.ObtenerTodosLosInventariosConIngreso(ElementosPorPagina, pagina);
             return resultado;
         }
 
@@ -56,6 +56,23 @@ namespace Controller
             VentaDAO ventaDAO = new VentaDAO();
             resultado = ventaDAO.GuardarDiaVenta(diaVenta);
 
+            return resultado;
+        }
+
+
+        public List<DataAccess.Inventario> ObtenerInventarioPorRango(int pagina)
+        {
+            List<DataAccess.Inventario> resultado = new List<DataAccess.Inventario>();
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            resultado = inventarioDAO.ObtenerInventarioPorRango(ElementosPorPagina, pagina);
+            return resultado;
+        }
+
+        public int ObtenerPaginasDeTablaInventario()
+        {
+            int resultado;
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            resultado = inventarioDAO.ObtenerPaginasDeTablaInventario(ElementosPorPagina);
             return resultado;
         }
 

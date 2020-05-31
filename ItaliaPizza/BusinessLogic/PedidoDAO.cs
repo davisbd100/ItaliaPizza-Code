@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccess;
 using System.Data.Entity.Core;
+using System.Data.Entity;
 
 namespace BusinessLogic
 {
@@ -19,15 +20,16 @@ namespace BusinessLogic
             {
                 try
                 {
-                var tempPedido = context.Pedido
-                                .Where(b => b.idPedido == pedido.idPedido)
-                                .FirstOrDefault();
+                    var tempPedido = context.Pedido
+                                    .Where(b => b.idPedido == pedido.idPedido)
+                                    .FirstOrDefault();
 
                     tempPedido.Estatus = estatus.idEstatus;
                     context.SaveChanges();
 
                     resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;
-                }catch (EntityException)
+                }
+                catch (EntityException)
                 {
                     resultado = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
                 }
@@ -118,6 +120,32 @@ namespace BusinessLogic
             return pedidos;
         }
 
+        public int ObtenerPaginasDeTablaPedido(int elementosPorPagina)
+        {
+            int paginas = 0;
+
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT CEILING((COUNT(*) / @elementos)) AS total FROM dbo.Pedido", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@elementos", (float)elementosPorPagina));
+                    paginas = (int)command.ExecuteScalar();
+                }
+                connection.Close();
+            }
+            return paginas;
+        }
+
         public List<DataAccess.Pedido> ObtenerPedidosPorFecha(DateTime inicial, DateTime final)
         {
             List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
@@ -127,7 +155,7 @@ namespace BusinessLogic
                 {
                     foreach (var pedido in context.Pedido)
                     {
-                        if(pedido.FechaPedido >= inicial && pedido.FechaPedido <= final)
+                        if (pedido.FechaPedido >= inicial && pedido.FechaPedido <= final)
                         {
                             pedido.PedidoProducto = pedido.PedidoProducto;
                             foreach (var pedidoProducto in pedido.PedidoProducto)
@@ -146,6 +174,33 @@ namespace BusinessLogic
             }
 
             return pedidos;
+        }
+
+        public List<DataAccess.Pedido> ObtenerPedidosPorRangoCocinero(int rango, int pagina)
+        {
+            List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    pedidos = context.Pedido
+                        .Where(b => b.Estatus1.NombreEstatus == "En espera" || b.Estatus1.NombreEstatus == "En preparación")
+                        .Skip(rango * pagina)
+                        .Take(rango)
+                        .ToList();
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los pedidos");
+                }
+            }
+
+            return pedidos;
+        }
+
+        public List<DataAccess.Pedido> ObtenerPedidosPorRangoCocinero(int rango)
+        {
+            throw new NotImplementedException();
         }
     }
 }
