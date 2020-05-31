@@ -61,10 +61,10 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("select Codigo, Nombre, Descripcion, idProducto  from dbo.Producto left join dbo.ProductoVenta  on dbo.Producto.Codigo =" +
-                    " dbo.ProductoVenta.idProductoVenta " +
-                    "left join dbo.ProductoIngrediente  on dbo.Producto.idProducto =" +
-                    " dbo.ProductoIngrediente.idProductoIngrediente AND dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset @Rango rows fetch next 20 rows only ", connection))
+                using (SqlCommand command = new SqlCommand("select *  from dbo.Producto " +
+                    "left join dbo.ProductoVenta  on dbo.Producto.idProducto = dbo.ProductoVenta.idProductoVenta " +
+                    "left join dbo.ProductoIngrediente  on dbo.Producto.idProducto = dbo.ProductoIngrediente.idProductoIngrediente" +
+                    " WHERE dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset 1 rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();

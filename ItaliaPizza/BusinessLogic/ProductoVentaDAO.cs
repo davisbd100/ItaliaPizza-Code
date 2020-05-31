@@ -147,33 +147,33 @@ namespace BusinessLogic
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
                 SqlTransaction transaction;
-                transaction = connection.BeginTransaction("InsertarProductoIngrediente");
+                transaction = connection.BeginTransaction("Eliminar producto");
                 command.Connection = connection;
                 command.Transaction = transaction;
 
                 try
                 {
                     command.CommandText =
-                         "DELETE FROM dbo.Producto WHERE Codigo = @Codigo";
+                         "UPDATE dbo.Producto  SET VISIBILIDAD = 'FALSE' WHERE idProducto = @Codigo";
                     command.Parameters.Add(new SqlParameter("@Codigo", productoVenta));
 
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "DELETE FROM dbo.ProductoVenta WHERE idProductoVenta =  @idProductoVenta";
+                        "UPDATE dbo.ProductoVenta SET VISIBILIDAD = 'FALSE'  WHERE idProductoVenta =  @idProductoVenta";
                     command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta));
 
 
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                         "DELETE FROM dbo.ProductoInventario WHERE Producto = @Producto ";
+                         "UPDATE dbo.ProductoInventario SET VISIBILIDAD = 'FALSE' WHERE Producto = @Producto ";
                     command.Parameters.Add(new SqlParameter("@Producto", productoVenta));
 
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "DELETE FROM dbo.Inventario WHERE idInventario =@idInventario";
+                        "UPDATE dbo.Inventario SET VISIBILIDAD = 'FALSE'  WHERE idInventario =@idInventario";
                     command.Parameters.Add(new SqlParameter("@idInventario", productoVenta));
 
 
@@ -219,7 +219,7 @@ namespace BusinessLogic
                     throw (ex);
                 }
                 using (SqlCommand command = new SqlCommand("select Codigo, Nombre, Descripcion, idProducto  from dbo.ProductoVenta left join dbo.Producto  on" +
-                    " dbo.Producto.idProducto = dbo.ProductoVenta.idProductoVenta AND dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset @Rango rows fetch next 20 rows only", connection))
+                    " dbo.Producto.idProducto = dbo.ProductoVenta.idProductoVenta WHERE dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset @Rango rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
