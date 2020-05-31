@@ -14,7 +14,7 @@ namespace BusinessLogic
         ResultadoOperacion ModificarInventario(Inventario inventario);
         int ObtenerPaginasDeTablaInventario(int elementosPorPagina);
         List<DataAccess.Inventario> ObtenerTodosLosInventarios();
-        List<DataAccess.Inventario> ObtenerTodosLosInventariosConIngreso();
+        List<DataAccess.Inventario> ObtenerTodosLosInventariosConIngreso(int rango, int pagina);
         List<DataAccess.Inventario> ObtenerInventarioPorRango(int rango, int pagina);
         ResultadoOperacion ActualizarInventario(List<DataAccess.Inventario> inventarios);
 

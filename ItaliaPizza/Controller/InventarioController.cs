@@ -18,11 +18,11 @@ namespace Controller
             return resultado;
         }
 
-        public List<DataAccess.Inventario> ObtenerIngresosInventario()
+        public List<DataAccess.Inventario> ObtenerIngresosInventario(int pagina)
         {
             List<DataAccess.Inventario> resultado = new List<DataAccess.Inventario>();
             InventarioDAO inventarioDAO = new InventarioDAO();
-            resultado = inventarioDAO.ObtenerTodosLosInventariosConIngreso();
+            resultado = inventarioDAO.ObtenerTodosLosInventariosConIngreso(ElementosPorPagina, pagina);
             return resultado;
         }
 

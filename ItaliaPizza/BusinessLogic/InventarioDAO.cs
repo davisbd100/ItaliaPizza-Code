@@ -211,14 +211,14 @@ namespace BusinessLogic
             return resultado;
         }
 
-        public List<DataAccess.Inventario> ObtenerTodosLosInventariosConIngreso()
+        public List<DataAccess.Inventario> ObtenerTodosLosInventariosConIngreso(int rango, int pagina)
         {
             List<DataAccess.Inventario> inventarios = new List<DataAccess.Inventario>();
             using (var context = new DataAccess.PizzaEntities())
             {
                 try
                 {
-                    foreach (var inventario in context.Inventario)
+                    foreach (var inventario in (context.Inventario.OrderBy(b => b.Producto1.Nombre).Skip(rango * (pagina - 1)).Take(rango)))
                     {
                         inventario.Producto1 = inventario.Producto1;
                         inventario.ProductoInventario = inventario.ProductoInventario;
