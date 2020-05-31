@@ -35,7 +35,7 @@ namespace ItaliaPizza
         private void CargarCampos()
         {
             ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
-            ProductoIngrediente productoIngrediente = productoIngredienteController.buscarProductoIngredientePorId(productoCargar.Código);
+            ProductoIngrediente productoIngrediente = productoIngredienteController.buscarProductoIngredientePorId(productoCargar.idProducto);
             txb_nombre.Text = productoIngrediente.Nombre;
             txb_codigo.Text = productoIngrediente.Código.ToString();
             txb_descripcion.Text = productoIngrediente.Descripción;

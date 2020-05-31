@@ -62,8 +62,7 @@ namespace ItaliaPizza
                 MessageBox.Show("Existen campos vacios");
                 resultado = false;
             }
-            else if (validarCampos.ValidarNumeroEntero(txb_Codigo.Text) == ValidarCampos.ResultadosValidación.Numeroinvalido
-                || validarCampos.ValidarNumeroEntero(txb_Cantidad.Text) == ValidarCampos.ResultadosValidación.Numeroinvalido)
+            else if (validarCampos.ValidarNumeroEntero(txb_Cantidad.Text) == ValidarCampos.ResultadosValidación.Numeroinvalido)
             {
                 MessageBox.Show("Codigo y cantidad deben ser números enteros");
                 resultado = false;
@@ -87,6 +86,7 @@ namespace ItaliaPizza
 
             }
 
+
         }
 
         
@@ -97,7 +97,7 @@ namespace ItaliaPizza
             ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
             
 
-            if (productoIngredienteController.crearProductoIngrediente(txb_Nombre.Text, Convert.ToInt32(txb_Codigo.Text), txb_Descripcion.Text, float.Parse(txb_Preciounitario.Text), 
+            if (productoIngredienteController.crearProductoIngrediente(txb_Nombre.Text, txb_Codigo.Text, txb_Descripcion.Text, float.Parse(txb_Preciounitario.Text), 
                 txb_Restricción.Text, txb_UnidadMedida.Text, txb_Ubicacion.Text,
                 Convert.ToInt32(txb_Cantidad.Text), dtp_Caducidad.SelectedDate.Value.ToString("yyyy/MM/dd") , cbb_TipoIngrediente.SelectedItem.ToString() ) == BusinessLogic.ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
