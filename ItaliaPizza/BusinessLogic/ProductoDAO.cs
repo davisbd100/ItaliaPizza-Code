@@ -61,10 +61,10 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("select Codigo, Nombre  from dbo.Producto left join dbo.ProductoVenta  on dbo.Producto.Codigo =" +
+                using (SqlCommand command = new SqlCommand("select Codigo, Nombre, Descripcion, idProducto  from dbo.Producto left join dbo.ProductoVenta  on dbo.Producto.Codigo =" +
                     " dbo.ProductoVenta.idProductoVenta " +
-                    "left join dbo.ProductoIngrediente  on dbo.Producto.Codigo =" +
-                    " dbo.ProductoIngrediente.idProductoIngrediente order by Nombre offset @Rango rows fetch next 20 rows only", connection))
+                    "left join dbo.ProductoIngrediente  on dbo.Producto.idProducto =" +
+                    " dbo.ProductoIngrediente.idProductoIngrediente AND dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset @Rango rows fetch next 20 rows only ", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
@@ -74,6 +74,7 @@ namespace BusinessLogic
                         producto.idProducto = Convert.ToInt32(reader["idProducto"].ToString());
                         producto.Código = reader["Codigo"].ToString();
                         producto.Nombre = reader["Nombre"].ToString();
+                        producto.Descripción = reader["Descripcion"].ToString();
                         
                         
                         listaProductos.Add(producto);
