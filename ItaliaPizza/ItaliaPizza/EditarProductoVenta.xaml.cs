@@ -37,7 +37,7 @@ namespace ItaliaPizza
             ProductoVentaController productoVentaController = new ProductoVentaController();
             ProductoVenta productoVenta = productoVentaController.BuscarProductoVenta(productoCargar.idProducto);
             txb_nombre.Text = productoVenta.Nombre;
-            txb_codigo.Text = productoVenta.Código.ToString();
+            txb_codigo.Text = productoVenta.Código;
             txb_descripcion.Text = productoVenta.Descripción;
             txb_restriccion.Text = productoVenta.Restricción;
             txb_precioPublico.Text = productoVenta.PrecioPúblico.ToString();

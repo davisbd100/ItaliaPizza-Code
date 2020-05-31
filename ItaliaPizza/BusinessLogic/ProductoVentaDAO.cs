@@ -257,7 +257,7 @@ namespace BusinessLogic
                     throw (ex);
                 }
                 using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.ProductoVenta left join dbo.Producto on " +
-                    " dbo.Producto.Codigo = dbo.ProductoVenta.idProductoVenta WHERE idProductoVenta = @Codigo", connection))
+                    " dbo.Producto.idProducto = dbo.ProductoVenta.idProductoVenta WHERE idProductoVenta = @Codigo", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Codigo", codigo));
                     SqlDataReader reader = command.ExecuteReader();
