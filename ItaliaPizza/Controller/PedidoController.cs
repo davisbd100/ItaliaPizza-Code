@@ -42,5 +42,20 @@ namespace Controller
             resultado = pedidoDAO.ObtenerListaPedidos();
             return resultado;
         }
+
+        public DataAccess.Pedido ObtenerPedidoParaEditar(int idPedido)
+        {
+            DataAccess.Pedido pedido;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            try
+            {
+                pedido = pedidoDAO.GetPedidoConProductoPorId(idPedido);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return pedido;
+        }
     }
 }
