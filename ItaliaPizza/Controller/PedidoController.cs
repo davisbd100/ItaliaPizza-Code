@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BusinessLogic;
 using Microsoft.SqlServer.Server;
 using DataAccess;
+using System.Data;
 
 namespace Controller
 {
@@ -51,9 +52,12 @@ namespace Controller
             {
                 pedido = pedidoDAO.GetPedidoConProductoPorId(idPedido);
             }
-            catch (Exception e)
+            catch (EntityException entityException)
             {
-                throw e;
+                throw entityException;
+            } catch (ObjectNotFoundException notFound)
+            {
+                throw notFound;
             }
             return pedido;
         }

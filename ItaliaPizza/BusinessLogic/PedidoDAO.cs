@@ -55,6 +55,10 @@ namespace BusinessLogic
                 try
                 {
                     pedido = context.Pedido.Where(b => b.idPedido == id).FirstOrDefault();
+                    if (pedido == null)
+                    {
+                        throw new ObjectNotFoundException("No se encontro el pedido");
+                    }
                     pedido.PedidoProducto = pedido.PedidoProducto;
                     foreach (var pedidoProducto in pedido.PedidoProducto)
                     {
@@ -63,7 +67,10 @@ namespace BusinessLogic
                 }
                 catch (EntityException)
                 {
-                    throw new Exception("Error al conectar a la bd");
+                    throw new EntityException("Error al conectar a la bd");
+                }catch (ObjectNotFoundException e)
+                {
+                    throw e;
                 }
             }
             return pedido;
