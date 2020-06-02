@@ -47,6 +47,28 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
+        public DataAccess.Pedido GetPedidoConProductoPorId(int id)
+        {
+            DataAccess.Pedido pedido = new DataAccess.Pedido();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    pedido = context.Pedido.Where(b => b.idPedido == id).FirstOrDefault();
+                    pedido.PedidoProducto = pedido.PedidoProducto;
+                    foreach (var pedidoProducto in pedido.PedidoProducto)
+                    {
+                        pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al conectar a la bd");
+                }
+            }
+            return pedido;
+        }
+
         public Pedido GetPedidoPorId(int id)
         {
             Pedido pedido = new Pedido();

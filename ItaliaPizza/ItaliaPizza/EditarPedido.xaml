@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrototiposItaliaPizza"
         mc:Ignorable="d"
-        Title="Editar Pedido" Height="643.966" Width="1298.783" Icon="LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Editar Pedido" Height="643.966" Width="1298.783" Icon="Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
     <Grid>
         <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="0,14.576,0,0" VerticalAlignment="Top" Width="1291.445" Fill="#FFB31423"/>
         <Label Content="Editar pedido" HorizontalAlignment="Left" Margin="140.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>

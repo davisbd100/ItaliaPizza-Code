@@ -20,12 +20,18 @@ namespace PrototiposItaliaPizza
     /// </summary>
     public partial class EditarPedido : Window
     {
-        public EditarPedido(Pedido pedido)
+        int PedidoID { get; set; }
+        DataAccess.Pedido EditarPedido;
+        
+        public EditarPedido(int id)
         {
             InitializeComponent();
-            //lbIdPedido.Content = pedido.idPedido;
-            //lbIdCliente.Content = pedido.Cliente.Nombre;
-            lbEstatus.Content = "En edición";
+            PedidoID = id;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
