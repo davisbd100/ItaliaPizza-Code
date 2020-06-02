@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using DataAccess;
 using System.Data.Entity.Core;
 using System.Data.Entity;
+using System.Management.Instrumentation;
 
 namespace BusinessLogic
 {
@@ -57,7 +58,7 @@ namespace BusinessLogic
                     pedido = context.Pedido.Where(b => b.idPedido == id).FirstOrDefault();
                     if (pedido == null)
                     {
-                        throw new ObjectNotFoundException("No se encontro el pedido");
+                        throw new InstanceNotFoundException();
                     }
                     pedido.PedidoProducto = pedido.PedidoProducto;
                     foreach (var pedidoProducto in pedido.PedidoProducto)
@@ -68,9 +69,9 @@ namespace BusinessLogic
                 catch (EntityException)
                 {
                     throw new EntityException("Error al conectar a la bd");
-                }catch (ObjectNotFoundException e)
+                }catch (InstanceNotFoundException)
                 {
-                    throw e;
+                    throw new InstanceNotFoundException("No se encontro el pedido");
                 }
             }
             return pedido;

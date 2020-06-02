@@ -7,6 +7,7 @@ using BusinessLogic;
 using Microsoft.SqlServer.Server;
 using DataAccess;
 using System.Data;
+using System.Management.Instrumentation;
 
 namespace Controller
 {
@@ -55,7 +56,7 @@ namespace Controller
             catch (EntityException entityException)
             {
                 throw entityException;
-            } catch (ObjectNotFoundException notFound)
+            } catch (InstanceNotFoundException notFound)
             {
                 throw notFound;
             }
