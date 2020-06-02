@@ -59,6 +59,9 @@ namespace Controller
             } catch (InstanceNotFoundException notFound)
             {
                 throw notFound;
+            }catch (FormatException formato)
+            {
+                throw formato;
             }
             return pedido;
         }

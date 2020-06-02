@@ -59,11 +59,15 @@ namespace BusinessLogic
                     if (pedido == null)
                     {
                         throw new InstanceNotFoundException();
+                    }else if(!pedido.Estatus1.NombreEstatus.Equals("En Espera"))
+                    {
+                        throw new FormatException();
                     }
                     pedido.PedidoProducto = pedido.PedidoProducto;
                     foreach (var pedidoProducto in pedido.PedidoProducto)
                     {
                         pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
+                        pedidoProducto.ProductoVenta.Producto = pedidoProducto.ProductoVenta.Producto;
                     }
                 }
                 catch (EntityException)
@@ -72,6 +76,9 @@ namespace BusinessLogic
                 }catch (InstanceNotFoundException)
                 {
                     throw new InstanceNotFoundException("No se encontro el pedido");
+                }catch (FormatException)
+                {
+                    throw new FormatException("El pedido no se encuentra en espera");
                 }
             }
             return pedido;

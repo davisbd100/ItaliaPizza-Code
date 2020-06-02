@@ -55,6 +55,11 @@ namespace PrototiposItaliaPizza
                 MessageBox.Show("No se encontro el pedido, verificar la existencia");
                 this.Close();
             }
+            catch (FormatException)
+            {
+                MessageBox.Show("El pedido no esta en espera y ya no es posible modificarlo");
+                this.Close();
+            }
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
