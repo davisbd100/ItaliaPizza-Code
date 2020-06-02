@@ -2,7 +2,9 @@
 using Controller;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,15 +30,32 @@ namespace PrototiposItaliaPizza
         {
             InitializeComponent();
             PedidoID = 1;
-            PedidoAEditar = controller.ObtenerPedidoParaEditar(1);
+            ObtenerPedido();
         }
         public EditarPedido(int id)
         {
             InitializeComponent();
             PedidoID = id;
-            PedidoAEditar = controller.ObtenerPedidoParaEditar(id);
+            ObtenerPedido();
         }
 
+        void ObtenerPedido()
+        {
+            try
+            {
+                PedidoAEditar = controller.ObtenerPedidoParaEditar(PedidoID);
+            }
+            catch (EntityException)
+            {
+                MessageBox.Show("No se pudo obtener el pedido para la edicion \nReintentar mas tarde");
+                this.Close();
+            }
+            catch (InstanceNotFoundException)
+            {
+                MessageBox.Show("No se encontro el pedido, verificar la existencia");
+                this.Close();
+            }
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
