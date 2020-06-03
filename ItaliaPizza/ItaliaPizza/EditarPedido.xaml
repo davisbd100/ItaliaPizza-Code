@@ -41,8 +41,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="EDITAR" HorizontalAlignment="Left" Margin="276.016,550.972,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72"/>
-        <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="67.919,550.972,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
+        <Button x:Name="btEditar" Content="CONFIRMAR EDICIÓN" HorizontalAlignment="Left" Margin="276,551,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="200" Click="btEditar_Click"/>
+        <Button x:Name="btCancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="67.919,550.972,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btCancelar_Click"/>
         <Label Content="Productos de pedido:" HorizontalAlignment="Left" Margin="491.799,88.597,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="22" Foreground="Black" Background="{x:Null}" Height="36.17" Width="209.024"/>
         <Label Content="Productos:" HorizontalAlignment="Left" Margin="763.453,88.597,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="22" Foreground="Black" Background="{x:Null}" Height="36.17" Width="209.024"/>
         <Rectangle HorizontalAlignment="Left" Height="353.247" Margin="738.57,188.735,0,-101.182" Stroke="#FFB31423" VerticalAlignment="Top" Width="526.943">

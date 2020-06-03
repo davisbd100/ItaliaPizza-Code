@@ -59,11 +59,19 @@ namespace Controller
             } catch (InstanceNotFoundException notFound)
             {
                 throw notFound;
-            }catch (FormatException formato)
+            } catch (FormatException formato)
             {
                 throw formato;
             }
             return pedido;
+        }
+
+        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosPedido(int idPedido, ICollection<DataAccess.PedidoProducto> productos)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.CambiarProductosDePedido(idPedido, productos);
+            return resultado;
         }
     }
 }

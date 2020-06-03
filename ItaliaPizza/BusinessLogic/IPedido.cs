@@ -12,7 +12,7 @@ namespace BusinessLogic
         DataAccess.Pedido GetPedidoConProductoPorId(int id);
         ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(Pedido pedido, DataAccess.Estatus estatus);
         ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido);
-        ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int idPedido, List<ProductoVenta> productos);
+        ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int idPedido, ICollection<DataAccess.PedidoProducto> productos);
         int ObtenerPaginasDeTablaPedido(int elementosPorPagina);
         DataAccess.Estatus ObtenerEstatusPorNombre(String estatus);
         List<DataAccess.Pedido> ObtenerListaPedidos();

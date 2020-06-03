@@ -91,5 +91,32 @@ namespace PrototiposItaliaPizza
                 ActualizarDataGrid();
             }
         }
+
+        private void btCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btEditar_Click(object sender, RoutedEventArgs e)
+        {
+            GuardarEdicionPedido();
+        }
+
+        private void GuardarEdicionPedido()
+        {
+            switch(controller.CambiarProductosPedido(PedidoAEditar.idPedido, PedidoAEditar.PedidoProducto))
+            {
+                case (ResultadoOperacionEnum.ResultadoOperacion.Exito):
+                    MessageBox.Show("Guardado con exito");
+                    this.Close();
+                    break;
+                case (ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida):
+                    MessageBox.Show("Fallo no esperado, reintentar mas tarde");
+                    break;
+                case (ResultadoOperacionEnum.ResultadoOperacion.FalloSQL):
+                    MessageBox.Show("Error al conectar con la base de datos, reintentar mas tarde");
+                    break;
+            }
+        }
     }
 }

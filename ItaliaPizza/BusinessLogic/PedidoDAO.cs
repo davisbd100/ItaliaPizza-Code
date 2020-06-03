@@ -43,9 +43,35 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int pedido, List<ProductoVenta> productos)
+        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int pedido, ICollection<DataAccess.PedidoProducto> productos)
         {
-            throw new NotImplementedException();
+            ResultadoOperacionEnum.ResultadoOperacion resultado = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    var tempPedido = context.Pedido.Where(b => b.idPedido == pedido).FirstOrDefault();
+                    for (int i = 0; i < tempPedido.PedidoProducto.Count; i++)
+                    {
+                        context.PedidoProducto.Remove(context.PedidoProducto.Where(b => b.idPedido == tempPedido.idPedido).First()); //Buscar otra forma de hacerlo
+                    }
+                    foreach (var producto in productos)
+                    {
+                        if (!tempPedido.PedidoProducto.Contains(producto))
+                        {
+                            context.PedidoProducto.Add(producto);
+                        }
+                    }
+                    context.SaveChanges();
+
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;
+                }
+                catch (EntityException)
+                {
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
+                }
+            }
+            return resultado;
         }
 
         public DataAccess.Pedido GetPedidoConProductoPorId(int id)
