@@ -22,10 +22,10 @@ namespace ItaliaPizza
     public partial class CancelarPedido : Window
     {
 
-        Pedido localPedido { get; set; }
+        Pedido LocalPedido { get; set; }
         public CancelarPedido()
         {
-            localPedido = new Pedido()
+            LocalPedido = new Pedido()
             {
                 idPedido = 1
             };
@@ -35,7 +35,7 @@ namespace ItaliaPizza
         private void btAceptar_Click(object sender, RoutedEventArgs e)
         {
             PedidoController controller = new PedidoController();
-            ResultadoOperacionEnum.ResultadoOperacion resultado = controller.CancelarPedido(localPedido);
+            ResultadoOperacionEnum.ResultadoOperacion resultado = controller.CancelarPedido(LocalPedido);
             if (resultado == ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
                 MessageBox.Show("Pedido Cancelado");

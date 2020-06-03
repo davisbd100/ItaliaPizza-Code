@@ -16,7 +16,7 @@ namespace Controller
 
         public ResultadoOperacionEnum.ResultadoOperacion CancelarPedido(BusinessLogic.Pedido pedido)
         {
-            ResultadoOperacionEnum.ResultadoOperacion resultado = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
+            ResultadoOperacionEnum.ResultadoOperacion resultado;
             PedidoDAO pedidoDAO = new PedidoDAO();
             resultado = pedidoDAO.CambiarEstadoPedido(pedido, pedidoDAO.ObtenerEstatusPorNombre("Cancelado"));
             return resultado;
