@@ -32,6 +32,13 @@
                 <DataGridTextColumn Header="PrecioUnitario" Binding="{Binding ProductoVenta.PrecioPublico}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="PrecioTotal" Binding="{Binding Precio}" IsReadOnly="True"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Quitar" Content="Quitar" Click="Quitar_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="EDITAR" HorizontalAlignment="Left" Margin="276.016,550.972,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72"/>

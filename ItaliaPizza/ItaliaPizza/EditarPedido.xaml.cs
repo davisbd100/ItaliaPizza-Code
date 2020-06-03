@@ -63,7 +63,7 @@ namespace PrototiposItaliaPizza
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            dgProductosDePedido.ItemsSource = PedidoAEditar.PedidoProducto;
+            ActualizarDataGrid();
             lbEstatus.Content = PedidoAEditar.Estatus1.NombreEstatus;
             lbIdCliente.Content = PedidoAEditar.Cliente;
             lbIdPedido.Content = PedidoAEditar.idPedido;
@@ -75,6 +75,21 @@ namespace PrototiposItaliaPizza
                 CostoTotal += (double)pedidoProducto.Precio;
             }
             lbPrecioAnterior.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
+        }
+
+        private void ActualizarDataGrid()
+        {
+            dgProductosDePedido.ItemsSource = null;
+            dgProductosDePedido.ItemsSource = PedidoAEditar.PedidoProducto;
+        }
+
+        private void Quitar_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgProductosDePedido.SelectedIndex != -1)
+            {
+                PedidoAEditar.PedidoProducto.Remove((DataAccess.PedidoProducto)dgProductosDePedido.SelectedItem);
+                ActualizarDataGrid();
+            }
         }
     }
 }
