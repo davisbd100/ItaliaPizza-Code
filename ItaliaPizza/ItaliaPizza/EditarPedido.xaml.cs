@@ -24,7 +24,7 @@ namespace PrototiposItaliaPizza
     public partial class EditarPedido : Window
     {
         int PedidoID { get; set; }
-        DataAccess.Pedido PedidoAEditar;
+        public DataAccess.Pedido PedidoAEditar;
         PedidoController controller = new PedidoController();
         public EditarPedido()
         {
@@ -63,7 +63,18 @@ namespace PrototiposItaliaPizza
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            dgProductosDePedido.ItemsSource = PedidoAEditar.PedidoProducto;
+            lbEstatus.Content = PedidoAEditar.Estatus1.NombreEstatus;
+            lbIdCliente.Content = PedidoAEditar.Cliente;
+            lbIdPedido.Content = PedidoAEditar.idPedido;
+            double CostoTotal = 0;
+            
 
+            foreach (var pedidoProducto in PedidoAEditar.PedidoProducto)
+            {
+                CostoTotal += (double)pedidoProducto.Precio;
+            }
+            lbPrecioAnterior.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
         }
     }
 }
