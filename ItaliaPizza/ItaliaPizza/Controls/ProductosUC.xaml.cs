@@ -24,6 +24,8 @@ namespace ItaliaPizza.Controls
     {
         ProductoVentaController Controller = new ProductoVentaController();
         List<ProductoVenta> productos;
+        int PaginaActual = 1;
+        int PaginaTotal = 1;
         public ProductosUC()
         {
             InitializeComponent();
@@ -35,6 +37,40 @@ namespace ItaliaPizza.Controls
             productos = Controller.ObtenerProductosVenta(1);
             icProductos.ItemsSource = null;
             icProductos.ItemsSource = productos;
+        }
+        private void btPaginaAnterior_Click(object sender, RoutedEventArgs e)
+        {
+            if ((PaginaActual - 1) < 1)
+            {
+                MessageBox.Show("No se puede regresar mas");
+            }
+            else
+            {
+                PaginaActual--;
+                productos = Controller.prod(PaginaActual);
+                tbPaginaActual.Text = PaginaActual.ToString();
+                dgInventario.ItemsSource = null;
+                dgInventario.ItemsSource = inventario;
+
+            }
+        }
+
+        private void btPaginaSiguiente_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (PaginaActual == PaginaTotal)
+            {
+                MessageBox.Show("No se puede avanzar mas");
+            }
+            else
+            {
+                PaginaActual++;
+                inventario = controller.ObtenerInventarioPorRango(PaginaActual);
+                tbPaginaActual.Text = PaginaActual.ToString();
+                dgInventario.ItemsSource = null;
+                dgInventario.ItemsSource = inventario;
+
+            }
         }
     }
 }
