@@ -57,10 +57,14 @@ namespace BusinessLogic
                     }
                     foreach (var producto in productos)
                     {
-                        if (!tempPedido.PedidoProducto.Contains(producto))
+                        PedidoProducto tempPedidoProducto = new PedidoProducto()
                         {
-                            context.PedidoProducto.Add(producto);
-                        }
+                            Precio = producto.Precio,
+                            idPedido = producto.idPedido,
+                            Cantidad = producto.Cantidad,
+                            idProductoVenta = producto.ProductoVenta.idProductoVenta
+                        };
+                        context.PedidoProducto.Add(tempPedidoProducto);
                     }
                     context.SaveChanges();
 

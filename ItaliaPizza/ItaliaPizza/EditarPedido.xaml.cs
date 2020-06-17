@@ -6,6 +6,7 @@ using System.Data.Entity.Core;
 using System.Linq;
 using System.Management.Instrumentation;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -125,13 +126,30 @@ namespace PrototiposItaliaPizza
             ProductoVenta tempProducto = ((ProductoVenta)sender);
             ProductoVentaController producto = new ProductoVentaController();
             int cantidad = 1;
-            PedidoAEditar.PedidoProducto.Add(new DataAccess.PedidoProducto()
+            DataAccess.PedidoProducto tempPedidoProducto = new DataAccess.PedidoProducto()
             {
                 Cantidad = cantidad,
                 idPedido = PedidoAEditar.idPedido,
                 ProductoVenta = producto.ObtenerProductoPorIdEE(tempProducto.Código),
                 Precio = cantidad * tempProducto.PrecioPúblico
-            });
+            };
+            var match = Regex.Match(lbNuevoPrecio.Content.ToString(), @"([-+]?[0-9]*\.?[0-9]+)");
+            double oldNuevoPrecio = -1;
+            if (match.Success)
+            {
+                oldNuevoPrecio = Convert.ToDouble(match.Groups[1].Value);
+            }
+            if (oldNuevoPrecio == -1)
+            {
+                MessageBox.Show("No se pudo obtener el producto");
+                return;
+            }
+            else
+            {
+                double nuevoPrecio = oldNuevoPrecio + (double)tempPedidoProducto.Precio;
+                lbNuevoPrecio.Content = String.Format("{0:0.00}", nuevoPrecio) + "  MXN";
+            }
+            PedidoAEditar.PedidoProducto.Add(tempPedidoProducto);
             ActualizarDataGrid();
         }
     }
