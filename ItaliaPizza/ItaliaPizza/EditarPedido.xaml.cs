@@ -121,7 +121,7 @@ namespace PrototiposItaliaPizza
 
         private void ProductosUC_ProductoUserControlClicked(object sender, EventArgs e)
         {
-            MessageBox.Show(((ProductoVenta)(((Button)sender).DataContext)).Nombre);
+            MessageBox.Show(((ProductoVenta)sender).Nombre);
         }
     }
 }

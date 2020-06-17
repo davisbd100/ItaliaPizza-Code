@@ -92,7 +92,7 @@ namespace ItaliaPizza.Controls
 
         private void btContent_Click(object sender, RoutedEventArgs e)
         {
-            ProductoUserControlClicked?.Invoke(sender, EventArgs.Empty);
+            ProductoUserControlClicked?.Invoke(((Button)sender).DataContext, EventArgs.Empty);
         }
     }
 }
