@@ -47,7 +47,7 @@
         <Label Content="Productos de pedido:" HorizontalAlignment="Left" Margin="491.799,88.597,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="22" Foreground="Black" Background="{x:Null}" Height="36.17" Width="209.024"/>
         <Label Content="Productos:" HorizontalAlignment="Left" Margin="763.453,88.597,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="22" Foreground="Black" Background="{x:Null}" Height="36.17" Width="209.024"/>
         <Grid HorizontalAlignment="Left" Height="484" Margin="763,129,0,0" VerticalAlignment="Top" Width="519">
-            <uc:ProductosUC Margin="0,0,-7,72" />
+            <uc:ProductosUC Margin="0,0,-7,72" ProductoUserControlClicked="ProductosUC_ProductoUserControlClicked"/>
         </Grid>
     </Grid>
 </Window>

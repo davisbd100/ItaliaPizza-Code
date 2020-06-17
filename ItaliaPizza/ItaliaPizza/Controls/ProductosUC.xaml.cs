@@ -22,6 +22,7 @@ namespace ItaliaPizza.Controls
     /// </summary>
     public partial class ProductosUC : UserControl
     {
+        public event EventHandler ProductoUserControlClicked;
         ProductoVentaController Controller = new ProductoVentaController();
         List<ProductoVenta> productos = new List<ProductoVenta>();
         int PaginaActual = 1;
@@ -87,6 +88,11 @@ namespace ItaliaPizza.Controls
                 icProductos.ItemsSource = null;
                 icProductos.ItemsSource = productos;
             }
+        }
+
+        private void btContent_Click(object sender, RoutedEventArgs e)
+        {
+            ProductoUserControlClicked?.Invoke(sender, EventArgs.Empty);
         }
     }
 }

@@ -118,5 +118,10 @@ namespace PrototiposItaliaPizza
                     break;
             }
         }
+
+        private void ProductosUC_ProductoUserControlClicked(object sender, EventArgs e)
+        {
+            MessageBox.Show(((ProductoVenta)(((Button)sender).DataContext)).Nombre);
+        }
     }
 }
