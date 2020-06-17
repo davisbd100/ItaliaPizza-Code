@@ -21,7 +21,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="Productos" HorizontalAlignment="Left" Margin="250.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132.397" Width="253.143" Background="{x:Null}"/>
-        <Button Content="" HorizontalAlignment="Left" Height="87.021" Margin="752,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}">
+        <Button x:Name="btn_NuevoProducto" Content="" HorizontalAlignment="Left" Height="87.021" Margin="752,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="btn_NuevoProducto_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="/recursos/Producto.png" Stretch="Uniform"/>
             </Button.Background>
@@ -101,6 +101,10 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Código" Binding="{Binding Código}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Descripción" Binding="{Binding Descripción}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="idProducto" Binding="{Binding idProducto}" IsReadOnly="True" Visibility="Hidden"/>
+
+
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="btn_actualizarBusqueda" Content="Actualizar" HorizontalAlignment="Left" Margin="328,220,0,0" VerticalAlignment="Top" Width="92" Height="29" Click="btn_actualizarBusqueda_Click" />
