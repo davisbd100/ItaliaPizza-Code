@@ -10,12 +10,12 @@ namespace Controller
 {
     public class ProductoIngredienteController
     {
-        public ResultadoOperacion crearProductoIngrediente(string nombre, int codigo, string descripcion, float precioUnitario,
+        public ResultadoOperacion crearProductoIngrediente(string nombre, string codigo, string descripcion, float precioUnitario,
             string restriccion, string unidadMedida, string ubicacion, int cantidad, string caducidad, string tipoIngrediente)
         {
             ResultadoOperacion resultadoOperacion = new ResultadoOperacion();
-
             ProductoIngrediente productoIngrediente = new ProductoIngrediente();
+            Random random = new Random();
 
             productoIngrediente.Nombre = nombre;
             productoIngrediente.Código = codigo;
@@ -25,7 +25,6 @@ namespace Controller
 
             Inventario inventario = new Inventario();
             // inventario.Caducidad = DateTime.Parse(caducidad);
-            inventario.idInventario = codigo;
             inventario.Caducidad = caducidad;
             inventario.CantidadIngreso = cantidad;
             inventario.PrecioCompra = precioUnitario;
@@ -59,7 +58,7 @@ namespace Controller
         public ResultadoOperacion EliminarProductoIngrediente(Producto producto)
         {
             ProductoIngredienteDAO productoIngredienteDAO = new ProductoIngredienteDAO();
-            ResultadoOperacion resultado = productoIngredienteDAO.EliminarProducto(producto.Código);
+            ResultadoOperacion resultado = productoIngredienteDAO.EliminarProducto(producto.idProducto);
             return resultado;
         }
 
