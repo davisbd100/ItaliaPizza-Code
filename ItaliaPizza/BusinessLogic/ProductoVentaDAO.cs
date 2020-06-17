@@ -237,6 +237,31 @@ namespace BusinessLogic
 
         }
 
+        public int ObtenerPaginasDeTablaProductoVenta()
+        {
+            int paginas = 0;
+
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT CEILING((COUNT(*) / @elementos)) AS total FROM dbo.ProductoVenta", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@elementos", (float)20));
+                    paginas = int.Parse(command.ExecuteScalar().ToString());
+                }
+                connection.Close();
+            }
+            return paginas;
+        }
 
         public ProductoVenta ObtenerProductoVentaPorid(int codigo)
         {
