@@ -71,6 +71,9 @@
     <Compile Include="Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ProductosUC.xaml.cs">
+      <DependentUpon>ProductosUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DarDeBajaCliente.xaml.cs">
       <DependentUpon>DarDeBajaCliente.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Clientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProductosUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
