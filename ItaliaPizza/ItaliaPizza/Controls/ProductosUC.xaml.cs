@@ -23,14 +23,18 @@ namespace ItaliaPizza.Controls
     public partial class ProductosUC : UserControl
     {
         ProductoVentaController Controller = new ProductoVentaController();
-        List<ProductoVenta> productos;
+        List<ProductoVenta> productos = new List<ProductoVenta>();
         int PaginaActual = 1;
         int PaginaTotal = 1;
-        String BusquedaActual;
+        String BusquedaActual = "";
         public ProductosUC()
         {
             InitializeComponent();
-            productos = new List<ProductoVenta>();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Loaded");
             PaginaTotal = Controller.ObtenerPaginasDeTablaProductoVenta();
         }
 

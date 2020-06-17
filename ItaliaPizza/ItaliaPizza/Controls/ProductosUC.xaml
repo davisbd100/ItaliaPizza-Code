@@ -16,7 +16,7 @@
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
-        <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Margin="82,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Ingresa el nombre a buscar" FontFamily="Calibri Light" FontSize="20" Width="431" Foreground="#FF6D7276" Height="27" Background="White"/>
+        <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Margin="82,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="20" Width="431" Foreground="#FF6D7276" Height="27" Background="White"/>
         <Label Content="Buscar:" HorizontalAlignment="Left" Margin="-1,11,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="79"/>
         <Button x:Name="btBuscar" Content="" HorizontalAlignment="Left" Height="18" Margin="494,17,0,0" VerticalAlignment="Top" Width="20" BorderBrush="{x:Null}" Click="btBuscar_Click">
             <Button.Background>
