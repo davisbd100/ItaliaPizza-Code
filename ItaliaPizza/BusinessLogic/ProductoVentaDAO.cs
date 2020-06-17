@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -298,6 +299,25 @@ namespace BusinessLogic
                 connection.Close();
             }
             return productoVenta;
+        }
+
+        public DataAccess.ProductoVenta ObtenerProductoVentaPoridEE(int id)
+        {
+            DataAccess.ProductoVenta resultado = new DataAccess.ProductoVenta();
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    resultado = context.ProductoVenta.FirstOrDefault(b => b.idProductoVenta == id);
+                    resultado.Producto = context.ProductoVenta.FirstOrDefault(b => b.idProductoVenta == id).Producto;
+                }
+                catch (EntityException)
+                {
+                    throw new EntityException();
+                }
+            }
+
+            return resultado;
         }
 
         public List<ProductoVenta> ProductoVentaBusqueda(string busqueda)

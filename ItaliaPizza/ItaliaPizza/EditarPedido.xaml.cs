@@ -68,7 +68,8 @@ namespace PrototiposItaliaPizza
             lbIdCliente.Content = PedidoAEditar.Cliente;
             lbIdPedido.Content = PedidoAEditar.idPedido;
             double CostoTotal = 0;
-            
+            lbNuevoPrecio.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
+
 
             foreach (var pedidoProducto in PedidoAEditar.PedidoProducto)
             {
@@ -121,7 +122,17 @@ namespace PrototiposItaliaPizza
 
         private void ProductosUC_ProductoUserControlClicked(object sender, EventArgs e)
         {
-            MessageBox.Show(((ProductoVenta)sender).Nombre);
+            ProductoVenta tempProducto = ((ProductoVenta)sender);
+            ProductoVentaController producto = new ProductoVentaController();
+            int cantidad = 1;
+            PedidoAEditar.PedidoProducto.Add(new DataAccess.PedidoProducto()
+            {
+                Cantidad = cantidad,
+                idPedido = PedidoAEditar.idPedido,
+                ProductoVenta = producto.ObtenerProductoPorIdEE(tempProducto.Código),
+                Precio = cantidad * tempProducto.PrecioPúblico
+            });
+            ActualizarDataGrid();
         }
     }
 }

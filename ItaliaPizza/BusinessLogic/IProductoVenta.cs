@@ -14,6 +14,7 @@ namespace BusinessLogic
         List<ProductoVenta> ProductoVentaBusqueda(string busqueda);
         List<ProductoVenta> ProductoVentaBusquedaRango(int rango, string busqueda);
         int ObtenerPaginasDeTablaProductoVenta();
+        DataAccess.ProductoVenta ObtenerProductoVentaPoridEE(int id);
         ProductoVenta ObtenerProductoVentaPorid(int codigo);
         ResultadoOperacion AddProductoVenta(ProductoVenta productoVenta, Inventario inventario);
         ResultadoOperacion EliminarProductoVenta(int productoVenta);
