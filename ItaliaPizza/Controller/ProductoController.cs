@@ -28,21 +28,5 @@ namespace Controller
             List < Producto >  productos = productoDAO.BuscarProducto(busqueda + "%");
             return productos;
         }
-
-        public List<ProductoVenta> ObtenerInventarioPorRango(int pagina, string producto)
-        {
-            List<ProductoVenta> resultado = new List<ProductoVenta>();
-            ProductoVentaDAO inventarioDAO = new ProductoVentaDAO();
-            resultado = inventarioDAO.ProductoVentaBusquedaRango(pagina, producto);
-            return resultado;
-        }
-
-        public int ObtenerPaginasDeTablaInventario()
-        {
-            int resultado;
-            ProductoVentaDAO inventarioDAO = new ProductoVentaDAO();
-            resultado = inventarioDAO.ObtenerPaginasDeTablaProductoVenta();
-            return resultado;
-        }
     }
 }

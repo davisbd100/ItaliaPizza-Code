@@ -81,5 +81,21 @@ namespace Controller
             ResultadoOperacion resultado = productoVentaDAO.EliminarProductoVenta(producto.Código);
             return resultado;
         }
+
+        public List<ProductoVenta> ObtenerProductoVentaPorRangoBusqueda(int pagina, string producto)
+        {
+            List<ProductoVenta> resultado = new List<ProductoVenta>();
+            ProductoVentaDAO inventarioDAO = new ProductoVentaDAO();
+            resultado = inventarioDAO.ProductoVentaBusquedaRango(pagina, producto);
+            return resultado;
+        }
+
+        public int ObtenerPaginasDeTablaProductoVenta()
+        {
+            int resultado;
+            ProductoVentaDAO inventarioDAO = new ProductoVentaDAO();
+            resultado = inventarioDAO.ObtenerPaginasDeTablaProductoVenta();
+            return resultado;
+        }
     }
 }

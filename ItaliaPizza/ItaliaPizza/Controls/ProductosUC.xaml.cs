@@ -34,9 +34,7 @@ namespace ItaliaPizza.Controls
 
         private void btBuscar_Click(object sender, RoutedEventArgs e)
         {
-            productos = Controller.ObtenerProductosVenta(1);
-            icProductos.ItemsSource = null;
-            icProductos.ItemsSource = productos;
+            productos = Controller.;
         }
         private void btPaginaAnterior_Click(object sender, RoutedEventArgs e)
         {
@@ -47,7 +45,7 @@ namespace ItaliaPizza.Controls
             else
             {
                 PaginaActual--;
-                productos = Controller.prod(PaginaActual);
+                productos = Controller.(PaginaActual);
                 tbPaginaActual.Text = PaginaActual.ToString();
                 dgInventario.ItemsSource = null;
                 dgInventario.ItemsSource = inventario;
