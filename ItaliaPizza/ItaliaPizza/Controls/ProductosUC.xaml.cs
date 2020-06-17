@@ -26,15 +26,31 @@ namespace ItaliaPizza.Controls
         List<ProductoVenta> productos;
         int PaginaActual = 1;
         int PaginaTotal = 1;
+        String BusquedaActual;
         public ProductosUC()
         {
             InitializeComponent();
             productos = new List<ProductoVenta>();
+            PaginaTotal = Controller.ObtenerPaginasDeTablaProductoVenta();
         }
 
         private void btBuscar_Click(object sender, RoutedEventArgs e)
         {
-            productos = Controller.;
+            BusquedaActual = tbBusqueda.Text;
+            tbPaginaTotal.Text = PaginaTotal.ToString();
+            if (tbBusqueda.Text == "")
+            {
+                PaginaTotal = Controller.ObtenerPaginasDeTablaProductoVenta();
+                productos = Controller.ObtenerProductosVenta(PaginaActual);
+            }
+            else
+            {
+                productos = Controller.ObtenerProductoVentaPorRangoBusqueda(PaginaActual, BusquedaActual);
+                var tempTotal = productos.Count / 20;
+                PaginaTotal = (int)Math.Ceiling((double)tempTotal);
+            }
+            icProductos.ItemsSource = null;
+            icProductos.ItemsSource = productos;
         }
         private void btPaginaAnterior_Click(object sender, RoutedEventArgs e)
         {
@@ -45,11 +61,10 @@ namespace ItaliaPizza.Controls
             else
             {
                 PaginaActual--;
-                productos = Controller.(PaginaActual);
+                productos = Controller.ObtenerProductoVentaPorRangoBusqueda(PaginaActual, BusquedaActual);
                 tbPaginaActual.Text = PaginaActual.ToString();
-                dgInventario.ItemsSource = null;
-                dgInventario.ItemsSource = inventario;
-
+                icProductos.ItemsSource = null;
+                icProductos.ItemsSource = productos;
             }
         }
 
@@ -63,11 +78,10 @@ namespace ItaliaPizza.Controls
             else
             {
                 PaginaActual++;
-                inventario = controller.ObtenerInventarioPorRango(PaginaActual);
+                productos = Controller.ObtenerProductoVentaPorRangoBusqueda(PaginaActual, BusquedaActual);
                 tbPaginaActual.Text = PaginaActual.ToString();
-                dgInventario.ItemsSource = null;
-                dgInventario.ItemsSource = inventario;
-
+                icProductos.ItemsSource = null;
+                icProductos.ItemsSource = productos;
             }
         }
     }

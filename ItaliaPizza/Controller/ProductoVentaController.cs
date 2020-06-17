@@ -84,6 +84,9 @@ namespace Controller
 
         public List<ProductoVenta> ObtenerProductoVentaPorRangoBusqueda(int pagina, string producto)
         {
+            const int NUM_RESULTADOS = 19;
+            pagina -= 1;
+            pagina *= NUM_RESULTADOS;
             List<ProductoVenta> resultado = new List<ProductoVenta>();
             ProductoVentaDAO inventarioDAO = new ProductoVentaDAO();
             resultado = inventarioDAO.ProductoVentaBusquedaRango(pagina, producto);
