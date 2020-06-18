@@ -77,6 +77,7 @@ namespace ItaliaPizza
                 CostoTotal += (double)pedidoProducto.Precio;
             }
             lbPrecioAnterior.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
+            lbNuevoPrecio.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
         }
 
         private void ActualizarDataGrid()
@@ -89,7 +90,9 @@ namespace ItaliaPizza
         {
             if (dgProductosDePedido.SelectedIndex != -1)
             {
-                PedidoAEditar.PedidoProducto.Remove((DataAccess.PedidoProducto)dgProductosDePedido.SelectedItem);
+                DataAccess.PedidoProducto tempPedidoProducto = (DataAccess.PedidoProducto)dgProductosDePedido.SelectedItem;
+                ActualizarLabelPrecio(-((double)tempPedidoProducto.Precio));
+                PedidoAEditar.PedidoProducto.Remove(tempPedidoProducto);
                 ActualizarDataGrid();
             }
         }
@@ -101,7 +104,14 @@ namespace ItaliaPizza
 
         private void btEditar_Click(object sender, RoutedEventArgs e)
         {
-            GuardarEdicionPedido();
+            if (PedidoAEditar.PedidoProducto.Any())
+            {
+                GuardarEdicionPedido();
+            }
+            else
+            {
+                MessageBox.Show("No se puede guardar un pedido sin productos");
+            }
         }
 
         private void GuardarEdicionPedido()
@@ -133,24 +143,43 @@ namespace ItaliaPizza
                 ProductoVenta = producto.ObtenerProductoPorIdEE(int.Parse(tempProducto.Código)),
                 Precio = cantidad * tempProducto.PrecioPúblico
             };
-            var match = Regex.Match(lbNuevoPrecio.Content.ToString(), @"([-+]?[0-9]*\.?[0-9]+)");
-            double oldNuevoPrecio = -1;
+            foreach (DataAccess.PedidoProducto item in dgProductosDePedido.Items)
+            {
+                if (item.ProductoVenta.idProductoVenta == tempPedidoProducto.ProductoVenta.idProductoVenta)
+                {
+                    item.Cantidad++;
+                    item.Precio += tempPedidoProducto.ProductoVenta.PrecioPublico;
+                    ActualizarLabelPrecio((double)tempPedidoProducto.Precio);
+                    ActualizarDataGrid();
+                    return;
+                }
+            }
+            ActualizarLabelPrecio((double)tempPedidoProducto.Precio);
+            PedidoAEditar.PedidoProducto.Add(tempPedidoProducto);
+            ActualizarDataGrid();
+        }
+
+        void ActualizarLabelPrecio(double PrecioAAgregar)
+        {
+            double oldNuevoPrecio = ObtenerPrecioDouble(lbNuevoPrecio.Content.ToString());
+            double nuevoPrecio = oldNuevoPrecio + PrecioAAgregar;
+            lbNuevoPrecio.Content = String.Format("{0:0.00}", nuevoPrecio) + "  MXN";
+        }
+
+
+        double ObtenerPrecioDouble(String precio)
+        {
+            var match = Regex.Match(precio, @"([-+]?[0-9]*\.?[0-9]+)");
+            double resultado = -1;
             if (match.Success)
             {
-                oldNuevoPrecio = Convert.ToDouble(match.Groups[1].Value);
-            }
-            if (oldNuevoPrecio == -1)
-            {
-                MessageBox.Show("No se pudo obtener el producto");
-                return;
+                resultado = Convert.ToDouble(match.Groups[1].Value);
             }
             else
             {
-                double nuevoPrecio = oldNuevoPrecio + (double)tempPedidoProducto.Precio;
-                lbNuevoPrecio.Content = String.Format("{0:0.00}", nuevoPrecio) + "  MXN";
+                Console.WriteLine("No numeros encontrados");
             }
-            PedidoAEditar.PedidoProducto.Add(tempPedidoProducto);
-            ActualizarDataGrid();
+            return resultado;
         }
     }
 }

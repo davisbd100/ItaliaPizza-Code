@@ -220,15 +220,15 @@ namespace BusinessLogic
                     throw (ex);
                 }
 
-                using (SqlCommand command = new SqlCommand("select Codigo, Nombre, Descripcion, idProducto  from dbo.ProductoVenta left join dbo.Producto  on" +
-                    " dbo.Producto.idProducto = dbo.ProductoVenta.idProductoVenta WHERE dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset @Rango rows fetch next 20 rows only", connection))
+                using (SqlCommand command = new SqlCommand("select Codigo, Nombre, Descripcion, idProductoVenta, PrecioPublico  from dbo.ProductoVenta left join dbo.Producto  on" +
+                    " dbo.Producto.Codigo = dbo.ProductoVenta.idProductoVenta WHERE dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset @Rango rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         ProductoVenta productoVenta = new ProductoVenta();
-                        productoVenta.idProducto = Convert.ToInt32(reader["idProducto"].ToString());
+                        productoVenta.idProducto = Convert.ToInt32(reader["idProductoVenta"].ToString());
                         productoVenta.Código = reader["Codigo"].ToString();
                         productoVenta.Nombre = reader["Nombre"].ToString();
                         productoVenta.PrecioPúblico = float.Parse(reader["PrecioPublico"].ToString());
