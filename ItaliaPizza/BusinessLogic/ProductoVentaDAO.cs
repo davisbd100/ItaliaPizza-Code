@@ -384,7 +384,7 @@ namespace BusinessLogic
                     while (reader.Read())
                     {
                         ProductoVenta productoVenta = new ProductoVenta();
-                        productoVenta.Código = Convert.ToInt32(reader["Codigo"].ToString());
+                        productoVenta.Código = Convert.ToInt32(reader["Codigo"].ToString()).ToString();
                         productoVenta.Nombre = reader["Nombre"].ToString();
                         productoVenta.PrecioPúblico = float.Parse(reader["PrecioPublico"].ToString());
 

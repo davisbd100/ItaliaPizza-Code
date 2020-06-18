@@ -17,7 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PrototiposItaliaPizza
+namespace ItaliaPizza
 {
     /// <summary>
     /// Lógica de interacción para EditarCliente.xaml
@@ -130,7 +130,7 @@ namespace PrototiposItaliaPizza
             {
                 Cantidad = cantidad,
                 idPedido = PedidoAEditar.idPedido,
-                ProductoVenta = producto.ObtenerProductoPorIdEE(tempProducto.Código),
+                ProductoVenta = producto.ObtenerProductoPorIdEE(int.Parse(tempProducto.Código)),
                 Precio = cantidad * tempProducto.PrecioPúblico
             };
             var match = Regex.Match(lbNuevoPrecio.Content.ToString(), @"([-+]?[0-9]*\.?[0-9]+)");
