@@ -33,9 +33,8 @@
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.3"/>
             </Rectangle.Fill>
         </Rectangle>
-        <TextBox x:Name="textBoxUsuario" HorizontalAlignment="Left" Margin="507,204,0,0" VerticalAlignment="Top" Width="195" FontFamily="Calibri Light" FontSize="22" IsReadOnly="True" IsEnabled="False"/>
+        <TextBox x:Name="textBoxUsuario" HorizontalAlignment="Left" Margin="507,204,0,0" VerticalAlignment="Top" Width="195" FontFamily="Calibri Light" FontSize="22" IsReadOnly="True"/>
         <Label Content="Usuario:" HorizontalAlignment="Left" Margin="507,167,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
-        <TextBox x:Name="textBoxContraseña" HorizontalAlignment="Left" Margin="508.334,277.859,0,0" VerticalAlignment="Top" Width="195" FontFamily="Calibri Light" FontSize="22" IsReadOnly="True"/>
         <Label Content="Contraseña:" HorizontalAlignment="Left" Margin="508.334,241.259,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
         <Label Content="Tipo Empleado:" HorizontalAlignment="Left" Margin="23,101,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" Height="37" Width="147"/>
         <ComboBox x:Name="comboBoxTipoEmpleado" HorizontalAlignment="Left" Margin="169,109,0,0" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="20" Height="29">
@@ -66,6 +65,7 @@
         <Label Content="*" HorizontalAlignment="Left" Margin="440,559,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
         <Label Content="*" HorizontalAlignment="Left" Margin="483,579,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="23"/>
         <Label Content="Campos obligatorios" HorizontalAlignment="Left" Margin="492,583,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFABADB3" FontSize="11"/>
+        <PasswordBox x:Name="passwordBoxContraseña" HorizontalAlignment="Left" Height="29" Margin="507,283,0,0" VerticalAlignment="Top" Width="195" FontFamily="Calibri Light" FontSize="22"/>
 
     </Grid>
 </Window>

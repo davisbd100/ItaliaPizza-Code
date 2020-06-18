@@ -87,6 +87,71 @@ namespace BusinessLogic
             return resultado;
         }
 
+        public ResultadoOperacion Editar(Empleado empleado)
+        {
+            const int VALORES_DUPLICADOS = 2601;
+
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+                transaction = connection.BeginTransaction("EditarEmpleado");
+                command.Connection = connection;
+                command.Transaction = transaction;
+
+                try
+                {
+                    command.CommandText =
+                         "UPDATE dbo.Persona SET Nombre = @Nombre, Apellido = @Apellido, Telefono = @Telefono, Email = @Email, Calle = @Calle, Numero = @Numero, CodigoPostal = @CodigoPostal, " +
+                         "Colonia = @Colonia, Ciudad = @Ciudad WHERE idEmpleado = @idPersona";
+                    command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idPersona));
+                    command.Parameters.Add(new SqlParameter("@Nombre", empleado.Nombre));
+                    command.Parameters.Add(new SqlParameter("@Apellido", empleado.Apellido));
+                    command.Parameters.Add(new SqlParameter("@Telefono", empleado.Telefono));
+                    command.Parameters.Add(new SqlParameter("@Email", empleado.Email));
+                    command.Parameters.Add(new SqlParameter("@Calle", empleado.Calle));
+                    command.Parameters.Add(new SqlParameter("@Numero", empleado.Numero));
+                    command.Parameters.Add(new SqlParameter("@CodigoPostal", empleado.CodigoPostal));
+                    command.Parameters.Add(new SqlParameter("@Colonia", empleado.Colonia));
+                    command.Parameters.Add(new SqlParameter("@Ciudad", empleado.Ciudad));
+                    command.ExecuteNonQuery();
+
+                    command.CommandText =
+                         "UPDATE dbo.Empleado SET TipoEmpleado = @TipoEmpleado, NombreUsuario = @NombreUsuario, Contrasena = @Contrasena WHERE idEmpleado = @idPersona";
+                    command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idEmpleado));
+                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
+                    command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
+                    command.Parameters.Add(new SqlParameter("@Contrasena", PassHash(empleado.Contraseña)));
+                    command.ExecuteNonQuery();
+
+                    transaction.Commit();
+                    resultado = ResultadoOperacion.Exito;
+
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+
+                    switch (e.Number)
+                    {
+                        case VALORES_DUPLICADOS:
+                            resultado = ResultadoOperacion.ObjetoExistente;
+                            break;
+                        default:
+                            resultado = ResultadoOperacion.FalloSQL;
+                            break;
+                    }
+                }
+            }
+
+            return resultado;
+        }
+
+
         public ResultadoOperacion EditarEmpleado(Empleado empleado)
         {
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
@@ -99,8 +164,7 @@ namespace BusinessLogic
 
                 using (SqlCommand command = new SqlCommand("UPDATE dbo.Persona SET Nombre = @Nombre, Apellido = @Apellido, " +
                     "Telefono = @Telefono, Email = @Email, Calle = @Calle, Numero = @Numero, CodigoPostal = @CodigoPostal" +
-                    "Colonia = @Colonia, Ciudad = @Ciudad, TipoEmpleado = @TipoEmpleado, NombreUsuario = @NombreUsuario" +
-                    "FechaUltimoAcceso = @FechaUltimoAcceso WHERE idEmpleado = @idPersona", connection))
+                    "Colonia = @Colonia, Ciudad = @Ciudad WHERE idPersona = @idPersona", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@idPersona", empleado.idPersona));
                     command.Parameters.Add(new SqlParameter("@Nombre", empleado.Nombre));
@@ -112,10 +176,10 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@CodigoPostal", empleado.CodigoPostal));
                     command.Parameters.Add(new SqlParameter("@Colonia", empleado.Colonia));
                     command.Parameters.Add(new SqlParameter("@Ciudad", empleado.Ciudad));
-                    command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
-                    command.Parameters.Add(new SqlParameter("@Contrasena", PassHash(empleado.Contraseña)));
-                    command.Parameters.Add(new SqlParameter("@FechaUltimoAcceso", empleado.FechaUltimoAcceso));
-                    command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
+                    //command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
+                    //command.Parameters.Add(new SqlParameter("@Contrasena", PassHash(empleado.Contraseña)));
+                    //command.Parameters.Add(new SqlParameter("@FechaUltimoAcceso", empleado.FechaUltimoAcceso));
+                    //command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
 
                     try
                     {

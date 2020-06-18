@@ -44,7 +44,7 @@ namespace Controller
 		}
 		public ResultadoOperacion EditarEmpleado(String idPersona, String nombre, String apellido,
 			String telefono, String email, String ciudad, String calle, String numero,
-			String colonia, String codigoPostal, String idEmpleado, String usuario, String tipoEmpleado)
+			String colonia, String codigoPostal, String idEmpleado, String tipoEmpleado, String usuario, String contrasena)
 		{
 			ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
 
@@ -60,12 +60,12 @@ namespace Controller
 				empleado.Colonia = colonia;
 				empleado.CodigoPostal = codigoPostal;
 				empleado.idEmpleado = empleado.idPersona;
-				empleado.NombreUsuario = usuario;
-				//empleado.Contraseña = contrasena;
-				empleado.FechaUltimoAcceso = DateTime.Now;
 				empleado.TipoEmpleado = tipoEmpleado;
+				empleado.NombreUsuario = usuario;
+				empleado.Contraseña = contrasena;
+				//empleado.FechaUltimoAcceso = DateTime.Now;
 				EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-				resultado = (ResultadoOperacion)empleadoDAO.EditarEmpleado(empleado);
+				resultado = (ResultadoOperacion)empleadoDAO.Editar(empleado);
 			
 			return resultado;
 		}

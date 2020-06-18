@@ -38,7 +38,7 @@ namespace ItaliaPizza
             textBoxCodigoPostal.Text = datosEmpleado.CodigoPostal;
             textBoxIdEmpleado.Text = datosEmpleado.idEmpleado;
             textBoxUsuario.Text = datosEmpleado.NombreUsuario;
-            //textBoxContraseña.Text = datosEmpleado.Contraseña;
+            //passwordBoxContraseña.Password = datosEmpleado.Contraseña;
         }
 
         private void CancelarButton_Click(object sender, RoutedEventArgs e)
@@ -141,17 +141,17 @@ namespace ItaliaPizza
             string numero = textBoxNúmero.Text.Trim();
             string colonia = textBoxColonia.Text.Trim();
             string codigoPostal = textBoxCodigoPostal.Text.Trim();
-            string idEmpleado = textBoxIdEmpleado.Text.Trim();
-            string usuario = textBoxUsuario.Text.Trim();
-            //string contraseña = textBoxContraseña.Text.Trim();
-            string tipoEmpleado = comboBoxTipoEmpleado.Text.Trim();
+            //string idEmpleado = textBoxIdEmpleado.Text.Trim();
+            //string usuario = textBoxUsuario.Text.Trim();
+            //string contraseña = passwordBoxContraseña.Password;
+            //string tipoEmpleado = comboBoxTipoEmpleado.Text.Trim();
 
             if (ValidarCampos() == CheckResult.Passed)
             {
                 EmpleadoController empleadoController = new EmpleadoController();
                 ComprobarResultado((ResultadoOperacion)empleadoController.EditarEmpleado(
                     idPersona, nombre, apellido, telefono, correo, ciudad, calle, numero,
-                    colonia, codigoPostal, idEmpleado, usuario, tipoEmpleado));
+                    colonia, codigoPostal));
             }
         }
 
