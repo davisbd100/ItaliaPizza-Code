@@ -26,6 +26,14 @@ namespace Controller
             return resultado;
         }
 
+        public List<DataAccess.Inventario> ObtenerTodosLosInventarios()
+        {
+            List<DataAccess.Inventario> resultado = new List<DataAccess.Inventario>();
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            resultado = inventarioDAO.ObtenerTodosLosInventarios();
+            return resultado;
+        }
+
         public List<DataAccess.Inventario> TodosLosInventarios(int pagina)
         {
             List<DataAccess.Inventario> resultado = new List<DataAccess.Inventario>();
