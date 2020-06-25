@@ -107,6 +107,7 @@
         <Button x:Name="btPaginaSiguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="566,575,0,0" VerticalAlignment="Top" Width="75" Click="btPaginaSiguiente_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="481,574,0,0" TextWrapping="Wrap" Text="De" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
         <TextBlock x:Name="tbPaginaTotal" HorizontalAlignment="Left" Margin="526,575,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
+        <Button x:Name="PrintButton" Content="Button" HorizontalAlignment="Left" Margin="938,151,0,0" VerticalAlignment="Top" Width="75" Click="PrintButton_Click"/>
 
     </Grid>
 </Window>

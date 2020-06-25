@@ -118,5 +118,45 @@ namespace PrototiposItaliaPizza
 
             }
         }
+
+        private void PrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocument flow = new FlowDocument(new Paragraph(new Run("Some text goes here")));
+            foreach (var item in controller.ObtenerTodosLosInventarios())
+            {
+                Paragraph p = new Paragraph(new Run(item.Producto1.Nombre + "No existen movimientos"))
+                {
+                    TextAlignment = TextAlignment.Center,
+                    Margin = new Thickness(200,0,0,0),
+                    
+                };
+                foreach (var movimientos in item.ProductoInventario)
+                {
+                    p = new Paragraph(new Run(((DataAccess.Inventario)item).Producto1.Nombre + "|" + movimientos.PrecioCompra + " " + movimientos.PrecioCompra))
+                    {
+                        FontSize = 11,
+                        TextAlignment = TextAlignment.Center
+                    };
+                }
+                flow.Blocks.Add(p);
+            }
+            
+            flow.Name = "FlowDoc";
+            try
+            {
+                IDocumentPaginatorSource idpsorc = flow;
+                this.IsEnabled = false;
+                
+                PrintDialog printDialog = new PrintDialog();
+                if(printDialog.ShowDialog() == true)
+                {
+                    printDialog.PrintDocument(idpsorc.DocumentPaginator, "Invoice");
+                }
+            }
+            finally
+            {
+                this.IsEnabled = true;
+            }
+        }
     }
 }
