@@ -40,6 +40,17 @@ namespace Controller
 			return clienteDAO.GetClineteByIdCliente(idCliente);
 		}
 
+		public List<Cliente> GetCliente(int rango)
+        {
+			const int Num_RESULTADOS = 19;
+			rango -= 1;
+			rango *= Num_RESULTADOS;
+
+			ClienteDAO clienteDAO = new ClienteDAO();
+			List<Cliente> clientes = clienteDAO.GetCliente(rango);
+			return clientes;
+		}
+
 		public ResultadoOperacion EliminarCliente(Cliente cliente)
         {
 			ClienteDAO clienteDAO = new ClienteDAO();

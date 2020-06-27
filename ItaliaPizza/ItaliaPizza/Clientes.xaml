@@ -22,7 +22,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="Clientes" HorizontalAlignment="Left" Margin="250.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132.397" Width="253.143" Background="{x:Null}"/>
-        <Button Content="" HorizontalAlignment="Left" Height="87.021" Margin="752,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}">
+        <Button x:Name="NuevoButton" Content="" HorizontalAlignment="Left" Height="87.021" Margin="752,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="NuevoButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Empleado.png" Stretch="Uniform"/>
             </Button.Background>
@@ -33,20 +33,13 @@
                 <ImageBrush ImageSource="Recursos/Editar.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="86.944" Margin="983.666,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}">
+        <Button x:Name="EliminarButton" Content="" HorizontalAlignment="Left" Height="86.944" Margin="983.666,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="EliminarButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Eliminar.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Label Content="EDITAR" HorizontalAlignment="Left" Margin="899.541,86.752,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="50.407"/>
         <Label Content="ELIMINAR" HorizontalAlignment="Left" Margin="1007.211,86.328,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="66.483"/>
-        <ListView HorizontalAlignment="Left" Height="358" Margin="185.057,238.667,0,0" VerticalAlignment="Top" Width="1002.61">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
         <Rectangle HorizontalAlignment="Left" Height="49.035" Margin="185.057,155.298,0,0" VerticalAlignment="Top" Width="1002.61">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
@@ -103,6 +96,31 @@
         <Label Content="VENTAS" HorizontalAlignment="Left" Margin="41.832,404.446,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
         <Label Content="CLIENTES" HorizontalAlignment="Left" Margin="39.165,478.699,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
         <Label Content="EMPLEADOS" HorizontalAlignment="Left" Margin="33.162,553.035,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
+        <DataGrid x:Name="DataGridClientes" HorizontalAlignment="Left" Height="335" Margin="185,235,0,0" VerticalAlignment="Top" Width="1003" FontFamily="Calibri Light" FontSize="16"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Background="White" Foreground="#FF6D7276" BorderBrush="#FF98171F">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding idPersona}" IsReadOnly="True" Foreground="#FF6D7276"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True" Foreground="#FF6D7276"/>
+                <DataGridTextColumn Header="Apellido" Binding="{Binding Apellido}" IsReadOnly="True" Foreground="#FF6D7276"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" IsReadOnly="True" Foreground="#FF6D7276"/>
+                <DataGridTextColumn Header="Correo" Binding="{Binding Email}" IsReadOnly="True" Foreground="#FF6D7276"/>
+                <DataGridTextColumn Header="Calle" Binding="{Binding Calle}" IsReadOnly="True" Foreground="#FF6D7276"/>
+                <DataGridTextColumn Header="Número" Binding="{Binding Numero}" IsReadOnly="True" Foreground="#FF6D7276"/>
+                <DataGridTextColumn Header="Colonia" Binding="{Binding Colonia}" IsReadOnly="True" Foreground="#FF6D7276"/>
+                <DataGridTextColumn Header="Codigo Postal" Binding="{Binding CodigoPostal}" IsReadOnly="True" Foreground="#FF6D7276"/>
+                <DataGridTextColumn Header="Ciudad" Binding="{Binding Ciudad}" IsReadOnly="True" Foreground="#FF6D7276"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="SalirButton" Content="" HorizontalAlignment="Left" Height="87" Margin="1124,27,0,0" VerticalAlignment="Top" Width="114" BorderBrush="{x:Null}" Click="SalirButton_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="Recursos/Salir.png" Stretch="Uniform"/>
+            </Button.Background>
+
+        </Button>
+        <TextBlock x:Name="TextBlockPagina" HorizontalAlignment="Left" Height="32" Margin="835,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="ButtonSiguierntePagina" Content="Siguiente" HorizontalAlignment="Left" Height="32" Margin="976,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonSiguierntePagina_Click"/>
+        <Button x:Name="ButtonAnteriorPagina" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="623,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonAnteriorPagina_Click" IsDefault="True"/>
+        <TextBlock x:Name="TextBlockPagina_Copy" HorizontalAlignment="Left" Height="32" Margin="930,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
+        <Label Content="de" HorizontalAlignment="Left" Margin="890,588,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="32" FontWeight="Bold" Background="{x:Null}"/>
 
     </Grid>
 </Window>

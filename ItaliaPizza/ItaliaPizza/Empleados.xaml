@@ -11,39 +11,39 @@
     </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="651.333"/>
+            <RowDefinition Height="652"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <Rectangle HorizontalAlignment="Left" Height="74" Margin="0,496,0,0" VerticalAlignment="Top" Width="120">
+        <Rectangle HorizontalAlignment="Left" Height="74" Margin="0,497,0,0" VerticalAlignment="Top" Width="120">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1003.332">
+        <Rectangle HorizontalAlignment="Left" Height="87" Margin="121,27,0,0" VerticalAlignment="Top" Width="1003">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Content="Empleados" HorizontalAlignment="Left" Margin="250.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132.397" Width="253.143" Background="{x:Null}"/>
-        <Button x:Name="NuevoButton" Content="" HorizontalAlignment="Left" Height="87.021" Margin="752,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="NuevoButton_Click">
+        <Label Content="Empleados" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132" Width="253" Background="{x:Null}"/>
+        <Button x:Name="NuevoButton" Content="" HorizontalAlignment="Left" Height="87" Margin="752,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="NuevoButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Empleado.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Label Content="NUEVO" HorizontalAlignment="Left" Margin="782.999,86.586,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" Height="27.09" Width="51.887"/>
-        <Button x:Name="EditarButton" Content="" HorizontalAlignment="Left" Height="87.11" Margin="870.333,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="EditarButton_Click">
+        <Label Content="NUEVO" HorizontalAlignment="Left" Margin="783,87,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" Height="27" Width="52"/>
+        <Button x:Name="EditarButton" Content="" HorizontalAlignment="Left" Height="87" Margin="870,27,0,0" VerticalAlignment="Top" Width="114" BorderBrush="{x:Null}" Click="EditarButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Editar.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="EliminarButton" Content="" HorizontalAlignment="Left" Height="86.944" Margin="983.666,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="EliminarButton_Click">
+        <Button x:Name="EliminarButton" Content="" HorizontalAlignment="Left" Height="87" Margin="984,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="EliminarButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Eliminar.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Label Content="EDITAR" HorizontalAlignment="Left" Margin="899.541,86.752,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="50.407"/>
-        <Label Content="ELIMINAR" HorizontalAlignment="Left" Margin="1007.211,86.328,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="66.483"/>
-        <Rectangle HorizontalAlignment="Left" Height="49.035" Margin="185.057,155.298,0,0" VerticalAlignment="Top" Width="1002.61">
+        <Label Content="EDITAR" HorizontalAlignment="Left" Margin="900,87,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27" Width="50"/>
+        <Label Content="ELIMINAR" HorizontalAlignment="Left" Margin="1007,86,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27" Width="67"/>
+        <Rectangle HorizontalAlignment="Left" Height="49" Margin="185,155,0,0" VerticalAlignment="Top" Width="1003">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
@@ -77,58 +77,59 @@
                 <DataGridTextColumn Header="Fecha último acceso" Binding="{Binding FechaUltimoAcceso}" IsReadOnly="True" Foreground="#FF6D7276"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="TextBlockPagina" HorizontalAlignment="Left" Height="32" Margin="835,587,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="ButtonSiguierntePagina" Content="Siguiente" HorizontalAlignment="Left" Height="32" Margin="976,587,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonSiguierntePagina_Click"/>
-        <Button x:Name="ButtonAnteriorPagina" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="623,587,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonAnteriorPagina_Click" IsDefault="True"/>
-        <TextBlock x:Name="TextBlockPagina_Copy" HorizontalAlignment="Left" Height="32" Margin="930,587,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
-        <Label Content="de" HorizontalAlignment="Left" Margin="890,587,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="32" FontWeight="Bold" Background="{x:Null}"/>
+        <TextBlock x:Name="TextBlockPagina" HorizontalAlignment="Left" Height="32" Margin="835,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="ButtonSiguierntePagina" Content="Siguiente" HorizontalAlignment="Left" Height="32" Margin="976,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonSiguierntePagina_Click"/>
+        <Button x:Name="ButtonAnteriorPagina" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="623,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonAnteriorPagina_Click" IsDefault="True"/>
+        <TextBlock x:Name="TextBlockPagina_Copy" HorizontalAlignment="Left" Height="32" Margin="930,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
+        <Label Content="de" HorizontalAlignment="Left" Margin="890,588,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="32" FontWeight="Bold" Background="{x:Null}"/>
         <Button x:Name="SalirButton" Content="" HorizontalAlignment="Left" Height="87" Margin="1124,27,0,0" VerticalAlignment="Top" Width="114" BorderBrush="{x:Null}" Click="SalirButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Salir.png" Stretch="Uniform"/>
             </Button.Background>
 
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="724.666" Stroke="White" VerticalAlignment="Top" Width="120.001" Margin="0,0,0,-72.666" Grid.RowSpan="2">
+        <Rectangle HorizontalAlignment="Left" Height="725" Stroke="White" VerticalAlignment="Top" Width="120" Margin="0,0,0,-73" Grid.RowSpan="2">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Image HorizontalAlignment="Left" Height="103.842" Margin="6,10,0,0" VerticalAlignment="Top" Width="110.001" Source="Recursos/LogoItaliaPizza.png"/>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,130.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
+        <Image HorizontalAlignment="Left" Height="104" Margin="6,10,0,0" VerticalAlignment="Top" Width="110" Source="Recursos/LogoItaliaPizza.png"/>
+        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,130,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Producto.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,203.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
+        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,203,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Receta.png"/>
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,276.897,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
+        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,277,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Inventario.png"/>
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,349.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
+        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,349,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Ventas.png"/>
             </Button.Background>
         </Button>
-        <Button HorizontalAlignment="Left" Height="73.936" Margin="0,422.396,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
+        <Button HorizontalAlignment="Left" Height="74" Margin="0,422,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Clientes.png"/>
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,495.732,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
+        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,497,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Empleados.png"/>
             </Button.Background>
         </Button>
-        <Label Content="PRODUCTOS" HorizontalAlignment="Left" Margin="31.832,185.764,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8" RenderTransformOrigin="0.515,0.466"/>
-        <Label Content="RECETAS" HorizontalAlignment="Left" Margin="39.832,259.383,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
-        <Label Content="INVENTARIO" HorizontalAlignment="Left" Margin="32.936,331.447,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
-        <Label Content="VENTAS" HorizontalAlignment="Left" Margin="41.832,404.446,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
-        <Label Content="CLIENTES" HorizontalAlignment="Left" Margin="39.165,478.699,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
-        <Label Content="EMPLEADOS" HorizontalAlignment="Left" Margin="33.162,553.035,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
+        <Label Content="PRODUCTOS" HorizontalAlignment="Left" Margin="32,186,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8" RenderTransformOrigin="0.515,0.466"/>
+        <Label Content="RECETAS" HorizontalAlignment="Left" Margin="40,259,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
+        <Label Content="INVENTARIO" HorizontalAlignment="Left" Margin="33,331,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
+        <Label Content="VENTAS" HorizontalAlignment="Left" Margin="42,404,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
+        <Label Content="CLIENTES" HorizontalAlignment="Left" Margin="39,480,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8"/>
+        <Label Content="EMPLEADOS" HorizontalAlignment="Left" Margin="33,554,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8"/>
+        <Image HorizontalAlignment="Left" Height="87" Margin="125,27,0,0" VerticalAlignment="Top" Width="120" Source="Recursos/Empleados.png"/>
     </Grid>
 </Window>

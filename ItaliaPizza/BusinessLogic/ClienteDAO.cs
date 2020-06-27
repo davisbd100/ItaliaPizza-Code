@@ -182,7 +182,45 @@ namespace BusinessLogic
 
         public List<Cliente> GetCliente(int rango)
         {
-            throw new NotImplementedException();
+            List<Cliente> listaClientes = new List<Cliente>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
+                    "Numero, CodigoPostal, Colonia, Ciudad FROM dbo.Persona left join dbo.Cliente ON dbo.Persona.idPersona = " +
+                    "dbo.Cliente.idCliente  WHERE dbo.Persona.Visibilidad = 'TRUE' and idPersona = idCliente order by Nombre offset @Rango " +
+                    "rows fetch next 20 rows only", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Rango", rango));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Cliente cliente = new Cliente();
+                        cliente.idPersona = reader["idPersona"].ToString();
+                        cliente.Nombre = reader["Nombre"].ToString();
+                        cliente.Apellido = reader["Apellido"].ToString();
+                        cliente.Telefono = reader["Telefono"].ToString();
+                        cliente.Email = reader["Email"].ToString();
+                        cliente.Calle = reader["Calle"].ToString();
+                        cliente.Numero = reader["Numero"].ToString();
+                        cliente.CodigoPostal = reader["CodigoPostal"].ToString();
+                        cliente.Colonia = reader["Colonia"].ToString();
+                        cliente.Ciudad = reader["Ciudad"].ToString();
+                        listaClientes.Add(cliente);
+                    }
+                }
+                connection.Close();
+            }
+            return listaClientes;
         }
     }
 }

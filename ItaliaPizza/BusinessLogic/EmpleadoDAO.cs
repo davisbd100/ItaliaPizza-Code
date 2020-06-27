@@ -283,8 +283,9 @@ namespace BusinessLogic
                     throw (ex);
                 }
                 using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
-                    "Numero, CodigoPostal, Colonia, Ciudad, TipoEmpleado, NombreUsuario, FechaUltimoAcceso FROM dbo.Persona left join " +
-                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado  WHERE dbo.Persona.Visibilidad = 'TRUE' order by Nombre offset @Rango " +
+                    "Numero, CodigoPostal, Colonia, Ciudad, TipoEmpleado, NombreUsuario FROM dbo.Persona left join " +
+                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado  WHERE dbo.Persona.Visibilidad = 'TRUE' " +
+                    "and idPersona = idEmpleado order by Nombre offset @Rango " +
                     "rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
@@ -304,7 +305,6 @@ namespace BusinessLogic
                         empleado.Ciudad = reader["Ciudad"].ToString();
                         empleado.TipoEmpleado = reader["TipoEmpleado"].ToString();
                         empleado.NombreUsuario = reader["NombreUsuario"].ToString();
-                        empleado.FechaUltimoAcceso = DateTime.Parse(reader["FechaUltimoAcceso"].ToString());
                         listaEmpleados.Add(empleado);
                     }
                 }
