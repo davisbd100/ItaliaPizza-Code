@@ -53,8 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cliente.cs" />
+    <Compile Include="ClienteDAO.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="EmpleadoDAO.cs" />
+    <Compile Include="ICliente.cs" />
     <Compile Include="IEmpleado.cs" />
     <Compile Include="Estatus.cs" />
     <Compile Include="IInventario.cs" />
@@ -62,10 +64,8 @@
     <Compile Include="InventarioDAO.cs" />
     <Compile Include="IProducto.cs" />
     <Compile Include="IProductoVenta.cs" />
-    <Compile Include="IUbicación.cs" />
     <Compile Include="IReceta.cs" />
     <Compile Include="ITipoProducto.cs" />
-    <Compile Include="IUbicación.cs" />
     <Compile Include="ListaIngredientesReceta.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Persona.cs" />

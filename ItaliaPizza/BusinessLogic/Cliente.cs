@@ -8,7 +8,12 @@ namespace BusinessLogic
 {
     public class Cliente : Persona
     {
-        String idCliente;
+        public String idCliente { get; set; }
+
+        public Cliente(string idCliente)
+        {
+            this.idCliente = idCliente;
+        }
 
         public Cliente()
         {

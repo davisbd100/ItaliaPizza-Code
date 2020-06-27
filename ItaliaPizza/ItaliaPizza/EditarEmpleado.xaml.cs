@@ -131,28 +131,28 @@ namespace ItaliaPizza
 
         private void AceptarButton_Click(object sender, RoutedEventArgs e)
         {
-            string idPersona = textBoxIdEmpleado.Text.Trim();
-            string nombre = textBoxNombre.Text.Trim();
-            string apellido = textBoxApellido.Text.Trim();
-            string telefono = textBoxTelefono.Text.Trim();
-            string correo = textBoxCorreo.Text.Trim();
-            string ciudad = textBoxCiudad.Text.Trim();
-            string calle = textBoxCalle.Text.Trim();
-            string numero = textBoxNúmero.Text.Trim();
-            string colonia = textBoxColonia.Text.Trim();
-            string codigoPostal = textBoxCodigoPostal.Text.Trim();
+            //string idPersona = textBoxIdEmpleado.Text.Trim();
+            //string nombre = textBoxNombre.Text.Trim();
+            //string apellido = textBoxApellido.Text.Trim();
+            //string telefono = textBoxTelefono.Text.Trim();
+            //string correo = textBoxCorreo.Text.Trim();
+            //string ciudad = textBoxCiudad.Text.Trim();
+            //string calle = textBoxCalle.Text.Trim();
+            //string numero = textBoxNúmero.Text.Trim();
+            //string colonia = textBoxColonia.Text.Trim();
+            //string codigoPostal = textBoxCodigoPostal.Text.Trim();
             //string idEmpleado = textBoxIdEmpleado.Text.Trim();
             //string usuario = textBoxUsuario.Text.Trim();
             //string contraseña = passwordBoxContraseña.Password;
             //string tipoEmpleado = comboBoxTipoEmpleado.Text.Trim();
 
-            if (ValidarCampos() == CheckResult.Passed)
-            {
-                EmpleadoController empleadoController = new EmpleadoController();
-                ComprobarResultado((ResultadoOperacion)empleadoController.EditarEmpleado(
-                    idPersona, nombre, apellido, telefono, correo, ciudad, calle, numero,
-                    colonia, codigoPostal));
-            }
+            //if (ValidarCampos() == CheckResult.Passed)
+            //{
+            //    EmpleadoController empleadoController = new EmpleadoController();
+            //    ComprobarResultado((ResultadoOperacion)empleadoController.EditarEmpleado(
+            //        idPersona, nombre, apellido, telefono, correo, ciudad, calle, numero,
+            //        colonia, codigoPostal));
+            //}
         }
 
         private void ComprobarResultado(ResultadoOperacion resultado)
