@@ -59,6 +59,23 @@ namespace ItaliaPizza
             LlenarGrid();
         }
 
+        private void EditarButton_Click(object sender, RoutedEventArgs e)
+        {
+            int posicion = DataGridClientes.SelectedIndex;
+
+            if (posicion != POSICION_FUERA_RANGO && ValidarSeleccion())
+            {
+                Cliente cliente = (Cliente)DataGridClientes.SelectedItem;
+                EditarCliente editarCliente = new EditarCliente(cliente);
+                editarCliente.ShowDialog();
+                LlenarGrid();
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar solo un empleado", "Error");
+            }
+        }
+
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             int posicion = DataGridClientes.SelectedIndex;

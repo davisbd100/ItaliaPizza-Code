@@ -83,6 +83,45 @@ namespace BusinessLogic
             return resultado;
         }
 
+        public Cliente GetClienteId(String idCliente)
+        {
+            Cliente cliente = new Cliente();
+            DbConnection dbconnection = new DbConnection();
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Persona left join " +
+                    "dbo.Cliente ON dbo.Persona.idPersona = dbo.Cliente.idCliente WHERE idPersona = @idCliente", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@idCliente", idCliente));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        cliente.idPersona = reader["idPersona"].ToString();
+                        cliente.Nombre = reader["Nombre"].ToString();
+                        cliente.Apellido = reader["Apellido"].ToString();
+                        cliente.Telefono = reader["Telefono"].ToString();
+                        cliente.Email = reader["Email"].ToString();
+                        cliente.Calle = reader["Calle"].ToString();
+                        cliente.Numero = reader["Numero"].ToString();
+                        cliente.CodigoPostal = reader["CodigoPostal"].ToString();
+                        cliente.Colonia = reader["Colonia"].ToString();
+                        cliente.Ciudad = reader["Ciudad"].ToString();
+                        cliente.idCliente = reader["idCliente"].ToString();
+                    }
+                }
+                connection.Close();
+            }
+            return cliente;
+        }
+
         public Cliente GetClineteByIdCliente(String idCliente)
         {
             Cliente cliente = new Cliente();
@@ -239,7 +278,57 @@ namespace BusinessLogic
 
         public ResultadoOperacion EditarCliente(Cliente cliente)
         {
-            throw new NotImplementedException();
+            const int VALORES_DUPLICADOS = 2601;
+
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+                transaction = connection.BeginTransaction("EditarCliente");
+                command.Connection = connection;
+                command.Transaction = transaction;
+
+                try
+                {
+                    command.CommandText =
+                         "UPDATE dbo.Persona SET Nombre = @Nombre, Apellido = @Apellido, Telefono = @Telefono, Email = @Email, Calle = @Calle, Numero = @Numero, CodigoPostal = @CodigoPostal, " +
+                         "Colonia = @Colonia, Ciudad = @Ciudad WHERE idPersona = @idPersona";
+                    command.Parameters.Add(new SqlParameter("@idPersona", cliente.idPersona));
+                    command.Parameters.Add(new SqlParameter("@Nombre", cliente.Nombre));
+                    command.Parameters.Add(new SqlParameter("@Apellido", cliente.Apellido));
+                    command.Parameters.Add(new SqlParameter("@Telefono", cliente.Telefono));
+                    command.Parameters.Add(new SqlParameter("@Email", cliente.Email));
+                    command.Parameters.Add(new SqlParameter("@Calle", cliente.Calle));
+                    command.Parameters.Add(new SqlParameter("@Numero", cliente.Numero));
+                    command.Parameters.Add(new SqlParameter("@CodigoPostal", cliente.CodigoPostal));
+                    command.Parameters.Add(new SqlParameter("@Colonia", cliente.Colonia));
+                    command.Parameters.Add(new SqlParameter("@Ciudad", cliente.Ciudad));
+                    command.ExecuteNonQuery();
+
+                    transaction.Commit();
+                    resultado = ResultadoOperacion.Exito;
+
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+
+                    switch (e.Number)
+                    {
+                        case VALORES_DUPLICADOS:
+                            resultado = ResultadoOperacion.ObjetoExistente;
+                            break;
+                        default:
+                            resultado = ResultadoOperacion.FalloSQL;
+                            break;
+                    }
+                }
+            }
+            return resultado;
         }
 
         public ResultadoOperacion EliminarCliente(string idCliente)

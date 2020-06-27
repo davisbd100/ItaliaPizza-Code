@@ -159,5 +159,20 @@ namespace ItaliaPizza
                     colonia, codigoPostal, idPersona));
             }
         }
+
+        private void CancelarButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("¿Está seguro que desea cancelar?", "Cancelar", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    Close();
+                    break;
+                case MessageBoxResult.No:
+                    RegistrarCliente registrarCliente = new RegistrarCliente();
+                    registrarCliente.Close();
+                    break;
+            }
+        }
     }
 }

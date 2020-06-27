@@ -12,6 +12,7 @@ namespace BusinessLogic
         ResultadoOperacion AgregarCliente(Cliente cliente);
         ResultadoOperacion EditarCliente(Cliente cliente);
         Cliente GetClineteByIdCliente(String idCliente);
+        Cliente GetClienteId(String idCliente);
         List<Cliente> GetCliente(int rango);
         List<Cliente> BuscarCliente(string busqueda);
         List<Cliente> BuscarClienteDireccion(string busqueda);

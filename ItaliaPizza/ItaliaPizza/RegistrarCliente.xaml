@@ -15,7 +15,7 @@
             </Button.Background>
         </Button>
         <Button x:Name="RegistrarButton" Content="REGISTRAR" HorizontalAlignment="Left" Margin="276,570,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="159" Click="RegistrarButton_Click"/>
-        <Button x:Name="CancelarButton" Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="170,570,0,0" VerticalAlignment="Top" Width="91" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
+        <Button x:Name="CancelarButton" Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="170,570,0,0" VerticalAlignment="Top" Width="91" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="CancelarButton_Click"/>
         <Label Content="Apellido:" HorizontalAlignment="Left" Margin="83,147,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
         <TextBox x:Name="textBoxApellido" HorizontalAlignment="Left" Margin="170,155,0,0" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
         <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="81,198,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>

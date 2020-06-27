@@ -28,7 +28,7 @@
             </Button.Background>
         </Button>
         <Label Content="NUEVO" HorizontalAlignment="Left" Margin="782.999,86.586,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" Height="27.09" Width="51.887"/>
-        <Button Content="" HorizontalAlignment="Left" Height="87.11" Margin="870.333,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}">
+        <Button x:Name="EditarButton" Content="" HorizontalAlignment="Left" Height="87.11" Margin="870.333,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="EditarButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Editar.png" Stretch="Uniform"/>
             </Button.Background>
