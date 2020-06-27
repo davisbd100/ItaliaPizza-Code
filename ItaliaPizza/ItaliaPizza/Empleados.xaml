@@ -51,7 +51,7 @@
         <TextBox x:Name="TextBoxBuscar" HorizontalAlignment="Left" Margin="472,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="27" Background="White"/>
         <Label Content="Buscar por:" HorizontalAlignment="Left" Margin="203,159,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}"/>
         <ComboBox x:Name="ComboBoxBuscar" HorizontalAlignment="Left" Height="27" Margin="325,165,0,0" VerticalAlignment="Top" Width="147">
-            <ComboBoxItem Content="Nombre" FontSize="20"/>
+            <ComboBoxItem Content="Nombre" FontSize="20" IsSelected="True"/>
             <ComboBoxItem Content="Calle" FontSize="20"/>
             <ComboBoxItem Content="Télefono" FontSize="20"/>
         </ComboBox>

@@ -45,14 +45,6 @@
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
-        <TextBox HorizontalAlignment="Left" Margin="298.667,165.396,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Ingresa el nombre a buscar" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="26.413" Background="White"/>
-        <Label Content="Buscar:" HorizontalAlignment="Left" Margin="209.057,161.767,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}"/>
-        <ComboBox HorizontalAlignment="Left" Height="26.31" Margin="997.167,165.5,0,0" VerticalAlignment="Top" Width="173"/>
-        <Button Content="" HorizontalAlignment="Left" Height="17.643" Margin="975.833,170.5,0,0" VerticalAlignment="Top" Width="19.334" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Buscar.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
         <Rectangle HorizontalAlignment="Left" Height="724.666" Stroke="White" VerticalAlignment="Top" Width="120.001" Margin="0,0,0,-73.333">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
@@ -121,6 +113,18 @@
         <Button x:Name="ButtonAnteriorPagina" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="623,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonAnteriorPagina_Click" IsDefault="True"/>
         <TextBlock x:Name="TextBlockPagina_Copy" HorizontalAlignment="Left" Height="32" Margin="930,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
         <Label Content="de" HorizontalAlignment="Left" Margin="890,588,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="32" FontWeight="Bold" Background="{x:Null}"/>
+        <TextBox x:Name="TextBoxBuscar" HorizontalAlignment="Left" Margin="472,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="27" Background="White"/>
+        <Label Content="Buscar por:" HorizontalAlignment="Left" Margin="203,159,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}"/>
+        <ComboBox x:Name="ComboBoxBuscar" HorizontalAlignment="Left" Height="27" Margin="325,165,0,0" VerticalAlignment="Top" Width="147">
+            <ComboBoxItem Content="Nombre" FontSize="20" IsSelected="True"/>
+            <ComboBoxItem Content="Calle" FontSize="20"/>
+            <ComboBoxItem Content="Télefono" FontSize="20"/>
+        </ComboBox>
+        <Button x:Name="ButtonBuscar" Content="" HorizontalAlignment="Left" Height="27" Margin="1145,165,0,0" VerticalAlignment="Top" Width="27" BorderBrush="{x:Null}" Click="ButtonBuscar_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="Recursos/Buscar.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

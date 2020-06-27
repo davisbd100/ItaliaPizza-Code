@@ -86,5 +86,37 @@ namespace ItaliaPizza
             }
             return resultado;
         }
+
+        private void ButtonBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboBoxBuscar.Text == "Nombre")
+            {
+                ClienteController clienteController = new ClienteController();
+                List<Cliente> clientes = clienteController.BuscarCliente(TextBoxBuscar.Text);
+                DataGridClientes.ItemsSource = null;
+                DataGridClientes.ItemsSource = clientes;
+            }
+            else if (ComboBoxBuscar.Text == "Calle")
+            {
+                ClienteController clienteController = new ClienteController();
+                List<Cliente> clientes = clienteController.BuscarClienteDireccion(TextBoxBuscar.Text);
+                DataGridClientes.ItemsSource = null;
+                DataGridClientes.ItemsSource = clientes;
+            }
+            else if (ComboBoxBuscar.Text == "Télefono")
+            {
+                ClienteController clienteController = new ClienteController();
+                List<Cliente> clientes = clienteController.BuscarClienteTelefono(TextBoxBuscar.Text);
+                DataGridClientes.ItemsSource = null;
+                DataGridClientes.ItemsSource = clientes;
+            }
+            else
+            {
+                ClienteController clienteController = new ClienteController();
+                List<Cliente> clientes = clienteController.BuscarCliente(TextBoxBuscar.Text);
+                DataGridClientes.ItemsSource = null;
+                DataGridClientes.ItemsSource = clientes;
+            }
+        }
     }
 }

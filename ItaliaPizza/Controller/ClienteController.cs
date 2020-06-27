@@ -57,5 +57,26 @@ namespace Controller
 			ResultadoOperacion resultado = clienteDAO.EliminarCliente(cliente.idCliente);
 			return resultado;
         }
+
+		public List<Cliente> BuscarCliente(string busqueda)
+		{
+			ClienteDAO clienteDAO = new ClienteDAO();
+			List<Cliente> clientes = clienteDAO.BuscarCliente(busqueda + "%");
+			return clientes;
+		}
+
+		public List<Cliente> BuscarClienteDireccion(string busqueda)
+		{
+			ClienteDAO clienteDAO = new ClienteDAO();
+			List<Cliente> clientes = clienteDAO.BuscarClienteDireccion(busqueda + "%");
+			return clientes;
+		}
+
+		public List<Cliente> BuscarClienteTelefono(string busqueda)
+		{
+			ClienteDAO clienteDAO = new ClienteDAO();
+			List<Cliente> clientes = clienteDAO.BuscarClienteTelefono(busqueda + "%");
+			return clientes;
+		}
 	}
 }

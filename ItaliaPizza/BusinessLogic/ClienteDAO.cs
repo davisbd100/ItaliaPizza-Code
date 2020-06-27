@@ -113,17 +113,128 @@ namespace BusinessLogic
 
         public List<Cliente> BuscarCliente(string busqueda)
         {
-            throw new NotImplementedException();
+            List <Cliente> listaClientes = new List<Cliente>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
+                    "Numero, CodigoPostal, Colonia, Ciudad FROM dbo.Persona left join dbo.Cliente ON dbo.Persona.idPersona = " +
+                    "dbo.Cliente.idCliente WHERE Nombre LIKE @Busqueda and idPersona = idCliente ", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Cliente cliente = new Cliente();
+                        cliente.idPersona = reader["idPersona"].ToString();
+                        cliente.Nombre = reader["Nombre"].ToString();
+                        cliente.Apellido = reader["Apellido"].ToString();
+                        cliente.Telefono = reader["Telefono"].ToString();
+                        cliente.Email = reader["Email"].ToString();
+                        cliente.Calle = reader["Calle"].ToString();
+                        cliente.Numero = reader["Numero"].ToString();
+                        cliente.CodigoPostal = reader["CodigoPostal"].ToString();
+                        cliente.Colonia = reader["Colonia"].ToString();
+                        cliente.Ciudad = reader["Ciudad"].ToString();
+                        listaClientes.Add(cliente);
+                    }
+                }
+                connection.Close();
+            }
+            return listaClientes;
         }
 
         public List<Cliente> BuscarClienteDireccion(string busqueda)
         {
-            throw new NotImplementedException();
+            List<Cliente> listaClientes = new List<Cliente>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
+                    "Numero, CodigoPostal, Colonia, Ciudad FROM dbo.Persona left join dbo.Cliente ON dbo.Persona.idPersona = " +
+                    "dbo.Cliente.idCliente WHERE Calle LIKE @Busqueda and idPersona = idCliente", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Cliente cliente = new Cliente();
+                        cliente.idPersona = reader["idPersona"].ToString();
+                        cliente.Nombre = reader["Nombre"].ToString();
+                        cliente.Apellido = reader["Apellido"].ToString();
+                        cliente.Telefono = reader["Telefono"].ToString();
+                        cliente.Email = reader["Email"].ToString();
+                        cliente.Calle = reader["Calle"].ToString();
+                        cliente.Numero = reader["Numero"].ToString();
+                        cliente.CodigoPostal = reader["CodigoPostal"].ToString();
+                        cliente.Colonia = reader["Colonia"].ToString();
+                        cliente.Ciudad = reader["Ciudad"].ToString();
+                        listaClientes.Add(cliente);
+                    }
+                }
+                connection.Close();
+            }
+            return listaClientes;
         }
 
         public List<Cliente> BuscarClienteTelefono(string busqueda)
         {
-            throw new NotImplementedException();
+            List<Cliente> listaClientes = new List<Cliente>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
+                    "Numero, CodigoPostal, Colonia, Ciudad FROM dbo.Persona left join dbo.Cliente ON dbo.Persona.idPersona = " +
+                    "dbo.Cliente.idCliente WHERE Telefono LIKE @Busqueda and idPersona = idCliente", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Cliente cliente = new Cliente();
+                        cliente.idPersona = reader["idPersona"].ToString();
+                        cliente.Nombre = reader["Nombre"].ToString();
+                        cliente.Apellido = reader["Apellido"].ToString();
+                        cliente.Telefono = reader["Telefono"].ToString();
+                        cliente.Email = reader["Email"].ToString();
+                        cliente.Calle = reader["Calle"].ToString();
+                        cliente.Numero = reader["Numero"].ToString();
+                        cliente.CodigoPostal = reader["CodigoPostal"].ToString();
+                        cliente.Colonia = reader["Colonia"].ToString();
+                        cliente.Ciudad = reader["Ciudad"].ToString();
+                        listaClientes.Add(cliente);
+                    }
+                }
+                connection.Close();
+            }
+            return listaClientes;
         }
 
         public ResultadoOperacion EditarCliente(Cliente cliente)

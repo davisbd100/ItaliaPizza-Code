@@ -330,7 +330,7 @@ namespace BusinessLogic
                 }
                 using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
                     "Numero, CodigoPostal, Colonia, Ciudad, TipoEmpleado, NombreUsuario, FechaUltimoAcceso FROM dbo.Persona left join " +
-                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado WHERE Nombre LIKE @Busqueda", connection))
+                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado WHERE Nombre LIKE @Busqueda and idPersona = idEmpleado", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
                     SqlDataReader reader = command.ExecuteReader();
@@ -375,7 +375,7 @@ namespace BusinessLogic
                 }
                 using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
                     "Numero, CodigoPostal, Colonia, Ciudad, TipoEmpleado, NombreUsuario, FechaUltimoAcceso FROM dbo.Persona left join " +
-                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado WHERE Calle LIKE @Busqueda", connection))
+                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado WHERE Calle LIKE @Busqueda and idPersona = idEmpleado", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
                     SqlDataReader reader = command.ExecuteReader();
@@ -420,7 +420,7 @@ namespace BusinessLogic
                 }
                 using (SqlCommand command = new SqlCommand("SELECT idPersona, Nombre, Apellido, Telefono, Email, Calle, " +
                     "Numero, CodigoPostal, Colonia, Ciudad, TipoEmpleado, NombreUsuario, FechaUltimoAcceso FROM dbo.Persona left join " +
-                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado WHERE Telefono LIKE @Busqueda", connection))
+                    "dbo.Empleado ON dbo.Persona.idPersona = dbo.Empleado.idEmpleado WHERE Telefono LIKE @Busqueda and idPersona = idEmpleado", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
                     SqlDataReader reader = command.ExecuteReader();
