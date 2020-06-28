@@ -8,6 +8,7 @@ namespace BusinessLogic
     {
         ResultadoOperacion AgregarEmpleado(Empleado empleado);
         ResultadoOperacion EditarEmpleado(Empleado empleado);
+        ResultadoOperacion EditarEmpleadoUsuario(Empleado empleado);
         Empleado GetEmpleadoByUsername(String username);
         List<Empleado> GetEmpleados(int rango);
         List<Empleado> BuscarEmpleado(string busqueda);

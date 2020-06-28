@@ -13,6 +13,9 @@ namespace ItaliaPizza
     /// </summary>
     public partial class EditarEmpleado : Window
     {
+        public string idEmpleadoEditar;
+        public string contraseñaEmpleadoEditar;
+
         public EditarEmpleado(Empleado empleado)
         {
             InitializeComponent();
@@ -26,6 +29,7 @@ namespace ItaliaPizza
         {
             EmpleadoController empleadoController = new EmpleadoController();
             Empleado datosEmpleado = empleadoController.GetEmpleadoId(empleadoEditar.idPersona);
+            idEmpleadoEditar = datosEmpleado.idEmpleado;
             comboBoxTipoEmpleado.Text = datosEmpleado.TipoEmpleado;
             textBoxNombre.Text = datosEmpleado.Nombre;
             textBoxApellido.Text = datosEmpleado.Apellido;
@@ -36,9 +40,8 @@ namespace ItaliaPizza
             textBoxNúmero.Text = datosEmpleado.Numero;
             textBoxColonia.Text = datosEmpleado.Colonia;
             textBoxCodigoPostal.Text = datosEmpleado.CodigoPostal;
-            textBoxIdEmpleado.Text = datosEmpleado.idEmpleado;
             textBoxUsuario.Text = datosEmpleado.NombreUsuario;
-            //passwordBoxContraseña.Password = datosEmpleado.Contraseña;
+            contraseñaEmpleadoEditar = datosEmpleado.Contraseña;
         }
 
         private void CancelarButton_Click(object sender, RoutedEventArgs e)
@@ -78,7 +81,8 @@ namespace ItaliaPizza
                 textBoxApellido.Text == String.Empty || textBoxTelefono.Text == String.Empty ||
                 textBoxCorreo.Text == String.Empty || textBoxCiudad.Text == String.Empty ||
                 textBoxCalle.Text == String.Empty || textBoxNúmero.Text == String.Empty ||
-                textBoxColonia.Text == String.Empty || textBoxCodigoPostal.Text == String.Empty)
+                textBoxColonia.Text == String.Empty || textBoxCodigoPostal.Text == String.Empty ||
+                textBoxUsuario.Text == String.Empty)
             {
                 check = CheckResult.Failed;
             }
@@ -129,30 +133,39 @@ namespace ItaliaPizza
             return check;
         }
 
+        private String PassHash(String data)
+        {
+            SHA1 sha = SHA1.Create();
+            byte[] hashData = sha.ComputeHash(Encoding.Default.GetBytes(data));
+            StringBuilder stringBuilderValue = new StringBuilder();
+
+            for (int i = 0; i < hashData.Length; i++)
+            {
+                stringBuilderValue.Append(hashData[i].ToString());
+            }
+            return stringBuilderValue.ToString();
+        }
+
         private void AceptarButton_Click(object sender, RoutedEventArgs e)
         {
-            //string idPersona = textBoxIdEmpleado.Text.Trim();
-            //string nombre = textBoxNombre.Text.Trim();
-            //string apellido = textBoxApellido.Text.Trim();
-            //string telefono = textBoxTelefono.Text.Trim();
-            //string correo = textBoxCorreo.Text.Trim();
-            //string ciudad = textBoxCiudad.Text.Trim();
-            //string calle = textBoxCalle.Text.Trim();
-            //string numero = textBoxNúmero.Text.Trim();
-            //string colonia = textBoxColonia.Text.Trim();
-            //string codigoPostal = textBoxCodigoPostal.Text.Trim();
-            //string idEmpleado = textBoxIdEmpleado.Text.Trim();
-            //string usuario = textBoxUsuario.Text.Trim();
-            //string contraseña = passwordBoxContraseña.Password;
-            //string tipoEmpleado = comboBoxTipoEmpleado.Text.Trim();
+            string idPersona = idEmpleadoEditar;
+            string nombre = textBoxNombre.Text.Trim();
+            string apellido = textBoxApellido.Text.Trim();
+            string telefono = textBoxTelefono.Text.Trim();
+            string correo = textBoxCorreo.Text.Trim();
+            string ciudad = textBoxCiudad.Text.Trim();
+            string calle = textBoxCalle.Text.Trim();
+            string numero = textBoxNúmero.Text.Trim();
+            string colonia = textBoxColonia.Text.Trim();
+            string codigoPostal = textBoxCodigoPostal.Text.Trim();
 
-            //if (ValidarCampos() == CheckResult.Passed)
-            //{
-            //    EmpleadoController empleadoController = new EmpleadoController();
-            //    ComprobarResultado((ResultadoOperacion)empleadoController.EditarEmpleado(
-            //        idPersona, nombre, apellido, telefono, correo, ciudad, calle, numero,
-            //        colonia, codigoPostal));
-            //}
+            if (ValidarCampos() == CheckResult.Passed)
+            {
+                EmpleadoController empleadoController = new EmpleadoController();
+                ComprobarResultado((ResultadoOperacion)empleadoController.EditarEmpleado(
+                    idPersona, nombre, apellido, telefono, correo, ciudad, calle, numero,
+                    colonia, codigoPostal, idEmpleadoEditar));
+            }
         }
 
         private void ComprobarResultado(ResultadoOperacion resultado)
@@ -174,6 +187,55 @@ namespace ItaliaPizza
             {
                 MessageBox.Show("El empleado ya existe en el sistema");
             }
+        }
+
+        private void UsuarioContraseñaEditarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UsuarioContraseñaEditarButton.Content.Equals("Editar tipo empleado, usuario y contraseña"))
+            {
+                comboBoxTipoEmpleado.IsEnabled = true;
+                textBoxUsuario.IsEnabled = true;
+                passwordBoxContraseña.IsEnabled = true;
+                RepetirContraseña_Label.Visibility = Visibility.Visible;
+                passwordBoxRepetirContraseña.Visibility = Visibility.Visible;
+                passwordBoxRepetirContraseña.IsEnabled = true;
+                UsuarioContraseñaEditarButton.Content = "Aceptar";
+            } else if (UsuarioContraseñaEditarButton.Content.Equals("Aceptar"))
+            {
+                if(validarCamposUsuarioContraseña() == CheckResult.Passed)
+                {
+                    string tipoEmpleado = comboBoxTipoEmpleado.Text.Trim();
+                    string usuario = textBoxUsuario.Text.Trim();
+                    string contraseña = passwordBoxContraseña.Password.Trim();
+
+                    EmpleadoController empleadoController = new EmpleadoController();
+                    ComprobarResultado((ResultadoOperacion)empleadoController.EditarEmpleadoUsuario(
+                        idEmpleadoEditar, tipoEmpleado, usuario, contraseña));
+                }
+            }
+        }
+
+        private CheckResult validarCamposUsuarioContraseña()
+        {
+            CheckResult check = CheckResult.Failed;
+
+            if (textBoxUsuario.Text == String.Empty || passwordBoxContraseña.Password == String.Empty || passwordBoxRepetirContraseña.Password == String.Empty)
+            {
+                MessageBox.Show("Existen campos sin llenar", "Campos vacíos");
+            }
+            else if (passwordBoxContraseña.Password.Length < 8)
+            {
+                MessageBox.Show("La contraseña debe tener más de 8 carácteres", "Contraseña Incorrecta");
+            }
+            else if (passwordBoxContraseña.Password != passwordBoxRepetirContraseña.Password)
+            {
+                MessageBox.Show("Las contraseñas no son iguales, intente nuevamente", "Contraseñas diferentes");
+            }
+            else
+            {
+                check = CheckResult.Passed;
+            }
+            return check;
         }
     }
 }

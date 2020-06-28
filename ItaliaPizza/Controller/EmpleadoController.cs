@@ -44,29 +44,41 @@ namespace Controller
 		}
 		public ResultadoOperacion EditarEmpleado(String idPersona, String nombre, String apellido,
 			String telefono, String email, String ciudad, String calle, String numero,
-			String colonia, String codigoPostal, String idEmpleado, String tipoEmpleado, String usuario, String contrasena)
+			String colonia, String codigoPostal, String idEmpleado)
 		{
 			ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
 
-				Empleado empleado = new Empleado();
-				empleado.idPersona = idPersona;
-				empleado.Nombre = nombre;
-				empleado.Apellido = apellido;
-				empleado.Telefono = telefono;
-				empleado.Email = email;
-				empleado.Ciudad = ciudad;
-				empleado.Calle = calle;
-				empleado.Numero = numero;
-				empleado.Colonia = colonia;
-				empleado.CodigoPostal = codigoPostal;
-				empleado.idEmpleado = empleado.idPersona;
-				empleado.TipoEmpleado = tipoEmpleado;
-				empleado.NombreUsuario = usuario;
-				empleado.Contraseña = contrasena;
-				//empleado.FechaUltimoAcceso = DateTime.Now;
-				EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-				resultado = (ResultadoOperacion)empleadoDAO.Editar(empleado);
-			
+			Empleado empleado = new Empleado();
+			empleado.idPersona = idPersona;
+			empleado.Nombre = nombre;
+			empleado.Apellido = apellido;
+			empleado.Telefono = telefono;
+			empleado.Email = email;
+			empleado.Ciudad = ciudad;
+			empleado.Calle = calle;
+			empleado.Numero = numero;
+			empleado.Colonia = colonia;
+			empleado.CodigoPostal = codigoPostal;
+			empleado.idEmpleado= idEmpleado;
+			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+			resultado = (ResultadoOperacion)empleadoDAO.EditarEmpleado(empleado);
+
+			return resultado;
+		}
+
+		public ResultadoOperacion EditarEmpleadoUsuario(String idEmpleado, String tipoEmpleado, 
+			String nombreUsuario, String contraseña)
+		{
+			ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+
+			Empleado empleado = new Empleado();
+			empleado.idEmpleado = idEmpleado;
+			empleado.TipoEmpleado = tipoEmpleado;
+			empleado.NombreUsuario = nombreUsuario;
+			empleado.Contraseña = contraseña;
+			EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+			resultado = (ResultadoOperacion)empleadoDAO.EditarEmpleadoUsuario(empleado);
+
 			return resultado;
 		}
 
