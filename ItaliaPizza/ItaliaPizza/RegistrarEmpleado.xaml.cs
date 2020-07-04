@@ -214,8 +214,6 @@ namespace ItaliaPizza
                 GenerarUsuario(comboBoxTipoEmpleado.Text, textBoxNombre.Text);
                 GenerarContraseñaAleatoria();
                 GenerarIdEmpleado();
-                DateTime fechaAcceso = DateTime.Now;
-                textBoxFecha.Text = DateTime.Now.ToString();
                 RegistrarButton.IsEnabled = true;
             }
         }

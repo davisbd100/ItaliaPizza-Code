@@ -167,7 +167,7 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@idEmpleado", empleado.idEmpleado));
                     command.Parameters.Add(new SqlParameter("@TipoEmpleado", empleado.TipoEmpleado));
                     command.Parameters.Add(new SqlParameter("@NombreUsuario", empleado.NombreUsuario));
-                    command.Parameters.Add(new SqlParameter("@Contrasena", empleado.Contraseña));
+                    command.Parameters.Add(new SqlParameter("@Contrasena", PassHash(empleado.Contraseña)));
                     command.ExecuteNonQuery();
 
                     transaction.Commit();

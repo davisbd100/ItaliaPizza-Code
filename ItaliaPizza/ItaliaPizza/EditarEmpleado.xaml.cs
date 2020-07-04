@@ -102,10 +102,6 @@ namespace ItaliaPizza
                 MessageBox.Show("Existen campos sin llenar");
                 check = CheckResult.Failed;
             }
-            else if (comboBoxTipoEmpleado.Text == null)
-            {
-                MessageBox.Show("Debes seleccionar un tipo de empleado de la lista.");
-            }
             else if (validarCampos.ValidiarNombre(textBoxNombre.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.NombreInválido)
             {
                 MessageBox.Show("El nombre del empleado es incorrecto \n Verifica que no tenga números o caracteres inválidos.");
@@ -189,33 +185,7 @@ namespace ItaliaPizza
             }
         }
 
-        private void UsuarioContraseñaEditarButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (UsuarioContraseñaEditarButton.Content.Equals("Editar tipo empleado, usuario y contraseña"))
-            {
-                comboBoxTipoEmpleado.IsEnabled = true;
-                textBoxUsuario.IsEnabled = true;
-                passwordBoxContraseña.IsEnabled = true;
-                RepetirContraseña_Label.Visibility = Visibility.Visible;
-                passwordBoxRepetirContraseña.Visibility = Visibility.Visible;
-                passwordBoxRepetirContraseña.IsEnabled = true;
-                UsuarioContraseñaEditarButton.Content = "Aceptar";
-            } else if (UsuarioContraseñaEditarButton.Content.Equals("Aceptar"))
-            {
-                if(validarCamposUsuarioContraseña() == CheckResult.Passed)
-                {
-                    string tipoEmpleado = comboBoxTipoEmpleado.Text.Trim();
-                    string usuario = textBoxUsuario.Text.Trim();
-                    string contraseña = passwordBoxContraseña.Password.Trim();
-
-                    EmpleadoController empleadoController = new EmpleadoController();
-                    ComprobarResultado((ResultadoOperacion)empleadoController.EditarEmpleadoUsuario(
-                        idEmpleadoEditar, tipoEmpleado, usuario, contraseña));
-                }
-            }
-        }
-
-        private CheckResult validarCamposUsuarioContraseña()
+        private CheckResult validarCamposInicioSesion()
         {
             CheckResult check = CheckResult.Failed;
 
@@ -236,6 +206,20 @@ namespace ItaliaPizza
                 check = CheckResult.Passed;
             }
             return check;
+        }
+
+        private void AceptarButtonInicioSesion_Click(object sender, RoutedEventArgs e)
+        {
+            if (validarCamposInicioSesion() == CheckResult.Passed)
+            {
+                string tipoEmpleado = comboBoxTipoEmpleado.Text.Trim();
+                string usuario = textBoxUsuario.Text.Trim();
+                string contraseña = passwordBoxContraseña.Password.Trim();
+
+                EmpleadoController empleadoController = new EmpleadoController();
+                ComprobarResultado((ResultadoOperacion)empleadoController.EditarEmpleadoUsuario(
+                    idEmpleadoEditar, tipoEmpleado, usuario, contraseña));
+            }
         }
     }
 }
