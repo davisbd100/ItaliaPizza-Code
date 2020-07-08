@@ -99,28 +99,32 @@ namespace ItaliaPizza
             ValidarCampos validarCampos = new ValidarCampos();
             if (ValidarCamposLlenos() == CheckResult.Failed)
             {
-                MessageBox.Show("Existen campos sin llenar");
+                MessageBox.Show("Campos vacíos. \n Verifique que todos los capos se encuentren llenos e intente nuevamente.", "Campos vacíos");
                 check = CheckResult.Failed;
+            }
+            else if (comboBoxTipoEmpleado.Text == null)
+            {
+                MessageBox.Show("Debes seleccionar un tipo de empleado de la lista.", "Tipo de empleado no seleccionado");
             }
             else if (validarCampos.ValidiarNombre(textBoxNombre.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.NombreInválido)
             {
-                MessageBox.Show("El nombre del empleado es incorrecto \n Verifica que no tenga números o caracteres inválidos.");
+                MessageBox.Show("El nombre del empleado es incorrecto. \n Verifica que no tenga números o caracteres inválidos.", "Nombre inválido");
             }
             else if (validarCampos.ValidiarApellido(textBoxApellido.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.ApellidoInválido)
             {
-                MessageBox.Show("El apellido del empleado es incorrecto \n Verifica que no tenga números o caracteres inválidos.");
+                MessageBox.Show("El apellido del empleado es incorrecto. \n Verifica que no tenga números o caracteres inválidos.", "Apellido inválido");
             }
             else if (validarCampos.ValidarTelefono(textBoxTelefono.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.TelefónoInválido)
             {
-                MessageBox.Show("El telefono es incorrecto \n Verifica que no tenga letras.");
+                MessageBox.Show("El teléfono es incorrecto. \n Verifica que no tenga letras.", "Teléfono inválido");
             }
             else if (validarCampos.ValidarCorreo(textBoxCorreo.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.CorreoInválido)
             {
-                MessageBox.Show("El correo ingresado no es válido \n Verifica que cuente con el formato correcto.");
+                MessageBox.Show("El correo ingresado no es válido. \n Verifica que cuente con el formato correcto.", "Correo inválido");
             }
             else if (validarCampos.ValidarCodigoPostal(textBoxCodigoPostal.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.CódigoPostalInválido)
             {
-                MessageBox.Show("El código postal ingresado no es válido \n Verifica que solo tenga 5 números.");
+                MessageBox.Show("El código postal ingresado no es válido. \n Verifica que solo tenga 5 números.", "Código postal inválido");
             }
             else
             {
@@ -191,15 +195,19 @@ namespace ItaliaPizza
 
             if (textBoxUsuario.Text == String.Empty || passwordBoxContraseña.Password == String.Empty || passwordBoxRepetirContraseña.Password == String.Empty)
             {
-                MessageBox.Show("Existen campos sin llenar", "Campos vacíos");
+                MessageBox.Show("Campos vacíos. \n Verifique que todos los capos se encuentren llenos e intente nuevamente.", "Campos vacíos");
             }
             else if (passwordBoxContraseña.Password.Length < 8)
             {
-                MessageBox.Show("La contraseña debe tener más de 8 carácteres", "Contraseña Incorrecta");
+                MessageBox.Show("La contraseña debe tener más de 8 caracteres, intente nuevamente.", "Contraseña incorrecta");
+                passwordBoxContraseña.Password = "";
+                passwordBoxRepetirContraseña.Password = "";
             }
             else if (passwordBoxContraseña.Password != passwordBoxRepetirContraseña.Password)
             {
-                MessageBox.Show("Las contraseñas no son iguales, intente nuevamente", "Contraseñas diferentes");
+                MessageBox.Show("Las contraseñas no son iguales, intente nuevamente.", "Contraseñas diferentes");
+                passwordBoxContraseña.Password = "";
+                passwordBoxRepetirContraseña.Password = "";
             }
             else
             {

@@ -67,28 +67,28 @@ namespace ItaliaPizza
             ValidarCampos validarCampos = new ValidarCampos();
             if (ValidarCamposLlenos() == CheckResult.Failed)
             {
-                MessageBox.Show("Existen campos sin llenar");
+                MessageBox.Show("Campos vacíos. \n Verifique que todos los capos se encuentren llenos e intente nuevamente.", "Campos vacíos");
                 check = CheckResult.Failed;
             }
             else if (validarCampos.ValidiarNombre(textBoxNombre.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.NombreInválido)
             {
-                MessageBox.Show("El nombre del cliente es incorrecto \n Verifica que no tenga números o caracteres inválidos.");
+                MessageBox.Show("El nombre del cliente es incorrecto. \n Verifica que no tenga números o caracteres inválidos.", "Nombre inválido");
             }
             else if (validarCampos.ValidiarApellido(textBoxApellido.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.ApellidoInválido)
             {
-                MessageBox.Show("El apellido del cliente es incorrecto \n Verifica que no tenga números o caracteres inválidos.");
+                MessageBox.Show("El apellido del cliente es incorrecto. \n Verifica que no tenga números o caracteres inválidos.", "Apellido inválido");
             }
             else if (validarCampos.ValidarTelefono(textBoxTelefono.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.TelefónoInválido)
             {
-                MessageBox.Show("El telefono es incorrecto \n Verifica que no tenga letras.");
+                MessageBox.Show("El teléfono es incorrecto. \n Verifica que no tenga letras.", "Teléfono inválido");
             }
             else if (validarCampos.ValidarCorreo(textBoxCorreo.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.CorreoInválido)
             {
-                MessageBox.Show("El correo ingresado no es válido \n Verifica que cuente con el formato correcto.");
+                MessageBox.Show("El correo ingresado no es válido. \n Verifica que cuente con el formato correcto.", "Correo inválido");
             }
             else if (validarCampos.ValidarCodigoPostal(textBoxCodigoPostal.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.CódigoPostalInválido)
             {
-                MessageBox.Show("El código postal ingresado no es válido \n Verifica que solo tenga 5 números.");
+                MessageBox.Show("El código postal ingresado no es válido. \n Verifica que solo tenga 5 números.", "Código postal inválido");
             }
             else
             {

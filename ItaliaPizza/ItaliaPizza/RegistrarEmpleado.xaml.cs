@@ -60,32 +60,32 @@ namespace ItaliaPizza
             ValidarCampos validarCampos = new ValidarCampos();
             if (ValidarCamposLlenos() == CheckResult.Failed)
             {
-                MessageBox.Show("Existen campos sin llenar");
+                MessageBox.Show("Campos vacíos. \n Verifique que todos los capos se encuentren llenos e intente nuevamente.", "Campos vacíos");
                 check = CheckResult.Failed;
             }
             else if (comboBoxTipoEmpleado.Text == null)
             {
-                MessageBox.Show("Debes seleccionar un tipo de empleado de la lista.");
+                MessageBox.Show("Debes seleccionar un tipo de empleado de la lista.", "Tipo de empleado no seleccionado");
             }
             else if (validarCampos.ValidiarNombre(textBoxNombre.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.NombreInválido)
             {
-                MessageBox.Show("El nombre del empleado es incorrecto \n Verifica que no tenga números o caracteres inválidos.");
+                MessageBox.Show("El nombre del empleado es incorrecto. \n Verifica que no tenga números o caracteres inválidos.", "Nombre inválido");
             }
             else if (validarCampos.ValidiarApellido(textBoxApellido.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.ApellidoInválido)
             {
-                MessageBox.Show("El apellido del empleado es incorrecto \n Verifica que no tenga números o caracteres inválidos.");
+                MessageBox.Show("El apellido del empleado es incorrecto. \n Verifica que no tenga números o caracteres inválidos.", "Apellido inválido");
             }
             else if (validarCampos.ValidarTelefono(textBoxTelefono.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.TelefónoInválido)
             {
-                MessageBox.Show("El telefono es incorrecto \n Verifica que no tenga letras.");
+                MessageBox.Show("El teléfono es incorrecto. \n Verifica que no tenga letras.", "Teléfono inválido");
             }
             else if (validarCampos.ValidarCorreo(textBoxCorreo.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.CorreoInválido)
             {
-                MessageBox.Show("El correo ingresado no es válido \n Verifica que cuente con el formato correcto.");
+                MessageBox.Show("El correo ingresado no es válido. \n Verifica que cuente con el formato correcto.", "Correo inválido");
             }
             else if (validarCampos.ValidarCodigoPostal(textBoxCodigoPostal.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.CódigoPostalInválido)
             {
-                MessageBox.Show("El código postal ingresado no es válido \n Verifica que solo tenga 5 números.");
+                MessageBox.Show("El código postal ingresado no es válido. \n Verifica que solo tenga 5 números.", "Código postal inválido");
             }
             else
             {
@@ -147,7 +147,7 @@ namespace ItaliaPizza
 
         private void CancelarButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("¿Está seguro que desea cancelar?", "Cancelar", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("¿Está seguro de que desea cancelar?", "Cancelar", MessageBoxButton.YesNo);
             switch (result)
             {
                 case MessageBoxResult.Yes:
@@ -190,20 +190,20 @@ namespace ItaliaPizza
         {
             if (resultado == ResultadoOperacion.Exito)
             {
-                MessageBox.Show("Añadido con exito");
+                MessageBox.Show("¡Empleado ñadido con exito!", "Éxito");
                 this.Close();
             }
             else if (resultado == ResultadoOperacion.FallaDesconocida)
             {
-                MessageBox.Show("Error desconocido");
+                MessageBox.Show("Error desconocido, intente más tarde.", "Error desconocido");
             }
             else if (resultado == ResultadoOperacion.FalloSQL)
             {
-                MessageBox.Show("Error de la base de datos, intente mas tarde");
+                MessageBox.Show("Error de la base de datos, intente más tarde.", "Error en base de datos");
             }
             else if (resultado == ResultadoOperacion.ObjetoExistente)
             {
-                MessageBox.Show("El empleado ya existe en el sistema");
+                MessageBox.Show("El empleado ya existe en el sistema.", "Empleado ya registrado");
             }
         }
 

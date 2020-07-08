@@ -26,7 +26,7 @@ namespace ItaliaPizza
             }
             else
             {
-                MessageBox.Show("Existen campos vacíos, asegurate de que todos estén llenos", "Campos vacíos");
+                MessageBox.Show("Existen campos vacíos, asegúrate de que todos estén llenos", "Campos vacíos");
             }
             
         }
@@ -37,7 +37,7 @@ namespace ItaliaPizza
             DatosLogin datosLogin = autenticacion.AutenticacionEmpleado(NombreUsuarioTextBox.Text.ToString(), ContraseñaPasswordBox.Password);
             if (datosLogin.Result.Equals(validationResult.PasswordIncorrect))
             {
-                MessageBox.Show("Usuario y/o contraseña incorrecto");
+                MessageBox.Show("Usuario y/o contraseña incorrecta, verifica que sean correctos", "Datos incorrectos");
                 ContraseñaPasswordBox.Password = String.Empty;
             } else if (datosLogin.Result.Equals(validationResult.Success))
             {
@@ -48,7 +48,7 @@ namespace ItaliaPizza
             }
             else
             {
-                MessageBox.Show("Error no identificado");
+                MessageBox.Show("Error no identificado, intente nuevamente", "Error");
             }
         }
 
