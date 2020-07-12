@@ -1,9 +1,8 @@
-﻿using BusinessLogic;
-using Controller;
+﻿using Controller;
 using System;
 using System.Windows;
+using System.Windows.Media;
 using static BusinessLogic.ResultadoOperacionEnum;
-using static Controller.EmpleadoController;
 
 namespace ItaliaPizza
 {
@@ -12,6 +11,8 @@ namespace ItaliaPizza
     /// </summary>
     public partial class RegistrarEmpleado : Window
     {
+        public string IdEmpleado;
+
         public RegistrarEmpleado()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace ItaliaPizza
             Passed,
             Failed
         }
+
         public enum OperationResult
         {
             Success,
@@ -32,17 +34,57 @@ namespace ItaliaPizza
             ExistingRecord
         }
 
-        /// <summary>Verifica si los campos ingresados estan vacios.</summary>
-        /// <returns>El resultado de la verificación</returns>
         private CheckResult ValidarCamposLlenos()
         {
             CheckResult check = CheckResult.Failed;
-            if (comboBoxTipoEmpleado.Text == String.Empty || textBoxNombre.Text == String.Empty ||
-                textBoxApellido.Text == String.Empty || textBoxTelefono.Text == String.Empty ||
-                textBoxCorreo.Text == String.Empty || textBoxCiudad.Text == String.Empty ||
-                textBoxCalle.Text == String.Empty || textBoxNúmero.Text == String.Empty ||
-                textBoxColonia.Text == String.Empty || textBoxCodigoPostal.Text == String.Empty)
+            if(comboBoxTipoEmpleado.Text == String.Empty)
             {
+                comboBoxTipoEmpleado.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            if (textBoxNombre.Text == String.Empty)
+            {
+                textBoxNombre.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            if (textBoxApellido.Text == String.Empty)
+            {
+                textBoxApellido.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxTelefono.Text == String.Empty)
+            {
+                textBoxTelefono.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxCorreo.Text == String.Empty)
+            {
+                textBoxCorreo.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxCiudad.Text == String.Empty)
+            {
+                textBoxCiudad.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxCalle.Text == String.Empty)
+            {
+                textBoxCalle.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxNúmero.Text == String.Empty)
+            {
+                textBoxNúmero.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxColonia.Text == String.Empty)
+            {
+                textBoxColonia.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxCodigoPostal.Text == String.Empty)
+            {
+                textBoxCodigoPostal.BorderBrush = Brushes.Red;
                 check = CheckResult.Failed;
             }
             else
@@ -52,8 +94,6 @@ namespace ItaliaPizza
             return check;
         }
 
-        /// <summary>Checa por datos no validos en los datos ingresados.</summary>
-        /// <returns>El resultado del chequeo</returns>
         private CheckResult ValidarCampos()
         {
             CheckResult check = CheckResult.Failed;
@@ -66,26 +106,32 @@ namespace ItaliaPizza
             else if (comboBoxTipoEmpleado.Text == null)
             {
                 MessageBox.Show("Debes seleccionar un tipo de empleado de la lista.", "Tipo de empleado no seleccionado");
+                comboBoxTipoEmpleado.BorderBrush = Brushes.Red;
             }
             else if (validarCampos.ValidiarNombre(textBoxNombre.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.NombreInválido)
             {
                 MessageBox.Show("El nombre del empleado es incorrecto. \n Verifica que no tenga números o caracteres inválidos.", "Nombre inválido");
+                textBoxNombre.BorderBrush = Brushes.Red;
             }
             else if (validarCampos.ValidiarApellido(textBoxApellido.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.ApellidoInválido)
             {
                 MessageBox.Show("El apellido del empleado es incorrecto. \n Verifica que no tenga números o caracteres inválidos.", "Apellido inválido");
+                textBoxApellido.BorderBrush = Brushes.Red;
             }
             else if (validarCampos.ValidarTelefono(textBoxTelefono.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.TelefónoInválido)
             {
                 MessageBox.Show("El teléfono es incorrecto. \n Verifica que no tenga letras.", "Teléfono inválido");
+                textBoxTelefono.BorderBrush = Brushes.Red;
             }
             else if (validarCampos.ValidarCorreo(textBoxCorreo.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.CorreoInválido)
             {
                 MessageBox.Show("El correo ingresado no es válido. \n Verifica que cuente con el formato correcto.", "Correo inválido");
+                textBoxCorreo.BorderBrush = Brushes.Red;
             }
             else if (validarCampos.ValidarCodigoPostal(textBoxCodigoPostal.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.CódigoPostalInválido)
             {
                 MessageBox.Show("El código postal ingresado no es válido. \n Verifica que solo tenga 5 números.", "Código postal inválido");
+                textBoxCodigoPostal.BorderBrush = Brushes.Red;
             }
             else
             {
@@ -110,7 +156,7 @@ namespace ItaliaPizza
                 usuarioAleatorio += nombreUsuario.ToString();
             }
 
-            textBoxUsuario.Text = tipoEmpleado + usuarioAleatorio.Trim();
+            IdEmpleado = tipoEmpleado + usuarioAleatorio.Trim();
         }
 
         private void GenerarContraseñaAleatoria()
@@ -142,7 +188,7 @@ namespace ItaliaPizza
                 letra = caracteres[rdn.Next(longitud)];
                 idAleatorio+= letra.ToString();
             }
-            textBoxIdEmpleado.Text = comboBoxTipoEmpleado.Text.ToUpper() + idAleatorio;
+            IdEmpleado = comboBoxTipoEmpleado.Text.ToUpper() + idAleatorio;
         }
 
         private void CancelarButton_Click(object sender, RoutedEventArgs e)
@@ -162,7 +208,7 @@ namespace ItaliaPizza
 
         private void RegistrarButton_Click(object sender, RoutedEventArgs e)
         {
-            string idPersona = textBoxIdEmpleado.Text.Trim();
+            string idPersona = IdEmpleado;
             string nombre = textBoxNombre.Text.Trim() ;
             string apellido = textBoxApellido.Text.Trim();
             string telefono = textBoxTelefono.Text.Trim();
@@ -172,7 +218,7 @@ namespace ItaliaPizza
             string numero = textBoxNúmero.Text.Trim();
             string colonia = textBoxColonia.Text.Trim();
             string codigoPostal = textBoxCodigoPostal.Text.Trim();
-            string idEmpleado = textBoxIdEmpleado.Text.Trim();
+            string idEmpleado = IdEmpleado;
             string usuario = textBoxUsuario.Text.Trim();
             string contraseña = textBoxContraseña.Text.Trim();
             string tipoEmpleado = comboBoxTipoEmpleado.Text.Trim();
@@ -209,6 +255,8 @@ namespace ItaliaPizza
 
         private void GenerarUsuarioContraseñaButton_Click(object sender, RoutedEventArgs e)
         {
+            cambiarColorBordeCampos();
+
             if (ValidarCampos() == CheckResult.Passed)
             {
                 GenerarUsuario(comboBoxTipoEmpleado.Text, textBoxNombre.Text);
@@ -216,6 +264,19 @@ namespace ItaliaPizza
                 GenerarIdEmpleado();
                 RegistrarButton.IsEnabled = true;
             }
+        }
+
+        private void cambiarColorBordeCampos()
+        {
+            textBoxNombre.BorderBrush = Brushes.Gray;
+            textBoxApellido.BorderBrush = Brushes.Gray;
+            textBoxTelefono.BorderBrush = Brushes.Gray;
+            textBoxCorreo.BorderBrush = Brushes.Gray;
+            textBoxCiudad.BorderBrush = Brushes.Gray;
+            textBoxCalle.BorderBrush = Brushes.Gray;
+            textBoxNúmero.BorderBrush = Brushes.Gray;
+            textBoxColonia.BorderBrush = Brushes.Gray;
+            textBoxCodigoPostal.BorderBrush = Brushes.Gray;
         }
     }
 }

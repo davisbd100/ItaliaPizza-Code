@@ -30,8 +30,8 @@
         <Label Content="Número:" HorizontalAlignment="Left" Margin="84,397,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
         <Label Content="Nombre:" HorizontalAlignment="Left" Margin="83,97,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
         <TextBox x:Name="textBoxNombre" HorizontalAlignment="Left" Margin="170,105,0,0" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True" RenderTransformOrigin="0.015,-5.205"/>
-        <TextBox x:Name="textBoxCodigoPostal" HorizontalAlignment="Left" Margin="175,510,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
-        <Label Content="Código postal:" HorizontalAlignment="Left" Margin="38,502,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+        <TextBox x:Name="textBoxCodigoPostal" HorizontalAlignment="Left" Margin="170,509,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
+        <Label Content="Código postal:" HorizontalAlignment="Left" Margin="33,498,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
         <TextBox x:Name="textBoxColonia" HorizontalAlignment="Left" Margin="170,459,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
         <Label Content="Colonia:" HorizontalAlignment="Left" Margin="89,451,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
         <Label Content="*" HorizontalAlignment="Left" Margin="68,97,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
@@ -42,10 +42,9 @@
         <Label Content="*" HorizontalAlignment="Left" Margin="100,350,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
         <Label Content="*" HorizontalAlignment="Left" Margin="70,399,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32" RenderTransformOrigin="3.854,1.441"/>
         <Label Content="*" HorizontalAlignment="Left" Margin="81,451,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
-        <Label Content="*" HorizontalAlignment="Left" Margin="25,502,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="20,498,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
         <Label Content="*" HorizontalAlignment="Left" Margin="165,540,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="23"/>
         <Label Content="Campos obligatorios" HorizontalAlignment="Left" Margin="174,544,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFABADB3" FontSize="11"/>
-
     </Grid>
 </Window>
 

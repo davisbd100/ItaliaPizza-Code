@@ -14,7 +14,7 @@
             <RowDefinition Height="652"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <Rectangle HorizontalAlignment="Left" Height="74" Margin="0,497,0,0" VerticalAlignment="Top" Width="120">
+        <Rectangle HorizontalAlignment="Left" Height="74" Margin="0,492,0,0" VerticalAlignment="Top" Width="120">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
@@ -60,7 +60,7 @@
                 <ImageBrush ImageSource="Recursos/Buscar.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <DataGrid x:Name="DataGridEmpleados" HorizontalAlignment="Left" Height="335" Margin="185,235,0,0" VerticalAlignment="Top" Width="1003" FontFamily="Calibri Light" FontSize="16"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Background="White" Foreground="#FF6D7276" BorderBrush="#FF98171F">
+        <DataGrid x:Name="DataGridEmpleados" HorizontalAlignment="Left" Height="335" Margin="185,235,0,0" VerticalAlignment="Top" Width="1003" FontFamily="Calibri Light" FontSize="16" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Background="White" Foreground="#FF6D7276" BorderBrush="#FF98171F" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding idPersona}" IsReadOnly="True" Foreground="#FF6D7276"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True" Foreground="#FF6D7276"/>
@@ -87,48 +87,7 @@
             </Button.Background>
 
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="725" Stroke="White" VerticalAlignment="Top" Width="120" Margin="0,0,0,-73" Grid.RowSpan="2">
-            <Rectangle.Fill>
-                <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Image HorizontalAlignment="Left" Height="104" Margin="6,10,0,0" VerticalAlignment="Top" Width="110" Source="Recursos/LogoItaliaPizza.png"/>
-        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,130,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Producto.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,203,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Receta.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,277,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Inventario.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,349,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Ventas.png"/>
-            </Button.Background>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="74" Margin="0,422,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Clientes.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,497,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Empleados.png"/>
-            </Button.Background>
-        </Button>
-        <Label Content="PRODUCTOS" HorizontalAlignment="Left" Margin="32,186,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8" RenderTransformOrigin="0.515,0.466"/>
-        <Label Content="RECETAS" HorizontalAlignment="Left" Margin="40,259,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
-        <Label Content="INVENTARIO" HorizontalAlignment="Left" Margin="33,331,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
-        <Label Content="VENTAS" HorizontalAlignment="Left" Margin="42,404,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
-        <Label Content="CLIENTES" HorizontalAlignment="Left" Margin="39,480,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8"/>
-        <Label Content="EMPLEADOS" HorizontalAlignment="Left" Margin="33,554,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8"/>
         <Image HorizontalAlignment="Left" Height="87" Margin="125,27,0,0" VerticalAlignment="Top" Width="120" Source="Recursos/Empleados.png"/>
+        <local:Menu HorizontalAlignment="Left" Height="776" VerticalAlignment="Top" Width="121" Margin="0,0,0,-124" Grid.RowSpan="2"/>
     </Grid>
 </Window>

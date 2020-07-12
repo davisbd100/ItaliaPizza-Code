@@ -1,18 +1,8 @@
 ﻿using BusinessLogic;
 using Controller;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using static BusinessLogic.ResultadoOperacionEnum;
 
 namespace ItaliaPizza
@@ -83,12 +73,50 @@ namespace ItaliaPizza
         private CheckResult ValidarCamposLlenos()
         {
             CheckResult check = CheckResult.Failed;
-            if (textBoxNombre.Text == String.Empty || textBoxApellido.Text == String.Empty || 
-                textBoxTelefono.Text == String.Empty || textBoxCorreo.Text == String.Empty || 
-                textBoxCiudad.Text == String.Empty || textBoxCalle.Text == String.Empty || 
-                textBoxNúmero.Text == String.Empty || textBoxColonia.Text == String.Empty || 
-                textBoxCodigoPostal.Text == String.Empty)
+
+            if (textBoxNombre.Text == String.Empty)
             {
+                textBoxNombre.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            if (textBoxApellido.Text == String.Empty)
+            {
+                textBoxApellido.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxTelefono.Text == String.Empty)
+            {
+                textBoxTelefono.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxCorreo.Text == String.Empty)
+            {
+                textBoxCorreo.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxCiudad.Text == String.Empty)
+            {
+                textBoxCiudad.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxCalle.Text == String.Empty)
+            {
+                textBoxCalle.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxNúmero.Text == String.Empty)
+            {
+                textBoxNúmero.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxColonia.Text == String.Empty)
+            {
+                textBoxColonia.BorderBrush = Brushes.Red;
+                check = CheckResult.Failed;
+            }
+            else if (textBoxCodigoPostal.Text == String.Empty)
+            {
+                textBoxCodigoPostal.BorderBrush = Brushes.Red;
                 check = CheckResult.Failed;
             }
             else
@@ -97,6 +125,7 @@ namespace ItaliaPizza
             }
             return check;
         }
+
 
         private CheckResult ValidarCampos()
         {
@@ -110,22 +139,27 @@ namespace ItaliaPizza
             else if (validarCampos.ValidiarNombre(textBoxNombre.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.NombreInválido)
             {
                 MessageBox.Show("El nombre del cliente es incorrecto. \n Verifica que no tenga números o caracteres inválidos.", "Nombre inválido");
+                textBoxNombre.BorderBrush = Brushes.Red;
             }
             else if (validarCampos.ValidiarApellido(textBoxApellido.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.ApellidoInválido)
             {
                 MessageBox.Show("El apellido del cliente es incorrecto. \n Verifica que no tenga números o caracteres inválidos.", "Apellido inválido");
+                textBoxApellido.BorderBrush = Brushes.Red;
             }
             else if (validarCampos.ValidarTelefono(textBoxTelefono.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.TelefónoInválido)
             {
                 MessageBox.Show("El teléfono es incorrecto. \n Verifica que no tenga letras.", "Teléfono inválido");
+                textBoxTelefono.BorderBrush = Brushes.Red;
             }
             else if (validarCampos.ValidarCorreo(textBoxCorreo.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.CorreoInválido)
             {
                 MessageBox.Show("El correo ingresado no es válido. \n Verifica que cuente con el formato correcto.", "Correo inválido");
+                textBoxCorreo.BorderBrush = Brushes.Red;
             }
             else if (validarCampos.ValidarCodigoPostal(textBoxCodigoPostal.Text) == ItaliaPizza.ValidarCampos.ResultadosValidación.CódigoPostalInválido)
             {
                 MessageBox.Show("El código postal ingresado no es válido. \n Verifica que solo tenga 5 números.", "Código postal inválido");
+                textBoxCodigoPostal.BorderBrush = Brushes.Red;
             }
             else
             {
