@@ -15,31 +15,12 @@
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-
         <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1003.332">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="Clientes" HorizontalAlignment="Left" Margin="250.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132.397" Width="253.143" Background="{x:Null}"/>
-        <Button x:Name="NuevoButton" Content="" HorizontalAlignment="Left" Height="87.021" Margin="752,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="NuevoButton_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Empleado.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Label Content="NUEVO" HorizontalAlignment="Left" Margin="782.999,86.586,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" Height="27.09" Width="51.887"/>
-        <Button x:Name="EditarButton" Content="" HorizontalAlignment="Left" Height="87.11" Margin="870.333,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="EditarButton_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Editar.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="EliminarButton" Content="" HorizontalAlignment="Left" Height="86.944" Margin="983.666,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="EliminarButton_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Eliminar.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Label Content="EDITAR" HorizontalAlignment="Left" Margin="899.541,86.752,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="50.407"/>
-        <Label Content="ELIMINAR" HorizontalAlignment="Left" Margin="1007.211,86.328,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="66.483"/>
         <Rectangle HorizontalAlignment="Left" Height="49.035" Margin="185.057,155.298,0,0" VerticalAlignment="Top" Width="1002.61">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
@@ -60,12 +41,29 @@
                 <DataGridTextColumn Header="Ciudad" Binding="{Binding Ciudad}" IsReadOnly="True" Foreground="#FF6D7276"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="SalirButton" Content="" HorizontalAlignment="Left" Height="87" Margin="1124,27,0,0" VerticalAlignment="Top" Width="114" BorderBrush="{x:Null}" Click="SalirButton_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Salir.png" Stretch="Uniform"/>
-            </Button.Background>
-
+        <Button x:Name="NuevoButton" HorizontalAlignment="Left" Height="87" Margin="752,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="NuevoButton_Click" Background="Transparent">
+            <StackPanel>
+                <Image Source="Recursos/Empleado.png" Stretch="Uniform" Height="82" Width="100"/>
+            </StackPanel>
         </Button>
+        <Label Content="NUEVO" HorizontalAlignment="Left" Margin="783,89,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" Height="27" Width="52"/>
+        <Button x:Name="EditarButton" HorizontalAlignment="Left" Height="87" Margin="870,27,0,0" VerticalAlignment="Top" Width="114" BorderBrush="{x:Null}" Click="EditarButton_Click" Background="Transparent">
+            <StackPanel>
+                <Image Source="Recursos/Editar.png" Stretch="Uniform" Height="79" Width="88"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="EliminarButton" HorizontalAlignment="Left" Height="87" Margin="984,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="EliminarButton_Click" Background="Transparent">
+            <StackPanel>
+                <Image Source="Recursos/Eliminar.png" Stretch="Uniform" Height="87" Width="113"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="SalirButton" HorizontalAlignment="Left" Height="87" Margin="1124,27,0,0" VerticalAlignment="Top" Width="114" BorderBrush="{x:Null}" Click="SalirButton_Click" Background="Transparent">
+            <StackPanel>
+                <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
+            </StackPanel>
+        </Button>
+        <Label Content="EDITAR" HorizontalAlignment="Left" Margin="900,87,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27" Width="50"/>
+        <Label Content="ELIMINAR" HorizontalAlignment="Left" Margin="1007,86,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27" Width="67"/>
         <TextBox x:Name="TextBoxBuscar" HorizontalAlignment="Left" Margin="472,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="27" Background="White"/>
         <Label Content="Buscar por:" HorizontalAlignment="Left" Margin="203,159,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}"/>
         <ComboBox x:Name="ComboBoxBuscar" HorizontalAlignment="Left" Height="27" Margin="325,165,0,0" VerticalAlignment="Top" Width="147">
@@ -73,10 +71,10 @@
             <ComboBoxItem Content="Calle" FontSize="20"/>
             <ComboBoxItem Content="Télefono" FontSize="20"/>
         </ComboBox>
-        <Button x:Name="ButtonBuscar" Content="" HorizontalAlignment="Left" Height="27" Margin="1145,165,0,0" VerticalAlignment="Top" Width="27" BorderBrush="{x:Null}" Click="ButtonBuscar_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Buscar.png" Stretch="Uniform"/>
-            </Button.Background>
+        <Button x:Name="ButtonBuscar" HorizontalAlignment="Left" Height="27" Margin="1145,165,0,0" VerticalAlignment="Top" Width="27" BorderBrush="{x:Null}" Click="ButtonBuscar_Click" Background="Transparent">
+            <StackPanel>
+                <Image Source="Recursos/Buscar.png" Stretch="Uniform"/>
+            </StackPanel>
         </Button>
         <local:Menu HorizontalAlignment="Left" Height="721" VerticalAlignment="Top" Width="120" Margin="0,0,0,-69"/>
         <TextBlock x:Name="TextBlockPagina" HorizontalAlignment="Left" Height="32" Margin="927,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>

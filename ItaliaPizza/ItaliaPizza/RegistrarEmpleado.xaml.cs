@@ -236,7 +236,7 @@ namespace ItaliaPizza
         {
             if (resultado == ResultadoOperacion.Exito)
             {
-                MessageBox.Show("¡Empleado ñadido con exito!", "Éxito");
+                MessageBox.Show("¡Empleado añadido con éxito!", "Éxito");
                 this.Close();
             }
             else if (resultado == ResultadoOperacion.FallaDesconocida)

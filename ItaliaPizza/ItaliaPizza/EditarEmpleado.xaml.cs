@@ -220,20 +220,20 @@ namespace ItaliaPizza
         {
             if (resultado == ResultadoOperacion.Exito)
             {
-                MessageBox.Show("Añadido con exito");
+                MessageBox.Show("¡Empleado editado con éxito!", "Éxito");
                 this.Close();
             }
             else if (resultado == ResultadoOperacion.FallaDesconocida)
             {
-                MessageBox.Show("Error desconocido");
+                MessageBox.Show("Error desconocido, intente más tarde.", "Error desconocido");
             }
             else if (resultado == ResultadoOperacion.FalloSQL)
             {
-                MessageBox.Show("Error de la base de datos, intente mas tarde");
+                MessageBox.Show("Error de la base de datos, intente más tarde.", "Error en base de datos");
             }
             else if (resultado == ResultadoOperacion.ObjetoExistente)
             {
-                MessageBox.Show("El empleado ya existe en el sistema");
+                MessageBox.Show("El empleado ya existe en el sistema.", "Empleado ya registrado");
             }
         }
 
