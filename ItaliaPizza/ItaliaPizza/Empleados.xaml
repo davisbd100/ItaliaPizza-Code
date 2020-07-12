@@ -76,11 +76,9 @@
                 <DataGridTextColumn Header="Usuario" Binding="{Binding NombreUsuario}" IsReadOnly="True" Foreground="#FF6D7276"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="TextBlockPagina" HorizontalAlignment="Left" Height="32" Margin="835,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="ButtonSiguierntePagina" Content="Siguiente" HorizontalAlignment="Left" Height="32" Margin="976,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonSiguierntePagina_Click"/>
-        <Button x:Name="ButtonAnteriorPagina" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="623,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonAnteriorPagina_Click" IsDefault="True"/>
-        <TextBlock x:Name="TextBlockPagina_Copy" HorizontalAlignment="Left" Height="32" Margin="930,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
-        <Label Content="de" HorizontalAlignment="Left" Margin="890,588,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="32" FontWeight="Bold" Background="{x:Null}"/>
+        <TextBlock x:Name="TextBlockPagina" HorizontalAlignment="Left" Height="32" Margin="927,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="ButtonSiguierntePagina" Content="Siguiente" HorizontalAlignment="Left" Height="32" Margin="974,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonSiguierntePagina_Click"/>
+        <Button x:Name="ButtonAnteriorPagina" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="715,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonAnteriorPagina_Click" IsDefault="True"/>
         <Button x:Name="SalirButton" Content="" HorizontalAlignment="Left" Height="87" Margin="1124,27,0,0" VerticalAlignment="Top" Width="114" BorderBrush="{x:Null}" Click="SalirButton_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Salir.png" Stretch="Uniform"/>

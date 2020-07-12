@@ -39,12 +39,18 @@ namespace ItaliaPizza
 
         private void ButtonAnteriorPagina_Click(object sender, RoutedEventArgs e)
         {
-
+            int pagina = int.Parse(TextBlockPagina.Text);
+            pagina--;
+            TextBlockPagina.Text = pagina.ToString();
+            LlenarGrid();
         }
 
         private void ButtonSiguierntePagina_Click(object sender, RoutedEventArgs e)
         {
-
+            int pagina = int.Parse(TextBlockPagina.Text);
+            pagina++;
+            TextBlockPagina.Text = pagina.ToString();
+            LlenarGrid();
         }
 
         private void SalirButton_Click(object sender, RoutedEventArgs e)
