@@ -92,6 +92,9 @@
     <Compile Include="EditarEmpleado.xaml.cs">
       <DependentUpon>EditarEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+      </Compile>
     <Compile Include="EditarPedido.xaml.cs">
       <DependentUpon>EditarPedido.xaml</DependentUpon>
     </Compile>
@@ -231,6 +234,10 @@
       <DependentUpon>Inicio.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PedidoCallCenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -356,6 +363,10 @@
     <Resource Include="Recursos\VerMas.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AutenticacionInicioSesion\AutenticacionInicioSesion.csproj">
+      <Project>{39B7CAD8-96A5-4336-A3DF-2286C175A0DB}</Project>
+      <Name>AutenticacionInicioSesion</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
       <Project>{c1e97369-553e-481c-839d-459e7db21b48}</Project>
       <Name>BusinessLogic</Name>
@@ -368,6 +379,9 @@
       <Project>{3a363472-3787-445b-94a0-f67a532341c9}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Salir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

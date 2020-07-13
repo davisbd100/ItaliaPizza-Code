@@ -14,6 +14,8 @@ namespace ItaliaPizza
         {
             NombreVálido,
             NombreInválido,
+            ApellidoVálido,
+            ApellidoInválido,
             TelefonoVálido,
             TelefónoInválido,
             CorreoVálido,
@@ -34,12 +36,22 @@ namespace ItaliaPizza
 
         public ResultadosValidación ValidiarNombre(string nombre)
         {
-            string patrón = @"^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$";
+            string patrón = @"^[a-z-A-Z\D]+$";
             if (Regex.IsMatch(nombre, patrón))
             {
                 return ResultadosValidación.NombreVálido;
             }
             return ResultadosValidación.NombreInválido;
+        }
+
+        public ResultadosValidación ValidiarApellido(string apellido)
+        {
+            string patrón = @"^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$";
+            if (Regex.IsMatch(apellido, patrón))
+            {
+                return ResultadosValidación.ApellidoVálido;
+            }
+            return ResultadosValidación.ApellidoInválido;
         }
 
         public ResultadosValidación ValidarTelefono(string telefono)
