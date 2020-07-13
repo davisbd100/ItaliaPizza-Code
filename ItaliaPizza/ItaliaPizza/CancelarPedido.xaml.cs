@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using BusinessLogic;
 using Controller;
 
-namespace PrototiposItaliaPizza
+namespace ItaliaPizza
 {
     /// <summary>
     /// Lógica de interacción para DarDeBajaCliente.xaml
@@ -22,17 +22,20 @@ namespace PrototiposItaliaPizza
     public partial class CancelarPedido : Window
     {
 
-        Pedido localPedido { get; set; }
-        public CancelarPedido(Pedido pedido)
+        Pedido LocalPedido { get; set; }
+        public CancelarPedido()
         {
-            localPedido = pedido;
+            LocalPedido = new Pedido()
+            {
+                idPedido = 1
+            };
             InitializeComponent();
         }
 
         private void btAceptar_Click(object sender, RoutedEventArgs e)
         {
             PedidoController controller = new PedidoController();
-            ResultadoOperacionEnum.ResultadoOperacion resultado = controller.CancelarPedido(localPedido);
+            ResultadoOperacionEnum.ResultadoOperacion resultado = controller.CancelarPedido(LocalPedido);
             if (resultado == ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
                 MessageBox.Show("Pedido Cancelado");

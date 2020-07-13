@@ -74,15 +74,13 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="Inventario actual:" HorizontalAlignment="Left" Margin="125.001,113.753,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Height="61.922" Width="301.143" Background="{x:Null}"/>
-        <DataGrid x:Name="dgInventario" HorizontalAlignment="Left" Height="366.271" Margin="145.252,203.397,0,0" VerticalAlignment="Top" Width="759.888" Grid.Column="3" FontSize="24" ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+        <DataGrid MouseDoubleClick="dgInventario_MouseDoubleClick" x:Name="dgInventario" HorizontalAlignment="Left" Height="366.271" Margin="145.252,203.397,0,0" VerticalAlignment="Top" Width="759.888" Grid.Column="3" FontSize="24" ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Producto" Binding="{Binding Producto1.Nombre}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Medida" Binding="{Binding UnidadMedida}" IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="ColumnExistencia" Header="Existencia Inicial" Binding="{Binding ExistenciaInicial}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="ColumnNuevaExistencia" Header="Existencia Actual" Binding="{Binding ExistenciaTotal}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="746.42,601.893,0,12.583" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Width="158.72" Click="btAceptar_Click"/>
         <Button x:Name="btCancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="588.266,603.943,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btCancelar_Click"/>
         <Button x:Name="btBusqueda" Content="" HorizontalAlignment="Left" Height="46" Margin="838,130,0,0" VerticalAlignment="Top" Width="67" BorderBrush="{x:Null}" Click="btBusqueda_Click">
             <Button.Background>
@@ -90,6 +88,25 @@
             </Button.Background>
         </Button>
         <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Height="46" Margin="526,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" FontSize="36"/>
+        <DataGrid x:Name="dgPedidoProducto" HorizontalAlignment="Left" Height="367" Margin="938,203,0,0" VerticalAlignment="Top" Width="326" Grid.Column="3" FontSize="13" ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Cantidad de Ingreso" Binding="{Binding CantidadIngreso}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Precio de compra" Binding="{Binding PrecioCompra}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Fecha de Ingreso" Binding="{Binding FechaIngreso}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Inventario actual:" HorizontalAlignment="Left" Margin="125.001,113.753,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Height="61.922" Width="301.143" Background="{x:Null}"/>
+        <Rectangle HorizontalAlignment="Left" Height="49" Margin="1059,144,-9.4,0" VerticalAlignment="Top" Width="224">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Brown" Opacity="0.4"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label Content="Ultimos ingresos" HorizontalAlignment="Right" Margin="0,130,-0.4,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="36" Foreground="White" Height="58" Width="202" Background="{x:Null}"/>
+        <TextBlock x:Name="tbPaginaActual" Text="1" HorizontalAlignment="Left" Margin="455,574,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
+        <Button x:Name="btPaginaAnterior" Content="Anterior" HorizontalAlignment="Left" Margin="346,575,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.513,1.575" Click="btPaginaAnterior_Click"/>
+        <Button x:Name="btPaginaSiguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="566,575,0,0" VerticalAlignment="Top" Width="75" Click="btPaginaSiguiente_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="481,574,0,0" TextWrapping="Wrap" Text="De" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
+        <TextBlock x:Name="tbPaginaTotal" HorizontalAlignment="Left" Margin="526,575,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
 
     </Grid>
 </Window>
