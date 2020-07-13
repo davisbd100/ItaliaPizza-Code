@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4C1B4024-6492-4D91-A6AF-4F169B6F98AA}</ProjectGuid>
+    <ProjectGuid>{D14F39C1-0E18-48CE-BE2C-F64E8B0DCF7E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessLogicTest</RootNamespace>
-    <AssemblyName>BusinessLogicTest</AssemblyName>
+    <RootNamespace>AutenticacionInicioSesionTest</RootNamespace>
+    <AssemblyName>AutenticacionInicioSesionTest</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,18 +49,17 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmpleadoDAOTest.cs" />
+    <Compile Include="AutenticacionInicioSesionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ClienteDAOTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
-      <Project>{c1e97369-553e-481c-839d-459e7db21b48}</Project>
-      <Name>BusinessLogic</Name>
+    <ProjectReference Include="..\AutenticacionInicioSesion\AutenticacionInicioSesion.csproj">
+      <Project>{39b7cad8-96a5-4336-a3df-2286c175a0db}</Project>
+      <Name>AutenticacionInicioSesion</Name>
     </ProjectReference>
     <ProjectReference Include="..\DatabaseConnection\DatabaseConnection.csproj">
       <Project>{6f8664e1-8d02-4025-9e57-46af83dcaab5}</Project>

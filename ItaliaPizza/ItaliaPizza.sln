@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicTest", "Busine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseConnectionTest", "DatabaseConnectionTest\DatabaseConnectionTest.csproj", "{A421AC60-2A18-4B1E-B5B1-67E7D9348BAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutenticacionInicioSesionTest", "AutenticacionInicioSesionTest\AutenticacionInicioSesionTest.csproj", "{D14F39C1-0E18-48CE-BE2C-F64E8B0DCF7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{A421AC60-2A18-4B1E-B5B1-67E7D9348BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A421AC60-2A18-4B1E-B5B1-67E7D9348BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A421AC60-2A18-4B1E-B5B1-67E7D9348BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D14F39C1-0E18-48CE-BE2C-F64E8B0DCF7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D14F39C1-0E18-48CE-BE2C-F64E8B0DCF7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D14F39C1-0E18-48CE-BE2C-F64E8B0DCF7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D14F39C1-0E18-48CE-BE2C-F64E8B0DCF7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
