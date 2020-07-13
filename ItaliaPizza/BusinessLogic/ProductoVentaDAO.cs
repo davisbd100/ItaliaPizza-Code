@@ -219,7 +219,7 @@ namespace BusinessLogic
                     throw (ex);
                 }
 
-                using (SqlCommand command = new SqlCommand("select Codigo, Nombre, Descripcion, idProducto  from dbo.ProductoVenta left join dbo.Producto  on" +
+                using (SqlCommand command = new SqlCommand("select Codigo, Nombre, Descripcion, idProducto, PrecioPublico  from dbo.ProductoVenta left join dbo.Producto  on" +
                     " dbo.Producto.idProducto = dbo.ProductoVenta.idProductoVenta WHERE dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset @Rango rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
