@@ -54,104 +54,99 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cliente.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DiaVenta.cs">
       <DependentUpon>PizzaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Empleado.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Estatus.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Inventario.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItaliaPizaDataBaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItaliaPizaDataBaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItaliaPizaDataBaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItaliaPizaDataBaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItaliaPizaDataBaseModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Pedido.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PedidoDomicilio.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PedidoProducto.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Persona.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PizzaModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PizzaModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PizzaModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PizzaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PizzaModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PizzaModel.edmx</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Producto.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductoIngrediente.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductoInventario.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductoVenta.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receta.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RecetaIngrediente.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TipoEmpleado.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TipoProducto.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Ubicacion.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UbicacionProducto.cs">
-      <DependentUpon>PizzaModel.tt</DependentUpon>
+      <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-    <EntityDeploy Include="PizzaModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PizzaModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="PizzaModel.edmx.diagram">
-      <DependentUpon>PizzaModel.edmx</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PizzaModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PizzaModel.edmx</DependentUpon>
-      <LastGenOutput>PizzaModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="PizzaModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PizzaModel.edmx</DependentUpon>
-      <LastGenOutput>PizzaModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ItaliaPizaDataBaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ItaliaPizaDataBaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ItaliaPizaDataBaseModel.edmx.diagram">
+      <DependentUpon>ItaliaPizaDataBaseModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ItaliaPizaDataBaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ItaliaPizaDataBaseModel.edmx</DependentUpon>
+      <LastGenOutput>ItaliaPizaDataBaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ItaliaPizaDataBaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ItaliaPizaDataBaseModel.edmx</DependentUpon>
+      <LastGenOutput>ItaliaPizaDataBaseModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
