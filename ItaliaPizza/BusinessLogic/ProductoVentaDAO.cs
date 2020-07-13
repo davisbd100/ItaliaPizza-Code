@@ -109,7 +109,7 @@ namespace BusinessLogic
 
                 using (SqlCommand command = new SqlCommand("UPDATE dbo.Productoventa SET Nombre = @Nombre, Descripcion = @Descripcion, " +
                     "Restriccion = @Restriccion, TipoProducto = @TipoProducto, PrecioPublico = @PrecioPublico, " +
-                    "FotoProducto = @FotoProducto, TieneReceta = @TieneReceta, Receta = @Receta WHERE iProductoVenta = @idProductoVenta) ", connection))
+                    "FotoProducto = @FotoProducto, TieneReceta = @TieneReceta, Receta = @Receta WHERE idProductoVenta = @idProductoVenta ", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
                     command.Parameters.Add(new SqlParameter("@Nombre", productoVenta.Nombre));
