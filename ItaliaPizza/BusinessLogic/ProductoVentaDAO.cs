@@ -110,7 +110,7 @@ namespace BusinessLogic
 
                 using (SqlCommand command = new SqlCommand("UPDATE dbo.Productoventa SET Nombre = @Nombre, Descripcion = @Descripcion, " +
                     "Restriccion = @Restriccion, TipoProducto = @TipoProducto, PrecioPublico = @PrecioPublico, " +
-                    "FotoProducto = @FotoProducto, TieneReceta = @TieneReceta, Receta = @Receta WHERE iProductoVenta = @idProductoVenta) ", connection))
+                    "FotoProducto = @FotoProducto, TieneReceta = @TieneReceta, Receta = @Receta WHERE idProductoVenta = @idProductoVenta ", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVenta.Código));
                     command.Parameters.Add(new SqlParameter("@Nombre", productoVenta.Nombre));
@@ -269,6 +269,46 @@ namespace BusinessLogic
             return paginas;
         }
 
+
+
+        public List<ProductoVenta> GetProductosVentaSinRecetaAsignada(int rango)
+        {
+            List<ProductoVenta> listaProductos = new List<ProductoVenta>();
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("select Codigo, Nombre, Descripcion, idProducto  from dbo.ProductoVenta left join dbo.Producto  on" +
+                    " dbo.Producto.idProducto = dbo.ProductoVenta.idProductoVenta WHERE dbo.Producto.Visibilidad = 'TRUE' and dbo.productoVenta.TieneReceta = 1 and dbo.productoVenta.Receta = 0 order by Nombre offset @Rango rows fetch next 20 rows only", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@Rango", rango));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ProductoVenta productoVenta = new ProductoVenta();
+                        productoVenta.idProducto = Convert.ToInt32(reader["idProducto"].ToString());
+                        productoVenta.Código = reader["Codigo"].ToString();
+                        productoVenta.Nombre = reader["Nombre"].ToString();
+                        productoVenta.Descripción = reader["Descripcion"].ToString();
+
+                        listaProductos.Add(productoVenta);
+                    }
+                }
+                connection.Close();
+            }
+            return listaProductos;
+
+        }
+
+
         public ProductoVenta ObtenerProductoVentaPorid(int codigo)
         {
 
@@ -384,7 +424,7 @@ namespace BusinessLogic
                     while (reader.Read())
                     {
                         ProductoVenta productoVenta = new ProductoVenta();
-                        productoVenta.Código = Convert.ToInt32(reader["Codigo"].ToString()).ToString();
+                        productoVenta.Código = reader["Codigo"].ToString();
                         productoVenta.Nombre = reader["Nombre"].ToString();
                         productoVenta.PrecioPúblico = float.Parse(reader["PrecioPublico"].ToString());
 

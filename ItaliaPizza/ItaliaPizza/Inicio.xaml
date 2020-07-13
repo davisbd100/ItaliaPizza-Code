@@ -20,7 +20,7 @@
         <Label Content="Nombre de usuario:" HorizontalAlignment="Left" Margin="727.868,330.682,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="24" FontFamily="Calibri Light"/>
         <TextBox x:Name="NombreUsuarioTextBox" HorizontalAlignment="Left" Margin="723.42,369.979,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
         <Label Content="Contraseña:" HorizontalAlignment="Left" Margin="723.42,427.046,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="24" FontFamily="Calibri Light"/>
-        <PasswordBox x:Name="ContaseñaPasswordBox" HorizontalAlignment="Left" Margin="723.42,466.919,0,0" VerticalAlignment="Top" Width="264.433" Height="29" FontFamily="Calibri Light" FontSize="22"/>
+        <PasswordBox x:Name="ContraseñaPasswordBox" HorizontalAlignment="Left" Margin="723.42,466.919,0,0" VerticalAlignment="Top" Width="264.433" Height="29" FontFamily="Calibri Light" FontSize="22"/>
         <Button x:Name="IniciarButton" Content="INICIAR" HorizontalAlignment="Left" Height="36" Margin="782,543,0,0" VerticalAlignment="Top" Width="148" Background="#FF008050" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="20" Click="IniciarButton_Click"/>
         <Button x:Name="VerContraseñaButton" Content="" HorizontalAlignment="Left" Height="29" Margin="954,467,0,0" VerticalAlignment="Top" Width="34" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseEnter="VerContraseñaButton_MouseEnter" MouseLeave="VerContraseñaButton_MouseLeave">
             <Button.Background>

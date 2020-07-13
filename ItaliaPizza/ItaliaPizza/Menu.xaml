@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="ItaliaPizza.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ItaliaPizza"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Width="120" Height="725">
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="725" Stroke="White" VerticalAlignment="Top" Width="120">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image HorizontalAlignment="Left" Height="104" Margin="6,10,0,0" VerticalAlignment="Top" Width="110" Source="Recursos/LogoItaliaPizza.png"/>
+        <Button x:Name="ButtonProductos" HorizontalAlignment="Left" Height="74" Margin="0,130,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonProductos_Click">
+            <StackPanel>
+                <Image Source="Recursos/Producto.png"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="ButtonRecetas" HorizontalAlignment="Left" Height="74" Margin="0,203,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonRecetas_Click">
+            <StackPanel>
+                <Image Source="Recursos/Receta.png"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="ButtonInventario" HorizontalAlignment="Left" Height="74" Margin="0,275,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonInventario_Click">
+            <StackPanel>
+                <Image Source="Recursos/Inventario.png"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="ButtonVentas" HorizontalAlignment="Left" Height="74" Margin="0,347,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonVentas_Click">
+            <StackPanel>
+                <Image Source="Recursos/Ventas.png"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="ButtonClientes" HorizontalAlignment="Left" Height="74" Margin="0,419,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonClientes_Click">
+            <StackPanel>
+                <Image Source="Recursos/Clientes.png"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="ButtonEmpleados" HorizontalAlignment="Left" Height="74" Margin="0,491,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonEmpleados_Click">
+            <StackPanel>
+                <Image Source="Recursos/Empleados.png"/>
+            </StackPanel>
+        </Button>
+        <Label Content="PRODUCTOS" HorizontalAlignment="Left" Margin="32,186,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8" RenderTransformOrigin="0.515,0.466"/>
+        <Label Content="RECETAS" HorizontalAlignment="Left" Margin="40,259,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
+        <Label Content="INVENTARIO" HorizontalAlignment="Left" Margin="33,331,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
+        <Label Content="VENTAS" HorizontalAlignment="Left" Margin="42,404,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
+        <Label Content="CLIENTES" HorizontalAlignment="Left" Margin="39,475,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8"/>
+        <Label Content="EMPLEADOS" HorizontalAlignment="Left" Margin="33,547,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8"/>
+    </Grid>
+</UserControl>

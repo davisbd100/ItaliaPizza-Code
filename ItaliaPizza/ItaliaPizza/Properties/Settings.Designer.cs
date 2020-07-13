@@ -26,5 +26,35 @@ namespace ItaliaPizza.Properties
                 return defaultInstance;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EmpleadoID
+        {
+            get
+            {
+                return ((string)(this["EmpleadoID"]));
+            }
+            set
+            {
+                this["EmpleadoID"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EmpleadoType
+        {
+            get
+            {
+                return ((string)(this["EmpleadoType"]));
+            }
+            set
+            {
+                this["EmpleadoType"] = value;
+            }
+        }
     }
 }

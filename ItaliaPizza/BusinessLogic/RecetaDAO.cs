@@ -13,7 +13,7 @@ namespace BusinessLogic
 {
     public class RecetaDAO : IReceta
     {
-        public ResultadoOperacionEnum.ResultadoOperacion AddReceta(Receta receta)
+        public ResultadoOperacionEnum.ResultadoOperacion AddReceta(Receta receta, int productoVentaid)
         {
             const int VALORES_DUPLICADOS = 2601;
             ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
@@ -29,29 +29,40 @@ namespace BusinessLogic
                 transaction = connection.BeginTransaction("InsertarReceta");
                 command.Connection = connection;
                 command.Transaction = transaction;
-
                 try
                 {
                     command.CommandText =
-                         "INSERT INTO dbo.Receta VALUES (@idReceta, @Nombre, @Procedimiento, @Rendimiento)";
-                    command.Parameters.Add(new SqlParameter("@idReceta", receta.IdReceta));
+                         "INSERT INTO dbo.Receta output INSERTED.idReceta VALUES (@Nombre, @Procedimiento, @Rendimiento)";
+                   // command.Parameters.Add(new SqlParameter("@idReceta", receta.IdReceta));
                     command.Parameters.Add(new SqlParameter("@Nombre", receta.Nombre));
                     command.Parameters.Add(new SqlParameter("@Procedimiento", receta.Procedimiento));
                     command.Parameters.Add(new SqlParameter("@Rendimiento", receta.Rendimiento));
 
-                    command.ExecuteNonQuery();
+                    //command.ExecuteNonQuery();
+                    int id = (int)command.ExecuteScalar();
+
 
                     for (int posicion = 0; posicion < receta.Ingredientes.Count; posicion++)
                     {
                         command.CommandText =
                         "INSERT INTO dbo.RecetaIngrediente VALUES (@idReceta, @idProductoIngrediente, @Cantidad, @PrecioUnitario)";
-                        command.Parameters.Add(new SqlParameter("@idReceta", receta.IdReceta));
+                        command.Parameters.Add(new SqlParameter("@idReceta", id));
                         command.Parameters.Add(new SqlParameter("@idProductoIngrediente", receta.Ingredientes[posicion].IdIngrediente));
                         command.Parameters.Add(new SqlParameter("@Cantidad", receta.Ingredientes[posicion].Cantidad));
                         command.Parameters.Add(new SqlParameter("@Preciounitario", receta.Ingredientes[posicion].PrecioUnitario));
                         command.ExecuteNonQuery();
+                        command.Parameters.Clear();
 
                     }
+
+                    command.CommandText =
+                        "UPDATE dbo.Productoventa SET Receta = @Receta WHERE idProductoVenta = @idProductoVenta";
+                    command.Parameters.Add(new SqlParameter("@Receta", id));
+                    command.Parameters.Add(new SqlParameter("@idProductoVenta", productoVentaid));
+                    command.ExecuteNonQuery();
+
+
+
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
 

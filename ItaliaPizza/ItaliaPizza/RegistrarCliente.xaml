@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItaliaPizza"
         mc:Ignorable="d"
-        Title="Registrar cliente" Height="550" Width="500" Icon="Recursos/Empleado.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Registrar cliente" Height="650" Width="500" Icon="Recursos/Empleado.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Rectangle HorizontalAlignment="Left" Height="69" Margin="0,15,-0.333,0" VerticalAlignment="Top" Width="495" Fill="#FFB31423"/>
         <Label Content="Registrar cliente" HorizontalAlignment="Left" Margin="140.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>
@@ -14,21 +14,37 @@
                 <ImageBrush ImageSource="Recursos/Empleado.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Label Content="Nombre:" HorizontalAlignment="Left" Margin="82.891,129.767,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-        <TextBox x:Name="NombreTextBox" HorizontalAlignment="Left" Margin="170.306,137.511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-        <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="80.656,180.786,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-        <TextBox x:Name="CorreoTextBox" HorizontalAlignment="Left" Margin="170.303,238.986,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-        <TextBox x:Name="TelefonoTextBox" HorizontalAlignment="Left" Margin="170.307,188.53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-        <Label Content="Correo:" HorizontalAlignment="Left" Margin="95.777,231.242,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-        <TextBox x:Name="CiudadTextBox" HorizontalAlignment="Left" Margin="170.307,289.017,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-        <Label Content="Ciudad:" HorizontalAlignment="Left" Margin="93.693,281.273,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-        <TextBox x:Name="DireccionTextBox" HorizontalAlignment="Left" Margin="170.307,339.601,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-        <Label Content="Dirección:" HorizontalAlignment="Left" Margin="73.333,331.857,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
-        <TextBox x:Name="CodigoPostalTextBox" HorizontalAlignment="Left" Margin="170.303,390.058,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-        <Label Content="Código postal:" HorizontalAlignment="Left" Margin="32.506,382.314,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-        <Button x:Name="RegistrarButton" Content="REGISTRAR" HorizontalAlignment="Left" Margin="276,459,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="159"/>
-        <Button x:Name="CancelarButton" Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="170,459,0,0" VerticalAlignment="Top" Width="91" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
-
+        <Button x:Name="RegistrarButton" Content="REGISTRAR" HorizontalAlignment="Left" Margin="276,570,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="159" Click="RegistrarButton_Click"/>
+        <Button x:Name="CancelarButton" Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="170,570,0,0" VerticalAlignment="Top" Width="91" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="CancelarButton_Click"/>
+        <Label Content="Apellido:" HorizontalAlignment="Left" Margin="83,147,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <TextBox x:Name="textBoxApellido" HorizontalAlignment="Left" Margin="170,155,0,0" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
+        <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="81,198,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <TextBox x:Name="textBoxCorreo" HorizontalAlignment="Left" Margin="170,256,0,0" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
+        <TextBox x:Name="textBoxTelefono" HorizontalAlignment="Left" Margin="170,206,0,0" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
+        <Label Content="Correo:" HorizontalAlignment="Left" Margin="96,248,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <TextBox x:Name="textBoxCiudad" HorizontalAlignment="Left" Margin="170,306,0,0" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
+        <Label Content="Ciudad:" HorizontalAlignment="Left" Margin="94,298,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+        <TextBox x:Name="textBoxCalle" HorizontalAlignment="Left" Margin="170,357,0,0" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
+        <Label Content="Calle:" HorizontalAlignment="Left" Margin="113,350,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
+        <TextBox x:Name="textBoxNúmero" HorizontalAlignment="Left" Margin="170,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
+        <Label Content="Número:" HorizontalAlignment="Left" Margin="84,397,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+        <Label Content="Nombre:" HorizontalAlignment="Left" Margin="83,97,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <TextBox x:Name="textBoxNombre" HorizontalAlignment="Left" Margin="170,105,0,0" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True" RenderTransformOrigin="0.015,-5.205"/>
+        <TextBox x:Name="textBoxCodigoPostal" HorizontalAlignment="Left" Margin="170,509,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
+        <Label Content="Código postal:" HorizontalAlignment="Left" Margin="33,498,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+        <TextBox x:Name="textBoxColonia" HorizontalAlignment="Left" Margin="170,459,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" AutomationProperties.IsRequiredForForm="True"/>
+        <Label Content="Colonia:" HorizontalAlignment="Left" Margin="89,451,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="68,97,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="68,147,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="68,198,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="83,248,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="81,298,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="100,350,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="70,399,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32" RenderTransformOrigin="3.854,1.441"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="81,451,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="20,498,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="165,540,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="23"/>
+        <Label Content="Campos obligatorios" HorizontalAlignment="Left" Margin="174,544,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFABADB3" FontSize="11"/>
     </Grid>
 </Window>
 
