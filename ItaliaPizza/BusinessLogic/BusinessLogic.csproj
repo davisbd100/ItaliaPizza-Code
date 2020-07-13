@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Cliente.cs" />
     <Compile Include="ClienteDAO.cs" />
+    <Compile Include="DatabaseDAO.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="EmpleadoDAO.cs" />
     <Compile Include="ICliente.cs" />
@@ -64,8 +65,11 @@
     <Compile Include="InventarioDAO.cs" />
     <Compile Include="IProducto.cs" />
     <Compile Include="IProductoVenta.cs" />
+    <Compile Include="ITipoEmpleado.cs" />
     <Compile Include="IReceta.cs" />
     <Compile Include="ITipoProducto.cs" />
+    <Compile Include="IUbicación.cs" />
+    <Compile Include="IVenta.cs" />
     <Compile Include="ListaIngredientesReceta.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Persona.cs" />
@@ -84,6 +88,7 @@
     <Compile Include="TipoProducto.cs" />
     <Compile Include="TipoProductoDAO.cs" />
     <Compile Include="Ubicación.cs" />
+    <Compile Include="VentaDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">

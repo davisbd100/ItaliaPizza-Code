@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,8 +38,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=8.0.19.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,8 +65,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CancelarPedido.xaml.cs">
+      <DependentUpon>CancelarPedido.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProductosUC.xaml.cs">
+      <DependentUpon>ProductosUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="DarDeBajaCliente.xaml.cs">
       <DependentUpon>DarDeBajaCliente.xaml</DependentUpon>
@@ -65,17 +80,65 @@
     <Compile Include="DarDeBajaEmpleado.xaml.cs">
       <DependentUpon>DarDeBajaEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DarDeBajaProducto.xaml.cs">
+      <DependentUpon>DarDeBajaProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DarDeBajaReceta.xaml.cs">
+      <DependentUpon>DarDeBajaReceta.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditarCliente.xaml.cs">
       <DependentUpon>EditarCliente.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditarEmpleado.xaml.cs">
       <DependentUpon>EditarEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+      </Compile>
+    <Compile Include="EditarPedido.xaml.cs">
+      <DependentUpon>EditarPedido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditarProductoIngrediente.xaml.cs">
+      <DependentUpon>EditarProductoIngrediente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditarProductoVenta.xaml.cs">
+      <DependentUpon>EditarProductoVenta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditarReceta.xaml.cs">
+      <DependentUpon>EditarReceta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElegirNuevoProducto.xaml.cs">
+      <DependentUpon>ElegirNuevoProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Empleados.xaml.cs">
       <DependentUpon>Empleados.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Menu.xaml.cs">
-      <DependentUpon>Menu.xaml</DependentUpon>
+    <Compile Include="PedidoCallCenter.xaml.cs">
+      <DependentUpon>PedidoCallCenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PedidoMesero.xaml.cs">
+      <DependentUpon>PedidoMesero.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Productos.xaml.cs">
+      <DependentUpon>Productos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventarioActual.xaml.cs">
+      <DependentUpon>InventarioActual.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InventarioFinal.xaml.cs">
+      <DependentUpon>InventarioFinal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListaPedidoCocinero.xaml.cs">
+      <DependentUpon>ListaPedidoCocinero.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListaPedidoVendedor.xaml.cs">
+      <DependentUpon>ListaPedidoVendedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RecetasGerente.xaml.cs">
+      <DependentUpon>RecetasGerente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pedido.xaml.cs">
+      <DependentUpon>Pedido.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistrarCliente.xaml.cs">
       <DependentUpon>RegistrarCliente.xaml</DependentUpon>
@@ -83,8 +146,31 @@
     <Compile Include="RegistrarEmpleado.xaml.cs">
       <DependentUpon>RegistrarEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarProductoIngrediente.xaml.cs">
+      <DependentUpon>RegistrarProductoIngrediente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarProductoVenta.xaml.cs">
+      <DependentUpon>RegistrarProductoVenta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarReceta.xaml.cs">
+      <DependentUpon>RegistrarReceta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarRecetaSeleccionProducto.xaml.cs">
+      <DependentUpon>RegistrarRecetaSeleccionProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RespaldarInformacion.xaml.cs">
+      <DependentUpon>RespaldarInformacion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValidarCampos.cs" />
+    <Page Include="CancelarPedido.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Clientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProductosUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,11 +182,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DarDeBajaProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DarDeBajaReceta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditarCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditarEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditarPedido.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EditarProductoIngrediente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditarProductoVenta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditarReceta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ElegirNuevoProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,6 +238,42 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PedidoCallCenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PedidoMesero.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Productos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InventarioActual.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InventarioFinal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ListaPedidoCocinero.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ListaPedidoVendedor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RecetasGerente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pedido.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="RegistrarCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -131,6 +281,26 @@
     <Page Include="RegistrarEmpleado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrarProductoIngrediente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrarProductoVenta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrarReceta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrarRecetaSeleccionProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RespaldarInformacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +321,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -213,4 +384,12 @@
     <Resource Include="Recursos\Salir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

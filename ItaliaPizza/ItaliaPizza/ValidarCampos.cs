@@ -29,7 +29,9 @@ namespace ItaliaPizza
             UsuarioVálido,
             UsuarioInválido,
             ContraseñaInválida,
-            ContraseñaVálida
+            ContraseñaVálida,
+            Numeroinvalido,
+            NumeroValido
         }
 
         public ResultadosValidación ValidiarNombre(string nombre)
@@ -109,6 +111,26 @@ namespace ItaliaPizza
             }
             return ResultadosValidación.ContraseñaInválida;
 
+        }
+
+        public ResultadosValidación ValidarNumeroEntero(string numero)
+        {
+            string patrón = @"^[0-9]*$";
+            if (Regex.IsMatch(numero, patrón))
+            {
+                return ResultadosValidación.NumeroValido;
+            }
+            return ResultadosValidación.Numeroinvalido;
+        }
+
+        public ResultadosValidación ValidarNumeroFloat(string numero)
+        {
+            string patrón = @"^[0-9]*(?:\.[0-9]*)?$";
+            if (Regex.IsMatch(numero, patrón))
+            {
+                return ResultadosValidación.NumeroValido;
+            }
+            return ResultadosValidación.Numeroinvalido;
         }
 
     }

@@ -23,8 +23,11 @@ namespace DataAccess
         public int idInventario { get; set; }
         public Nullable<int> ExistenciaTotal { get; set; }
         public string UnidadMedida { get; set; }
+        public Nullable<int> Producto { get; set; }
+        public Nullable<int> ExistenciaInicial { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductoInventario> ProductoInventario { get; set; }
+        public virtual Producto Producto1 { get; set; }
     }
 }

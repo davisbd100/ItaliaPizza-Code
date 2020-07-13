@@ -1,6 +1,7 @@
 ﻿using DatabaseConnection;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using static BusinessLogic.ResultadoOperacionEnum;
 
 namespace BusinessLogic
 {
-    class InventarioDAO : IInventario
+    public class InventarioDAO : IInventario
     {
         public ResultadoOperacionEnum.ResultadoOperacion AddInventario(Inventario inventario)
         {
@@ -40,10 +41,11 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida";
+                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida)";
                     command.Parameters.Add(new SqlParameter("@idInventario", inventario.idInventario));
                     command.Parameters.Add(new SqlParameter("@ExistenciaTotal", inventario.ExistenciaTotal));
                     command.Parameters.Add(new SqlParameter("@UnidadMedida", inventario.UnidadDeMedida));
+                    command.ExecuteNonQuery();
 
                     transaction.Commit();
                     resultado = ResultadoOperacion.Exito;
@@ -153,12 +155,128 @@ namespace BusinessLogic
                         inventario.PrecioCompra = float.Parse(reader["Precio"].ToString());
                         DateTime fechaIngreso = DateTime.Parse(reader["FechaIngreso"].ToString());
                         inventario.FechaIngreso = fechaIngreso;
-                        DateTime caducidad = DateTime.Parse(reader["Caducidad"].ToString());
-                        inventario.Caducidad = caducidad;
+                        //  DateTime caducidad = DateTime.Parse(reader["Caducidad"].ToString());
+                        // inventario.Caducidad = caducidad;
+                        inventario.Caducidad = reader["caducidad"].ToString();
                         inventarios.Add(inventario);
                     }
                 }
                 connection.Close();
+            }
+
+            return inventarios;
+        }
+
+        public List<DataAccess.Inventario> ObtenerTodosLosInventarios()
+        {
+            List<DataAccess.Inventario> inventarios = new List<DataAccess.Inventario>();
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var inventario in context.Inventario)
+                    {
+                        inventario.Producto1 = inventario.Producto1;
+                        inventarios.Add(inventario);
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los Inventarios");
+                }
+            }
+
+            return inventarios;
+        }
+        public ResultadoOperacion ActualizarInventario(List<DataAccess.Inventario> inventarios)
+        {
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var inventario in context.Inventario)
+                    {
+                        DataAccess.Inventario tempInventario = inventarios.FirstOrDefault(b => b.idInventario == inventario.idInventario);
+                        inventario.ExistenciaInicial = tempInventario.ExistenciaTotal;
+                    }
+                    context.SaveChanges();
+                }
+                catch (EntityException)
+                {
+                    resultado = ResultadoOperacion.FalloSQL;
+                }
+            }
+
+            return resultado;
+        }
+
+        public List<DataAccess.Inventario> ObtenerTodosLosInventariosConIngreso(int rango, int pagina)
+        {
+            List<DataAccess.Inventario> inventarios = new List<DataAccess.Inventario>();
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var inventario in (context.Inventario.OrderBy(b => b.Producto1.Nombre).Skip(rango * (pagina - 1)).Take(rango)))
+                    {
+                        inventario.Producto1 = inventario.Producto1;
+                        inventario.ProductoInventario = inventario.ProductoInventario;
+                        inventarios.Add(inventario);
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los Inventarios");
+                }
+            }
+
+            return inventarios;
+        }
+
+        public int ObtenerPaginasDeTablaInventario(int elementosPorPagina)
+        {
+            int paginas = 0;
+
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT CEILING((COUNT(*) / @elementos)) AS total FROM dbo.Inventario", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@elementos", (float)elementosPorPagina));
+                    paginas = int.Parse(command.ExecuteScalar().ToString());
+                }
+                connection.Close();
+            }
+            return paginas;
+        }
+
+        public List<DataAccess.Inventario> ObtenerInventarioPorRango(int rango, int pagina)
+        {
+            List<DataAccess.Inventario> inventarios = new List<DataAccess.Inventario>();
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var inventario in (context.Inventario.OrderBy(b => b.Producto1.Nombre).Skip(rango * (pagina - 1)).Take(rango)))
+                    {
+                        inventario.Producto1 = inventario.Producto1;
+                        inventarios.Add(inventario);
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los Inventarios");
+                }
             }
 
             return inventarios;

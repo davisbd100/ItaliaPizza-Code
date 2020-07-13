@@ -56,6 +56,9 @@
     <Compile Include="Cliente.cs">
       <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DiaVenta.cs">
+      <DependentUpon>PizzaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Empleado.cs">
       <DependentUpon>ItaliaPizaDataBaseModel.tt</DependentUpon>
     </Compile>

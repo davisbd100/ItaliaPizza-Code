@@ -13,9 +13,9 @@ namespace BusinessLogic
         public int CantidadIngreso { get; set; }
         public float PrecioCompra { get; set; }
         public DateTime FechaIngreso { get; set; }
-        public DateTime Caducidad { get; set; }
+        public string Caducidad { get; set; }
         public int ExistenciaTotal { get; set; }
-        public UnidadDeMedidaEnum UnidadDeMedida { get; set; }
+        public string UnidadDeMedida { get; set; }
 
         public Inventario() { }
 
@@ -29,7 +29,8 @@ namespace BusinessLogic
         Mililitro,
         Cucharada,
         Taza,
-        Galón
+        Galón,
+        Unidad
     }
 
 }

@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,7 +45,27 @@
     <Compile Include="AutenticacionController.cs" />
     <Compile Include="ClienteController.cs" />
     <Compile Include="EmpleadoController.cs" />
+    <Compile Include="BaseDeDatosController.cs" />
+    <Compile Include="InventarioController.cs" />
+    <Compile Include="PedidoController.cs" />
+    <Compile Include="ProductoController.cs" />
+    <Compile Include="ProductoIngredienteController.cs" />
+    <Compile Include="ProductoVentaController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecetaController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{c1e97369-553e-481c-839d-459e7db21b48}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{3a363472-3787-445b-94a0-f67a532341c9}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutenticacionInicioSesion\AutenticacionInicioSesion.csproj">

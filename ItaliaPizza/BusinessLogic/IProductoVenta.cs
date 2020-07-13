@@ -11,10 +11,13 @@ namespace BusinessLogic
     interface IProductoVenta
     {
         List<ProductoVenta> GetProductosVenta(int rango);
+        List<ProductoVenta> GetProductosVentaSinRecetaAsignada(int rango);
         List<ProductoVenta> ProductoVentaBusqueda(string busqueda);
-        ProductoVenta ObtenerProductoVentaPorid(string codigo);
-        ResultadoOperacion AddProductoVenta(ProductoVenta productoVenta);
-        ResultadoOperacion EliminarProductoVenta(ProductoVenta productoVenta);
+        List<ProductoVenta> ProductoVentaBusquedaRango(int rango, string busqueda);
+        int ObtenerPaginasDeTablaProductoVenta();
+        ProductoVenta ObtenerProductoVentaPorid(int codigo);
+        ResultadoOperacion AddProductoVenta(ProductoVenta productoVenta, Inventario inventario);
+        ResultadoOperacion EliminarProductoVenta(int productoVenta);
         ResultadoOperacion EditarProductoVenta(ProductoVenta productoVenta);
     }
 }

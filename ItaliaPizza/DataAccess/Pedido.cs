@@ -26,10 +26,13 @@ namespace DataAccess
         public Nullable<int> Estatus { get; set; }
         public Nullable<int> Cliente { get; set; }
         public Nullable<int> Empleado { get; set; }
+        public Nullable<int> DiaVenta { get; set; }
     
         public virtual Estatus Estatus1 { get; set; }
         public virtual PedidoDomicilio PedidoDomicilio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PedidoProducto> PedidoProducto { get; set; }
+        public virtual DiaVenta DiaVenta1 { get; set; }
+        public virtual DiaVenta DiaVenta2 { get; set; }
     }
 }
