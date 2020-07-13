@@ -16,7 +16,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="Recetas" HorizontalAlignment="Left" Margin="250.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132.397" Width="253.143" Background="{x:Null}"/>
-        <Button Content="" HorizontalAlignment="Left" Height="87.021" Margin="752,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}">
+        <Button x:Name="btn_Nuevo" Content="" HorizontalAlignment="Left" Height="87.021" Margin="752,26.732,0,0" VerticalAlignment="Top" Width="113.333" BorderBrush="{x:Null}" Click="btn_Nuevo_Click">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Receta.png" Stretch="Uniform"/>
             </Button.Background>

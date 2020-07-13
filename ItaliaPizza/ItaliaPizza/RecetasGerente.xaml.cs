@@ -23,5 +23,11 @@ namespace ItaliaPizza
         {
             InitializeComponent();
         }
+
+        private void btn_Nuevo_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrarRecetaSeleccionProducto producto = new RegistrarRecetaSeleccionProducto();
+            producto.Show();
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace ItaliaPizza
         {
             InitializeComponent();
             LlenarGridIngrediente();
+            productoMandado = producto;
         }
 
         public RegistrarReceta()
@@ -33,8 +34,9 @@ namespace ItaliaPizza
             LlenarGridIngrediente();
         }
 
+        Producto productoMandado = new Producto();
         const int POSICION_FUERA_RANGO = -1;
-        List<Producto> listaIngredinetes = new List<Producto>();
+        List<ProductoIngrediente> listaIngredinetes = new List<ProductoIngrediente>();
 
 
         private void LlenarGridIngrediente()
@@ -53,8 +55,6 @@ namespace ItaliaPizza
             dtg_IngredientesReceta.ItemsSource = listaIngredinetes;
 
         }
-
-        
 
         private bool ValidarSeleccion()
         {
@@ -85,7 +85,7 @@ namespace ItaliaPizza
             if (posicion != POSICION_FUERA_RANGO && ValidarSeleccion())
             {
 
-                var ingredienteSeleccionado = dtg_Ingredientes.SelectedItem as Producto;
+                var ingredienteSeleccionado = dtg_Ingredientes.SelectedItem as ProductoIngrediente;
 
                 listaIngredinetes.Add(ingredienteSeleccionado);
                 LlenarGridIngredienteReceta();
@@ -105,6 +105,44 @@ namespace ItaliaPizza
 
             }
 
+        }
+
+        private bool VerificarCampos()
+        {
+            bool resultado = true;
+            if(txb_Nombre.Text == string.Empty && txb_Procedimiento.Text == string.Empty && txb_Rendimiento.Text == string.Empty)
+            {
+                resultado = false;
+            }
+
+            return resultado;
+        }
+
+        private void RegistarReceta()
+        {
+            RecetaController recetaController = new RecetaController();
+            var resultado = recetaController.CrearReceta(txb_Nombre.Text, txb_Procedimiento.Text, txb_Rendimiento.Text, listaIngredinetes, productoMandado.idProducto);
+            if(resultado == ResultadoOperacionEnum.ResultadoOperacion.Exito)
+            {
+                MessageBox.Show("Receta registrada con éxito");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo registrar la receta");
+            }
+             
+        }
+
+        private void btn_Registrar_Click(object sender, RoutedEventArgs e)
+        {
+            if (VerificarCampos())
+            {
+                RegistarReceta();
+            }
+            else
+            {
+                MessageBox.Show("Hay campos vacios, verifique su información");
+            }
         }
     }
 }
