@@ -17,27 +17,33 @@
             </Button>
 
             <Label Content="Nombre:" HorizontalAlignment="Left" Margin="135.687,129.765,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-            <TextBox HorizontalAlignment="Left" Margin="301.195,137.509,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400.933" FontFamily="Calibri Light" FontSize="22"/>
+            <TextBox x:Name="txb_Nombre" HorizontalAlignment="Left" Margin="301.195,137.509,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400.933" FontFamily="Calibri Light" FontSize="22"/>
             <Label Content="Procedimiento" HorizontalAlignment="Left" Margin="84.836,261.385,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
             <Label Content="Rendimiento" HorizontalAlignment="Left" Margin="100.977,201.257,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-            <Button Content="REGISTRAR" HorizontalAlignment="Left" Margin="602,879,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="158"/>
+            <Button x:Name="btn_Registrar" Content="REGISTRAR" HorizontalAlignment="Left" Margin="602,879,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="158"/>
             <Button Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="441,882,0,0" VerticalAlignment="Top" Width="121" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
-            <TextBox HorizontalAlignment="Left" Height="155.5" Margin="301.195,261.385,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400.933"/>
-            <TextBox HorizontalAlignment="Left" Margin="301.195,201.257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400.933" FontFamily="Calibri Light" FontSize="22"/>
+            <TextBox x:Name="txb_Procedimiento" HorizontalAlignment="Left" Height="155.5" Margin="301.195,261.385,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400.933"/>
+            <TextBox x:Name="txb_Rendimiento" HorizontalAlignment="Left" Margin="301.195,201.257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400.933" FontFamily="Calibri Light" FontSize="22"/>
             <Label Content="Ingredientes en la receta&#xD;&#xA;" HorizontalAlignment="Left" Margin="533.49,454.885,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
             <Label Content="Ingredientes" HorizontalAlignment="Left" Margin="43.416,454.885,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-            <DataGrid HorizontalAlignment="Left" Height="279.5" Margin="43.416,507.5,0,0" VerticalAlignment="Top" Width="324.5">
+            <DataGrid x:Name="dtg_Ingredientes" HorizontalAlignment="Left" Height="279.5" Margin="43.416,507.5,0,0" VerticalAlignment="Top" Width="324.5" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
                 <DataGrid.Columns>
-                <DataGridTextColumn Header="Código" Binding="{Binding Código}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Cantidad"  />
-
+                    <DataGridTextColumn Header="Código" Binding="{Binding Código}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Descripción" Binding="{Binding Descripción}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="idProducto" Binding="{Binding idProducto}" IsReadOnly="True" Visibility="Hidden"/>
                 </DataGrid.Columns>
 
             </DataGrid>
-            <Button Content="Agregar -&gt;" HorizontalAlignment="Left" Margin="406.5,560,0,0" VerticalAlignment="Top" Width="84" Height="25.96"/>
-            <Button Content="&lt;- Quitar" HorizontalAlignment="Left" Margin="406.5,607,0,0" VerticalAlignment="Top" Width="84" Height="25.96"/>
-            <DataGrid HorizontalAlignment="Left" Height="279.5" Margin="514.416,507.5,0,0" VerticalAlignment="Top" Width="324.5"/>
+            <Button x:Name="btn_agregarAGrid" Content="AGREGAR" HorizontalAlignment="Left" Margin="406.5,560,0,0" VerticalAlignment="Top"  Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="12" FontWeight="Bold" Width="84" Height="25.96" Click="btn_agregarAGrid_Click" />
+            <Button x:Name="btn_ElimiarDeGrid" Content="QUITAR" HorizontalAlignment="Left" Margin="406.5,607,0,0" VerticalAlignment="Top" Width="84" Height="25.96"  Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="12" Click="btn_ElimiarDeGrid_Click"/>
+            <DataGrid x:Name="dtg_IngredientesReceta" HorizontalAlignment="Left" Height="279.5" Margin="514.416,507.5,0,0" VerticalAlignment="Top" Width="324.5" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Código" Binding="{Binding Código}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Cantidad"  />
+                </DataGrid.Columns>
+            </DataGrid>
 
         </Grid>
     </ScrollViewer>
