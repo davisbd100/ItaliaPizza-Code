@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccess;
 using System.Data.Entity.Core;
+using System.Data.Entity;
+using System.Management.Instrumentation;
 
 namespace BusinessLogic
 {
@@ -19,15 +21,16 @@ namespace BusinessLogic
             {
                 try
                 {
-                var tempPedido = context.Pedido
-                                .Where(b => b.idPedido == pedido.idPedido)
-                                .FirstOrDefault();
+                    var tempPedido = context.Pedido
+                                    .Where(b => b.idPedido == pedido.idPedido)
+                                    .FirstOrDefault();
 
-                    tempPedido.Estatus1 = estatus;
+                    tempPedido.Estatus = estatus.idEstatus;
                     context.SaveChanges();
 
                     resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;
-                }catch (EntityException)
+                }
+                catch (EntityException)
                 {
                     resultado = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
                 }
@@ -40,9 +43,71 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int pedido, List<ProductoVenta> productos)
+        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int pedido, ICollection<DataAccess.PedidoProducto> productos)
         {
-            throw new NotImplementedException();
+            ResultadoOperacionEnum.ResultadoOperacion resultado = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    var tempPedido = context.Pedido.Where(b => b.idPedido == pedido).FirstOrDefault();
+                    for (int i = 0; i < tempPedido.PedidoProducto.Count; i++)
+                    {
+                        context.PedidoProducto.Remove(context.PedidoProducto.Where(b => b.idPedido == tempPedido.idPedido).First()); //Buscar otra forma de hacerlo
+                    }
+                    foreach (var producto in productos)
+                    {
+                        if (!tempPedido.PedidoProducto.Contains(producto))
+                        {
+                            context.PedidoProducto.Add(producto);
+                        }
+                    }
+                    context.SaveChanges();
+
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;
+                }
+                catch (EntityException)
+                {
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
+                }
+            }
+            return resultado;
+        }
+
+        public DataAccess.Pedido GetPedidoConProductoPorId(int id)
+        {
+            DataAccess.Pedido pedido = new DataAccess.Pedido();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    pedido = context.Pedido.Where(b => b.idPedido == id).FirstOrDefault();
+                    if (pedido == null)
+                    {
+                        throw new InstanceNotFoundException();
+                    }else if(!pedido.Estatus1.NombreEstatus.Equals("En Espera"))
+                    {
+                        throw new FormatException();
+                    }
+                    pedido.PedidoProducto = pedido.PedidoProducto;
+                    foreach (var pedidoProducto in pedido.PedidoProducto)
+                    {
+                        pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
+                        pedidoProducto.ProductoVenta.Producto = pedidoProducto.ProductoVenta.Producto;
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new EntityException("Error al conectar a la bd");
+                }catch (InstanceNotFoundException)
+                {
+                    throw new InstanceNotFoundException("No se encontro el pedido");
+                }catch (FormatException)
+                {
+                    throw new FormatException("El pedido no se encuentra en espera");
+                }
+            }
+            return pedido;
         }
 
         public Pedido GetPedidoPorId(int id)
@@ -118,6 +183,32 @@ namespace BusinessLogic
             return pedidos;
         }
 
+        public int ObtenerPaginasDeTablaPedido(int elementosPorPagina)
+        {
+            int paginas = 0;
+
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT CEILING((COUNT(*) / @elementos)) AS total FROM dbo.Pedido", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@elementos", (float)elementosPorPagina));
+                    paginas = (int)command.ExecuteScalar();
+                }
+                connection.Close();
+            }
+            return paginas;
+        }
+
         public List<DataAccess.Pedido> ObtenerPedidosPorFecha(DateTime inicial, DateTime final)
         {
             List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
@@ -127,7 +218,7 @@ namespace BusinessLogic
                 {
                     foreach (var pedido in context.Pedido)
                     {
-                        if(pedido.FechaPedido >= inicial && pedido.FechaPedido <= final)
+                        if (pedido.FechaPedido >= inicial && pedido.FechaPedido <= final)
                         {
                             pedido.PedidoProducto = pedido.PedidoProducto;
                             foreach (var pedidoProducto in pedido.PedidoProducto)
@@ -146,6 +237,33 @@ namespace BusinessLogic
             }
 
             return pedidos;
+        }
+
+        public List<DataAccess.Pedido> ObtenerPedidosPorRangoCocinero(int rango, int pagina)
+        {
+            List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    pedidos = context.Pedido
+                        .Where(b => b.Estatus1.NombreEstatus == "En espera" || b.Estatus1.NombreEstatus == "En preparación")
+                        .Skip(rango * pagina)
+                        .Take(rango)
+                        .ToList();
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los pedidos");
+                }
+            }
+
+            return pedidos;
+        }
+
+        public List<DataAccess.Pedido> ObtenerPedidosPorRangoCocinero(int rango)
+        {
+            throw new NotImplementedException();
         }
     }
 }

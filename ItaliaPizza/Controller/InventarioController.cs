@@ -9,12 +9,20 @@ namespace Controller
 {
     public class InventarioController
     {
-
+        const int ElementosPorPagina = 20;
         public List<DataAccess.Inventario> ObtenerInventario()
         {
             List<DataAccess.Inventario> resultado = new List<DataAccess.Inventario>();
             InventarioDAO inventarioDAO = new InventarioDAO();
             resultado = inventarioDAO.ObtenerTodosLosInventarios();
+            return resultado;
+        }
+
+        public List<DataAccess.Inventario> ObtenerIngresosInventario(int pagina)
+        {
+            List<DataAccess.Inventario> resultado = new List<DataAccess.Inventario>();
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            resultado = inventarioDAO.ObtenerTodosLosInventariosConIngreso(ElementosPorPagina, pagina);
             return resultado;
         }
 
@@ -26,34 +34,45 @@ namespace Controller
             return resultado;
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion ComprobarInventarioFinal(List<DataAccess.Inventario> inventarios)
+        public ResultadoOperacionEnum.ResultadoOperacion CerrarDia()
         {
             ResultadoOperacionEnum.ResultadoOperacion resultado = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
-            InventarioDAO inventarioDAO = new InventarioDAO();
-            List<DataAccess.Inventario> inventarioBD = inventarioDAO.ObtenerTodosLosInventarios();
             PedidoDAO pedidoDAO = new PedidoDAO();
-            List<DataAccess.Pedido> pedidos = pedidoDAO.ObtenerPedidosPorFecha(DateTime.Now.AddDays(-1), DateTime.Now);
+            List<DataAccess.Pedido> pedidos = pedidoDAO.ObtenerPedidosPorFecha((DateTime.Now.AddDays(-1)), DateTime.Now);
+            DataAccess.DiaVenta diaVenta = new DataAccess.DiaVenta();
+            diaVenta.Ingresos = 0;
+            diaVenta.Fecha = DateTime.Now;
             foreach (var pedido in pedidos)
             {
-                foreach (var pedidoProducto in pedido.PedidoProducto)
+                if (pedido.Estatus1.NombreEstatus == "Finalizado")
                 {
-                    for (int i = 0; i < pedidoProducto.Cantidad; i++)
+                    foreach (var pedidoProducto in pedido.PedidoProducto)
                     {
-                        if (pedidoProducto.ProductoVenta.TieneReceta == true)
-                        {
-
-                        }
-                        else
-                        {
-                            foreach (var ingrediente in pedidoProducto.ProductoVenta.Receta1.RecetaIngrediente)
-                            {
-                            
-                            }
-                        }
+                        diaVenta.Ingresos += pedidoProducto.Precio;
                     }
+                    diaVenta.Pedido.Add(pedido);
                 }
             }
-            resultado = inventarioDAO.ActualizarInventario(inventarios);
+            VentaDAO ventaDAO = new VentaDAO();
+            resultado = ventaDAO.GuardarDiaVenta(diaVenta);
+
+            return resultado;
+        }
+
+
+        public List<DataAccess.Inventario> ObtenerInventarioPorRango(int pagina)
+        {
+            List<DataAccess.Inventario> resultado = new List<DataAccess.Inventario>();
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            resultado = inventarioDAO.ObtenerInventarioPorRango(ElementosPorPagina, pagina);
+            return resultado;
+        }
+
+        public int ObtenerPaginasDeTablaInventario()
+        {
+            int resultado;
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            resultado = inventarioDAO.ObtenerPaginasDeTablaInventario(ElementosPorPagina);
             return resultado;
         }
 

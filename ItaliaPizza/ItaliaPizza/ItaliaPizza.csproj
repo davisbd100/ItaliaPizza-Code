@@ -71,6 +71,9 @@
     <Compile Include="Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ProductosUC.xaml.cs">
+      <DependentUpon>ProductosUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DarDeBajaCliente.xaml.cs">
       <DependentUpon>DarDeBajaCliente.xaml</DependentUpon>
     </Compile>
@@ -116,8 +119,11 @@
     <Compile Include="ListaPedidoVendedor.xaml.cs">
       <DependentUpon>ListaPedidoVendedor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RecetasGerente.xaml.cs">
+        <Compile Include="RecetasGerente.xaml.cs">
       <DependentUpon>RecetasGerente.xaml</DependentUpon>
+        </Compile>
+      <Compile Include="Pedido.xaml.cs">
+      <DependentUpon>Pedido.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistrarCliente.xaml.cs">
       <DependentUpon>RegistrarCliente.xaml</DependentUpon>
@@ -146,6 +152,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Clientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProductosUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,9 +231,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="RecetasGerente.xaml">
+        <Page Include="RecetasGerente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Include="Pedido.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="RegistrarCliente.xaml">
       <SubType>Designer</SubType>

@@ -13,6 +13,8 @@ namespace BusinessLogic
         List<ProductoVenta> GetProductosVenta(int rango);
         List<ProductoVenta> GetProductosVentaSinRecetaAsignada(int rango);
         List<ProductoVenta> ProductoVentaBusqueda(string busqueda);
+        List<ProductoVenta> ProductoVentaBusquedaRango(int rango, string busqueda);
+        int ObtenerPaginasDeTablaProductoVenta();
         ProductoVenta ObtenerProductoVentaPorid(int codigo);
         ResultadoOperacion AddProductoVenta(ProductoVenta productoVenta, Inventario inventario);
         ResultadoOperacion EliminarProductoVenta(int productoVenta);

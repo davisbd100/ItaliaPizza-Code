@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItaliaPizza"
         mc:Ignorable="d"
-        Title="Empleados" Height="680" Width="1280" Icon="Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="Actualizar Inventario" Height="680" Width="1280" Icon="Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.Background>
         <ImageBrush ImageSource="Recursos/FondoInicioPizzaInvertido.jpg"/>
     </Window.Background>
@@ -85,6 +85,11 @@
         <Button x:Name="btGuardar" Content="GUARDAR" HorizontalAlignment="Left" Margin="746.42,601.893,0,12.583" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Width="158.72" Click="Button_Click_1"/>
         <Button x:Name="btCancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="588.266,603.943,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="Button_Click"/>
         <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Height="46" Margin="526,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" FontSize="36"/>
+        <TextBlock x:Name="tbPaginaActual" Text="1" HorizontalAlignment="Left" Margin="455,574,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
+        <Button x:Name="btPaginaAnterior" Content="Anterior" HorizontalAlignment="Left" Margin="346,575,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.513,1.575" Click="btPaginaAnterior_Click"/>
+        <Button x:Name="btPaginaSiguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="566,575,0,0" VerticalAlignment="Top" Width="75" Click="btPaginaSiguiente_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="481,574,0,0" TextWrapping="Wrap" Text="De" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
+        <TextBlock x:Name="tbPaginaTotal" HorizontalAlignment="Left" Margin="526,575,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
 
     </Grid>
 </Window>

@@ -21,12 +21,16 @@ namespace PrototiposItaliaPizza
     /// </summary>
     public partial class InventarioFinal : Window
     {
+        const int POSICION_FUERA_RANGO = -1;
         List<DataAccess.Inventario> inventario = new List<DataAccess.Inventario>();
         InventarioController controller = new InventarioController();
+        int PaginaActual = 1;
+        int PaginaTotal = 1;
+
         public InventarioFinal()
         {
             InitializeComponent();
-            inventario = controller.ObtenerInventario();
+            inventario = controller.ObtenerIngresosInventario(PaginaActual);
             if (!inventario.Any())
             {
                 MessageBox.Show("No se tienen productos registrados");
@@ -34,6 +38,9 @@ namespace PrototiposItaliaPizza
             }
             else
             {
+                tbPaginaActual.Text = PaginaActual.ToString();
+                PaginaTotal = controller.ObtenerPaginasDeTablaInventario();
+                tbPaginaTotal.Text = PaginaTotal.ToString();
                 dgInventario.ItemsSource = inventario;
             }
         }
@@ -62,9 +69,54 @@ namespace PrototiposItaliaPizza
             this.Close();
         }
 
-        private void btAceptar_Click(object sender, RoutedEventArgs e)
+        private void dgInventario_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            controller.ComprobarInventarioFinal(inventario);
+            int posicion = dgInventario.SelectedIndex;
+
+            if (posicion != POSICION_FUERA_RANGO)
+            {
+                dgPedidoProducto.ItemsSource = null;
+                dgPedidoProducto.ItemsSource = ((DataAccess.Inventario)dgInventario.SelectedItem).ProductoInventario;
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar solo un producto");
+            }
+        }
+
+        private void btPaginaAnterior_Click(object sender, RoutedEventArgs e)
+        {
+            if ((PaginaActual - 1) < 1)
+            {
+                MessageBox.Show("No se puede regresar mas");
+            }
+            else
+            {
+                PaginaActual--;
+                inventario = controller.ObtenerIngresosInventario(PaginaActual);
+                tbPaginaActual.Text = PaginaActual.ToString();
+                dgInventario.ItemsSource = null;
+                dgInventario.ItemsSource = inventario;
+
+            }
+        }
+
+        private void btPaginaSiguiente_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (PaginaActual == PaginaTotal)
+            {
+                MessageBox.Show("No se puede avanzar mas");
+            }
+            else
+            {
+                PaginaActual++;
+                inventario = controller.ObtenerIngresosInventario(PaginaActual);
+                tbPaginaActual.Text = PaginaActual.ToString();
+                dgInventario.ItemsSource = null;
+                dgInventario.ItemsSource = inventario;
+
+            }
         }
     }
 }
