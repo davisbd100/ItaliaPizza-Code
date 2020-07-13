@@ -11,6 +11,7 @@ namespace BusinessLogic
     interface IProductoVenta
     {
         List<ProductoVenta> GetProductosVenta(int rango);
+        List<ProductoVenta> GetProductosVentaSinRecetaAsignada(int rango);
         List<ProductoVenta> ProductoVentaBusqueda(string busqueda);
         List<ProductoVenta> ProductoVentaBusquedaRango(int rango, string busqueda);
         int ObtenerPaginasDeTablaProductoVenta();

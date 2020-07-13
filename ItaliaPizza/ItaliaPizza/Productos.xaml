@@ -103,8 +103,6 @@
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Descripción" Binding="{Binding Descripción}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="idProducto" Binding="{Binding idProducto}" IsReadOnly="True" Visibility="Hidden"/>
-
-
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="btn_actualizarBusqueda" Content="Actualizar" HorizontalAlignment="Left" Margin="328,220,0,0" VerticalAlignment="Top" Width="92" Height="29" Click="btn_actualizarBusqueda_Click" />
