@@ -177,6 +177,7 @@ namespace BusinessLogic
                     foreach (var inventario in context.Inventario)
                     {
                         inventario.Producto1 = inventario.Producto1;
+                        inventario.ProductoInventario = inventario.ProductoInventario;
                         inventarios.Add(inventario);
                     }
                 }

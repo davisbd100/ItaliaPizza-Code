@@ -110,5 +110,13 @@ namespace Controller
             resultado = inventarioDAO.ObtenerPaginasDeTablaProductoVenta();
             return resultado;
         }
+
+        public DataAccess.ProductoVenta ObtenerProductoPorIdEE(int id)
+        {
+            DataAccess.ProductoVenta resultado;
+            ProductoVentaDAO inventarioDAO = new ProductoVentaDAO();
+            resultado = inventarioDAO.ObtenerProductoVentaPoridEE(id);
+            return resultado;
+        }
     }
 }

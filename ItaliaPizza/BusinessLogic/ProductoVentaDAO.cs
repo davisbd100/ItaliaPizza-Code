@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -219,15 +220,15 @@ namespace BusinessLogic
                     throw (ex);
                 }
 
-                using (SqlCommand command = new SqlCommand("select Codigo, Nombre, Descripcion, idProducto  from dbo.ProductoVenta left join dbo.Producto  on" +
-                    " dbo.Producto.idProducto = dbo.ProductoVenta.idProductoVenta WHERE dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset @Rango rows fetch next 20 rows only", connection))
+                using (SqlCommand command = new SqlCommand("select Codigo, Nombre, Descripcion, idProductoVenta, PrecioPublico  from dbo.ProductoVenta left join dbo.Producto  on" +
+                    " dbo.Producto.Codigo = dbo.ProductoVenta.idProductoVenta WHERE dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset @Rango rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         ProductoVenta productoVenta = new ProductoVenta();
-                        productoVenta.idProducto = Convert.ToInt32(reader["idProducto"].ToString());
+                        productoVenta.idProducto = Convert.ToInt32(reader["idProductoVenta"].ToString());
                         productoVenta.Código = reader["Codigo"].ToString();
                         productoVenta.Nombre = reader["Nombre"].ToString();
                         productoVenta.PrecioPúblico = float.Parse(reader["PrecioPublico"].ToString());
@@ -344,6 +345,25 @@ namespace BusinessLogic
                 connection.Close();
             }
             return productoVenta;
+        }
+
+        public DataAccess.ProductoVenta ObtenerProductoVentaPoridEE(int id)
+        {
+            DataAccess.ProductoVenta resultado = new DataAccess.ProductoVenta();
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    resultado = context.ProductoVenta.FirstOrDefault(b => b.idProductoVenta == id);
+                    resultado.Producto = context.ProductoVenta.FirstOrDefault(b => b.idProductoVenta == id).Producto;
+                }
+                catch (EntityException)
+                {
+                    throw new EntityException();
+                }
+            }
+
+            return resultado;
         }
 
         public List<ProductoVenta> ProductoVentaBusqueda(string busqueda)

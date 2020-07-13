@@ -6,6 +6,7 @@ using System.Data.Entity.Core;
 using System.Linq;
 using System.Management.Instrumentation;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,7 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PrototiposItaliaPizza
+namespace ItaliaPizza
 {
     /// <summary>
     /// Lógica de interacción para EditarCliente.xaml
@@ -68,13 +69,15 @@ namespace PrototiposItaliaPizza
             lbIdCliente.Content = PedidoAEditar.Cliente;
             lbIdPedido.Content = PedidoAEditar.idPedido;
             double CostoTotal = 0;
-            
+            lbNuevoPrecio.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
+
 
             foreach (var pedidoProducto in PedidoAEditar.PedidoProducto)
             {
                 CostoTotal += (double)pedidoProducto.Precio;
             }
             lbPrecioAnterior.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
+            lbNuevoPrecio.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
         }
 
         private void ActualizarDataGrid()
@@ -87,7 +90,9 @@ namespace PrototiposItaliaPizza
         {
             if (dgProductosDePedido.SelectedIndex != -1)
             {
-                PedidoAEditar.PedidoProducto.Remove((DataAccess.PedidoProducto)dgProductosDePedido.SelectedItem);
+                DataAccess.PedidoProducto tempPedidoProducto = (DataAccess.PedidoProducto)dgProductosDePedido.SelectedItem;
+                ActualizarLabelPrecio(-((double)tempPedidoProducto.Precio));
+                PedidoAEditar.PedidoProducto.Remove(tempPedidoProducto);
                 ActualizarDataGrid();
             }
         }
@@ -99,7 +104,14 @@ namespace PrototiposItaliaPizza
 
         private void btEditar_Click(object sender, RoutedEventArgs e)
         {
-            GuardarEdicionPedido();
+            if (PedidoAEditar.PedidoProducto.Any())
+            {
+                GuardarEdicionPedido();
+            }
+            else
+            {
+                MessageBox.Show("No se puede guardar un pedido sin productos");
+            }
         }
 
         private void GuardarEdicionPedido()
@@ -117,6 +129,57 @@ namespace PrototiposItaliaPizza
                     MessageBox.Show("Error al conectar con la base de datos, reintentar mas tarde");
                     break;
             }
+        }
+
+        private void ProductosUC_ProductoUserControlClicked(object sender, EventArgs e)
+        {
+            ProductoVenta tempProducto = ((ProductoVenta)sender);
+            ProductoVentaController producto = new ProductoVentaController();
+            int cantidad = 1;
+            DataAccess.PedidoProducto tempPedidoProducto = new DataAccess.PedidoProducto()
+            {
+                Cantidad = cantidad,
+                idPedido = PedidoAEditar.idPedido,
+                ProductoVenta = producto.ObtenerProductoPorIdEE(int.Parse(tempProducto.Código)),
+                Precio = cantidad * tempProducto.PrecioPúblico
+            };
+            foreach (DataAccess.PedidoProducto item in dgProductosDePedido.Items)
+            {
+                if (item.ProductoVenta.idProductoVenta == tempPedidoProducto.ProductoVenta.idProductoVenta)
+                {
+                    item.Cantidad++;
+                    item.Precio += tempPedidoProducto.ProductoVenta.PrecioPublico;
+                    ActualizarLabelPrecio((double)tempPedidoProducto.Precio);
+                    ActualizarDataGrid();
+                    return;
+                }
+            }
+            ActualizarLabelPrecio((double)tempPedidoProducto.Precio);
+            PedidoAEditar.PedidoProducto.Add(tempPedidoProducto);
+            ActualizarDataGrid();
+        }
+
+        void ActualizarLabelPrecio(double PrecioAAgregar)
+        {
+            double oldNuevoPrecio = ObtenerPrecioDouble(lbNuevoPrecio.Content.ToString());
+            double nuevoPrecio = oldNuevoPrecio + PrecioAAgregar;
+            lbNuevoPrecio.Content = String.Format("{0:0.00}", nuevoPrecio) + "  MXN";
+        }
+
+
+        double ObtenerPrecioDouble(String precio)
+        {
+            var match = Regex.Match(precio, @"([-+]?[0-9]*\.?[0-9]+)");
+            double resultado = -1;
+            if (match.Success)
+            {
+                resultado = Convert.ToDouble(match.Groups[1].Value);
+            }
+            else
+            {
+                Console.WriteLine("No numeros encontrados");
+            }
+            return resultado;
         }
     }
 }
