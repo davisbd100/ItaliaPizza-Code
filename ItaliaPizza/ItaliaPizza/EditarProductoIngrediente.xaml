@@ -9,8 +9,8 @@
 
     <Grid>
         <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="0,14.576,0,0" VerticalAlignment="Top" Width="558.574" Fill="#FFB31423"/>
-        <Label Content="Editar producto" HorizontalAlignment="Left" Margin="181.695,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>
-        <Button Content="" HorizontalAlignment="Left" Height="73.597" Margin="84.836,10,0,0" VerticalAlignment="Top" Width="72.333" BorderBrush="{x:Null}">
+        <Label Content="Editar producto ingrediente" HorizontalAlignment="Left" Margin="85,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>
+        <Button Content="" HorizontalAlignment="Left" Height="73" Margin="23,15,0,0" VerticalAlignment="Top" Width="72" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Recursos/Editar.png" Stretch="Uniform"/>
             </Button.Background>

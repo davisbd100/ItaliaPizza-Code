@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItaliaPizza"
         mc:Ignorable="d"
- Title="Nuevo Producto" Height="350" Width="500" Icon="/Recursos/Baja.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+ Title="Nuevo Producto" Height="350" Width="500" Icon="Recursos/Producto.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="0,14.576,0,0" VerticalAlignment="Top" Width="493.333" Fill="#FFB31423"/>
         <Label Content="Nuevo producto " HorizontalAlignment="Left" Margin="124,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>

@@ -43,5 +43,20 @@ namespace ItaliaPizza
             txb_precioPublico.Text = productoVenta.PrecioPúblico.ToString();
 
         }
+
+        private void ButtonCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("¿Está seguro que desea cancelar?", "Cancelar", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    Close();
+                    break;
+                case MessageBoxResult.No:
+                    RegistrarCliente registrarCliente = new RegistrarCliente();
+                    registrarCliente.Close();
+                    break;
+            }
+        }
     }
 }

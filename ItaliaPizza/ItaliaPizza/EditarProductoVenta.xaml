@@ -8,8 +8,8 @@
         Title="Editar Producto Venta" Height="500" Width="562" Icon="/Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="0,14.576,0,0" VerticalAlignment="Top" Width="558.574" Fill="#FFB31423"/>
-        <Label Content="Editar producto" HorizontalAlignment="Left" Margin="181.695,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>
-        <Button Content="" HorizontalAlignment="Left" Height="73.597" Margin="84.836,10,0,0" VerticalAlignment="Top" Width="72.333" BorderBrush="{x:Null}">
+        <Label Content="Editar producto venta" HorizontalAlignment="Left" Margin="109,0,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>
+        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="42,10,0,0" VerticalAlignment="Top" Width="72" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/Recursos/Editar.png" Stretch="Uniform"/>
             </Button.Background>
@@ -26,7 +26,7 @@
         <TextBox x:Name="txb_restriccion" HorizontalAlignment="Left" Margin="219,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
         <Label Content="Restricción:" HorizontalAlignment="Left" Margin="96,324,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
         <Button x:Name="btn_Editar" Content="Editar" HorizontalAlignment="Left" Margin="326,397,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="159"/>
-        <Button Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="219,397,0,0" VerticalAlignment="Top" Width="91" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
+        <Button x:Name="ButtonCancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="219,397,0,0" VerticalAlignment="Top" Width="91" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonCancelar_Click"/>
         <Grid x:Name="GridIngrediente" Visibility="Collapsed" >
             <Label Content="Tipo de ingrediente" HorizontalAlignment="Left" Margin="18.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
             <ComboBox HorizontalAlignment="Left" Margin="224,526.842,0,0" VerticalAlignment="Top" Width="254" Height="23.6"/>
