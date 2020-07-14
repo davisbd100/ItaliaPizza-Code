@@ -111,7 +111,6 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="&lt; 1 &gt;" HorizontalAlignment="Left" Margin="360.247,606.387,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}" Width="111.953"/>
-        <TextBlock HorizontalAlignment="Left" Height="19" Margin="163,190,0,0" TextWrapping="Wrap" Text="Pedido #1" VerticalAlignment="Top" Width="139" Background="Gray" Foreground="White" TextAlignment="Center"/>
 
     </Grid>
 </Window>

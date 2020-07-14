@@ -71,6 +71,9 @@
     <Compile Include="Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PedidosUC.xaml.cs">
+      <DependentUpon>PedidosUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ProductosUC.xaml.cs">
       <DependentUpon>ProductosUC.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,10 @@
     <Page Include="Clientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PedidosUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ProductosUC.xaml">
       <SubType>Designer</SubType>
