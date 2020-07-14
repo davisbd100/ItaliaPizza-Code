@@ -58,8 +58,8 @@ namespace ItaliaPizza
             switch (typeEmpleado)
             {
                 case "Gerente":
-                    Empleados empleados = new Empleados();
-                    empleados.Show();
+                    Productos productos = new Productos();
+                    productos.Show();
                     this.Close();
                     break;
                 case "Administrador BD":

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItaliaPizza"
         mc:Ignorable="d"      
-     Title="Registrar receta" Height="996.664" Width="908.457" Icon="Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+     Title="Registrar receta" Height="996.664" Width="908.457" Icon="Recursos/Receta.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <ScrollViewer>
         <Grid>
             <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="0,14.576,0,0" VerticalAlignment="Top" Width="861.457" Fill="#FFB31423"/>
