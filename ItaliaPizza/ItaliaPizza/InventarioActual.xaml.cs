@@ -47,6 +47,12 @@ namespace ItaliaPizza
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             controller.ActualizarExistencias(inventario);
+            MessageBox.Show("Inventario actualizado"); inventario = controller.ObtenerInventarioPorRango(PaginaActual);
+            tbPaginaActual.Text = PaginaActual.ToString();
+            PaginaTotal = controller.ObtenerPaginasDeTablaInventario();
+            tbPaginaTotal.Text = PaginaTotal.ToString();
+            dgInventario.ItemsSource = null;
+            dgInventario.ItemsSource = inventario;
         }
 
         private void btBusqueda_Click(object sender, RoutedEventArgs e)
