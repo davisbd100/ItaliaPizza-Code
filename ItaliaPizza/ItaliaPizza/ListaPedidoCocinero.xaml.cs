@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace PrototiposItaliaPizza
+namespace ItaliaPizza
 {
     /// <summary>
     /// Lógica de interacción para Pedido.xaml
