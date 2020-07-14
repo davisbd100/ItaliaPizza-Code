@@ -55,7 +55,7 @@
                 <SolidColorBrush Color="White" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="102.73" Margin="686,130,0,0" VerticalAlignment="Top" Width="526.943">
+        <Rectangle HorizontalAlignment="Left" Height="118" Margin="686,130,0,0" VerticalAlignment="Top" Width="527">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
@@ -72,12 +72,12 @@
         <Label Content="PASTA" HorizontalAlignment="Left" Margin="43.942,333.081,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="POSTRES / HELADO" HorizontalAlignment="Left" Margin="19.266,406.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="BEBIDAS" HorizontalAlignment="Left" Margin="42.278,478.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <ComboBox x:Name="cbb_NombreCliente" HorizontalAlignment="Left" Margin="769,191,0,0"  VerticalAlignment="Top" Text="Nombre del cliente" FontFamily="Calibri Light" FontSize="20" Width="302" Foreground="#FF6D7276" Height="26" Background="White"  ItemsSource="{Binding Cliente}" DisplayMemberPath="Nombre" SelectedValuePath="idPersona">
+        <ComboBox x:Name="cbb_NombreCliente" HorizontalAlignment="Left" Margin="769,217,0,0"  VerticalAlignment="Top" Text="Nombre del cliente" FontFamily="Calibri Light" FontSize="20" Width="302" Foreground="#FF6D7276" Height="26" Background="White"  ItemsSource="{Binding Cliente}" DisplayMemberPath="Nombre" SelectedValuePath="idCliente">
 
         </ComboBox>
         <Label Content="Cliente:" HorizontalAlignment="Left" Margin="686,187.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}" Width="78.267"/>
-        <Rectangle HorizontalAlignment="Left" Height="26.413" Margin="1177.478,190.877,0,0" VerticalAlignment="Top" Width="27.399" Fill="#FF008050"/>
-        <Button x:Name="btn_NuevoCliente" Content="" HorizontalAlignment="Left" Height="26.413" Margin="1178.876,190.877,0,0" VerticalAlignment="Top" Width="26.001" BorderBrush="{x:Null}" RenderTransformOrigin="2.342,0.65" Click="btn_NuevoCliente_Click" >
+        <Rectangle HorizontalAlignment="Left" Height="26" Margin="1177,212,0,0" VerticalAlignment="Top" Width="28" Fill="#FF008050" RenderTransformOrigin="0.65,1.711"/>
+        <Button x:Name="btn_NuevoCliente" Content="" HorizontalAlignment="Left" Height="27" Margin="1177,212,0,0" VerticalAlignment="Top" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="2.342,0.65" Click="btn_NuevoCliente_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Mas.png" Stretch="Uniform"/>
             </Button.Background>
@@ -96,7 +96,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_Actualizar" Content="Actualizar" HorizontalAlignment="Left" Height="37" Margin="1084,187,0,0" VerticalAlignment="Top" Width="77" Background="Gray" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btn_Actualizar_Click" />
+        <Button x:Name="btn_Actualizar" Content="Actualizar" HorizontalAlignment="Left" Height="37" Margin="1085,206,0,0" VerticalAlignment="Top" Width="77" Background="Gray" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btn_Actualizar_Click" />
 
 
 

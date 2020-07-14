@@ -73,5 +73,12 @@ namespace Controller
             resultado = pedidoDAO.CambiarProductosDePedido(idPedido, productos);
             return resultado;
         }
+
+        public ResultadoOperacionEnum.ResultadoOperacion crearPedidoDomicilio(DataAccess.Pedido pedido, ICollection<DataAccess.PedidoProducto> productos)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado = new ResultadoOperacionEnum.ResultadoOperacion();
+
+            return resultado;
+        }
     }
 }

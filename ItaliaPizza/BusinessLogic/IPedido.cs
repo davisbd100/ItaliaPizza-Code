@@ -10,6 +10,7 @@ namespace BusinessLogic
     {
         Pedido GetPedidoPorId(int id);
         DataAccess.Pedido GetPedidoConProductoPorId(int id);
+        ResultadoOperacionEnum.ResultadoOperacion CrearPedidoDomicilio(Pedido pedido, ICollection<DataAccess.PedidoProducto> productos);
         ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(Pedido pedido, DataAccess.Estatus estatus);
         ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido);
         ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int idPedido, ICollection<DataAccess.PedidoProducto> productos);

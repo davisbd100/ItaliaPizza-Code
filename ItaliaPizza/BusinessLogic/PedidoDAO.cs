@@ -78,6 +78,11 @@ namespace BusinessLogic
             return resultado;
         }
 
+        public ResultadoOperacionEnum.ResultadoOperacion CrearPedidoDomicilio(Pedido pedido, ICollection<PedidoProducto> productos)
+        {
+            throw new NotImplementedException();
+        }
+
         public DataAccess.Pedido GetPedidoConProductoPorId(int id)
         {
             DataAccess.Pedido pedido = new DataAccess.Pedido();
