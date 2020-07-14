@@ -89,11 +89,9 @@ namespace BusinessLogic
                     if (pedido == null)
                     {
                         throw new InstanceNotFoundException();
-                    }else if(!pedido.Estatus1.NombreEstatus.Equals("En Espera"))
-                    {
-                        throw new FormatException();
                     }
                     pedido.PedidoProducto = pedido.PedidoProducto;
+                    pedido.Estatus1 = pedido.Estatus1;
                     foreach (var pedidoProducto in pedido.PedidoProducto)
                     {
                         pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
@@ -106,9 +104,6 @@ namespace BusinessLogic
                 }catch (InstanceNotFoundException)
                 {
                     throw new InstanceNotFoundException("No se encontro el pedido");
-                }catch (FormatException)
-                {
-                    throw new FormatException("El pedido no se encuentra en espera");
                 }
             }
             return pedido;
@@ -177,6 +172,28 @@ namespace BusinessLogic
                 try
                 {
                     pedidos = context.Pedido.ToList();
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los pedidos");
+                }
+            }
+
+            return pedidos;
+        }
+        public List<DataAccess.Pedido> ObtenerListaPedidosDisponibles()
+        {
+            List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    pedidos = context.Pedido.Where(b => b.Estatus1.NombreEstatus.ToString() != "Cancelado" && b.Estatus1.NombreEstatus.ToString() != "Finalizado").ToList();
+                    foreach (var pedido in pedidos)
+                    {
+                        pedido.Estatus1 = pedido.Estatus1;
+                        pedido.PedidoProducto = pedido.PedidoProducto;
+                    }
                 }
                 catch (EntityException)
                 {

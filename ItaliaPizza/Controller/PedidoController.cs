@@ -21,27 +21,59 @@ namespace Controller
             resultado = pedidoDAO.CambiarEstadoPedido(pedido, pedidoDAO.ObtenerEstatusPorNombre("Cancelado"));
             return resultado;
         }
+        public ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(int id, String Estado)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            BusinessLogic.Pedido tempPedido = new BusinessLogic.Pedido()
+            {
+                idPedido = id
+            };
+            resultado = pedidoDAO.CambiarEstadoPedido(tempPedido, pedidoDAO.ObtenerEstatusPorNombre(Estado));
+            return resultado;
+        }
 
         public List<DataAccess.Pedido> ObtenerPedidosCocina()
         {
-            List<DataAccess.Pedido> resultado;
+            List<DataAccess.Pedido> aidList;
             PedidoDAO pedidoDAO = new PedidoDAO();
-            resultado = pedidoDAO.ObtenerListaPedidos();
-            foreach (var item in resultado)
+            aidList = pedidoDAO.ObtenerListaPedidosDisponibles();
+            List<DataAccess.Pedido> resultado = aidList.ToList();
+            if (aidList.Any())
             {
-                if (item.Estatus1.NombreEstatus != "En espera" || item.Estatus1.NombreEstatus != "En Preparación")
+                foreach (var item in aidList)
                 {
-                    resultado.Remove(item);
+                    if (item.Estatus1.NombreEstatus != "En Espera" && item.Estatus1.NombreEstatus != "En Preparación")
+                    {
+                        resultado.Remove(item);
+                    }
                 }
+            }
+            else
+            {
+                throw new DataException("No existen pedidos");
             }
             return resultado;
         }
 
         public List<DataAccess.Pedido> ObtenerPedidosVendedor()
         {
-            List<DataAccess.Pedido> resultado;
+            List<DataAccess.Pedido> aidList;
             PedidoDAO pedidoDAO = new PedidoDAO();
-            resultado = pedidoDAO.ObtenerListaPedidos();
+            aidList = pedidoDAO.ObtenerListaPedidosDisponibles();
+            List<DataAccess.Pedido> resultado = aidList.ToList();
+            if (!aidList.Any())
+            {
+                throw new DataException("No existen pedidos");
+            }
+            return resultado;
+        }
+
+        public DataAccess.Pedido ObtenerPedidoConProductos(int idPedido)
+        {
+            DataAccess.Pedido resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.GetPedidoConProductoPorId(idPedido);
             return resultado;
         }
 

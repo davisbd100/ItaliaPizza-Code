@@ -227,7 +227,7 @@ namespace BusinessLogic
                         inventarios.Add(inventario);
                     }
                 }
-                catch (EntityException e)
+                catch (EntityException)
                 {
                     throw new Exception("Error al obtener los Inventarios");
                 }
