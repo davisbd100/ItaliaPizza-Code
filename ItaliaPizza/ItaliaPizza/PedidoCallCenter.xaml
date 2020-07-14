@@ -8,7 +8,7 @@
         mc:Ignorable="d"
   Title="Pedidos" Height="680" Width="1280" Icon="Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.Background>
-        <ImageBrush ImageSource="Recursos/FondoInicioPizza.jpg"/>
+        <ImageBrush ImageSource="Recursos/FondoInicioPizzaInvertido.jpg"/>
     </Window.Background>
     <Grid>
         <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1083.877">
@@ -62,11 +62,11 @@
         </Rectangle>
         <TextBox HorizontalAlignment="Left" Margin="769.267,142.397,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Nombre del cajero" FontFamily="Calibri Light" FontSize="20" Width="301.667" Foreground="#FF6D7276" Height="26.413" Background="White"/>
         <Label Content="Cajero:" HorizontalAlignment="Left" Margin="686,138.917,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}" Width="78.267"/>
-        <Button Content="PERSONALIZAR" HorizontalAlignment="Left" Height="52.667" Margin="139.057,554.644,0,0" VerticalAlignment="Top" Width="526.943" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
-        <Button x:Name="btn_NuevoPedido" Content="Crear" HorizontalAlignment="Left" Height="52.667" Margin="955.667,554.644,0,0" VerticalAlignment="Top" Width="257.276" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Click="btn_NuevoPedido_Click"/>
-        <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.667" Margin="686,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
-        <Button Content="ESPERA" HorizontalAlignment="Left" Height="36.667" Margin="821.724,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
-        <Button Content="NOTA" HorizontalAlignment="Left" Height="36.667" Margin="1075.934,136.588,0,0" VerticalAlignment="Top" Width="128.943" Background="Gray" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
+        <Button Content="PERSONALIZAR" HorizontalAlignment="Left" Height="52.667" Margin="139.057,554.644,0,0" VerticalAlignment="Top" Width="526.943" Background="#FFF4A643" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
+        <Button x:Name="btn_NuevoPedido" Content="Crear" HorizontalAlignment="Left" Height="52.667" Margin="955.667,554.644,0,0" VerticalAlignment="Top" Width="257.276" Background="#FF008050" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="36" Click="btn_NuevoPedido_Click"/>
+        <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.667" Margin="686,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFE53B28" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
+        <Button Content="ESPERA" HorizontalAlignment="Left" Height="36.667" Margin="821.724,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFF4A643" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
+        <Button Content="NOTA" HorizontalAlignment="Left" Height="36.667" Margin="1075.934,136.588,0,0" VerticalAlignment="Top" Width="128.943" Background="Gray" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <Label Content="PIZZA" HorizontalAlignment="Left" Margin="48.611,187.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="ENSALADA" HorizontalAlignment="Left" Margin="34.33,260.595,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="PASTA" HorizontalAlignment="Left" Margin="43.942,333.081,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
@@ -96,6 +96,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+
         <Button x:Name="btn_Actualizar" Content="Actualizar" HorizontalAlignment="Left" Height="37" Margin="1085,206,0,0" VerticalAlignment="Top" Width="77" Background="Gray" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btn_Actualizar_Click" />
 
 

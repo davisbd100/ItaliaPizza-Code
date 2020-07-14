@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItaliaPizza"
         mc:Ignorable="d"
-        Title="Actualizar Inventario" Height="680" Width="1280" Icon="Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="Actualizar Inventario" Height="680" Width="1280" Icon="Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" Foreground="{x:Null}">
     <Window.Background>
         <ImageBrush ImageSource="Recursos/FondoInicioPizzaInvertido.jpg"/>
     </Window.Background>
@@ -14,82 +14,53 @@
             <RowDefinition Height="Auto" MinHeight="651.333"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1066.667">
+        <Rectangle HorizontalAlignment="Left" Height="74" Margin="0,276,0,0" VerticalAlignment="Top" Width="120">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Content="Inventario" HorizontalAlignment="Left" Margin="250.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132.397" Width="253.143" Background="{x:Null}"/>
-        <Button x:Name="btBusqueda" Content="" HorizontalAlignment="Left" Height="46" Margin="838,130,0,0" VerticalAlignment="Top" Width="67" BorderBrush="{x:Null}" Click="btBusqueda_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Buscar.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Rectangle HorizontalAlignment="Left" Height="724.666" Stroke="White" VerticalAlignment="Top" Width="120.001" Margin="0,0,0,-73.333" Grid.RowSpan="2">
+        <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1003">
             <Rectangle.Fill>
-                <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
+                <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Image HorizontalAlignment="Left" Height="103.842" Margin="6,10,0,0" VerticalAlignment="Top" Width="110.001" Source="Recursos/LogoItaliaPizza.png"/>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,130.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Producto.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,203.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Receta.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,276.897,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Inventario.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,349.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Ventas.png"/>
-            </Button.Background>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="73.936" Margin="0,422.396,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Clientes.png"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,495.732,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Empleados.png"/>
-            </Button.Background>
-        </Button>
+        <Label Content="Inventario actual" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132" Width="459" Background="{x:Null}"/>
         <Image HorizontalAlignment="Left" Height="87.11" Margin="125.001,26.732,0,0" VerticalAlignment="Top" Width="120.251" Source="Recursos/Inventario.png"/>
-        <Label Content="PRODUCTOS" HorizontalAlignment="Left" Margin="31.832,185.764,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8" RenderTransformOrigin="0.515,0.466"/>
-        <Label Content="RECETAS" HorizontalAlignment="Left" Margin="39.832,259.383,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
-        <Label Content="INVENTARIO" HorizontalAlignment="Left" Margin="32.936,331.447,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
-        <Label Content="VENTAS" HorizontalAlignment="Left" Margin="41.832,404.446,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
-        <Label Content="CLIENTES" HorizontalAlignment="Left" Margin="39.165,478.699,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
-        <Label Content="EMPLEADOS" HorizontalAlignment="Left" Margin="33.162,553.035,0,0" VerticalAlignment="Top" Foreground="White" Height="34.413" Background="{x:Null}" FontSize="8"/>
-        <Rectangle HorizontalAlignment="Left" Height="66.564" Margin="118.8,114.2,0,0" VerticalAlignment="Top" Width="384.595">
-            <Rectangle.Fill>
-                <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Label Content="Inventario actual:" HorizontalAlignment="Left" Margin="125.001,113.753,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Height="61.922" Width="301.143" Background="{x:Null}"/>
-        <DataGrid x:Name="dgInventario" HorizontalAlignment="Left" Height="366.271" Margin="145.252,203.397,0,0" VerticalAlignment="Top" Width="759.888" Grid.Column="3" FontSize="24" ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+        <DataGrid x:Name="dgInventario" HorizontalAlignment="Left" Height="302" Margin="185,233,0,0" VerticalAlignment="Top" Width="1003" FontSize="24" ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" FontFamily="Calibri Light" BorderBrush="#FF98171F" Foreground="#FF6D7276">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Producto" Binding="{Binding Producto1.Nombre}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding Producto1.Nombre}" IsReadOnly="True" FontFamily="Calibri Light"/>
                 <DataGridTextColumn Header="Medida" Binding="{Binding UnidadMedida}" IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="ColumnExistencia" Header="Existencia" Binding="{Binding ExistenciaInicial}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="ColumnNuevaExistencia" Header="Nueva Existencia" Binding="{Binding ExistenciaTotal}"/>
+                <DataGridTextColumn x:Name="ColumnNuevaExistencia" Header="Nueva Existencia" Binding="{Binding ExistenciaTotal}" FontFamily="Calibri Light" FontSize="16"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btGuardar" Content="GUARDAR" HorizontalAlignment="Left" Margin="746.42,601.893,0,12.583" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Width="158.72" Click="Button_Click_1"/>
-        <Button x:Name="btCancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="588.266,603.943,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="Button_Click"/>
-        <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Height="46" Margin="526,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" FontSize="36"/>
-        <TextBlock x:Name="tbPaginaActual" Text="1" HorizontalAlignment="Left" Margin="455,574,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
-        <Button x:Name="btPaginaAnterior" Content="Anterior" HorizontalAlignment="Left" Margin="346,575,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.513,1.575" Click="btPaginaAnterior_Click"/>
-        <Button x:Name="btPaginaSiguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="566,575,0,0" VerticalAlignment="Top" Width="75" Click="btPaginaSiguiente_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="481,574,0,0" TextWrapping="Wrap" Text="De" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
-        <TextBlock x:Name="tbPaginaTotal" HorizontalAlignment="Left" Margin="526,575,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
-
+        <Button x:Name="btGuardar" Content="GUARDAR" HorizontalAlignment="Left" Margin="713,593,0,21.333" Background="#FF008050" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Width="471" Click="Button_Click_1"/>
+        <TextBlock x:Name="tbPaginaActual" Text="1" HorizontalAlignment="Left" Margin="723,546,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
+        <TextBlock HorizontalAlignment="Left" Margin="749,546,0,0" TextWrapping="Wrap" Text="De" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
+        <TextBlock x:Name="tbPaginaTotal" HorizontalAlignment="Left" Margin="794,547,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
+        <local:Menu HorizontalAlignment="Left" Height="726" VerticalAlignment="Top" Width="121" Margin="0,0,0,-74" Grid.RowSpan="2"/>
+        <Button x:Name="SalirButton" HorizontalAlignment="Left" Height="86" Margin="1124,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="SalirButton_Click" Background="Transparent">
+            <StackPanel>
+                <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
+            </StackPanel>
+        </Button>
+        <Rectangle HorizontalAlignment="Left" Height="49" Margin="185,155,0,0" VerticalAlignment="Top" Width="1003">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Margin="472,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Calibri Light" FontSize="20" Width="700" Foreground="#FF6D7276" Height="27" Background="White"/>
+        <Label Content="Buscar por:" HorizontalAlignment="Left" Margin="203,159,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}"/>
+        <ComboBox x:Name="ComboBoxBuscar" HorizontalAlignment="Left" Height="27" Margin="325,165,0,0" VerticalAlignment="Top" Width="147">
+            <ComboBoxItem Content="Nombre" FontSize="20" IsSelected="True"/>
+        </ComboBox>
+        <Button x:Name="btBusqueda" HorizontalAlignment="Left" Height="27" Margin="1145,165,0,0" VerticalAlignment="Top" Width="27" BorderBrush="{x:Null}" Click="btBusqueda_Click" Background="Transparent">
+            <StackPanel>
+                <Image Source="Recursos/Buscar.png"/>
+            </StackPanel>
+        </Button>
+        <TextBlock x:Name="TextBlockPagina" HorizontalAlignment="Left" Height="32" Margin="927,540,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="btPaginaSiguiente" Content="Siguiente" HorizontalAlignment="Left" Height="32" Margin="972,540,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btPaginaSiguiente_Click"/>
+        <Button x:Name="btPaginaAnterior" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="713,541,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btPaginaAnterior_Click" IsDefault="True"/>
     </Grid>
 </Window>
