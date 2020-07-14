@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using Controller;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,9 @@ namespace ItaliaPizza
 
         public DataAccess.Pedido PedidoAEditar;
         double Total = 0;
-        public List<ProductoVenta> productoVentas = new List<ProductoVenta>();
+        public List<BusinessLogic.ProductoVenta> productoVentas = new List<BusinessLogic.ProductoVenta>();
+        List<DataAccess.PedidoProducto> listaproductos = new List<PedidoProducto>();
+        List<BusinessLogic.Cliente> clientes = new List<BusinessLogic.Cliente>();
 
         public PedidoCallCenter()
         {
@@ -36,21 +39,56 @@ namespace ItaliaPizza
         private void ActualizarClientes()
         {
             ClienteController clienteController = new ClienteController();
-            List<Cliente> clientes = new List<Cliente>();
-            Cliente cliente = new Cliente();
-            cliente.Nombre = "arturo";
-            clientes.Add(cliente);
-           // List<Cliente> clientes = clienteController.GetCliente(0);
+            //List<BusinessLogic.Cliente> clientes = new List<BusinessLogic.Cliente>();
+            //BusinessLogic.Cliente cliente = new BusinessLogic.Cliente();
+            //cliente.Nombre = "arturo";
+            //cliente.idCliente = "12";
+            //clientes.Add(cliente);
+            clientes = clienteController.GetCliente(1);
             cbb_NombreCliente.ItemsSource = clientes;
         }
 
         private void ProductosUC_ProductoUserControlClicked(object sender, EventArgs e)
         {
-            ProductoVenta tempProducto = ((ProductoVenta)sender);
+            BusinessLogic.ProductoVenta tempProducto = ((BusinessLogic.ProductoVenta)sender);
+            DataAccess.ProductoVenta tempProducto1 = new DataAccess.ProductoVenta()
+            {
+                idProductoVenta = tempProducto.idProducto,
+                PrecioPublico = tempProducto.PrecioPúblico,
+                FotoProducto = tempProducto.Nombre
+            };
             ProductoVentaController producto = new ProductoVentaController();
-            int cantidad = 1;
+            DataAccess.PedidoProducto pedidoProducto = new DataAccess.PedidoProducto()
+            {
+                idProductoVenta = tempProducto.idProducto,
+                Cantidad = 1,
+                Precio = tempProducto.PrecioPúblico
+            };
+            foreach (DataAccess.PedidoProducto item in dgProductosDePedido.Items)
+            {
+                if (tempProducto.idProducto == item.idProductoVenta)
+                {
+                    item.Cantidad++;
+                    item.Precio += tempProducto1.PrecioPublico;
+                }
+            }
+            int flag = 0;
+            foreach (DataAccess.PedidoProducto item in dgProductosDePedido.Items)
+            {
+                if (item.ProductoVenta.idProductoVenta == tempProducto.idProducto)
+                {
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0)
+            {
+                pedidoProducto.ProductoVenta = tempProducto1;
 
-            productoVentas.Add(tempProducto);
+                listaproductos.Add(pedidoProducto);
+                ActualizarDataGrid();
+            }
+
             ActualizarLabelPrecio(tempProducto.PrecioPúblico);
             ActualizarDataGrid();
         }
@@ -65,13 +103,61 @@ namespace ItaliaPizza
         private void ActualizarDataGrid()
         {
             dgProductosDePedido.ItemsSource = null;
-            dgProductosDePedido.ItemsSource = productoVentas;
+            dgProductosDePedido.ItemsSource = listaproductos;
+        }
+
+        private bool ValidarCampos()
+        {
+            if ((BusinessLogic.Cliente)cbb_NombreCliente.SelectedItem == null)
+            {
+                MessageBox.Show("Debes elegir un cliente");
+                return false;
+            }
+            return true;
         }
 
         private void btn_NuevoPedido_Click(object sender, RoutedEventArgs e)
         {
+            if (ValidarCampos())
+            {
+                DataAccess.Pedido pedido = new DataAccess.Pedido();
+                pedido.FechaPedido = DateTime.UtcNow;
+                pedido.Estatus = 1;
+                BusinessLogic.Cliente cliente1 = clientes[cbb_NombreCliente.SelectedIndex];
+                //string cliente = cbb_NombreCliente.SelectedIndex;
+                MessageBox.Show(cliente1.idPersona);
+                pedido.Cliente = cliente1.idPersona;
 
+                foreach (BusinessLogic.ProductoVenta producto in productoVentas)
+                {
+                    if (dgProductosDePedido.Items != null)
+                    {
+                        foreach (BusinessLogic.ProductoVenta pedido1 in dgProductosDePedido.Items)
+                        {
+                            DataAccess.PedidoProducto pedidoProducto = new PedidoProducto();
+                            pedidoProducto.idProductoVenta = pedido1.idProducto;
+                            pedidoProducto.Precio = pedido1.PrecioPúblico;
+                            listaproductos.Add(pedidoProducto);
+                        }
+                    }
+
+                }
+
+                PedidoController pedidoController = new PedidoController();
+                if(pedidoController.crearPedidoDomicilio(pedido, listaproductos) == ResultadoOperacionEnum.ResultadoOperacion.Exito)
+                {
+                    MessageBox.Show("El Pedido se registró correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se puede registar el Pedido");
+                }
+
+
+            }
         }
+
+
 
         private void btn_NuevoCliente_Click(object sender, RoutedEventArgs e)
         {
