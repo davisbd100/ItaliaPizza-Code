@@ -5,29 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItaliaPizza"
         mc:Ignorable="d"
-   Title="Registrar Receta Producto" Height="731.164" Width="810.957" Icon="Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <ScrollViewer>
-        <Grid>
-            <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="0,14.576,0,0" VerticalAlignment="Top" Width="861.457" Fill="#FFB31423"/>
-            <Label Content="Selecciona un Producto" HorizontalAlignment="Left" Margin="263,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>
-            <Button Content="" HorizontalAlignment="Left" Height="74" Margin="157,10,0,0" VerticalAlignment="Top" Width="72" BorderBrush="{x:Null}">
-                <Button.Background>
-                    <ImageBrush ImageSource="Recursos/Receta.png" Stretch="Uniform"/>
-                </Button.Background>
-            </Button>
-            <Button x:Name="btn_Seleccionar" Content="SELECCIONAR" HorizontalAlignment="Left" Margin="518,525,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="38" Width="158" Click="btn_Seleccionar_Click"/>
-            <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36" Margin="315,525,0,0" VerticalAlignment="Top" Width="121" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
-            <Label Content="Productos&#xD;&#xA;" HorizontalAlignment="Left" Margin="102,138,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-            <DataGrid x:Name="dtg_Productos" HorizontalAlignment="Left" Height="279" Margin="102,201,0,0" VerticalAlignment="Top" Width="574" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" RenderTransformOrigin="0.603,0.1">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Código" Binding="{Binding Código}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Descripción" Binding="{Binding Descripción}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="idProducto" Binding="{Binding idProducto}" IsReadOnly="True" Visibility="Hidden"/>
-                </DataGrid.Columns>
+   Title="Seleccion de producto para receta" Height="547.164" Width="699.957" Icon="Recursos/Receta.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="0,14.576,0,0" VerticalAlignment="Top" Width="861.457" Fill="#FFB31423"/>
+        <Label Content="Selecciona un Producto" HorizontalAlignment="Left" Margin="138,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>
+        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="66,15,0,0" VerticalAlignment="Top" Width="72" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="Recursos/Receta.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btn_Seleccionar" Content="SELECCIONAR" HorizontalAlignment="Left" Margin="444,453,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="38" Width="158" Click="btn_Seleccionar_Click"/>
+        <Button x:Name="ButtonCancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="36" Margin="303,456,0,0" VerticalAlignment="Top" Width="121" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" RenderTransformOrigin="0.373,-0.949" Click="ButtonCancelar_Click"/>
+        <Label Content="Productos&#xD;&#xA;" HorizontalAlignment="Left" Margin="85,94,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <DataGrid x:Name="dtg_Productos" HorizontalAlignment="Left" Height="279" Margin="85,139,0,0" VerticalAlignment="Top" Width="517" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" RenderTransformOrigin="0.603,0.1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Código" Binding="{Binding Código}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Descripción" Binding="{Binding Descripción}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="idProducto" Binding="{Binding idProducto}" IsReadOnly="True" Visibility="Hidden"/>
+            </DataGrid.Columns>
 
-            </DataGrid>
+        </DataGrid>
 
-        </Grid>
-    </ScrollViewer>
+    </Grid>
 </Window>

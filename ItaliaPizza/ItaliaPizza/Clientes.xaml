@@ -27,7 +27,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <Image HorizontalAlignment="Left" Height="87.11" Margin="125.001,26.732,0,0" VerticalAlignment="Top" Width="120.251" Source="Recursos/Clientes.png"/>
-        <DataGrid x:Name="DataGridClientes" HorizontalAlignment="Left" Height="335" Margin="185,235,0,0" VerticalAlignment="Top" Width="1003" FontFamily="Calibri Light" FontSize="16"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Background="White" Foreground="#FF6D7276" BorderBrush="#FF98171F">
+        <DataGrid x:Name="DataGridClientes" HorizontalAlignment="Left" Height="335" Margin="185,235,0,0" VerticalAlignment="Top" Width="1003" FontFamily="Calibri Light" FontSize="16"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Background="White" Foreground="#FF6D7276" BorderBrush="#FF98171F" GridLinesVisibility="Vertical">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding idPersona}" IsReadOnly="True" Foreground="#FF6D7276"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True" Foreground="#FF6D7276"/>

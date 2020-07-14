@@ -8,20 +8,25 @@
         mc:Ignorable="d"
   Title="Pedidos" Height="680" Width="1280" Icon="Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.Background>
-        <ImageBrush ImageSource="Recursos/FondoInicioPizza.jpg"/>
+        <ImageBrush ImageSource="Recursos/FondoInicioPizzaInvertido.jpg"/>
     </Window.Background>
     <Grid>
-        <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1083.877">
+        <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1003">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Image HorizontalAlignment="Left" Height="74.443" Margin="1123.411,33.043,0,0" VerticalAlignment="Top" Width="80.011" Source="Recursos/Pedidos.png" RenderTransformOrigin="0.579,0.373"/>
+        <Image HorizontalAlignment="Left" Height="74" Margin="1037,33,0,0" VerticalAlignment="Top" Width="80" Source="Recursos/Pedidos.png" RenderTransformOrigin="0.579,0.373"/>
         <Rectangle HorizontalAlignment="Left" Height="724.666" Stroke="White" VerticalAlignment="Top" Width="120.001" Margin="0,0,0,-73.333">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
+        <Button x:Name="SalirButton" HorizontalAlignment="Left" Height="86" Margin="1124,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="SalirButton_Click" Background="Transparent">
+            <StackPanel>
+                <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
+            </StackPanel>
+        </Button>
         <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,130,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" UseLayoutRounding="True">
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Pizza.png" Stretch="Uniform"/>
@@ -55,48 +60,50 @@
                 <SolidColorBrush Color="White" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="102.73" Margin="686,130,0,0" VerticalAlignment="Top" Width="526.943">
+        <Rectangle HorizontalAlignment="Left" Height="118" Margin="686,130,0,0" VerticalAlignment="Top" Width="527">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
         <TextBox HorizontalAlignment="Left" Margin="769.267,142.397,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Nombre del cajero" FontFamily="Calibri Light" FontSize="20" Width="301.667" Foreground="#FF6D7276" Height="26.413" Background="White"/>
         <Label Content="Cajero:" HorizontalAlignment="Left" Margin="686,138.917,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}" Width="78.267"/>
-        <Button Content="PERSONALIZAR" HorizontalAlignment="Left" Height="52.667" Margin="139.057,554.644,0,0" VerticalAlignment="Top" Width="526.943" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
-        <Button x:Name="btn_NuevoPedido" Content="Crear" HorizontalAlignment="Left" Height="52.667" Margin="955.667,554.644,0,0" VerticalAlignment="Top" Width="257.276" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Click="btn_NuevoPedido_Click"/>
-        <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.667" Margin="686,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
-        <Button Content="ESPERA" HorizontalAlignment="Left" Height="36.667" Margin="821.724,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
-        <Button Content="NOTA" HorizontalAlignment="Left" Height="36.667" Margin="1075.934,136.588,0,0" VerticalAlignment="Top" Width="128.943" Background="Gray" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
+        <Button Content="PERSONALIZAR" HorizontalAlignment="Left" Height="52.667" Margin="139.057,554.644,0,0" VerticalAlignment="Top" Width="526.943" Background="#FFF4A643" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
+        <Button x:Name="btn_NuevoPedido" Content="Crear" HorizontalAlignment="Left" Height="52.667" Margin="955.667,554.644,0,0" VerticalAlignment="Top" Width="257.276" Background="#FF008050" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="36" Click="btn_NuevoPedido_Click"/>
+        <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.667" Margin="686,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFE53B28" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
+        <Button Content="ESPERA" HorizontalAlignment="Left" Height="36.667" Margin="821.724,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFF4A643" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
+        <Button Content="NOTA" HorizontalAlignment="Left" Height="36.667" Margin="1075.934,136.588,0,0" VerticalAlignment="Top" Width="128.943" Background="Gray" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <Label Content="PIZZA" HorizontalAlignment="Left" Margin="48.611,187.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="ENSALADA" HorizontalAlignment="Left" Margin="34.33,260.595,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="PASTA" HorizontalAlignment="Left" Margin="43.942,333.081,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="POSTRES / HELADO" HorizontalAlignment="Left" Margin="19.266,406.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="BEBIDAS" HorizontalAlignment="Left" Margin="42.278,478.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <ComboBox x:Name="cbb_NombreCliente" HorizontalAlignment="Left" Margin="769,191,0,0"  VerticalAlignment="Top" Text="Nombre del cliente" FontFamily="Calibri Light" FontSize="20" Width="302" Foreground="#FF6D7276" Height="26" Background="White"  ItemsSource="{Binding Cliente}" DisplayMemberPath="Nombre" SelectedValuePath="idPersona">
+        <ComboBox x:Name="cbb_NombreCliente" HorizontalAlignment="Left" Margin="769,217,0,0"  VerticalAlignment="Top" Text="Nombre del cliente" FontFamily="Calibri Light" FontSize="20" Width="302" Foreground="#FF6D7276" Height="26" Background="White"  ItemsSource="{Binding Cliente}" DisplayMemberPath="Nombre" SelectedValuePath="idCliente">
 
         </ComboBox>
         <Label Content="Cliente:" HorizontalAlignment="Left" Margin="686,187.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}" Width="78.267"/>
-        <Rectangle HorizontalAlignment="Left" Height="26.413" Margin="1177.478,190.877,0,0" VerticalAlignment="Top" Width="27.399" Fill="#FF008050"/>
-        <Button x:Name="btn_NuevoCliente" Content="" HorizontalAlignment="Left" Height="26.413" Margin="1178.876,190.877,0,0" VerticalAlignment="Top" Width="26.001" BorderBrush="{x:Null}" RenderTransformOrigin="2.342,0.65" Click="btn_NuevoCliente_Click" >
+        <Rectangle HorizontalAlignment="Left" Height="26" Margin="1177,212,0,0" VerticalAlignment="Top" Width="28" Fill="#FF008050" RenderTransformOrigin="0.65,1.711"/>
+        <Button x:Name="btn_NuevoCliente" Content="" HorizontalAlignment="Left" Height="27" Margin="1177,212,0,0" VerticalAlignment="Top" Width="26" BorderBrush="{x:Null}" RenderTransformOrigin="2.342,0.65" Click="btn_NuevoCliente_Click" >
             <Button.Background>
                 <ImageBrush ImageSource="Recursos/Mas.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <TextBox x:Name="lbNuevoPrecio" HorizontalAlignment="Left" Height="27.601" Margin="1029.058,498.869,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" FontSize="20"/>
         <Label Content="TOTAL:" HorizontalAlignment="Left" Margin="954.567,494.869,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" FontSize="20"/>
-        <Image HorizontalAlignment="Left" Height="74.443" Margin="1038.4,33.043,0,0" VerticalAlignment="Top" Width="80.011" Source="Recursos/Cocina.png" RenderTransformOrigin="0.579,0.373"/>
+        <Image HorizontalAlignment="Left" Height="74" Margin="952,33,0,0" VerticalAlignment="Top" Width="80" Source="Recursos/Cocina.png" RenderTransformOrigin="0.579,0.373"/>
 
-        <Controls:ProductosUC HorizontalAlignment="Left" Height="360" Margin="139,139,0,0" VerticalAlignment="Top" Width="527" ProductoUserControlClicked="ProductosUC_ProductoUserControlClicked"/>
+        <Controls:ProductosUC HorizontalAlignment="Left" Height="360" Margin="139,139,0,0" VerticalAlignment="Top" Width="527" ProductoUserControlClicked="ProductosUC_ProductoUserControlClicked" Foreground="Gray"/>
         <DataGrid x:Name="dgProductosDePedido" HorizontalAlignment="Left" Height="182" Margin="686,261,0,0" VerticalAlignment="Top" Width="517" CanUserReorderColumns="False" AutoGenerateColumns="False"  CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripción}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Precio " Binding="{Binding PrecioPúblico}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Cantidad}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Descripcion" Binding="{Binding ProductoVenta.FotoProducto}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Precio " Binding="{Binding Precio}" IsReadOnly="True"/>
                 <DataGridTemplateColumn>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
+            
         </DataGrid>
-        <Button x:Name="btn_Actualizar" Content="Actualizar" HorizontalAlignment="Left" Height="37" Margin="1084,187,0,0" VerticalAlignment="Top" Width="77" Background="Gray" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btn_Actualizar_Click" />
+
+        <Button x:Name="btn_Actualizar" Content="Actualizar" HorizontalAlignment="Left" Height="37" Margin="1085,206,0,0" VerticalAlignment="Top" Width="77" Background="Gray" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btn_Actualizar_Click" />
 
 
 

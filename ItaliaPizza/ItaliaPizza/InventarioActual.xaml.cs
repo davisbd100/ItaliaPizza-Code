@@ -39,10 +39,6 @@ namespace ItaliaPizza
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -106,6 +102,11 @@ namespace ItaliaPizza
                 dgInventario.ItemsSource = inventario;
 
             }
+        }
+
+        private void SalirButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

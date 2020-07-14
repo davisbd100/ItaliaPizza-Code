@@ -58,33 +58,33 @@ namespace ItaliaPizza
             switch (typeEmpleado)
             {
                 case "Gerente":
-                    Empleados empleados = new Empleados();
-                    empleados.Show();
+                    Productos productos = new Productos();
+                    productos.Show();
                     this.Close();
                     break;
                 case "Administrador BD":
-                    Empleados empleadosA = new Empleados();
-                    empleadosA.Show();
+                    RespaldarInformacion respaldarInformacion = new RespaldarInformacion();
+                    respaldarInformacion.Show();
                     this.Close();
                     break;
                 case "Cajero":
-                    Empleados empleadosC = new Empleados();
-                    empleadosC.Show();
+                    Pedido pedido = new Pedido();
+                    pedido.Show();
                     this.Close();
                     break;
                 case "Call Center":
-                    Empleados empleadosCC = new Empleados();
-                    empleadosCC.Show();
+                    PedidoCallCenter pedidoCallCenter = new PedidoCallCenter();
+                    pedidoCallCenter.Show();
                     this.Close();
                     break;
                 case "Cocinero":
-                    Empleados empleadosCo = new Empleados();
-                    empleadosCo.Show();
+                    ListaPedidoCocinero listaPedidoCocinero = new ListaPedidoCocinero();
+                    listaPedidoCocinero.Show();
                     this.Close();
                     break;
                 case "Mesero":
-                    Empleados empleadosM = new Empleados();
-                    empleadosM.Show();
+                    PedidoMesero pedidoMesero = new PedidoMesero();
+                    pedidoMesero.Show();
                     this.Close();
                     break;
             }

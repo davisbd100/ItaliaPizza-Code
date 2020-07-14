@@ -64,11 +64,6 @@ namespace ItaliaPizza
             }
         }
 
-        private void btCancelar_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void dgInventario_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             int posicion = dgInventario.SelectedIndex;
@@ -148,6 +143,11 @@ namespace ItaliaPizza
             {
                 this.IsEnabled = true;
             }
+        }
+
+        private void SalirButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

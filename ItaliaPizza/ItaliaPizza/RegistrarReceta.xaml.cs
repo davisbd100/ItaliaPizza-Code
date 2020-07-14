@@ -125,6 +125,7 @@ namespace ItaliaPizza
             if(resultado == ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
                 MessageBox.Show("Receta registrada con éxito");
+                this.Close();
             }
             else
             {
@@ -142,6 +143,21 @@ namespace ItaliaPizza
             else
             {
                 MessageBox.Show("Hay campos vacios, verifique su información");
+            }
+        }
+
+        private void ButtonCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("¿Está seguro de que desea cancelar?", "Cancelar", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    Close();
+                    break;
+                case MessageBoxResult.No:
+                    RegistrarEmpleado registrarEmpleado = new RegistrarEmpleado();
+                    registrarEmpleado.Close();
+                    break;
             }
         }
     }

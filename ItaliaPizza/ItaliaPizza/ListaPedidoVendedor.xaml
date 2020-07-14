@@ -60,13 +60,13 @@
         <Image HorizontalAlignment="Left" Height="60.443" Margin="163.001,40.821,0,0" VerticalAlignment="Top" Width="84.251" Source="Recursos/Pedido.png"/>
         <Rectangle HorizontalAlignment="Left" Height="410.644" Margin="10,130,0,0" Stroke="#FFB31423" VerticalAlignment="Top" Width="526.943" Grid.Column="1">
             <Rectangle.Fill>
-                <SolidColorBrush Color="White" Opacity="0.8"/>
+                <SolidColorBrush Color="White" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
         <Button x:Name="btPagar" Content="Pagar" HorizontalAlignment="Left" Height="86.156" Margin="279.667,554.644,0,0" VerticalAlignment="Top" Width="257.276" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1" Click="btPagar_Click"/>
-        <Button x:Name="btCancelar" Content="CANCELAR &#xD;&#xA;PEDIDO" HorizontalAlignment="Left" Height="59.467" Margin="10,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btCancelar_Click"/>
-        <Button x:Name="btEditar" Content="EDITAR" HorizontalAlignment="Left" Height="59.467" Margin="145.724,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btEditar_Click"/>
-        <DataGrid x:Name="dgProductos" HorizontalAlignment="Left" Height="242.689" Margin="26.99,166.924,0,0" VerticalAlignment="Top" Width="497.277" Grid.Column="2" FontSize="15" ColumnWidth="*" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+        <Button x:Name="btCancelar" Content="CANCELAR &#xD;&#xA;PEDIDO" HorizontalAlignment="Left" Height="59" Margin="10.333,572,0,0" VerticalAlignment="Top" Width="129" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btCancelar_Click"/>
+        <Button x:Name="btEditar" Content="EDITAR" HorizontalAlignment="Left" Height="59" Margin="144.333,572,0,0" VerticalAlignment="Top" Width="129" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btEditar_Click"/>
+        <DataGrid x:Name="dgProductos" HorizontalAlignment="Left" Height="242.689" Margin="26.99,166.924,0,0" VerticalAlignment="Top" Width="497.277" Grid.Column="2" FontSize="15" ColumnWidth="*" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" BorderBrush="#FF98171F" Foreground="#FF6D7276">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Producto" Binding="{Binding ProductoVenta.Producto.Nombre}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="PrecioUnitario" Binding="{Binding ProductoVenta.PrecioPublico}" IsReadOnly="True"/>
