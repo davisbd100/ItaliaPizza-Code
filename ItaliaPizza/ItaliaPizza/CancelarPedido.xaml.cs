@@ -22,7 +22,7 @@ namespace ItaliaPizza
     public partial class CancelarPedido : Window
     {
 
-        BussinesLogic.Pedido LocalPedido { get; set; }
+        BusinessLogic.Pedido LocalPedido { get; set; }
         public CancelarPedido()
         {
             LocalPedido = new Pedido()
@@ -33,7 +33,7 @@ namespace ItaliaPizza
         }        
         public CancelarPedido(int idPedido)
         {
-            LocalPedido = new BussinesLogic.Pedido()
+            LocalPedido = new BusinessLogic.Pedido()
             {
                 idPedido = 1
             };
