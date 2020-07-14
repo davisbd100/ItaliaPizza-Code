@@ -22,7 +22,7 @@ namespace ItaliaPizza.Controls
     /// </summary>
     public partial class PedidosUC : UserControl
     {
-        public event EventHandler PedidoUserControlClicked;
+        public event EventHandler PedidosUserControlClicked;
         PedidoController Controller = new PedidoController();
         List<DataAccess.Pedido> Pedidos = new List<DataAccess.Pedido>();
         public PedidosUC()
@@ -39,7 +39,12 @@ namespace ItaliaPizza.Controls
 
         private void btContent_Click(object sender, RoutedEventArgs e)
         {
-            PedidoUserControlClicked?.Invoke(((Button)sender).DataContext, EventArgs.Empty);
+            PedidosUserControlClicked?.Invoke(((Button)sender).DataContext, EventArgs.Empty);
+        }
+
+        private void cbTiposDePedido_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // TODO
         }
     }
 }

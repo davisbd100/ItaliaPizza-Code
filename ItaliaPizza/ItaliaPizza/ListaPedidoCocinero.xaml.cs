@@ -28,5 +28,10 @@ namespace PrototiposItaliaPizza
             InitializeComponent();
             pedidos = PedidoController.ObtenerPedidosCocina();
         }
+
+        private void PedidosUC_PedidoUserControlClicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

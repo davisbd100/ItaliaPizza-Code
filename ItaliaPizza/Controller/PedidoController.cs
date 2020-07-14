@@ -26,13 +26,20 @@ namespace Controller
         {
             List<DataAccess.Pedido> resultado;
             PedidoDAO pedidoDAO = new PedidoDAO();
-            resultado = pedidoDAO.ObtenerListaPedidos();
-            foreach (var item in resultado)
+            resultado = pedidoDAO.ObtenerListaPedidosDisponibles();
+            if (resultado.Any())
             {
-                if (item.Estatus1.NombreEstatus != "En espera" || item.Estatus1.NombreEstatus != "En Preparación")
+                foreach (var item in resultado)
                 {
-                    resultado.Remove(item);
+                    if (item.Estatus1.NombreEstatus != "En espera" || item.Estatus1.NombreEstatus != "En Preparación")
+                    {
+                        resultado.Remove(item);
+                    }
                 }
+            }
+            else
+            {
+                throw new DataException("No existen pedidos");
             }
             return resultado;
         }

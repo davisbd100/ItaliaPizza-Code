@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ItaliaPizza.Controls" xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" Width="526" Height="412">
-    <Grid Margin="0,0,0.4,0">
-        <Rectangle HorizontalAlignment="Left" Height="354" Margin="-1,59,0,0" Stroke="#FFB31423" VerticalAlignment="Top" Width="527">
+    <Grid Margin="0,0,0.4,-46">
+        <Rectangle HorizontalAlignment="Left" Height="400" Margin="-1,59,0,0" Stroke="#FFB31423" VerticalAlignment="Top" Width="527">
             <Rectangle.Fill>
                 <SolidColorBrush Color="White" Opacity="0.8"/>
             </Rectangle.Fill>
@@ -17,12 +17,12 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="Tipo de pedido:" HorizontalAlignment="Left" Margin="-1,11,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="166"/>
-        <ComboBox x:Name="cbTiposDePedido" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="20" Height="34" FontWeight="Bold" Width="166">
+        <ComboBox x:Name="cbTiposDePedido" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="20" Height="34" FontWeight="Bold" Width="166" SelectedIndex="0" SelectionChanged="cbTiposDePedido_SelectionChanged">
             <ComboBoxItem Content="Todos"/>
             <ComboBoxItem Content="En espera"/>
             <ComboBoxItem Content="En preparacion"/>
         </ComboBox>
-        <Grid x:Name="gridProductos" HorizontalAlignment="Left" Height="354" Margin="0,59,0,-1" VerticalAlignment="Top" Width="526">
+        <Grid x:Name="gridProductos" HorizontalAlignment="Left" Height="400" Margin="0,59,0,-1" VerticalAlignment="Top" Width="526">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                 <ItemsControl x:Name="icProductos">
                     <ItemsControl.ItemsPanel>
