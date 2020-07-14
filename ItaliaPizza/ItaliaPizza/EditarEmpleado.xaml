@@ -17,7 +17,7 @@
         <TabControl Height="567" Margin="21,98,16,0" VerticalAlignment="Top">
             <TabItem Header="Datos personales">
                 <Grid>
-                    <Label Content="Apellido:" HorizontalAlignment="Left" Margin="79,69,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+                    <Label Content="Apellidos:" HorizontalAlignment="Left" Margin="68,69,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
                     <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="77,120,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
                     <Label Content="Correo:" HorizontalAlignment="Left" Margin="92,170,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
                     <Label Content="Ciudad:" HorizontalAlignment="Left" Margin="90,220,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
@@ -27,7 +27,7 @@
                     <Label Content="Código postal:" HorizontalAlignment="Left" Margin="28,424,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
                     <Label Content="Colonia:" HorizontalAlignment="Left" Margin="85,373,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
                     <Label Content="*" HorizontalAlignment="Left" Margin="64,19,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
-                    <Label Content="*" HorizontalAlignment="Left" Margin="64,69,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+                    <Label Content="*" HorizontalAlignment="Left" Margin="56,69,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
                     <Label Content="*" HorizontalAlignment="Left" Margin="64,120,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
                     <Label Content="*" HorizontalAlignment="Left" Margin="79,170,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
                     <Label Content="*" HorizontalAlignment="Left" Margin="77,220,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
