@@ -31,7 +31,8 @@ namespace PrototiposItaliaPizza
 
         private void PedidosUC_PedidoUserControlClicked(object sender, EventArgs e)
         {
-
+            PedidoController.ObtenerPedidoParaEditar(((DataAccess.Pedido)sender).idPedido);
+            lvProductos.ItemsSource = PedidoController.ObtenerProductosPedido(((DataAccess.Pedido)sender).idPedido);
         }
     }
 }

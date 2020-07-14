@@ -63,7 +63,7 @@
         </Rectangle>
         <Button Content="Terminado" HorizontalAlignment="Left" Height="86.156" Margin="279.667,554.644,0,0" VerticalAlignment="Top" Width="257.276" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1"/>
         <Button Content="En preparación" HorizontalAlignment="Left" Height="86.156" Margin="10,554.644,0,0" VerticalAlignment="Top" Width="264.667" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1"/>
-        <ListView HorizontalAlignment="Left" Height="332.113" Margin="32.99,178.924,0,0" VerticalAlignment="Top" Width="477.277" Grid.Column="1">
+        <ListView x:Name="lvProductos" HorizontalAlignment="Left" Height="332.113" Margin="32.99,178.924,0,0" VerticalAlignment="Top" Width="477.277" Grid.Column="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
