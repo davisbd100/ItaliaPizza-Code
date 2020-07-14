@@ -96,6 +96,7 @@ namespace ItaliaPizza
                 Convert.ToInt32(txb_Cantidad.Text), dtp_Caducidad.SelectedDate.Value.ToString("yyyy/MM/dd"), "Example") == BusinessLogic.ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
                 MessageBox.Show("Producto registrado con éxito");
+                this.Close();
             }
             else
             {
@@ -103,7 +104,20 @@ namespace ItaliaPizza
             }
         }
 
-
+        private void ButtonCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("¿Está seguro que desea cancelar?", "Cancelar", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    Close();
+                    break;
+                case MessageBoxResult.No:
+                    RegistrarCliente registrarCliente = new RegistrarCliente();
+                    registrarCliente.Close();
+                    break;
+            }
+        }
     }
 }
 

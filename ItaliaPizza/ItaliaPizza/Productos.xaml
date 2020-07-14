@@ -55,7 +55,7 @@
             </Button.Background>
         </Button>
         <Image HorizontalAlignment="Left" Height="87.11" Margin="125.001,26.732,0,0" VerticalAlignment="Top" Width="120.251" Source="/recursos/Producto.png"/>
-        <DataGrid x:Name="dtg_Productos" Height="311" Margin="183,259,88.667,0" VerticalAlignment="Top" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+        <DataGrid x:Name="dtg_Productos" Height="311" Margin="183,259,88.667,0" VerticalAlignment="Top" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" FontFamily="Calibri Light" Foreground="#FF6D7276" BorderBrush="#FF98171F" FontSize="16">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Código" Binding="{Binding Código}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
