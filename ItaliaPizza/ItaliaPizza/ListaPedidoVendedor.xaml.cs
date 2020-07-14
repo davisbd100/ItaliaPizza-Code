@@ -57,7 +57,7 @@ namespace PrototiposItaliaPizza
             {
                 MessageBox.Show("El pedido entro en preparación, por lo que ya no se puede cancelar");
             }
-            else if (pedidoActual.Estatus1.NombreEstatus != "En Preparación")
+            else if (pedidoActual.Estatus1.NombreEstatus != "En Espera")
             {
                 MessageBox.Show("El pedido solo se puede cancelar en espera de preparación");
             }
@@ -81,7 +81,7 @@ namespace PrototiposItaliaPizza
             {
                 MessageBox.Show("El pedido entro en preparación, por lo que ya no se puede editar");
             }
-            else if (pedidoActual.Estatus1.NombreEstatus != "En Preparación")
+            else if (pedidoActual.Estatus1.NombreEstatus != "En Espera")
             {
                 MessageBox.Show("El pedido solo se puede editar en espera de preparación");
             }

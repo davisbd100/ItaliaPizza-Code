@@ -89,9 +89,6 @@ namespace BusinessLogic
                     if (pedido == null)
                     {
                         throw new InstanceNotFoundException();
-                    }else if(!pedido.Estatus1.NombreEstatus.Equals("En Espera") && !pedido.Estatus1.NombreEstatus.Equals("En Preparación"))
-                    {
-                        throw new FormatException();
                     }
                     pedido.PedidoProducto = pedido.PedidoProducto;
                     foreach (var pedidoProducto in pedido.PedidoProducto)
@@ -106,9 +103,6 @@ namespace BusinessLogic
                 }catch (InstanceNotFoundException)
                 {
                     throw new InstanceNotFoundException("No se encontro el pedido");
-                }catch (FormatException)
-                {
-                    throw new FormatException("El pedido no se encuentra en espera");
                 }
             }
             return pedido;
