@@ -89,9 +89,9 @@
         <Controls:ProductosUC HorizontalAlignment="Left" Height="360" Margin="139,139,0,0" VerticalAlignment="Top" Width="527" ProductoUserControlClicked="ProductosUC_ProductoUserControlClicked"/>
         <DataGrid x:Name="dgProductosDePedido" HorizontalAlignment="Left" Height="182" Margin="686,261,0,0" VerticalAlignment="Top" Width="517" CanUserReorderColumns="False" AutoGenerateColumns="False"  CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripción}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Precio " Binding="{Binding PrecioPúblico}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Cantidad}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Descripcion" Binding="{Binding ProductoVenta.FotoProducto}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Precio " Binding="{Binding Precio}" IsReadOnly="True"/>
                 <DataGridTemplateColumn>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>

@@ -43,15 +43,52 @@ namespace ItaliaPizza
             cliente.Nombre = "arturo";
             cliente.idCliente = "12";
             clientes.Add(cliente);
-           // List<Cliente> clientes = clienteController.GetCliente(0);
+            // List<Cliente> clientes = clienteController.GetCliente(0);
             cbb_NombreCliente.ItemsSource = clientes;
         }
 
         private void ProductosUC_ProductoUserControlClicked(object sender, EventArgs e)
         {
             BusinessLogic.ProductoVenta tempProducto = ((BusinessLogic.ProductoVenta)sender);
+            DataAccess.ProductoVenta tempProducto1 = new DataAccess.ProductoVenta()
+            {
+                idProductoVenta = tempProducto.idProducto,
+                PrecioPublico = tempProducto.PrecioPúblico,
+                FotoProducto = tempProducto.Nombre
+            };
             ProductoVentaController producto = new ProductoVentaController();
-            productoVentas.Add(tempProducto);
+            DataAccess.PedidoProducto pedidoProducto = new DataAccess.PedidoProducto()
+            {
+                idProductoVenta = tempProducto.idProducto,
+                Cantidad = 1,
+                Precio = tempProducto.PrecioPúblico
+            };
+            foreach (DataAccess.PedidoProducto item in dgProductosDePedido.Items)
+            {
+                if (tempProducto.idProducto == item.idProductoVenta)
+                {
+                    item.Cantidad++;
+                    item.Precio += tempProducto1.PrecioPublico;
+                    MessageBox.Show("It works" + item.Cantidad);
+                }
+            }
+            int flag = 0;
+            foreach (DataAccess.PedidoProducto item in dgProductosDePedido.Items)
+            {
+                if (item.ProductoVenta.idProductoVenta == tempProducto.idProducto)
+                {
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0)
+            {
+                pedidoProducto.ProductoVenta = tempProducto1;
+
+                listaproductos.Add(pedidoProducto);
+                ActualizarDataGrid();
+            }
+
             ActualizarLabelPrecio(tempProducto.PrecioPúblico);
             ActualizarDataGrid();
         }
@@ -66,7 +103,7 @@ namespace ItaliaPizza
         private void ActualizarDataGrid()
         {
             dgProductosDePedido.ItemsSource = null;
-            dgProductosDePedido.ItemsSource = productoVentas;
+            dgProductosDePedido.ItemsSource = listaproductos;
         }
 
         private bool ValidarCampos()
@@ -87,39 +124,27 @@ namespace ItaliaPizza
                 pedido.FechaPedido = DateTime.UtcNow;
                 pedido.Estatus = 1;
                 BusinessLogic.Cliente cliente = (BusinessLogic.Cliente)cbb_NombreCliente.SelectedItem;
-                pedido.Cliente = cliente.idCliente;
 
 
                 foreach (BusinessLogic.ProductoVenta producto in productoVentas)
                 {
-                    DataAccess.PedidoProducto pedidoProducto = new PedidoProducto();
-                    pedidoProducto.idProductoVenta = producto.idProducto;
-                    pedidoProducto.Precio = producto.PrecioPúblico;
-                    if (listaproductos != null)
+                    if (dgProductosDePedido.Items != null)
                     {
-                        foreach (DataAccess.PedidoProducto pedido1 in listaproductos)
+                        foreach (BusinessLogic.ProductoVenta pedido1 in dgProductosDePedido.Items)
                         {
-                            if (pedido1.idPedido == producto.idProducto)
-                            {
-
-                                pedido1.Cantidad += 1;
-                            }
-                            else
-                            {
-                                pedidoProducto.Cantidad = 1;
-
-                            }
+                            DataAccess.PedidoProducto pedidoProducto = new PedidoProducto();
+                            pedidoProducto.idProductoVenta = pedido1.idProducto;
+                            pedidoProducto.Precio = pedido1.PrecioPúblico;
+                            listaproductos.Add(pedidoProducto);
                         }
-
                     }
-                        listaproductos.Add(pedidoProducto);
 
                 }
 
 
                 foreach (DataAccess.PedidoProducto pedido2 in listaproductos)
                 {
-                    MessageBox.Show(pedido2.Cantidad.ToString());
+
                 }
             }
         }
