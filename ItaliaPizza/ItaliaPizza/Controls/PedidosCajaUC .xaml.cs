@@ -20,12 +20,12 @@ namespace ItaliaPizza.Controls
     /// <summary>
     /// Interaction logic for PedidosUC.xaml
     /// </summary>
-    public partial class PedidosUC : UserControl
+    public partial class PedidosCajaUC : UserControl
     {
         public event EventHandler PedidosUserControlClicked;
         PedidoController Controller = new PedidoController();
         List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
-        public PedidosUC()
+        public PedidosCajaUC()
         {
             InitializeComponent();
             UpdateGrid();
@@ -33,7 +33,7 @@ namespace ItaliaPizza.Controls
 
         public void UpdateGrid()
         {
-            pedidos = Controller.ObtenerPedidosCocina();
+            pedidos = Controller.ObtenerPedidosVendedor();
             icPedidos.ItemsSource = null;
             icPedidos.ItemsSource = pedidos;
             Console.WriteLine(icPedidos.ItemsSource);

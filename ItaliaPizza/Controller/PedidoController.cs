@@ -58,9 +58,14 @@ namespace Controller
 
         public List<DataAccess.Pedido> ObtenerPedidosVendedor()
         {
-            List<DataAccess.Pedido> resultado;
+            List<DataAccess.Pedido> aidList;
             PedidoDAO pedidoDAO = new PedidoDAO();
-            resultado = pedidoDAO.ObtenerListaPedidos();
+            aidList = pedidoDAO.ObtenerListaPedidosDisponibles();
+            List<DataAccess.Pedido> resultado = aidList.ToList();
+            if (!aidList.Any())
+            {
+                throw new DataException("No existen pedidos");
+            }
             return resultado;
         }
 
