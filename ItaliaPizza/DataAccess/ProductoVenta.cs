@@ -30,8 +30,5 @@ namespace DataAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PedidoProducto> PedidoProducto { get; set; }
-        public virtual Producto Producto { get; set; }
-        public virtual Receta Receta1 { get; set; }
-        public virtual TipoProducto TipoProducto1 { get; set; }
     }
 }

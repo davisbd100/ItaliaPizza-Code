@@ -17,8 +17,5 @@ namespace DataAccess
         public int Ubicacion { get; set; }
         public int Producto { get; set; }
         public Nullable<int> Cantidad { get; set; }
-    
-        public virtual Producto Producto1 { get; set; }
-        public virtual Ubicacion Ubicacion1 { get; set; }
     }
 }

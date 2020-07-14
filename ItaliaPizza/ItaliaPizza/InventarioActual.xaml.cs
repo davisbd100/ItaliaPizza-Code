@@ -61,8 +61,8 @@ namespace ItaliaPizza
                 {
                     Inventario p = o as Inventario;
                     if (tbBusqueda.Name == "tbBusqueda")
-                        return (p.Producto1.Nombre == filter);
-                    return (p.Producto1.Nombre.ToUpper().StartsWith(filter.ToUpper()));
+                        return (p.Producto.ToString() == filter);
+                    return (p.Producto.ToString().ToUpper().StartsWith(filter.ToUpper()));
                 };
             }
         }

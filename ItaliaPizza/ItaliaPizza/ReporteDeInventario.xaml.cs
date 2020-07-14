@@ -58,8 +58,8 @@ namespace ItaliaPizza
                 {
                     DataAccess.Inventario p = o as DataAccess.Inventario;
                     if (tbBusqueda.Name == "tbBusqueda")
-                        return (p.Producto1.Nombre == filter);
-                    return (p.Producto1.Nombre.ToUpper().StartsWith(filter.ToUpper()));
+                        return (p.Producto.ToString() == filter);
+                    return (p.Producto.ToString().ToUpper().StartsWith(filter.ToUpper()));
                 };
             }
         }
@@ -76,7 +76,6 @@ namespace ItaliaPizza
             if (posicion != POSICION_FUERA_RANGO)
             {
                 dgPedidoProducto.ItemsSource = null;
-                dgPedidoProducto.ItemsSource = ((DataAccess.Inventario)dgInventario.SelectedItem).ProductoInventario;
             }
             else
             {
@@ -125,20 +124,12 @@ namespace ItaliaPizza
 
             foreach (var item in controller.ObtenerTodosLosInventarios())
             {
-                Paragraph p = new Paragraph(new Run(item.Producto1.Nombre + "No existen movimientos"))
+                Paragraph p = new Paragraph(new Run(item.Producto.ToString() + "No existen movimientos"))
                 {
                     TextAlignment = TextAlignment.Center,
                     Margin = new Thickness(200,0,0,0),
                     
                 };
-                foreach (var movimientos in item.ProductoInventario)
-                {
-                    p = new Paragraph(new Run(((DataAccess.Inventario)item).Producto1.Nombre + "|" + movimientos.PrecioCompra + " " + movimientos.PrecioCompra))
-                    {
-                        FontSize = 11,
-                        TextAlignment = TextAlignment.Center
-                    };
-                }
                 flow.Blocks.Add(p);
             }
             flow.Name = "FlowDoc";

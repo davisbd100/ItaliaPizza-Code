@@ -14,27 +14,11 @@ namespace DataAccess
     
     public partial class Producto
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Producto()
-        {
-            this.Inventario = new HashSet<Inventario>();
-            this.ProductoInventario = new HashSet<ProductoInventario>();
-            this.UbicacionProducto = new HashSet<UbicacionProducto>();
-        }
-    
-        public int Codigo { get; set; }
+        public int idProducto { get; set; }
+        public string Codigo { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Restriccion { get; set; }
         public Nullable<bool> Visibilidad { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inventario> Inventario { get; set; }
-        public virtual ProductoIngrediente ProductoIngrediente { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductoInventario> ProductoInventario { get; set; }
-        public virtual ProductoVenta ProductoVenta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UbicacionProducto> UbicacionProducto { get; set; }
     }
 }

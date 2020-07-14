@@ -14,16 +14,7 @@ namespace DataAccess
     
     public partial class Ubicacion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ubicacion()
-        {
-            this.UbicacionProducto = new HashSet<UbicacionProducto>();
-        }
-    
         public int idUbicacion { get; set; }
         public string NombreUbicacion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UbicacionProducto> UbicacionProducto { get; set; }
     }
 }

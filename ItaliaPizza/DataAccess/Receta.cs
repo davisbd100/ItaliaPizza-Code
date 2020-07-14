@@ -14,21 +14,9 @@ namespace DataAccess
     
     public partial class Receta
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Receta()
-        {
-            this.ProductoVenta = new HashSet<ProductoVenta>();
-            this.RecetaIngrediente = new HashSet<RecetaIngrediente>();
-        }
-    
         public int idReceta { get; set; }
         public string Nombre { get; set; }
         public string Procedimiento { get; set; }
         public Nullable<double> Rendimiento { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductoVenta> ProductoVenta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RecetaIngrediente> RecetaIngrediente { get; set; }
     }
 }

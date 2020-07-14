@@ -95,7 +95,6 @@ namespace BusinessLogic
                     foreach (var pedidoProducto in pedido.PedidoProducto)
                     {
                         pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
-                        pedidoProducto.ProductoVenta.Producto = pedidoProducto.ProductoVenta.Producto;
                     }
                 }
                 catch (EntityException)
@@ -269,7 +268,6 @@ namespace BusinessLogic
                             foreach (var pedidoProducto in pedido.PedidoProducto)
                             {
                                 pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
-                                pedidoProducto.ProductoVenta.Receta1 = pedidoProducto.ProductoVenta.Receta1;
                             }
                             pedidos.Add(pedido);
                         }

@@ -357,7 +357,6 @@ namespace BusinessLogic
                 try
                 {
                     resultado = context.ProductoVenta.FirstOrDefault(b => b.idProductoVenta == id);
-                    resultado.Producto = context.ProductoVenta.FirstOrDefault(b => b.idProductoVenta == id).Producto;
                 }
                 catch (EntityException)
                 {
