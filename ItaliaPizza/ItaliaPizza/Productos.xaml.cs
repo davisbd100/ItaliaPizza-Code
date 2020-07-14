@@ -107,15 +107,6 @@ namespace ItaliaPizza
 
         }
 
-        private void btn_SigPag_Click(object sender, RoutedEventArgs e)
-        {
-            int pagina = int.Parse( txb_Pagina.Text);
-            pagina++;
-            txb_Pagina.Text = pagina.ToString();
-            ActualizarLista();
-
-        }
-
         private void btn_buscar_Click(object sender, RoutedEventArgs e)
         {
             ProductoController productoController = new ProductoController();
@@ -174,6 +165,20 @@ namespace ItaliaPizza
         {
             ElegirNuevoProducto elegirNuevoProducto = new ElegirNuevoProducto();
             elegirNuevoProducto.Show();
+            ActualizarLista();
+        }
+
+        private void SalirButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_SigPag_Click_1(object sender, RoutedEventArgs e)
+        {
+            int pagina = int.Parse(txb_Pagina.Text);
+            pagina++;
+            txb_Pagina.Text = pagina.ToString();
+            ActualizarLista();
         }
     }
 }

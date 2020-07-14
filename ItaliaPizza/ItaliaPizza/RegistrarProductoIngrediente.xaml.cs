@@ -1,18 +1,7 @@
 ﻿using BusinessLogic;
 using Controller;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ItaliaPizza
 {
@@ -76,7 +65,6 @@ namespace ItaliaPizza
            return resultado;
         }
 
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -88,9 +76,6 @@ namespace ItaliaPizza
 
 
         }
-
-        
-
 
         private void RegistrarProductoingrediente()
         {
@@ -109,7 +94,19 @@ namespace ItaliaPizza
             }
         }
 
-
-
+        private void buttonCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("¿Está seguro que desea cancelar?", "Cancelar", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    Close();
+                    break;
+                case MessageBoxResult.No:
+                    RegistrarCliente registrarCliente = new RegistrarCliente();
+                    registrarCliente.Close();
+                    break;
+            }
+        }
     }
 }
