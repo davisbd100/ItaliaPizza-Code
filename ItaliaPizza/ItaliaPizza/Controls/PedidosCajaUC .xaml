@@ -21,6 +21,7 @@
             <ComboBoxItem Content="Todos"/>
             <ComboBoxItem Content="En espera"/>
             <ComboBoxItem Content="En preparacion"/>
+            <ComboBoxItem Content="Preparados"/>
         </ComboBox>
         <Grid x:Name="gridPedidos" HorizontalAlignment="Left" Height="400" Margin="0,59,0,-1" VerticalAlignment="Top" Width="526">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
