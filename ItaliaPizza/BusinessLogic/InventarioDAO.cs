@@ -219,6 +219,7 @@ namespace BusinessLogic
             {
                 try
                 {
+                    context.Inventario.FirstOrDefault();
                     foreach (var inventario in (context.Inventario.OrderBy(b => b.Producto1.Nombre).Skip(rango * (pagina - 1)).Take(rango)))
                     {
                         inventario.Producto1 = inventario.Producto1;
@@ -226,7 +227,7 @@ namespace BusinessLogic
                         inventarios.Add(inventario);
                     }
                 }
-                catch (EntityException)
+                catch (EntityException e)
                 {
                     throw new Exception("Error al obtener los Inventarios");
                 }
