@@ -63,8 +63,24 @@ namespace ItaliaPizza
                 {
                     RegistrarReceta registrarReceta = new RegistrarReceta(producto);
                     registrarReceta.Show();
+                    this.Close();
                 }
 
+            }
+        }
+
+        private void ButtonCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("¿Está seguro de que desea cancelar?", "Cancelar", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    Close();
+                    break;
+                case MessageBoxResult.No:
+                    RegistrarEmpleado registrarEmpleado = new RegistrarEmpleado();
+                    registrarEmpleado.Close();
+                    break;
             }
         }
     }
