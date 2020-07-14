@@ -14,12 +14,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PrototiposItaliaPizza
+namespace ItaliaPizza
 {
     /// <summary>
     /// Lógica de interacción para Empleados.xaml
     /// </summary>
-    public partial class InventarioFinal : Window
+    public partial class ReporteDeInventario : Window
     {
         const int POSICION_FUERA_RANGO = -1;
         List<DataAccess.Inventario> inventario = new List<DataAccess.Inventario>();
@@ -27,7 +27,7 @@ namespace PrototiposItaliaPizza
         int PaginaActual = 1;
         int PaginaTotal = 1;
 
-        public InventarioFinal()
+        public ReporteDeInventario()
         {
             InitializeComponent();
             inventario = controller.ObtenerIngresosInventario(PaginaActual);
@@ -116,6 +116,46 @@ namespace PrototiposItaliaPizza
                 dgInventario.ItemsSource = null;
                 dgInventario.ItemsSource = inventario;
 
+            }
+        }
+
+        private void PrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            FlowDocument flow = new FlowDocument(new Paragraph(new Run("Some text goes here")));
+
+            foreach (var item in controller.ObtenerTodosLosInventarios())
+            {
+                Paragraph p = new Paragraph(new Run(item.Producto1.Nombre + "No existen movimientos"))
+                {
+                    TextAlignment = TextAlignment.Center,
+                    Margin = new Thickness(200,0,0,0),
+                    
+                };
+                foreach (var movimientos in item.ProductoInventario)
+                {
+                    p = new Paragraph(new Run(((DataAccess.Inventario)item).Producto1.Nombre + "|" + movimientos.PrecioCompra + " " + movimientos.PrecioCompra))
+                    {
+                        FontSize = 11,
+                        TextAlignment = TextAlignment.Center
+                    };
+                }
+                flow.Blocks.Add(p);
+            }
+            flow.Name = "FlowDoc";
+            try
+            {
+                IDocumentPaginatorSource idpsorc = flow;
+                this.IsEnabled = false;
+                
+                PrintDialog printDialog = new PrintDialog();
+                if(printDialog.ShowDialog() == true)
+                {
+                    printDialog.PrintDocument(idpsorc.DocumentPaginator, "Invoice");
+                }
+            }
+            finally
+            {
+                this.IsEnabled = true;
             }
         }
     }

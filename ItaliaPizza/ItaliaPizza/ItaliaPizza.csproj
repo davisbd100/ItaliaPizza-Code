@@ -94,7 +94,7 @@
     </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
-      </Compile>
+    </Compile>
     <Compile Include="EditarPedido.xaml.cs">
       <DependentUpon>EditarPedido.xaml</DependentUpon>
     </Compile>
@@ -125,8 +125,8 @@
     <Compile Include="InventarioActual.xaml.cs">
       <DependentUpon>InventarioActual.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InventarioFinal.xaml.cs">
-      <DependentUpon>InventarioFinal.xaml</DependentUpon>
+    <Compile Include="ReporteDeInventario.xaml.cs">
+      <DependentUpon>ReporteDeInventario.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListaPedidoCocinero.xaml.cs">
       <DependentUpon>ListaPedidoCocinero.xaml</DependentUpon>
@@ -254,7 +254,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="InventarioFinal.xaml">
+    <Page Include="ReporteDeInventario.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

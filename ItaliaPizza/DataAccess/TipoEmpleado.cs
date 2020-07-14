@@ -12,13 +12,9 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class PedidoDomicilio
+    public partial class TipoEmpleado
     {
-        public int idPedido { get; set; }
-        public string Comentario { get; set; }
-        public Nullable<System.DateTime> HoraSalida { get; set; }
-        public string Repartidor { get; set; }
-    
-        public virtual Pedido Pedido { get; set; }
+        public string idTipoEmpleado { get; set; }
+        public string TipoEmpleado1 { get; set; }
     }
 }

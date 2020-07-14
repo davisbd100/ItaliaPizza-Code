@@ -12,18 +12,26 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoProducto
+    public partial class ProductoVenta
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoProducto()
+        public ProductoVenta()
         {
-            this.ProductoVenta = new HashSet<ProductoVenta>();
+            this.PedidoProducto = new HashSet<PedidoProducto>();
         }
     
-        public int idTipoProducto { get; set; }
-        public string NombreTipoProducto { get; set; }
+        public int idProductoVenta { get; set; }
+        public Nullable<double> PrecioPublico { get; set; }
+        public Nullable<int> TipoProducto { get; set; }
+        public string FotoProducto { get; set; }
+        public Nullable<bool> TieneReceta { get; set; }
+        public Nullable<int> Receta { get; set; }
+        public Nullable<bool> Visibilidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductoVenta> ProductoVenta { get; set; }
+        public virtual ICollection<PedidoProducto> PedidoProducto { get; set; }
+        public virtual Producto Producto { get; set; }
+        public virtual Receta Receta1 { get; set; }
+        public virtual TipoProducto TipoProducto1 { get; set; }
     }
 }
