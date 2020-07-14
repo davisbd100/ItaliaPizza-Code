@@ -24,16 +24,24 @@ namespace ItaliaPizza.Controls
     {
         public event EventHandler PedidosUserControlClicked;
         PedidoController Controller = new PedidoController();
-        List<DataAccess.Pedido> Pedidos = new List<DataAccess.Pedido>();
+        List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
         public PedidosUC()
         {
             InitializeComponent();
+            UpdateGrid();
+        }
+
+        private void UpdateGrid()
+        {
+            pedidos = Controller.ObtenerPedidosCocina();
+            icPedidos.ItemsSource = null;
+            icPedidos.ItemsSource = pedidos;
+            Console.WriteLine(icPedidos.ItemsSource);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Loaded");
-            Pedidos = Controller.ObtenerPedidosCocina();
         }
 
 

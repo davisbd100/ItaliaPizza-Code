@@ -22,9 +22,9 @@
             <ComboBoxItem Content="En espera"/>
             <ComboBoxItem Content="En preparacion"/>
         </ComboBox>
-        <Grid x:Name="gridProductos" HorizontalAlignment="Left" Height="400" Margin="0,59,0,-1" VerticalAlignment="Top" Width="526">
+        <Grid x:Name="gridPedidos" HorizontalAlignment="Left" Height="400" Margin="0,59,0,-1" VerticalAlignment="Top" Width="526">
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <ItemsControl x:Name="icProductos">
+                <ItemsControl x:Name="icPedidos">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="3" Margin="10"/>
@@ -33,11 +33,9 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid Height="140" VerticalAlignment="Top" Width="142">
-                                <Grid Height="60" VerticalAlignment="Top" Width="142" Margin="192,10,192,0">
-                                    <TextBlock HorizontalAlignment="Stretch" Height="20" Margin="2.5,20,0,0" TextWrapping="Wrap" Text="{Binding Estatus1.NombreEstatus}" VerticalAlignment="Top" Background="Gray" Foreground="White" TextAlignment="Center"/>
-                                    <TextBlock HorizontalAlignment="Stretch" x:Name="tbidPedido" Height="20" Margin="2.5,0,0,0" TextWrapping="Wrap" Text="{Binding idPedido}" VerticalAlignment="Top" Background="DarkGray" Foreground="White" TextAlignment="Center" />
-                                    <Button Content="{Binding FechaPedido}" x:Name="btContent" HorizontalAlignment="Stretch" Margin="0,40,-3,0" Height="35" VerticalAlignment="Top" Width="140" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22" Click="btContent_Click"/>
-                                </Grid>
+                                <TextBlock HorizontalAlignment="Stretch" Height="20" Margin="2.5,20,0,0" TextWrapping="Wrap" Text="{Binding Estatus1.NombreEstatus}" VerticalAlignment="Top" Background="Gray" Foreground="White" TextAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Stretch" x:Name="tbidPedido" Height="20" Margin="2.5,0,0,0" TextWrapping="Wrap" Text="{Binding idPedido}" VerticalAlignment="Top" Background="DarkGray" Foreground="White" TextAlignment="Center" />
+                                <Button Content="{Binding FechaPedido}" x:Name="btContent" HorizontalAlignment="Stretch" Margin="0,40,-3,0" Height="35" VerticalAlignment="Top" Width="140" Background="#FF008050" BorderBrush="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22" Click="btContent_Click"/>
                             </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

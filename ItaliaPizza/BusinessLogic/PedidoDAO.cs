@@ -193,7 +193,7 @@ namespace BusinessLogic
             {
                 try
                 {
-                    pedidos = context.Pedido.Where(b => b.Estatus1.NombreEstatus.ToString() != "Cancelado" || b.Estatus1.NombreEstatus.ToString() != "Finalizado").ToList();
+                    pedidos = context.Pedido.Where(b => b.Estatus1.NombreEstatus.ToString() != "Cancelado" && b.Estatus1.NombreEstatus.ToString() != "Finalizado").ToList();
                     foreach (var pedido in pedidos)
                     {
                         pedido.Estatus1 = pedido.Estatus1;

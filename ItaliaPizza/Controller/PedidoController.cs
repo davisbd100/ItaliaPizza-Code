@@ -24,14 +24,15 @@ namespace Controller
 
         public List<DataAccess.Pedido> ObtenerPedidosCocina()
         {
-            List<DataAccess.Pedido> resultado;
+            List<DataAccess.Pedido> aidList;
             PedidoDAO pedidoDAO = new PedidoDAO();
-            resultado = pedidoDAO.ObtenerListaPedidosDisponibles();
-            if (resultado.Any())
+            aidList = pedidoDAO.ObtenerListaPedidosDisponibles();
+            List<DataAccess.Pedido> resultado = aidList.ToList();
+            if (aidList.Any())
             {
-                foreach (var item in resultado)
+                foreach (var item in aidList)
                 {
-                    if (item.Estatus1.NombreEstatus != "En espera" || item.Estatus1.NombreEstatus != "En Preparación")
+                    if (item.Estatus1.NombreEstatus != "En Espera" && item.Estatus1.NombreEstatus != "En Preparación")
                     {
                         resultado.Remove(item);
                     }
