@@ -65,13 +65,12 @@
     <Compile Include="InventarioDAO.cs" />
     <Compile Include="IProducto.cs" />
     <Compile Include="IProductoVenta.cs" />
-    <Compile Include="ITipoEmpleado.cs" />
     <Compile Include="IReceta.cs" />
     <Compile Include="ITipoProducto.cs" />
-    <Compile Include="IUbicación.cs" />
     <Compile Include="IVenta.cs" />
     <Compile Include="ListaIngredientesReceta.cs" />
     <Compile Include="Pedido.cs" />
+    <Compile Include="PedidoDAO.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="ProductoDAO.cs" />
     <Compile Include="ProductoIngredienteDAO.cs" />
