@@ -14,20 +14,10 @@ namespace DataAccess
     
     public partial class Inventario
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Inventario()
-        {
-            this.ProductoInventario = new HashSet<ProductoInventario>();
-        }
-    
         public int idInventario { get; set; }
         public Nullable<int> Producto { get; set; }
         public Nullable<int> ExistenciaInicial { get; set; }
         public Nullable<int> ExistenciaTotal { get; set; }
         public string UnidadMedida { get; set; }
-    
-        public virtual Producto Producto1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductoInventario> ProductoInventario { get; set; }
     }
 }

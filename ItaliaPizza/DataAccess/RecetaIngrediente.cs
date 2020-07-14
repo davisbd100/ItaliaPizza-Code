@@ -14,12 +14,10 @@ namespace DataAccess
     
     public partial class RecetaIngrediente
     {
-        public int idReceta { get; set; }
-        public int idProductoIngrediente { get; set; }
+        public int idRecetaIngrediente { get; set; }
+        public Nullable<int> idReceta { get; set; }
+        public Nullable<int> idProductoIngrediente { get; set; }
         public Nullable<int> Cantidad { get; set; }
         public Nullable<double> PrecioUnitario { get; set; }
-    
-        public virtual ProductoIngrediente ProductoIngrediente { get; set; }
-        public virtual Receta Receta { get; set; }
     }
 }

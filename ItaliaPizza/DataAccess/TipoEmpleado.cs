@@ -14,7 +14,7 @@ namespace DataAccess
     
     public partial class TipoEmpleado
     {
-        public string idTipoEmpleado { get; set; }
+        public int idTipoEmpleado { get; set; }
         public string TipoEmpleado1 { get; set; }
     }
 }

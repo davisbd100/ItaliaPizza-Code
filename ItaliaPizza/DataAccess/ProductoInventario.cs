@@ -20,8 +20,5 @@ namespace DataAccess
         public Nullable<double> PrecioCompra { get; set; }
         public Nullable<System.DateTime> FechaIngreso { get; set; }
         public Nullable<System.DateTime> Caducidad { get; set; }
-    
-        public virtual Inventario Inventario1 { get; set; }
-        public virtual Producto Producto1 { get; set; }
     }
 }

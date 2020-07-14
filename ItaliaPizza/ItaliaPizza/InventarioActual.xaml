@@ -28,7 +28,7 @@
         <Image HorizontalAlignment="Left" Height="87.11" Margin="125.001,26.732,0,0" VerticalAlignment="Top" Width="120.251" Source="Recursos/Inventario.png"/>
         <DataGrid x:Name="dgInventario" HorizontalAlignment="Left" Height="302" Margin="185,233,0,0" VerticalAlignment="Top" Width="1003" FontSize="24" ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" FontFamily="Calibri Light" BorderBrush="#FF98171F" Foreground="#FF6D7276">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Producto" Binding="{Binding Producto1.Nombre}" IsReadOnly="True" FontFamily="Calibri Light"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding Producto}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Medida" Binding="{Binding UnidadMedida}" IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="ColumnExistencia" Header="Existencia" Binding="{Binding ExistenciaInicial}" IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="ColumnNuevaExistencia" Header="Nueva Existencia" Binding="{Binding ExistenciaTotal}" FontFamily="Calibri Light" FontSize="16"/>

@@ -263,7 +263,6 @@ namespace BusinessLogic
                     foreach (var pedidoProducto in pedido.PedidoProducto)
                     {
                         pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
-                        pedidoProducto.ProductoVenta.Producto = pedidoProducto.ProductoVenta.Producto;
                     }
                 }
                 catch (EntityException)
@@ -349,6 +348,46 @@ namespace BusinessLogic
 
             return pedidos;
         }
+        public List<DataAccess.PedidoProducto> ObtenerListaPedidoProducto(int id)
+        {
+            List<DataAccess.PedidoProducto> pedidos = new List<DataAccess.PedidoProducto>();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    pedidos = context.PedidoProducto.Where(b => b.idPedido == id).ToList();
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los pedidos");
+                }
+            }
+
+            return pedidos;
+        }
+        public List<DataAccess.Pedido> ObtenerListaPedidosDisponiblesCocina()
+        {
+            List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    DataAccess.Estatus estatusCancelado = context.Estatus.Where(b => b.NombreEstatus == "Cancelado").FirstOrDefault();
+                    DataAccess.Estatus estatusFinalizado = context.Estatus.Where(b => b.NombreEstatus == "Finalizado").FirstOrDefault();
+                    pedidos = context.Pedido.Where(b => b.Estatus != estatusCancelado.idEstatus && b.Estatus != estatusFinalizado.idEstatus).ToList();
+                    foreach (var pedido in pedidos)
+                    {
+                        pedido.PedidoProducto = pedido.PedidoProducto;
+                    }
+                }
+                catch (EntityException e)
+                {
+                    throw new Exception("Error al obtener los pedidos");
+                }
+            }
+
+            return pedidos;
+        }
         public List<DataAccess.Pedido> ObtenerListaPedidosDisponibles()
         {
             List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
@@ -356,10 +395,11 @@ namespace BusinessLogic
             {
                 try
                 {
-                    pedidos = context.Pedido.Where(b => b.Estatus1.NombreEstatus.ToString() != "Cancelado" && b.Estatus1.NombreEstatus.ToString() != "Finalizado").ToList();
+                    DataAccess.Estatus estatusEnEspera = context.Estatus.Where(b => b.NombreEstatus == "Cancelado").FirstOrDefault();
+                    DataAccess.Estatus estatusEnPreparacion = context.Estatus.Where(b => b.NombreEstatus == "Finalizado").FirstOrDefault();
+                    pedidos = context.Pedido.Where(b => b.Estatus == estatusEnEspera.idEstatus || b.Estatus == estatusEnPreparacion.idEstatus).ToList();
                     foreach (var pedido in pedidos)
                     {
-                        pedido.Estatus1 = pedido.Estatus1;
                         pedido.PedidoProducto = pedido.PedidoProducto;
                     }
                 }
@@ -413,7 +453,6 @@ namespace BusinessLogic
                             foreach (var pedidoProducto in pedido.PedidoProducto)
                             {
                                 pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
-                                pedidoProducto.ProductoVenta.Receta1 = pedidoProducto.ProductoVenta.Receta1;
                             }
                             pedidos.Add(pedido);
                         }

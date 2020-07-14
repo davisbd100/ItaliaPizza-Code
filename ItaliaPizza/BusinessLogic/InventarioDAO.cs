@@ -176,8 +176,6 @@ namespace BusinessLogic
                 {
                     foreach (var inventario in context.Inventario)
                     {
-                        inventario.Producto1 = inventario.Producto1;
-                        inventario.ProductoInventario = inventario.ProductoInventario;
                         inventarios.Add(inventario);
                     }
                 }
@@ -220,10 +218,8 @@ namespace BusinessLogic
                 try
                 {
                     context.Inventario.FirstOrDefault();
-                    foreach (var inventario in (context.Inventario.OrderBy(b => b.Producto1.Nombre).Skip(rango * (pagina - 1)).Take(rango)))
+                    foreach (var inventario in (context.Inventario.Skip(rango * (pagina - 1)).Take(rango)))
                     {
-                        inventario.Producto1 = inventario.Producto1;
-                        inventario.ProductoInventario = inventario.ProductoInventario;
                         inventarios.Add(inventario);
                     }
                 }
@@ -269,9 +265,8 @@ namespace BusinessLogic
             {
                 try
                 {
-                    foreach (var inventario in (context.Inventario.OrderBy(b => b.Producto1.Nombre).Skip(rango * (pagina - 1)).Take(rango)))
+                    foreach (var inventario in context.Inventario)
                     {
-                        inventario.Producto1 = inventario.Producto1;
                         inventarios.Add(inventario);
                     }
                 }

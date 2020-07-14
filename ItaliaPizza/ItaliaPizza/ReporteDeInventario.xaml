@@ -39,7 +39,7 @@
         <Image HorizontalAlignment="Left" Height="87.11" Margin="125.001,26.732,0,0" VerticalAlignment="Top" Width="120.251" Source="Recursos/Inventario.png"/>
         <DataGrid MouseDoubleClick="dgInventario_MouseDoubleClick" x:Name="dgInventario" HorizontalAlignment="Left" Height="281" Margin="185,249,0,0" VerticalAlignment="Top" Width="456" FontSize="16" ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" BorderBrush="#FF98171F" Foreground="#FF6D7276" FontFamily="Calibri Light">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Producto" Binding="{Binding Producto1.Nombre}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding Producto}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Medida" Binding="{Binding UnidadMedida}" IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="ColumnExistencia" Header="Existencia Inicial" Binding="{Binding ExistenciaInicial}" IsReadOnly="True"/>
             </DataGrid.Columns>

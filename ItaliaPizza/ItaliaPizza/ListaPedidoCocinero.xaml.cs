@@ -1,4 +1,6 @@
-﻿using Controller;
+using BusinessLogic;
+using Controller;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -24,7 +26,8 @@ namespace ItaliaPizza
             pedidoActual = ((DataAccess.Pedido)sender);
             lbidPedidoActual.Content = pedidoActual.idPedido;
             DataAccess.Pedido pedido = PedidoController.ObtenerPedidoConProductos(pedidoActual.idPedido);
-            dgProductos.ItemsSource = pedido.PedidoProducto;
+            
+            dgProductos.ItemsSource = PedidoController.ObtenerPedidoProducto(pedidoActual.idPedido);
         }
 
         private void btEnPreparacion_Click(object sender, RoutedEventArgs e)

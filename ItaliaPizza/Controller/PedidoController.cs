@@ -35,24 +35,16 @@ namespace Controller
 
         public List<DataAccess.Pedido> ObtenerPedidosCocina()
         {
-            List<DataAccess.Pedido> aidList;
+            List<DataAccess.Pedido> resultado;
             PedidoDAO pedidoDAO = new PedidoDAO();
-            aidList = pedidoDAO.ObtenerListaPedidosDisponibles();
-            List<DataAccess.Pedido> resultado = aidList.ToList();
-            if (aidList.Any())
-            {
-                foreach (var item in aidList)
-                {
-                    if (item.Estatus1.NombreEstatus != "En Espera" && item.Estatus1.NombreEstatus != "En Preparación")
-                    {
-                        resultado.Remove(item);
-                    }
-                }
-            }
-            else
-            {
-                throw new DataException("No existen pedidos");
-            }
+            resultado = pedidoDAO.ObtenerListaPedidosDisponiblesCocina();
+            return resultado;
+        }
+        public List<DataAccess.PedidoProducto> ObtenerPedidoProducto(int id)
+        {
+            List<DataAccess.PedidoProducto> resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.ObtenerListaPedidoProducto(id);
             return resultado;
         }
 
