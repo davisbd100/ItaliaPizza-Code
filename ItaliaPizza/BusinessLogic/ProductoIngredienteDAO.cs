@@ -48,7 +48,7 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                         "INSERT INTO dbo.ProductoInventario VALUES (@Inventario, @Producto, @CantidadIngreso, @PrecioCompra, @FechaIngreso, @Caducidad, 'TRUE')";
+                         "INSERT INTO dbo.ProductoInventario VALUES (@Inventario, @Producto, @CantidadIngreso, @PrecioCompra, @FechaIngreso, @Caducidad)";
                     command.Parameters.Add(new SqlParameter("@Inventario", id));
                     command.Parameters.Add(new SqlParameter("@Producto", inventario.Producto.idProducto));
                     command.Parameters.Add(new SqlParameter("@CantidadIngreso", inventario.CantidadIngreso));
@@ -58,9 +58,11 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida, 'TRUE')";
+                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @Producto, @ExistenciaInicial, @ExistenciaTotal, @UnidadMedida)";
                     command.Parameters.Add(new SqlParameter("@idInventario", id));
-                    command.Parameters.Add(new SqlParameter("@ExistenciaTotal", id));
+                    command.Parameters.Add(new SqlParameter("@idProducto", id));
+                    command.Parameters.Add(new SqlParameter("@ExistenciaInicial", 1));
+                    command.Parameters.Add(new SqlParameter("@ExistenciaTotal", 1));
                     command.Parameters.Add(new SqlParameter("@UnidadMedida", inventario.UnidadDeMedida));
                     command.ExecuteNonQuery();
 

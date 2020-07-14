@@ -55,9 +55,9 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                         "INSERT INTO dbo.ProductoInventario VALUES (@Inventario, @Producto, @CantidadIngreso, @PrecioCompra, @FechaIngreso, @Caducidad, 'TRUE')";
+                         "INSERT INTO dbo.ProductoInventario VALUES (@Inventario, @Producto, @CantidadIngreso, @PrecioCompra, @FechaIngreso, @Caducidad)";
                     command.Parameters.Add(new SqlParameter("@Inventario", id));
-                    command.Parameters.Add(new SqlParameter("@Producto", id));
+                    command.Parameters.Add(new SqlParameter("@Producto", inventario.Producto.idProducto));
                     command.Parameters.Add(new SqlParameter("@CantidadIngreso", inventario.CantidadIngreso));
                     command.Parameters.Add(new SqlParameter("@PrecioCompra", inventario.PrecioCompra));
                     command.Parameters.Add(new SqlParameter("@FechaIngreso", inventario.FechaIngreso));
@@ -65,9 +65,11 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @ExistenciaTotal, @UnidadMedida, 'TRUE')";
+                        "INSERT INTO dbo.Inventario VALUES (@idInventario, @Producto, @ExistenciaInicial, @ExistenciaTotal, @UnidadMedida)";
                     command.Parameters.Add(new SqlParameter("@idInventario", id));
-                    command.Parameters.Add(new SqlParameter("@ExistenciaTotal", inventario.ExistenciaTotal));
+                    command.Parameters.Add(new SqlParameter("@idProducto", id));
+                    command.Parameters.Add(new SqlParameter("@ExistenciaInicial", 1));
+                    command.Parameters.Add(new SqlParameter("@ExistenciaTotal", 1));
                     command.Parameters.Add(new SqlParameter("@UnidadMedida", inventario.UnidadDeMedida));
                     command.ExecuteNonQuery();
 
@@ -221,7 +223,7 @@ namespace BusinessLogic
                 }
 
                 using (SqlCommand command = new SqlCommand("select Codigo, Nombre, Descripcion, idProductoVenta, PrecioPublico  from dbo.ProductoVenta left join dbo.Producto  on" +
-                    " dbo.Producto.Codigo = dbo.ProductoVenta.idProductoVenta WHERE dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset @Rango rows fetch next 20 rows only", connection))
+                    " dbo.Producto.idProducto = dbo.ProductoVenta.idProductoVenta WHERE dbo.Producto.Visibilidad = 'TRUE' order by Nombre offset @Rango rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
