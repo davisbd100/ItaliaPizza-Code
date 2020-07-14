@@ -31,7 +31,7 @@ namespace ItaliaPizza.Controls
             UpdateGrid();
         }
 
-        private void UpdateGrid()
+        public void UpdateGrid()
         {
             pedidos = Controller.ObtenerPedidosCocina();
             icPedidos.ItemsSource = null;

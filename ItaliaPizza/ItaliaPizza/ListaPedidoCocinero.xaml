@@ -21,7 +21,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <Grid HorizontalAlignment="Left" Height="478.542" Margin="139.057,130,0,0"  VerticalAlignment="Top" Width="526.943">
-            <uc:PedidosUC Margin="4,0,-3.057,-0.458" PedidosUserControlClicked="PedidosUC_PedidoUserControlClicked"/>
+            <uc:PedidosUC x:Name="ucPedidos" Margin="4,0,-3.057,-0.458" PedidosUserControlClicked="PedidosUC_PedidoUserControlClicked"/>
         </Grid>
         <Rectangle HorizontalAlignment="Left" Height="724.666" Stroke="White" VerticalAlignment="Top" Width="120.001" Margin="0,0,0,-73.333">
             <Rectangle.Fill>
@@ -61,7 +61,7 @@
                 <SolidColorBrush Color="White" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Button x:Name="btTerminado" Content="Terminado" HorizontalAlignment="Left" Height="86.156" Margin="279.667,554.644,0,0" VerticalAlignment="Top" Width="257.276" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1"/>
+        <Button x:Name="btTerminado" Content="Terminado" HorizontalAlignment="Left" Height="86.156" Margin="279.667,554.644,0,0" VerticalAlignment="Top" Width="257.276" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1" Click="btTerminado_Click"/>
         <Button x:Name="btEnPreparacion" Content="En preparación" HorizontalAlignment="Left" Height="86.156" Margin="10,554.644,0,0" VerticalAlignment="Top" Width="264.667" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1" Click="btEnPreparacion_Click"/>
         <DataGrid x:Name="dgProductos" HorizontalAlignment="Left" Height="332.113" Margin="32.99,178.924,0,0" VerticalAlignment="Top" Width="477.277" Grid.Column="2" FontSize="15" ColumnWidth="*" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
             <DataGrid.Columns>

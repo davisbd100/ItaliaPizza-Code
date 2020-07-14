@@ -25,7 +25,11 @@ namespace Controller
         {
             ResultadoOperacionEnum.ResultadoOperacion resultado;
             PedidoDAO pedidoDAO = new PedidoDAO();
-            resultado = pedidoDAO.CambiarEstadoPedido(pedidoDAO.GetPedidoPorId(id), pedidoDAO.ObtenerEstatusPorNombre(Estado));
+            BusinessLogic.Pedido tempPedido = new BusinessLogic.Pedido()
+            {
+                idPedido = id
+            };
+            resultado = pedidoDAO.CambiarEstadoPedido(tempPedido, pedidoDAO.ObtenerEstatusPorNombre(Estado));
             return resultado;
         }
 
