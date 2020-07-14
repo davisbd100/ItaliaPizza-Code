@@ -25,7 +25,7 @@ namespace ItaliaPizza
         BusinessLogic.Pedido LocalPedido { get; set; }
         public CancelarPedido()
         {
-            LocalPedido = new Pedido()
+            LocalPedido = new BusinessLogic.Pedido()
             {
                 idPedido = 1
             };

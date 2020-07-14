@@ -125,5 +125,10 @@ namespace ItaliaPizza
                 MessageBox.Show("No se puede registar el Pedido");
             }
         }
+
+        private void SalirButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

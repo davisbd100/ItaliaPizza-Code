@@ -168,5 +168,10 @@ namespace ItaliaPizza
         {
             ActualizarClientes();
         }
+
+        private void SalirButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
