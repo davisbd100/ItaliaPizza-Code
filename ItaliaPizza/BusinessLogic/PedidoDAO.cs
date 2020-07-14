@@ -167,6 +167,85 @@ namespace BusinessLogic
 
         }
 
+        public ResultadoOperacion CrearPedidoMesero(DataAccess.Pedido pedido, List<PedidoProducto> productos)
+        {
+
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+
+            Random random = new Random();
+            pedido.idPedido = random.Next(1000);
+
+
+            DbConnection dbConnection = new DbConnection();
+
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+                transaction = connection.BeginTransaction("InsertarPedido");
+                command.Connection = connection;
+                command.Transaction = transaction;
+
+                try
+                {
+                    command.CommandText =
+                         "INSERT INTO dbo.Pedido (idPedido, FechaPedido, Estatus, NumeroMesa) SELECT @idPedido, @FechaPedido, @Estatus, @NumeroMesa";
+
+                    command.Parameters.Add(new SqlParameter("@idPedido", pedido.idPedido));
+                    command.Parameters.Add(new SqlParameter("@FechaPedido", pedido.FechaPedido));
+                    command.Parameters.Add(new SqlParameter("@Estatus", pedido.Estatus));
+                    //command.Parameters.Add(new SqlParameter("@Cliente", pedido.Cliente));
+                    command.Parameters.Add(new SqlParameter("@NumeroMesa", 1));
+
+                    //command.Parameters.Add(new SqlParameter("@Empleado", 0));
+                    //command.Parameters.Add(new SqlParameter("@DiaVenta", 0));
+                    command.ExecuteNonQuery();
+                    command.Parameters.Clear();
+
+
+                    for (int posicion = 0; posicion < productos.Count; posicion++)
+                    {
+                        command.Parameters.Clear();
+
+                        command.CommandText =
+                        "INSERT INTO dbo.PedidoProducto VALUES (@idPedido, @idProductoVenta, @Cantidad, @Precio)";
+                        command.Parameters.Add(new SqlParameter("@idPedido", pedido.idPedido));
+                        command.Parameters.Add(new SqlParameter("@idProductoVenta", productos[posicion].idProductoVenta));
+                        command.Parameters.Add(new SqlParameter("@Cantidad", productos[posicion].Cantidad));
+                        command.Parameters.Add(new SqlParameter("@Precio", productos[posicion].Precio));
+
+
+                        command.ExecuteNonQuery();
+
+                    }
+
+
+
+
+                    transaction.Commit();
+                    resultado = ResultadoOperacion.Exito;
+
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+
+                    switch (e.Number)
+                    {
+                        default:
+                            resultado = ResultadoOperacion.FalloSQL;
+                            break;
+                    }
+                }
+            }
+
+
+
+            return resultado;
+
+        }
+
         public DataAccess.Pedido GetPedidoConProductoPorId(int id)
         {
             DataAccess.Pedido pedido = new DataAccess.Pedido();
