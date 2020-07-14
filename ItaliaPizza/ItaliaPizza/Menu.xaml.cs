@@ -27,7 +27,8 @@ namespace ItaliaPizza
 
         private void ButtonProductos_Click(object sender, RoutedEventArgs e)
         {
-
+            Productos productos = new Productos();
+            abrirVentana(productos);
         }
 
         private void ButtonRecetas_Click(object sender, RoutedEventArgs e)

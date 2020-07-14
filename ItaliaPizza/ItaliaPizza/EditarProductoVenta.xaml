@@ -5,48 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItaliaPizza"
         mc:Ignorable="d"
-        Title="Editar Producto Venta" Height="1100" Width="562" Icon="/Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Editar Producto Venta" Height="500" Width="562" Icon="/Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="0,14.576,0,0" VerticalAlignment="Top" Width="558.574" Fill="#FFB31423"/>
+        <Label Content="Editar producto" HorizontalAlignment="Left" Margin="181.695,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>
+        <Button Content="" HorizontalAlignment="Left" Height="73.597" Margin="84.836,10,0,0" VerticalAlignment="Top" Width="72.333" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Recursos/Editar.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
 
-    <ScrollViewer>
-        <Grid>
-            <Rectangle HorizontalAlignment="Left" Height="69.021" Margin="0,14.576,0,0" VerticalAlignment="Top" Width="558.574" Fill="#FFB31423"/>
-            <Label Content="Editar producto" HorizontalAlignment="Left" Margin="181.695,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}"/>
-            <Button Content="" HorizontalAlignment="Left" Height="73.597" Margin="84.836,10,0,0" VerticalAlignment="Top" Width="72.333" BorderBrush="{x:Null}">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Recursos/Editar.png" Stretch="Uniform"/>
-                </Button.Background>
-            </Button>
-
-            <Label Content="Nombre:" HorizontalAlignment="Left" Margin="20.187,129.766,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-            <TextBox x:Name="txb_nombre" HorizontalAlignment="Left" Margin="218.736,137.51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <Label Content="Código:" HorizontalAlignment="Left" Margin="20.187,180.785,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-            <TextBox x:Name="txb_descripcion" HorizontalAlignment="Left" Margin="218.736,238.985,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <TextBox x:Name="txb_codigo" HorizontalAlignment="Left" Margin="218.736,188.529,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <Label Content="Descripción:" HorizontalAlignment="Left" Margin="20.187,231.241,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
-            <TextBox x:Name="txb_precioPublico" HorizontalAlignment="Left" Margin="218.736,289.016,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <Label Content="Precio Público:" HorizontalAlignment="Left" Margin="20.187,281.272,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-            <TextBox x:Name="txb_restriccion" HorizontalAlignment="Left" Margin="218.736,339.6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-            <Label Content="Restricción:" HorizontalAlignment="Left" Margin="20.187,331.856,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
-            <Button x:Name="btn_Editar" Content="Editar" HorizontalAlignment="Left" Margin="324.449,908.357,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="36.857" Width="158.72"/>
-            <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.857" Margin="167.695,908.357,0,0" VerticalAlignment="Top" Width="120.919" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
-            <Label Content="Inventario" HorizontalAlignment="Left" Margin="32.905,683.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF191819" FontSize="20" RenderTransformOrigin="0.307,0.537" FontWeight="SemiBold"/>
-            <Grid x:Name="GridIngrediente" Visibility="Collapsed" >
-                <Label Content="Tipo de ingrediente" HorizontalAlignment="Left" Margin="18.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-                <ComboBox HorizontalAlignment="Left" Margin="224,526.842,0,0" VerticalAlignment="Top" Width="254" Height="23.6"/>
-
-            </Grid>
-            <Grid x:Name="GridProductoVenta" Visibility="Collapsed" >
-                <Label Content="Precio de venta" HorizontalAlignment="Left" Margin="32.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-                <TextBox HorizontalAlignment="Left" Margin="207.736,521.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
-                <Label Content="Foto" HorizontalAlignment="Left" Margin="32.905,578,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
-                <Image HorizontalAlignment="Left" Height="49" Margin="207.736,578,0,0" VerticalAlignment="Top" Width="53" Source="/Recursos/SubirImagen.png"/>
-
-            </Grid>
-            <Label Content="" HorizontalAlignment="Left" Margin="230,947,0,0" VerticalAlignment="Top"/>
-            <DataGrid HorizontalAlignment="Left" Height="123.206" Margin="32.905,747.879,0,0" VerticalAlignment="Top" Width="450.264"/>
+        <Label Content="Nombre:" HorizontalAlignment="Left" Margin="127,116,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <TextBox x:Name="txb_nombre" HorizontalAlignment="Left" Margin="219,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
+        <Label Content="Código:" HorizontalAlignment="Left" Margin="135,168,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <TextBox x:Name="txb_descripcion" HorizontalAlignment="Left" Margin="219,228,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
+        <TextBox x:Name="txb_codigo" HorizontalAlignment="Left" Margin="219,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
+        <Label Content="Descripción:" HorizontalAlignment="Left" Margin="96,220,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20"/>
+        <TextBox x:Name="txb_precioPublico" HorizontalAlignment="Left" Margin="219,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
+        <Label Content="Precio público:" HorizontalAlignment="Left" Margin="74,272,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+        <TextBox x:Name="txb_restriccion" HorizontalAlignment="Left" Margin="219,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22"/>
+        <Label Content="Restricción:" HorizontalAlignment="Left" Margin="96,324,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.779,1.457"/>
+        <Button x:Name="btn_Editar" Content="Editar" HorizontalAlignment="Left" Margin="326,397,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="159"/>
+        <Button Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="219,397,0,0" VerticalAlignment="Top" Width="91" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
+        <Grid x:Name="GridIngrediente" Visibility="Collapsed" >
+            <Label Content="Tipo de ingrediente" HorizontalAlignment="Left" Margin="18.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+            <ComboBox HorizontalAlignment="Left" Margin="224,526.842,0,0" VerticalAlignment="Top" Width="254" Height="23.6"/>
 
         </Grid>
-
-
-    </ScrollViewer>
+        <Grid x:Name="GridProductoVenta" Visibility="Collapsed" >
+            <Label Content="Precio de venta" HorizontalAlignment="Left" Margin="32.905,513.842,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+            <TextBox HorizontalAlignment="Left" Margin="207.736,521.585,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264.433" FontFamily="Calibri Light" FontSize="22"/>
+            <Label Content="Foto" HorizontalAlignment="Left" Margin="32.905,578,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" RenderTransformOrigin="0.307,0.537"/>
+            <Image HorizontalAlignment="Left" Height="49" Margin="207.736,578,0,0" VerticalAlignment="Top" Width="53" Source="/Recursos/SubirImagen.png"/>
+        </Grid>
+        <Label Content="" HorizontalAlignment="Left" Margin="230,947,0,0" VerticalAlignment="Top"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="221,366,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="23"/>
+        <Label Content="Campos obligatorios" HorizontalAlignment="Left" Margin="230,370,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFABADB3" FontSize="11" Height="25" Width="111"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="57,272,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="82,322,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="82,216,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="118,166,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="109,116,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+    </Grid>
 </Window>
