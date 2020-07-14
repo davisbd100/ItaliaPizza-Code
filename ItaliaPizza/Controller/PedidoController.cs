@@ -114,5 +114,15 @@ namespace Controller
 
             return resultado;
         }
+
+
+        public ResultadoOperacionEnum.ResultadoOperacion crearPedidoMesero(DataAccess.Pedido pedido, List<DataAccess.PedidoProducto> productos)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado = new ResultadoOperacionEnum.ResultadoOperacion();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.CrearPedidoMesero(pedido, productos);
+
+            return resultado;
+        }
     }
 }

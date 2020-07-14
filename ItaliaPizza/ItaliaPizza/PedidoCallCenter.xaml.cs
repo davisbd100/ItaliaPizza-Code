@@ -125,7 +125,6 @@ namespace ItaliaPizza
                 pedido.Estatus = 1;
                 BusinessLogic.Cliente cliente1 = clientes[cbb_NombreCliente.SelectedIndex];
                 //string cliente = cbb_NombreCliente.SelectedIndex;
-                MessageBox.Show(cliente1.idPersona);
                 pedido.Cliente = cliente1.idPersona;
 
                 foreach (BusinessLogic.ProductoVenta producto in productoVentas)
