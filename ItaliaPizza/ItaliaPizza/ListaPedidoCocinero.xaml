@@ -21,7 +21,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <Grid HorizontalAlignment="Left" Height="478.542" Margin="139.057,130,0,0"  VerticalAlignment="Top" Width="526.943">
-            <uc:PedidosUC x:Name="ucPedidos" Margin="4,0,-3.057,-0.458" PedidosUserControlClicked="PedidosUC_PedidoUserControlClicked"/>
+            <uc:PedidosCocinaUC x:Name="ucPedidos" Margin="4,0,-3.057,-0.458" PedidosUserControlClicked="PedidosUC_PedidoUserControlClicked"/>
         </Grid>
         <Rectangle HorizontalAlignment="Left" Height="724.666" Stroke="White" VerticalAlignment="Top" Width="120.001" Margin="0,0,0,-73.333">
             <Rectangle.Fill>
@@ -66,7 +66,7 @@
         <DataGrid x:Name="dgProductos" HorizontalAlignment="Left" Height="332.113" Margin="32.99,178.924,0,0" VerticalAlignment="Top" Width="477.277" Grid.Column="2" FontSize="15" ColumnWidth="*" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Producto" Binding="{Binding ProductoVenta.Producto.Nombre}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="PrecioTotal" Binding="{Binding ProductoVenta.Producto.idProducto}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Id del Producto" Binding="{Binding ProductoVenta.Producto.idProducto}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
