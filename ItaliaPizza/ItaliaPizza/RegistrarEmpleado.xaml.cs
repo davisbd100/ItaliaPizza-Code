@@ -156,7 +156,7 @@ namespace ItaliaPizza
                 usuarioAleatorio += nombreUsuario.ToString();
             }
 
-            IdEmpleado = tipoEmpleado + usuarioAleatorio.Trim();
+            textBoxUsuario.Text = tipoEmpleado + usuarioAleatorio.Trim();
         }
 
         private void GenerarContraseñaAleatoria()
