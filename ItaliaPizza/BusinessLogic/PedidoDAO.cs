@@ -91,6 +91,7 @@ namespace BusinessLogic
                         throw new InstanceNotFoundException();
                     }
                     pedido.PedidoProducto = pedido.PedidoProducto;
+                    pedido.Estatus1 = pedido.Estatus1;
                     foreach (var pedidoProducto in pedido.PedidoProducto)
                     {
                         pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
