@@ -22,6 +22,7 @@ namespace PrototiposItaliaPizza
     public partial class ListaPedidoCocinero : Window
     {
         public List<DataAccess.Pedido> pedidos { get; set; }
+        public DataAccess.Pedido pedidoActual { get; set; }
         PedidoController PedidoController = new PedidoController();
         public ListaPedidoCocinero()
         {
@@ -31,8 +32,25 @@ namespace PrototiposItaliaPizza
 
         private void PedidosUC_PedidoUserControlClicked(object sender, EventArgs e)
         {
-            PedidoController.ObtenerPedidoParaEditar(((DataAccess.Pedido)sender).idPedido);
-            lvProductos.ItemsSource = PedidoController.ObtenerProductosPedido(((DataAccess.Pedido)sender).idPedido);
+            pedidoActual = ((DataAccess.Pedido)sender);
+            lbidPedidoActual.Content = pedidoActual.idPedido;
+            DataAccess.Pedido pedido = PedidoController.ObtenerPedidoConProductos(pedidoActual.idPedido);
+            dgProductos.ItemsSource = pedido.PedidoProducto;
+        }
+
+        private void btEnPreparacion_Click(object sender, RoutedEventArgs e)
+        {
+            if (pedidoActual == null)
+            {
+                MessageBox.Show("No se ha seleccionado un pedido!!!");
+            }
+            else if(pedidoActual.Estatus1.NombreEstatus == "En Preparación"){
+                MessageBox.Show("No se puede seleccionar este pedido para ponerlo en preparacion por que ya se encuentra en preparacion");
+            }
+            else
+            {
+                PedidoController.CambiarEstadoPedido(pedidoActual.idPedido, "En Preparación");
+            }
         }
     }
 }

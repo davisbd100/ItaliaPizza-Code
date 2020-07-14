@@ -89,7 +89,7 @@ namespace BusinessLogic
                     if (pedido == null)
                     {
                         throw new InstanceNotFoundException();
-                    }else if(!pedido.Estatus1.NombreEstatus.Equals("En Espera"))
+                    }else if(!pedido.Estatus1.NombreEstatus.Equals("En Espera") && !pedido.Estatus1.NombreEstatus.Equals("En Preparación"))
                     {
                         throw new FormatException();
                     }

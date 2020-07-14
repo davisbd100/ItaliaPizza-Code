@@ -61,21 +61,23 @@
                 <SolidColorBrush Color="White" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Button Content="Terminado" HorizontalAlignment="Left" Height="86.156" Margin="279.667,554.644,0,0" VerticalAlignment="Top" Width="257.276" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1"/>
-        <Button Content="En preparación" HorizontalAlignment="Left" Height="86.156" Margin="10,554.644,0,0" VerticalAlignment="Top" Width="264.667" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1"/>
-        <ListView x:Name="lvProductos" HorizontalAlignment="Left" Height="332.113" Margin="32.99,178.924,0,0" VerticalAlignment="Top" Width="477.277" Grid.Column="1">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Button x:Name="btTerminado" Content="Terminado" HorizontalAlignment="Left" Height="86.156" Margin="279.667,554.644,0,0" VerticalAlignment="Top" Width="257.276" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1"/>
+        <Button x:Name="btEnPreparacion" Content="En preparación" HorizontalAlignment="Left" Height="86.156" Margin="10,554.644,0,0" VerticalAlignment="Top" Width="264.667" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1" Click="btEnPreparacion_Click"/>
+        <DataGrid x:Name="dgProductos" HorizontalAlignment="Left" Height="332.113" Margin="32.99,178.924,0,0" VerticalAlignment="Top" Width="477.277" Grid.Column="2" FontSize="15" ColumnWidth="*" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Producto" Binding="{Binding ProductoVenta.Producto.Nombre}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="PrecioTotal" Binding="{Binding ProductoVenta.Producto.idProducto}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Label Content="PIZZA" HorizontalAlignment="Left" Margin="48.611,187.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="ENSALADA" HorizontalAlignment="Left" Margin="34.33,260.595,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="PASTA" HorizontalAlignment="Left" Margin="43.942,333.081,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="POSTRES / HELADO" HorizontalAlignment="Left" Margin="19.266,406.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="BEBIDAS" HorizontalAlignment="Left" Margin="42.278,478.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="Productos:" HorizontalAlignment="Left" Margin="26.99,132.511,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}" Width="111.953" Grid.Column="1"/>
+        <Label x:Name="lbPedidoActual" Content="Pedido Actual:" HorizontalAlignment="Left" Margin="227,141,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="149" Grid.Column="1"/>
+        <Label x:Name="lbidPedidoActual" Content="" HorizontalAlignment="Left" Margin="376,140,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="149" Grid.Column="1"/>
 
     </Grid>
 </Window>

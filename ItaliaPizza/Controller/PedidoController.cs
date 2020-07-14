@@ -21,6 +21,13 @@ namespace Controller
             resultado = pedidoDAO.CambiarEstadoPedido(pedido, pedidoDAO.ObtenerEstatusPorNombre("Cancelado"));
             return resultado;
         }
+        public ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(int id, String Estado)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.CambiarEstadoPedido(pedidoDAO.GetPedidoPorId(id), pedidoDAO.ObtenerEstatusPorNombre(Estado));
+            return resultado;
+        }
 
         public List<DataAccess.Pedido> ObtenerPedidosCocina()
         {
@@ -50,6 +57,14 @@ namespace Controller
             List<DataAccess.Pedido> resultado;
             PedidoDAO pedidoDAO = new PedidoDAO();
             resultado = pedidoDAO.ObtenerListaPedidos();
+            return resultado;
+        }
+
+        public DataAccess.Pedido ObtenerPedidoConProductos(int idPedido)
+        {
+            DataAccess.Pedido resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.GetPedidoConProductoPorId(idPedido);
             return resultado;
         }
 
