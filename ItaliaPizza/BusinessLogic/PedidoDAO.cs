@@ -9,6 +9,7 @@ using DataAccess;
 using System.Data.Entity.Core;
 using System.Data.Entity;
 using System.Management.Instrumentation;
+using static BusinessLogic.ResultadoOperacionEnum;
 
 namespace BusinessLogic
 {
@@ -78,9 +79,92 @@ namespace BusinessLogic
             return resultado;
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion CrearPedidoDomicilio(Pedido pedido, ICollection<PedidoProducto> productos)
+        public ResultadoOperacionEnum.ResultadoOperacion CrearPedidoDomicilio(DataAccess.Pedido pedido, List<PedidoProducto> productos)
+
         {
-            throw new NotImplementedException();
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+
+            Random random = new Random();
+            pedido.idPedido = random.Next(1000);
+
+
+            DbConnection dbConnection = new DbConnection();
+
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+                transaction = connection.BeginTransaction("InsertarPedido");
+                command.Connection = connection;
+                command.Transaction = transaction;
+                
+                try 
+                {
+                    command.CommandText =
+                         "INSERT INTO dbo.Pedido (idPedido, FechaPedido, Estatus, Cliente) SELECT @idPedido, @FechaPedido, @Estatus, @Cliente";
+
+                    command.Parameters.Add(new SqlParameter("@idPedido", pedido.idPedido));
+                    command.Parameters.Add(new SqlParameter("@FechaPedido", pedido.FechaPedido));
+                    //command.Parameters.Add(new SqlParameter("@NumeroMesa", 1));
+                    command.Parameters.Add(new SqlParameter("@Estatus", pedido.Estatus));
+                    command.Parameters.Add(new SqlParameter("@Cliente", pedido.Cliente));
+                    //command.Parameters.Add(new SqlParameter("@Empleado", 0));
+                    //command.Parameters.Add(new SqlParameter("@DiaVenta", 0));
+                    command.ExecuteNonQuery();
+                    command.Parameters.Clear();
+
+                    command.CommandText =
+                    "INSERT INTO dbo.PedidoDomicilio VALUES (@idPedido, @Comentario, @HoraSalida, @Repartidor)";
+                    command.Parameters.Add(new SqlParameter("@idPedido", pedido.idPedido));
+                    command.Parameters.Add(new SqlParameter("@Comentario", ""));
+                    command.Parameters.Add(new SqlParameter("@HoraSalida", ""));
+                    command.Parameters.Add(new SqlParameter("@Repartidor", ""));
+                    command.ExecuteNonQuery();
+
+
+
+
+                    for (int posicion = 0; posicion < productos.Count; posicion++)
+                    {
+                        command.Parameters.Clear();
+
+                        command.CommandText =
+                        "INSERT INTO dbo.PedidoProducto VALUES (@idPedido, @idProductoVenta, @Cantidad, @Precio)";
+                        command.Parameters.Add(new SqlParameter("@idPedido", pedido.idPedido));
+                        command.Parameters.Add(new SqlParameter("@idProductoVenta", productos[posicion].idProductoVenta));
+                        command.Parameters.Add(new SqlParameter("@Cantidad", productos[posicion].Cantidad));
+                        command.Parameters.Add(new SqlParameter("@Precio", productos[posicion].Precio));
+
+
+                        command.ExecuteNonQuery();
+
+                    }
+
+
+
+
+                    transaction.Commit();
+                    resultado = ResultadoOperacion.Exito;
+
+                }
+                catch (SqlException e)
+                {
+                    transaction.Rollback();
+
+                    switch (e.Number)
+                    {
+                        default:
+                            resultado = ResultadoOperacion.FalloSQL;
+                            break;
+                    }
+                }
+            }
+
+
+
+            return resultado;
+
         }
 
         public DataAccess.Pedido GetPedidoConProductoPorId(int id)

@@ -74,9 +74,11 @@ namespace Controller
             return resultado;
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion crearPedidoDomicilio(DataAccess.Pedido pedido, ICollection<DataAccess.PedidoProducto> productos)
+        public ResultadoOperacionEnum.ResultadoOperacion crearPedidoDomicilio(DataAccess.Pedido pedido, List<DataAccess.PedidoProducto> productos)
         {
             ResultadoOperacionEnum.ResultadoOperacion resultado = new ResultadoOperacionEnum.ResultadoOperacion();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.CrearPedidoDomicilio(pedido, productos);
 
             return resultado;
         }

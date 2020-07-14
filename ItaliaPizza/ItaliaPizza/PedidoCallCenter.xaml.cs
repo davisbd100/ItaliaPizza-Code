@@ -28,6 +28,7 @@ namespace ItaliaPizza
         double Total = 0;
         public List<BusinessLogic.ProductoVenta> productoVentas = new List<BusinessLogic.ProductoVenta>();
         List<DataAccess.PedidoProducto> listaproductos = new List<PedidoProducto>();
+        List<BusinessLogic.Cliente> clientes = new List<BusinessLogic.Cliente>();
 
         public PedidoCallCenter()
         {
@@ -38,12 +39,12 @@ namespace ItaliaPizza
         private void ActualizarClientes()
         {
             ClienteController clienteController = new ClienteController();
-            List<BusinessLogic.Cliente> clientes = new List<BusinessLogic.Cliente>();
-            BusinessLogic.Cliente cliente = new BusinessLogic.Cliente();
-            cliente.Nombre = "arturo";
-            cliente.idCliente = "12";
-            clientes.Add(cliente);
-            // List<Cliente> clientes = clienteController.GetCliente(0);
+            //List<BusinessLogic.Cliente> clientes = new List<BusinessLogic.Cliente>();
+            //BusinessLogic.Cliente cliente = new BusinessLogic.Cliente();
+            //cliente.Nombre = "arturo";
+            //cliente.idCliente = "12";
+            //clientes.Add(cliente);
+            clientes = clienteController.GetCliente(1);
             cbb_NombreCliente.ItemsSource = clientes;
         }
 
@@ -69,7 +70,6 @@ namespace ItaliaPizza
                 {
                     item.Cantidad++;
                     item.Precio += tempProducto1.PrecioPublico;
-                    MessageBox.Show("It works" + item.Cantidad);
                 }
             }
             int flag = 0;
@@ -123,8 +123,10 @@ namespace ItaliaPizza
                 DataAccess.Pedido pedido = new DataAccess.Pedido();
                 pedido.FechaPedido = DateTime.UtcNow;
                 pedido.Estatus = 1;
-                BusinessLogic.Cliente cliente = (BusinessLogic.Cliente)cbb_NombreCliente.SelectedItem;
-
+                BusinessLogic.Cliente cliente1 = clientes[cbb_NombreCliente.SelectedIndex];
+                //string cliente = cbb_NombreCliente.SelectedIndex;
+                MessageBox.Show(cliente1.idPersona);
+                pedido.Cliente = cliente1.idPersona;
 
                 foreach (BusinessLogic.ProductoVenta producto in productoVentas)
                 {
@@ -141,11 +143,17 @@ namespace ItaliaPizza
 
                 }
 
-
-                foreach (DataAccess.PedidoProducto pedido2 in listaproductos)
+                PedidoController pedidoController = new PedidoController();
+                if(pedidoController.crearPedidoDomicilio(pedido, listaproductos) == ResultadoOperacionEnum.ResultadoOperacion.Exito)
                 {
-
+                    MessageBox.Show("El Pedido se registró correctamente");
                 }
+                else
+                {
+                    MessageBox.Show("No se puede registar el Pedido");
+                }
+
+
             }
         }
 
