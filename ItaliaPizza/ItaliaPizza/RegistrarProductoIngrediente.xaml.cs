@@ -81,12 +81,12 @@ namespace ItaliaPizza
         {
             ProductoIngredienteController productoIngredienteController = new ProductoIngredienteController();
             
-
             if (productoIngredienteController.crearProductoIngrediente(txb_Nombre.Text, txb_Codigo.Text, txb_Descripcion.Text, float.Parse(txb_Preciounitario.Text), 
                 txb_Restricción.Text, txb_UnidadMedida.Text, txb_Ubicacion.Text,
                 Convert.ToInt32(txb_Cantidad.Text), dtp_Caducidad.SelectedDate.Value.ToString("yyyy/MM/dd") , cbb_TipoIngrediente.SelectedItem.ToString() ) == BusinessLogic.ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
                 MessageBox.Show("Producto registrado con éxito");
+                this.Close();
             }
             else
             {

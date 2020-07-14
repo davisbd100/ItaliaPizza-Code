@@ -13,13 +13,12 @@
                 <RowDefinition Height="99*"/>
             </Grid.RowDefinitions>
             <Rectangle HorizontalAlignment="Left" Height="69" Margin="0,15,-19.667,0" VerticalAlignment="Top" Width="559" Fill="#FFB31423"/>
-            <Label Content="Registrar producto" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}" Height="91" Width="285"/>
+            <Label Content="Registrar ingrediente" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}" Height="91" Width="339"/>
             <Button Content="" HorizontalAlignment="Left" Height="73" Margin="20,15,0,0" VerticalAlignment="Top" Width="73" BorderBrush="{x:Null}">
                 <Button.Background>
                     <ImageBrush ImageSource="/recursos/Producto.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-
             <Label Content="Nombre:" HorizontalAlignment="Left" Margin="127,98,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" Height="37" Width="87"/>
             <TextBox x:Name="txb_Nombre" HorizontalAlignment="Left" Margin="219,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" FontFamily="Calibri Light" FontSize="22" Height="29"/>
             <Label Content="Código:" HorizontalAlignment="Left" Margin="135,148,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" Height="37" Width="79"/>
@@ -47,6 +46,18 @@
             </Grid>
 
             <Label Content="" HorizontalAlignment="Left" Margin="230,13,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Width="10"/>
+            <Label Content="*" HorizontalAlignment="Left" Margin="112,98,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+            <Label Content="*" HorizontalAlignment="Left" Margin="123,148,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+            <Label Content="*" HorizontalAlignment="Left" Margin="89,196,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+            <Label Content="*" HorizontalAlignment="Left" Margin="59,243,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+            <Label Content="*" HorizontalAlignment="Left" Margin="96,295,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+            <Label Content="*" HorizontalAlignment="Left" Margin="20,348,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+            <Label Content="*" HorizontalAlignment="Left" Margin="10,401,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+            <Label Content="*" HorizontalAlignment="Left" Margin="102,508,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+            <Label Content="*" HorizontalAlignment="Left" Margin="110,553,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32" RenderTransformOrigin="-0.167,9.261"/>
+            <Label Content="*" HorizontalAlignment="Left" Margin="89,612,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="32"/>
+            <Label Content="*" HorizontalAlignment="Left" Margin="210,668,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFE53B28" FontSize="20" Height="37" Width="23"/>
+            <Label Content="Campos obligatorios" HorizontalAlignment="Left" Margin="219,672,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFABADB3" FontSize="11"/>
         </Grid>
     </ScrollViewer>
 </Window>
