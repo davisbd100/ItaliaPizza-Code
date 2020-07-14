@@ -180,6 +180,23 @@ namespace BusinessLogic
 
             return pedidos;
         }
+        public List<DataAccess.PedidoProducto> ObtenerListaPedidoProducto(int id)
+        {
+            List<DataAccess.PedidoProducto> pedidos = new List<DataAccess.PedidoProducto>();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    pedidos = context.PedidoProducto.Where(b => b.idPedido == id).ToList();
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los pedidos");
+                }
+            }
+
+            return pedidos;
+        }
         public List<DataAccess.Pedido> ObtenerListaPedidosDisponiblesCocina()
         {
             List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();

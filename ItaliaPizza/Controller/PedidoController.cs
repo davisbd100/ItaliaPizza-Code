@@ -40,6 +40,13 @@ namespace Controller
             resultado = pedidoDAO.ObtenerListaPedidosDisponiblesCocina();
             return resultado;
         }
+        public List<DataAccess.PedidoProducto> ObtenerPedidoProducto(int id)
+        {
+            List<DataAccess.PedidoProducto> resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.ObtenerListaPedidoProducto(id);
+            return resultado;
+        }
 
         public List<DataAccess.Pedido> ObtenerPedidosVendedor()
         {
