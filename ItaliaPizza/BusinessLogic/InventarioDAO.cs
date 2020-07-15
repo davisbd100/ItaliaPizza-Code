@@ -1,4 +1,5 @@
-﻿using DatabaseConnection;
+﻿using DataAccess;
+using DatabaseConnection;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
@@ -218,7 +219,7 @@ namespace BusinessLogic
                 try
                 {
                     context.Inventario.FirstOrDefault();
-                    foreach (var inventario in (context.Inventario.Skip(rango * (pagina - 1)).Take(rango)))
+                    foreach (var inventario in (context.Inventario.OrderByDescending(b => b.idInventario).Skip(rango * (pagina - 1)).Take(rango)))
                     {
                         inventarios.Add(inventario);
                     }
@@ -231,7 +232,23 @@ namespace BusinessLogic
 
             return inventarios;
         }
+        public List<DataAccess.ProductoInventario> ObtenerProductoInventario(int id)
+        {
+            List<DataAccess.ProductoInventario> resultado = new List<DataAccess.ProductoInventario>();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    resultado = context.ProductoInventario.Where(b => b.Inventario == id).ToList();
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los pedidos");
+                }
+            }
 
+            return resultado;
+        }
         public int ObtenerPaginasDeTablaInventario(int elementosPorPagina)
         {
             int paginas = 0;
