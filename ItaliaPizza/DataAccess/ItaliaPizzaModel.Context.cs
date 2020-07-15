@@ -40,7 +40,6 @@ namespace DataAccess
         public virtual DbSet<ProductoVenta> ProductoVenta { get; set; }
         public virtual DbSet<Receta> Receta { get; set; }
         public virtual DbSet<RecetaIngrediente> RecetaIngrediente { get; set; }
-        public virtual DbSet<TipoEmpleado> TipoEmpleado { get; set; }
         public virtual DbSet<TipoProducto> TipoProducto { get; set; }
         public virtual DbSet<Ubicacion> Ubicacion { get; set; }
         public virtual DbSet<UbicacionProducto> UbicacionProducto { get; set; }

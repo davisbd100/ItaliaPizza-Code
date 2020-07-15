@@ -14,6 +14,12 @@ namespace DataAccess
     
     public partial class Empleado
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Empleado()
+        {
+            this.Pedido = new HashSet<Pedido>();
+        }
+    
         public string idEmpleado { get; set; }
         public string TipoEmpleado { get; set; }
         public string NombreUsuario { get; set; }
@@ -22,5 +28,7 @@ namespace DataAccess
         public Nullable<bool> Visibilidad { get; set; }
     
         public virtual Persona Persona { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pedido> Pedido { get; set; }
     }
 }
