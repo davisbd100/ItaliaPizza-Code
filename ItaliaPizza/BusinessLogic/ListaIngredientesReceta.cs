@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    public class ListaIngredientesReceta
+    public class ListaIngredientesReceta : ProductoIngrediente
     {
         public int IdIngrediente { get; set; }
         public int Cantidad { get; set; }
