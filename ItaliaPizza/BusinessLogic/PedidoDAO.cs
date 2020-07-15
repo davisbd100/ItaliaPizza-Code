@@ -476,6 +476,7 @@ namespace BusinessLogic
                             {
                                 pedidoProducto.ProductoVenta = pedidoProducto.ProductoVenta;
                             }
+                            pedido.Estatus1 = pedido.Estatus1;
                             pedidos.Add(pedido);
                         }
                     }

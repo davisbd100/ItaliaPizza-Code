@@ -90,7 +90,7 @@
         <Label Content="Productos:" HorizontalAlignment="Left" Margin="26.99,132.511,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}" Width="111.953" Grid.Column="1"/>
         <Label x:Name="lbPedidoActual" Content="Pedido Seleccionado:" HorizontalAlignment="Left" Margin="146,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="204" Grid.Column="1"/>
         <Label x:Name="lbidPedidoActual" Content="" HorizontalAlignment="Left" Margin="355,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="149" Grid.Column="1"/>
-        <Button x:Name="btCerrarDia" Height="74" Width="80" Background="Transparent"  HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1" Margin="0,33,184.6,0" Click="btCerrarDia_Click">
+        <Button x:Name="btCerrarDia" BorderBrush="Transparent" Height="74" Width="80" Background="Transparent"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="335,30,0,0" Click="btCerrarDia_Click">
             <StackPanel Background="Transparent">
                 <Image Source="Recursos/Pedidos.png"/>
             </StackPanel>
