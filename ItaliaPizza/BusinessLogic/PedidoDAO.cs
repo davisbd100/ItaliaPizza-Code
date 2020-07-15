@@ -484,6 +484,31 @@ namespace BusinessLogic
 
             return pedidos;
         }
+        public List<DataAccess.Pedido> ObtenerListaPedidosCallCenter()
+        {
+            List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    DataAccess.Estatus estatusCancelado = context.Estatus.Where(b => b.NombreEstatus == "Cancelado").FirstOrDefault();
+                    DataAccess.Estatus estatusFinalizado = context.Estatus.Where(b => b.NombreEstatus == "Finalizado").FirstOrDefault();
+
+                    pedidos = context.Pedido.Where(b => b.Estatus != estatusCancelado.idEstatus && b.Estatus != estatusFinalizado.idEstatus && context.PedidoDomicilio.Where(p=> p.idPedido == b.idPedido).FirstOrDefault() != null).ToList();
+                    foreach (var pedido in pedidos)
+                    {
+                        pedido.PedidoProducto = pedido.PedidoProducto;
+                        pedido.Estatus1 = pedido.Estatus1;
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los pedidos");
+                }
+            }
+
+            return pedidos;
+        }
 
         public int ObtenerPaginasDeTablaPedido(int elementosPorPagina)
         {

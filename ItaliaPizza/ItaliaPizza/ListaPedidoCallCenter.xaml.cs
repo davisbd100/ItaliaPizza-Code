@@ -33,7 +33,7 @@ namespace ItaliaPizza
         public ListaPedidoCallCenter()
         {
             InitializeComponent();
-            pedidos = PedidoController.ObtenerPedidosVendedor();
+            pedidos = PedidoController.ObtenerPedidosCallCenter();
         }
 
         private void PedidosUC_PedidoUserControlClicked(object sender, EventArgs e)
@@ -170,7 +170,6 @@ namespace ItaliaPizza
                 dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
             }
-
         }
 
         private void btEntregado_Click(object sender, RoutedEventArgs e)

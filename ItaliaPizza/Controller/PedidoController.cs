@@ -61,6 +61,13 @@ namespace Controller
             resultado = pedidoDAO.ObtenerListaPedidosDisponibles();
             return resultado;
         }
+        public List<DataAccess.Pedido> ObtenerPedidosCallCenter()
+        {
+            List<DataAccess.Pedido> resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.ObtenerListaPedidosCallCenter();
+            return resultado;
+        }
         public List<DataAccess.PedidoProducto> ObtenerPedidoProducto(int id)
         {
             List<DataAccess.PedidoProducto> resultado;
