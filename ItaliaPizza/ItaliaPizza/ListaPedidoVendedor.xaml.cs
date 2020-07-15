@@ -40,6 +40,7 @@ namespace PrototiposItaliaPizza
             pedidoActual = ((DataAccess.Pedido)sender);
             lbidPedidoActual.Content = pedidoActual.idPedido;
             List<CustomPedidoProducto> custom = new List<CustomPedidoProducto>();
+            double subTotal = 0;
             foreach (var item in PedidoController.ObtenerPedidoProducto(pedidoActual.idPedido))
             {
                 CustomPedidoProducto tempPedidoProducto = new CustomPedidoProducto
@@ -49,6 +50,7 @@ namespace PrototiposItaliaPizza
                     Precio = item.Precio,
                     idProductoVenta = item.idProductoVenta
                 };
+                subTotal += (double)tempPedidoProducto.Precio;
                 ProductoController productoController = new ProductoController();
                 DataAccess.Producto producto = productoController.ObtenerProductoPorId(tempPedidoProducto.idProductoVenta);
                 ProductoVentaController productoVentaController = new ProductoVentaController();
@@ -57,8 +59,11 @@ namespace PrototiposItaliaPizza
                 tempPedidoProducto.PrecioPublico = (double)productoVenta.PrecioPublico;
                 custom.Add(tempPedidoProducto);
             }
+            tbSubtotal.Text = "$" + subTotal.ToString();
+            double iva = Math.Round((subTotal / 100) * 16, 3);
+            tbIva.Text = "$" + iva.ToString();
+            tbTotal.Text = "$" + Math.Round(subTotal + iva, 3).ToString();
             dgProductos.ItemsSource = custom;
-            Console.WriteLine("hofbdjs");
         }
 
         private void btCancelar_Click(object sender, RoutedEventArgs e)

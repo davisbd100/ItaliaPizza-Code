@@ -81,9 +81,9 @@
         <Image HorizontalAlignment="Left" Height="74.443" Margin="429.199,33.043,0,0" VerticalAlignment="Top" Width="74.788" Source="Recursos/Mesa.png" RenderTransformOrigin="0.579,0.373" Grid.Column="1"/>
         <Image HorizontalAlignment="Left" Height="74.443" Margin="248.4,33.043,0,0" VerticalAlignment="Top" Width="80.011" Source="Recursos/Cocina.png" RenderTransformOrigin="0.579,0.373" Grid.Column="1"/>
 
-        <TextBox x:Name="tbSubtotal" HorizontalAlignment="Left" Height="18.268" Margin="353.058,452.333,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" Grid.Column="1"/>
-        <TextBox x:Name="tbIva" HorizontalAlignment="Left" Height="18.268" Margin="353.058,475.601,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" Grid.Column="1"/>
-        <TextBox x:Name="tbTotal" HorizontalAlignment="Left" Height="27.601" Margin="353.058,498.869,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" FontSize="20" Grid.Column="1"/>
+        <TextBox x:Name="tbSubtotal" HorizontalAlignment="Left" Height="18.268" Margin="353.058,452.333,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox x:Name="tbIva" HorizontalAlignment="Left" Height="18.268" Margin="353.058,475.601,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox x:Name="tbTotal" HorizontalAlignment="Left" Height="27.601" Margin="353.058,498.869,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" FontSize="20" Grid.Column="1" IsReadOnly="True"/>
         <Label Content="Subtotal:" HorizontalAlignment="Left" Margin="291.064,448.333,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" Grid.Column="1"/>
         <Label Content="IVA (16%):" HorizontalAlignment="Left" Margin="284.488,471.601,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" Grid.Column="1"/>
         <Label Content="TOTAL:" HorizontalAlignment="Left" Margin="278.567,494.869,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" FontSize="20" Grid.Column="1"/>
