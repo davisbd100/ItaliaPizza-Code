@@ -154,22 +154,23 @@ namespace ItaliaPizza
 
         private void ProductosUC_ProductoUserControlClicked(object sender, EventArgs e)
         {
-            DataAccess.ProductoVenta tempProducto = ((DataAccess.ProductoVenta)sender);
+            BusinessLogic.ProductoVenta tempProductoAid = ((BusinessLogic.ProductoVenta)sender);
             ProductoVentaController producto = new ProductoVentaController();
             int cantidad = 1;
+            DataAccess.ProductoVenta tempProducto = producto.ObtenerProductoPorIdEE(tempProductoAid.idProducto);
             DataAccess.PedidoProducto tempPedidoProducto = new DataAccess.PedidoProducto()
             {
                 Cantidad = cantidad,
-                idPedido = PedidoAEditar.idPedido
-                //ProductoVenta = producto.ObtenerProductoPorIdEE(int.Parse(tempProducto.Código)),
-                //Precio = cantidad * tempProducto.PrecioPúblico
+                idPedido = PedidoAEditar.idPedido,
+                idProductoVenta = tempProducto.idProductoVenta,
+                Precio = cantidad * tempProducto.PrecioPublico
             };
-            foreach (DataAccess.PedidoProducto item in dgProductosDePedido.Items)
+            foreach (CustomPedidoProducto item in dgProductosDePedido.Items)
             {
-                if (item.ProductoVenta.idProductoVenta == tempPedidoProducto.ProductoVenta.idProductoVenta)
+                if (item.ProductoVenta.idProductoVenta == tempPedidoProducto.idProductoVenta)
                 {
                     item.Cantidad++;
-                    item.Precio += tempPedidoProducto.ProductoVenta.PrecioPublico;
+                    item.Precio += tempProducto.PrecioPublico;
                     ActualizarLabelPrecio((double)tempPedidoProducto.Precio);
                     ActualizarDataGrid();
                     return;
