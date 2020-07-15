@@ -16,7 +16,11 @@ namespace ItaliaPizza
     /// </summary>
     public partial class InventarioActual : Window
     {
-        List<DataAccess.Inventario> inventario = new List<DataAccess.Inventario>();
+        private class CustomInventario : DataAccess.Inventario
+        {
+            public String CodigoProducto { get; set; }
+        }
+        List<CustomInventario> inventario = new List<CustomInventario>();
         InventarioController controller = new InventarioController();
         int PaginaActual = 1;
         int PaginaTotal = 1;
@@ -24,7 +28,22 @@ namespace ItaliaPizza
         public InventarioActual()
         {
             InitializeComponent();
-            inventario = controller.ObtenerInventarioPorRango(PaginaActual);
+            inventario.Clear();
+            foreach (var item in controller.ObtenerInventarioPorRango(PaginaActual))
+            {
+                CustomInventario customInventario = new CustomInventario()
+                {
+                    ExistenciaInicial = item.ExistenciaInicial,
+                    ExistenciaTotal = item.ExistenciaTotal,
+                    idInventario = item.idInventario,
+                    Producto = item.Producto,
+                    UnidadMedida = item.UnidadMedida
+                };
+                ProductoController productoController = new ProductoController();
+                DataAccess.Producto producto = new DataAccess.Producto();
+                customInventario.CodigoProducto = productoController.ObtenerProductoPorId((int)customInventario.Producto).Codigo;
+                inventario.Add(customInventario);
+            } 
             if (!inventario.Any())
             {
                 MessageBox.Show("No se tienen productos registrados");
@@ -42,8 +61,24 @@ namespace ItaliaPizza
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            controller.ActualizarExistencias(inventario);
-            MessageBox.Show("Inventario actualizado"); inventario = controller.ObtenerInventarioPorRango(PaginaActual);
+            controller.ActualizarExistencias(inventario.ConvertAll(b=> (DataAccess.Inventario)b));
+            MessageBox.Show("Inventario actualizado");
+            inventario.Clear();
+            foreach (var item in controller.ObtenerInventarioPorRango(PaginaActual))
+            {
+                CustomInventario customInventario = new CustomInventario()
+                {
+                    ExistenciaInicial = item.ExistenciaInicial,
+                    ExistenciaTotal = item.ExistenciaTotal,
+                    idInventario = item.idInventario,
+                    Producto = item.Producto,
+                    UnidadMedida = item.UnidadMedida
+                };
+                ProductoController productoController = new ProductoController();
+                DataAccess.Producto producto = new DataAccess.Producto();
+                customInventario.CodigoProducto = productoController.ObtenerProductoPorId((int)customInventario.Producto).Codigo;
+                inventario.Add(customInventario);
+            }
             tbPaginaActual.Text = PaginaActual.ToString();
             PaginaTotal = controller.ObtenerPaginasDeTablaInventario();
             tbPaginaTotal.Text = PaginaTotal.ToString();
@@ -61,10 +96,10 @@ namespace ItaliaPizza
             {
                 cv.Filter = o =>
                 {
-                    Inventario p = o as Inventario;
+                    CustomInventario p = o as CustomInventario;
                     if (tbBusqueda.Name == "tbBusqueda")
-                        return (p.Producto.ToString() == filter);
-                    return (p.Producto.ToString().ToUpper().StartsWith(filter.ToUpper()));
+                        return (p.CodigoProducto == filter);
+                    return (p.CodigoProducto.ToUpper().StartsWith(filter.ToUpper()));
                 };
             }
         }
@@ -78,7 +113,22 @@ namespace ItaliaPizza
             else
             {
                 PaginaActual--;
-                inventario = controller.ObtenerInventarioPorRango(PaginaActual);
+                inventario.Clear();
+                foreach (var item in controller.ObtenerInventarioPorRango(PaginaActual))
+                {
+                    CustomInventario customInventario = new CustomInventario()
+                    {
+                        ExistenciaInicial = item.ExistenciaInicial,
+                        ExistenciaTotal = item.ExistenciaTotal,
+                        idInventario = item.idInventario,
+                        Producto = item.Producto,
+                        UnidadMedida = item.UnidadMedida
+                    };
+                    ProductoController productoController = new ProductoController();
+                    DataAccess.Producto producto = new DataAccess.Producto();
+                    customInventario.CodigoProducto = productoController.ObtenerProductoPorId((int)customInventario.Producto).Codigo;
+                    inventario.Add(customInventario);
+                }
                 tbPaginaActual.Text = PaginaActual.ToString();
                 dgInventario.ItemsSource = null;
                 dgInventario.ItemsSource = inventario;
@@ -96,7 +146,22 @@ namespace ItaliaPizza
             else
             {
                 PaginaActual++;
-                inventario = controller.ObtenerInventarioPorRango(PaginaActual);
+                inventario.Clear();
+                foreach (var item in controller.ObtenerInventarioPorRango(PaginaActual))
+                {
+                    CustomInventario customInventario = new CustomInventario()
+                    {
+                        ExistenciaInicial = item.ExistenciaInicial,
+                        ExistenciaTotal = item.ExistenciaTotal,
+                        idInventario = item.idInventario,
+                        Producto = item.Producto,
+                        UnidadMedida = item.UnidadMedida
+                    };
+                    ProductoController productoController = new ProductoController();
+                    DataAccess.Producto producto = new DataAccess.Producto();
+                    customInventario.CodigoProducto = productoController.ObtenerProductoPorId((int)customInventario.Producto).Codigo;
+                    inventario.Add(customInventario);
+                }
                 tbPaginaActual.Text = PaginaActual.ToString();
                 dgInventario.ItemsSource = null;
                 dgInventario.ItemsSource = inventario;
