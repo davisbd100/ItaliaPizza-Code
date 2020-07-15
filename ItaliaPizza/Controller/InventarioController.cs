@@ -75,6 +75,8 @@ namespace Controller
                     diaVenta.Pedido.Add(pedido);
                 }
             }
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            inventarioDAO.CerrarDia();
             VentaDAO ventaDAO = new VentaDAO();
             resultado = ventaDAO.GuardarDiaVenta(diaVenta);
 

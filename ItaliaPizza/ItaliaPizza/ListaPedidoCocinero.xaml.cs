@@ -61,8 +61,15 @@ namespace ItaliaPizza
             }
             else
             {
-                PedidoController.CambiarEstadoPedido(pedidoActual.idPedido, "En Preparación");
-                MessageBox.Show("Se ha puesto el pedido en preparacion");
+                try
+                {
+                    PedidoController.PonerEnPreparacion(pedidoActual.idPedido);
+                    MessageBox.Show("Se ha puesto el pedido en preparacion");
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("No existen suficientes existencias en el inventario");
+                }
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
                 dgProductos.ItemsSource = null;

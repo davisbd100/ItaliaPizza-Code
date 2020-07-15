@@ -39,6 +39,13 @@ namespace Controller
             resultado = pedidoDAO.AsignarEntrega(id, Repartidor);
             return resultado;
         }
+        public ResultadoOperacionEnum.ResultadoOperacion PonerEnPreparacion(int id)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.PonerEnPreparacion(id);
+            return resultado;
+        }
         public bool EsADomicilio(int id)
         {
             bool resultado;
