@@ -392,9 +392,9 @@ namespace BusinessLogic
             {
                 try
                 {
-                    DataAccess.Estatus estatusCancelado = context.Estatus.Where(b => b.NombreEstatus == "Cancelado").FirstOrDefault();
-                    DataAccess.Estatus estatusFinalizado = context.Estatus.Where(b => b.NombreEstatus == "Finalizado").FirstOrDefault();
-                    pedidos = context.Pedido.Where(b => b.Estatus != estatusCancelado.idEstatus && b.Estatus != estatusFinalizado.idEstatus).ToList();
+                    DataAccess.Estatus estatusEnEspera = context.Estatus.Where(b => b.NombreEstatus == "En Espera").FirstOrDefault();
+                    DataAccess.Estatus estatusEnPreparacion = context.Estatus.Where(b => b.NombreEstatus == "En Preparación").FirstOrDefault();
+                    pedidos = context.Pedido.Where(b => b.Estatus == estatusEnEspera.idEstatus || b.Estatus == estatusEnPreparacion.idEstatus).ToList();
                     foreach (var pedido in pedidos)
                     {
                         pedido.PedidoProducto = pedido.PedidoProducto;
@@ -416,9 +416,9 @@ namespace BusinessLogic
             {
                 try
                 {
-                    DataAccess.Estatus estatusEnEspera = context.Estatus.Where(b => b.NombreEstatus == "Cancelado").FirstOrDefault();
-                    DataAccess.Estatus estatusEnPreparacion = context.Estatus.Where(b => b.NombreEstatus == "Finalizado").FirstOrDefault();
-                    pedidos = context.Pedido.Where(b => b.Estatus == estatusEnEspera.idEstatus || b.Estatus == estatusEnPreparacion.idEstatus).ToList();
+                    DataAccess.Estatus estatusCancelado = context.Estatus.Where(b => b.NombreEstatus == "Cancelado").FirstOrDefault();
+                    DataAccess.Estatus estatusFinalizado = context.Estatus.Where(b => b.NombreEstatus == "Finalizado").FirstOrDefault();
+                    pedidos = context.Pedido.Where(b => b.Estatus != estatusCancelado.idEstatus && b.Estatus != estatusFinalizado.idEstatus).ToList();
                     foreach (var pedido in pedidos)
                     {
                         pedido.PedidoProducto = pedido.PedidoProducto;

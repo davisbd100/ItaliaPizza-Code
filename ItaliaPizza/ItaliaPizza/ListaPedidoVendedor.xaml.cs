@@ -21,6 +21,12 @@ namespace PrototiposItaliaPizza
     /// </summary>
     public partial class ListaPedidoVendedor : Window
     {
+        private class CustomPedidoProducto : DataAccess.PedidoProducto
+        {
+            public String NombreProducto { get; set; }
+            public String CodigoProducto { get; set; }
+            public Double PrecioPublico { get; set; }
+        }
         public List<DataAccess.Pedido> pedidos { get; set; }
         public DataAccess.Pedido pedidoActual { get; set; }
         PedidoController PedidoController = new PedidoController();
@@ -34,17 +40,27 @@ namespace PrototiposItaliaPizza
         {
             pedidoActual = ((DataAccess.Pedido)sender);
             lbidPedidoActual.Content = pedidoActual.idPedido;
-            DataAccess.Pedido pedido = PedidoController.ObtenerPedidoConProductos(pedidoActual.idPedido);
-            dgProductos.ItemsSource = pedido.PedidoProducto;
-            double subTotal = 0;
-            foreach (var item in pedidoActual.PedidoProducto)
+            List<CustomPedidoProducto> custom = new List<CustomPedidoProducto>();
+            foreach (var item in PedidoController.ObtenerPedidoProducto(pedidoActual.idPedido))
             {
-                subTotal += (double)item.Precio;
+                CustomPedidoProducto tempPedidoProducto = new CustomPedidoProducto
+                {
+                    idPedido = item.idPedido,
+                    Cantidad = item.Cantidad,
+                    Precio = item.Precio,
+                    idProductoVenta = item.idProductoVenta
+                };
+                ProductoController productoController = new ProductoController();
+                DataAccess.Producto producto = productoController.ObtenerProductoPorId(tempPedidoProducto.idProductoVenta);
+                ProductoVentaController productoVentaController = new ProductoVentaController();
+                DataAccess.ProductoVenta productoVenta = productoVentaController.ObtenerProductoPorIdEE(tempPedidoProducto.idProductoVenta);
+                tempPedidoProducto.NombreProducto = producto.Nombre;
+                tempPedidoProducto.CodigoProducto = producto.Codigo;
+                tempPedidoProducto.PrecioPublico = (double)productoVenta.PrecioPublico;
+                custom.Add(tempPedidoProducto);
             }
-            double iva = Math.Round(((subTotal / 100) * 16), 2);
-            tbIva.Text = iva.ToString();
-            tbSubtotal.Text = subTotal.ToString();
-            tbTotal.Text = (iva + subTotal).ToString();
+            dgProductos.ItemsSource = custom;
+            Console.WriteLine("hofbdjs");
         }
 
         private void btCancelar_Click(object sender, RoutedEventArgs e)
@@ -67,6 +83,7 @@ namespace PrototiposItaliaPizza
                 cancelar.ShowDialog();
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
+                dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
             }
         }
@@ -91,6 +108,7 @@ namespace PrototiposItaliaPizza
                 editar.ShowDialog();
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
+                dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
             }
         }
@@ -111,6 +129,7 @@ namespace PrototiposItaliaPizza
                 MessageBox.Show("Se ha pagado el pedido");
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
+                dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
             }
         }
