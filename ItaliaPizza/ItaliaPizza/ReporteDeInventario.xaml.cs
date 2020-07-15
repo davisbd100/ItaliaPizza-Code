@@ -21,8 +21,14 @@ namespace ItaliaPizza
     /// </summary>
     public partial class ReporteDeInventario : Window
     {
+        private class CustomInventario: DataAccess.Inventario
+        {
+            public String NombreProducto { get; set; }
+            public String CodigoProducto { get; set; }
+        }
+
         const int POSICION_FUERA_RANGO = -1;
-        List<DataAccess.Inventario> inventario = new List<DataAccess.Inventario>();
+        List<CustomInventario> inventario = new List<CustomInventario>();
         InventarioController controller = new InventarioController();
         int PaginaActual = 1;
         int PaginaTotal = 1;
@@ -30,7 +36,22 @@ namespace ItaliaPizza
         public ReporteDeInventario()
         {
             InitializeComponent();
-            inventario = controller.ObtenerIngresosInventario(PaginaActual);
+            foreach (var item in controller.ObtenerIngresosInventario(PaginaActual))
+            {
+                CustomInventario customInventario = new CustomInventario()
+                {
+                    idInventario = item.idInventario,
+                    ExistenciaInicial = item.ExistenciaInicial,
+                    ExistenciaTotal = item.ExistenciaTotal,
+                    UnidadMedida = item.UnidadMedida,
+                    Producto = item.Producto
+                };
+                ProductoController productoController = new ProductoController();
+                DataAccess.Producto tempProducto = productoController.ObtenerProductoPorId((int)customInventario.Producto);
+                customInventario.NombreProducto = tempProducto.Nombre;
+                customInventario.CodigoProducto = tempProducto.Codigo;
+                inventario.Add(customInventario);
+            } 
             if (!inventario.Any())
             {
                 MessageBox.Show("No se tienen productos registrados");
@@ -56,10 +77,10 @@ namespace ItaliaPizza
             {
                 cv.Filter = o =>
                 {
-                    DataAccess.Inventario p = o as DataAccess.Inventario;
+                    CustomInventario p = o as CustomInventario;
                     if (tbBusqueda.Name == "tbBusqueda")
-                        return (p.Producto.ToString() == filter);
-                    return (p.Producto.ToString().ToUpper().StartsWith(filter.ToUpper()));
+                        return (p.NombreProducto == filter);
+                    return (p.NombreProducto.ToUpper().StartsWith(filter.ToUpper()));
                 };
             }
         }
@@ -71,6 +92,7 @@ namespace ItaliaPizza
             if (posicion != POSICION_FUERA_RANGO)
             {
                 dgPedidoProducto.ItemsSource = null;
+                dgPedidoProducto.ItemsSource = controller.ObtenerProductoInventario(((CustomInventario)dgInventario.SelectedValue).idInventario);
             }
             else
             {
@@ -87,7 +109,7 @@ namespace ItaliaPizza
             else
             {
                 PaginaActual--;
-                inventario = controller.ObtenerIngresosInventario(PaginaActual);
+                inventario = controller.ObtenerIngresosInventario(PaginaActual).ConvertAll(b => (CustomInventario)b);
                 tbPaginaActual.Text = PaginaActual.ToString();
                 dgInventario.ItemsSource = null;
                 dgInventario.ItemsSource = inventario;
@@ -105,7 +127,7 @@ namespace ItaliaPizza
             else
             {
                 PaginaActual++;
-                inventario = controller.ObtenerIngresosInventario(PaginaActual);
+                inventario = controller.ObtenerIngresosInventario(PaginaActual).ConvertAll(b => (CustomInventario)b);
                 tbPaginaActual.Text = PaginaActual.ToString();
                 dgInventario.ItemsSource = null;
                 dgInventario.ItemsSource = inventario;

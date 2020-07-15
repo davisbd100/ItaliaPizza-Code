@@ -48,6 +48,13 @@ namespace Controller
             resultado = inventarioDAO.ActualizarInventario(inventarios);
             return resultado;
         }
+        public List<DataAccess.ProductoInventario> ObtenerProductoInventario(int id)
+        {
+            List<DataAccess.ProductoInventario> resultado;
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            resultado = inventarioDAO.ObtenerProductoInventario(id);
+            return resultado;
+        }
 
         public ResultadoOperacionEnum.ResultadoOperacion CerrarDia()
         {

@@ -24,7 +24,6 @@
             <uc:PedidosCajaUC x:Name="ucPedidos" Margin="4,0,-3.057,-0.458" PedidosCajaUserControlClicked="PedidosUC_PedidoUserControlClicked"/>
         </Grid>
 
-        <Image HorizontalAlignment="Left" Height="74.443" Margin="333.411,33.043,0,0" VerticalAlignment="Top" Width="80.011" Source="Recursos/Pedidos.png" RenderTransformOrigin="0.579,0.373" Grid.Column="1"/>
         <Rectangle HorizontalAlignment="Left" Height="724.666" Stroke="White" VerticalAlignment="Top" Width="120.001" Margin="0,0,0,-73.333">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
@@ -68,8 +67,8 @@
         <Button x:Name="btEditar" Content="EDITAR" HorizontalAlignment="Left" Height="59" Margin="144.333,572,0,0" VerticalAlignment="Top" Width="129" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btEditar_Click"/>
         <DataGrid x:Name="dgProductos" HorizontalAlignment="Left" Height="242.689" Margin="26.99,166.924,0,0" VerticalAlignment="Top" Width="497.277" Grid.Column="2" FontSize="15" ColumnWidth="*" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" BorderBrush="#FF98171F" Foreground="#FF6D7276">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Producto" Binding="{Binding ProductoVenta.Producto.Nombre}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="PrecioUnitario" Binding="{Binding ProductoVenta.PrecioPublico}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding NombreProducto}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="PrecioUnitario" Binding="{Binding PrecioPublico}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="PrecioTotal" Binding="{Binding Precio}" IsReadOnly="True"/>
             </DataGrid.Columns>
@@ -81,15 +80,20 @@
         <Label Content="BEBIDAS" HorizontalAlignment="Left" Margin="42.278,478.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Image HorizontalAlignment="Left" Height="74.443" Margin="429.199,33.043,0,0" VerticalAlignment="Top" Width="74.788" Source="Recursos/Mesa.png" RenderTransformOrigin="0.579,0.373" Grid.Column="1"/>
         <Image HorizontalAlignment="Left" Height="74.443" Margin="248.4,33.043,0,0" VerticalAlignment="Top" Width="80.011" Source="Recursos/Cocina.png" RenderTransformOrigin="0.579,0.373" Grid.Column="1"/>
-        <TextBox x:Name="tbSubtotal" HorizontalAlignment="Left" Height="18.268" Margin="353.058,452.333,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" Grid.Column="1"/>
-        <TextBox x:Name="tbIva" HorizontalAlignment="Left" Height="18.268" Margin="353.058,475.601,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" Grid.Column="1"/>
-        <TextBox x:Name="tbTotal" HorizontalAlignment="Left" Height="27.601" Margin="353.058,498.869,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" FontSize="20" Grid.Column="1"/>
+
+        <TextBox x:Name="tbSubtotal" HorizontalAlignment="Left" Height="18.268" Margin="353.058,452.333,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox x:Name="tbIva" HorizontalAlignment="Left" Height="18.268" Margin="353.058,475.601,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox x:Name="tbTotal" HorizontalAlignment="Left" Height="27.601" Margin="353.058,498.869,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" FontSize="20" Grid.Column="1" IsReadOnly="True"/>
         <Label Content="Subtotal:" HorizontalAlignment="Left" Margin="291.064,448.333,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" Grid.Column="1"/>
         <Label Content="IVA (16%):" HorizontalAlignment="Left" Margin="284.488,471.601,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" Grid.Column="1"/>
         <Label Content="TOTAL:" HorizontalAlignment="Left" Margin="278.567,494.869,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" FontSize="20" Grid.Column="1"/>
         <Label Content="Productos:" HorizontalAlignment="Left" Margin="26.99,132.511,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}" Width="111.953" Grid.Column="1"/>
         <Label x:Name="lbPedidoActual" Content="Pedido Seleccionado:" HorizontalAlignment="Left" Margin="146,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="204" Grid.Column="1"/>
         <Label x:Name="lbidPedidoActual" Content="" HorizontalAlignment="Left" Margin="355,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="149" Grid.Column="1"/>
-
+        <Button x:Name="btCerrarDia" BorderBrush="Transparent" Height="74" Width="80" Background="Transparent"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="335,30,0,0" Click="btCerrarDia_Click">
+            <StackPanel Background="Transparent">
+                <Image Source="Recursos/Pedidos.png"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>

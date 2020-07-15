@@ -12,6 +12,11 @@ namespace ItaliaPizza
     /// </summary>
     public partial class ListaPedidoCocinero : Window
     {
+        private class CustomPedidoProducto : DataAccess.PedidoProducto
+        {
+            public String NombreProducto { get; set; }
+            public String CodigoProducto { get; set; }
+        }
         public List<DataAccess.Pedido> pedidos { get; set; }
         public DataAccess.Pedido pedidoActual { get; set; }
         PedidoController PedidoController = new PedidoController();
@@ -25,9 +30,24 @@ namespace ItaliaPizza
         {
             pedidoActual = ((DataAccess.Pedido)sender);
             lbidPedidoActual.Content = pedidoActual.idPedido;
-            DataAccess.Pedido pedido = PedidoController.ObtenerPedidoConProductos(pedidoActual.idPedido);
-            
-            dgProductos.ItemsSource = PedidoController.ObtenerPedidoProducto(pedidoActual.idPedido);
+            List<CustomPedidoProducto> custom = new List<CustomPedidoProducto>();
+            foreach (var item in PedidoController.ObtenerPedidoProducto(pedidoActual.idPedido))
+            {
+                CustomPedidoProducto tempPedidoProducto = new CustomPedidoProducto
+                {
+                    idPedido = item.idPedido,
+                    Cantidad = item.Cantidad,
+                    Precio = item.Precio,
+                    idProductoVenta = item.idProductoVenta
+                };
+                ProductoController productoController = new ProductoController();
+                DataAccess.Producto producto = productoController.ObtenerProductoPorId(tempPedidoProducto.idProductoVenta);
+                tempPedidoProducto.NombreProducto = producto.Nombre;
+                tempPedidoProducto.CodigoProducto = producto.Codigo;
+                custom.Add(tempPedidoProducto);
+            }
+            dgProductos.ItemsSource = custom;
+            Console.WriteLine("hofbdjs");
         }
 
         private void btEnPreparacion_Click(object sender, RoutedEventArgs e)
@@ -45,7 +65,9 @@ namespace ItaliaPizza
                 MessageBox.Show("Se ha puesto el pedido en preparacion");
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
+                dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
+
             }
         }
 
@@ -65,6 +87,7 @@ namespace ItaliaPizza
                 MessageBox.Show("Se ha terminado el pedido");
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
+                dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
             }
         }

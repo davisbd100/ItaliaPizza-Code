@@ -64,8 +64,8 @@
         <Button x:Name="btEnPreparacion" Content="En preparación" HorizontalAlignment="Left" Height="54" Margin="687,555,0,0" VerticalAlignment="Top" Width="264" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Click="btEnPreparacion_Click"/>
         <DataGrid x:Name="dgProductos" HorizontalAlignment="Left" Height="332" Margin="710,179,0,0" VerticalAlignment="Top" Width="477" FontSize="15" ColumnWidth="*" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Producto" Binding="{Binding ProductoVenta.Producto.Nombre}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Id del Producto" Binding="{Binding ProductoVenta.Producto.idProducto}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding NombreProducto}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Codigo" Binding="{Binding CodigoProducto}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>

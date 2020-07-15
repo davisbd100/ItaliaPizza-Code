@@ -21,6 +21,11 @@ namespace PrototiposItaliaPizza
     /// </summary>
     public partial class ListaPedidoVendedor : Window
     {
+        private class CustomPedidoProducto : DataAccess.PedidoProducto
+        {
+            public String NombreProducto { get; set; }
+            public double PrecioPublico { get; set; }
+        }
         public List<DataAccess.Pedido> pedidos { get; set; }
         public DataAccess.Pedido pedidoActual { get; set; }
         PedidoController PedidoController = new PedidoController();
@@ -34,17 +39,31 @@ namespace PrototiposItaliaPizza
         {
             pedidoActual = ((DataAccess.Pedido)sender);
             lbidPedidoActual.Content = pedidoActual.idPedido;
-            DataAccess.Pedido pedido = PedidoController.ObtenerPedidoConProductos(pedidoActual.idPedido);
-            dgProductos.ItemsSource = pedido.PedidoProducto;
+            List<CustomPedidoProducto> custom = new List<CustomPedidoProducto>();
             double subTotal = 0;
-            foreach (var item in pedidoActual.PedidoProducto)
+            foreach (var item in PedidoController.ObtenerPedidoProducto(pedidoActual.idPedido))
             {
-                subTotal += (double)item.Precio;
+                CustomPedidoProducto tempPedidoProducto = new CustomPedidoProducto
+                {
+                    idPedido = item.idPedido,
+                    Cantidad = item.Cantidad,
+                    Precio = item.Precio,
+                    idProductoVenta = item.idProductoVenta
+                };
+                subTotal += (double)tempPedidoProducto.Precio;
+                ProductoController productoController = new ProductoController();
+                DataAccess.Producto producto = productoController.ObtenerProductoPorId(tempPedidoProducto.idProductoVenta);
+                ProductoVentaController productoVentaController = new ProductoVentaController();
+                DataAccess.ProductoVenta productoVenta = productoVentaController.ObtenerProductoPorIdEE(tempPedidoProducto.idProductoVenta);
+                tempPedidoProducto.NombreProducto = producto.Nombre;
+                tempPedidoProducto.PrecioPublico = (double)productoVenta.PrecioPublico;
+                custom.Add(tempPedidoProducto);
             }
-            double iva = Math.Round(((subTotal / 100) * 16), 2);
-            tbIva.Text = iva.ToString();
-            tbSubtotal.Text = subTotal.ToString();
-            tbTotal.Text = (iva + subTotal).ToString();
+            tbSubtotal.Text = "$" + subTotal.ToString();
+            double iva = Math.Round((subTotal / 100) * 16, 3);
+            tbIva.Text = "$" + iva.ToString();
+            tbTotal.Text = "$" + Math.Round(subTotal + iva, 3).ToString();
+            dgProductos.ItemsSource = custom;
         }
 
         private void btCancelar_Click(object sender, RoutedEventArgs e)
@@ -67,6 +86,7 @@ namespace PrototiposItaliaPizza
                 cancelar.ShowDialog();
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
+                dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
             }
         }
@@ -91,6 +111,7 @@ namespace PrototiposItaliaPizza
                 editar.ShowDialog();
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
+                dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
             }
         }
@@ -111,7 +132,22 @@ namespace PrototiposItaliaPizza
                 MessageBox.Show("Se ha pagado el pedido");
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
+                dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
+            }
+        }
+
+        private void btCerrarDia_Click(object sender, RoutedEventArgs e)
+        {
+            if (!pedidos.Any())
+            {
+                InventarioController inventario = new InventarioController();
+                inventario.CerrarDia();
+                MessageBox.Show("Se cerro el dia!");
+            }
+            else
+            {
+                MessageBox.Show("No se puede cerrar el dia con pedidos pendientes!!!");
             }
         }
     }

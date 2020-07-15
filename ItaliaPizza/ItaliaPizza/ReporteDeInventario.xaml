@@ -39,12 +39,13 @@
         <Image HorizontalAlignment="Left" Height="87.11" Margin="125.001,26.732,0,0" VerticalAlignment="Top" Width="120.251" Source="Recursos/Inventario.png"/>
         <DataGrid MouseDoubleClick="dgInventario_MouseDoubleClick" x:Name="dgInventario" HorizontalAlignment="Left" Height="281" Margin="185,249,0,0" VerticalAlignment="Top" Width="456" FontSize="16" ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" BorderBrush="#FF98171F" Foreground="#FF6D7276" FontFamily="Calibri Light">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Producto" Binding="{Binding Producto}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding NombreProducto}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding CodigoProducto}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Medida" Binding="{Binding UnidadMedida}" IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="ColumnExistencia" Header="Existencia Inicial" Binding="{Binding ExistenciaInicial}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Margin="286,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="885" FontSize="36" Height="27"/>
+        <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Margin="286,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="885" FontSize="18" Height="27"/>
         <DataGrid x:Name="dgPedidoProducto" HorizontalAlignment="Left" Height="244" Margin="696,286,0,0" VerticalAlignment="Top" Width="532" FontSize="16" ColumnWidth="*" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" BorderBrush="#FF98171F" Foreground="#FF6D7276" FontFamily="Calibri Light">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Cantidad de Ingreso" Binding="{Binding CantidadIngreso}" IsReadOnly="True"/>
