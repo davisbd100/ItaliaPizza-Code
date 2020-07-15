@@ -171,5 +171,12 @@ namespace ItaliaPizza
         {
             this.Close();
         }
+
+        private void btIngresarManualmente_Click(object sender, RoutedEventArgs e)
+        {
+            InventarioActual inventarioActual = new InventarioActual();
+            inventarioActual.Show();
+            this.Close();
+        }
     }
 }

@@ -26,13 +26,11 @@ namespace PrototiposItaliaPizza
             public String NombreProducto { get; set; }
             public double PrecioPublico { get; set; }
         }
-        public List<DataAccess.Pedido> pedidos { get; set; }
         public DataAccess.Pedido pedidoActual { get; set; }
         PedidoController PedidoController = new PedidoController();
         public ListaPedidoVendedor()
         {
             InitializeComponent();
-            pedidos = PedidoController.ObtenerPedidosVendedor();
         }
 
         private void PedidosUC_PedidoUserControlClicked(object sender, EventArgs e)
@@ -155,7 +153,7 @@ namespace PrototiposItaliaPizza
 
         private void btCerrarDia_Click(object sender, RoutedEventArgs e)
         {
-            if (!pedidos.Any())
+            if (!PedidoController.ObtenerPedidosVendedor().Any())
             {
                 InventarioController inventario = new InventarioController();
                 inventario.CerrarDia();

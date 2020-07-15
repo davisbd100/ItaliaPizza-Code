@@ -69,6 +69,44 @@ namespace BusinessLogic
                 return resultado;
             }
         }
+        public ResultadoOperacionEnum.ResultadoOperacion PonerEnPreparacion(int id)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado = new ResultadoOperacionEnum.ResultadoOperacion();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    int Estatus = context.Estatus.Where(b => b.NombreEstatus == "En Preparación").FirstOrDefault().idEstatus;
+
+                    var tempPedido = context.Pedido
+                                    .Where(b => b.idPedido == id)
+                                    .FirstOrDefault();
+                    foreach (var item in tempPedido.PedidoProducto)
+                    {
+                        var tempInventario = context.Inventario.Where(b => b.Producto == item.idProductoVenta).FirstOrDefault();
+                        if (tempInventario.ExistenciaTotal < item.Cantidad)
+                        {
+                            throw new ArgumentException("El inventario no cuenta con la cantidad para despachar este pedido");
+                        }
+                        else
+                        {
+                            tempInventario.ExistenciaTotal -= item.Cantidad;
+                        }
+                    }
+
+                    tempPedido.Estatus = Estatus;
+
+                    context.SaveChanges();
+
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;
+                }
+                catch (EntityException)
+                {
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
+                }
+                return resultado;
+            }
+        }
         public bool EsADomicilio(int id)
         {
             bool resultado = false;

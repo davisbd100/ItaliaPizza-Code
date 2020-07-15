@@ -199,6 +199,7 @@ namespace BusinessLogic
                     {
                         DataAccess.Inventario tempInventario = inventarios.FirstOrDefault(b => b.idInventario == inventario.idInventario);
                         inventario.ExistenciaInicial = tempInventario.ExistenciaTotal;
+                        inventario.ExistenciaTotal = inventario.ExistenciaInicial;
                     }
                     context.SaveChanges();
                 }
@@ -294,6 +295,27 @@ namespace BusinessLogic
             }
 
             return inventarios;
+        }
+        public ResultadoOperacion CerrarDia()
+        {
+            ResultadoOperacion resultado = ResultadoOperacion.FallaDesconocida;
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var inventario in context.Inventario)
+                    {
+                        inventario.ExistenciaInicial = inventario.ExistenciaTotal;
+                    }
+                    context.SaveChanges();
+                }
+                catch (EntityException)
+                {
+                    resultado = ResultadoOperacion.FalloSQL;
+                }
+            }
+
+            return resultado;
         }
     }
 }
