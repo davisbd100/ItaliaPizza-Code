@@ -163,8 +163,8 @@ namespace ItaliaPizza
             }
             else
             {
-                PedidoController.CambiarEstadoPedido(pedidoActual.idPedido, "En Camino");
-                MessageBox.Show("El pedido se encuentra en camino");
+                PedidoEnCamino pedidoEnCamino = new PedidoEnCamino();
+                pedidoEnCamino.ShowDialog();
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
                 dgProductos.ItemsSource = null;
