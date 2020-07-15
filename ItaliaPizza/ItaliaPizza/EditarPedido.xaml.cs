@@ -78,18 +78,6 @@ namespace ItaliaPizza
             double CostoTotal = 0;
             lbNuevoPrecio.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
 
-
-            foreach (var pedidoProducto in PedidoAEditar.PedidoProducto)
-            {
-                CostoTotal += (double)pedidoProducto.Precio;
-            }
-            lbPrecioAnterior.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
-            lbNuevoPrecio.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
-        }
-
-        private void ActualizarDataGrid()
-        {
-            dgProductosDePedido.ItemsSource = null;
             foreach (var item in PedidoAEditar.PedidoProducto)
             {
                 CustomPedidoProducto productoVenta = new CustomPedidoProducto()
@@ -104,6 +92,18 @@ namespace ItaliaPizza
                 productoVenta.NombreProducto = productoController.ObtenerProductoPorId(productoVenta.idProductoVenta).Nombre;
                 custom.Add(productoVenta);
             }
+
+            foreach (var pedidoProducto in custom)
+            {
+                CostoTotal += (double)pedidoProducto.Precio;
+            }
+            lbPrecioAnterior.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
+            lbNuevoPrecio.Content = String.Format("{0:0.00}", CostoTotal) + "  MXN";
+        }
+
+        private void ActualizarDataGrid()
+        {
+            dgProductosDePedido.ItemsSource = null;
             dgProductosDePedido.ItemsSource = custom;
         }
 
@@ -111,9 +111,9 @@ namespace ItaliaPizza
         {
             if (dgProductosDePedido.SelectedIndex != -1)
             {
-                DataAccess.PedidoProducto tempPedidoProducto = (DataAccess.PedidoProducto)dgProductosDePedido.SelectedItem;
+                CustomPedidoProducto tempPedidoProducto = (CustomPedidoProducto)dgProductosDePedido.SelectedItem;
                 ActualizarLabelPrecio(-((double)tempPedidoProducto.Precio));
-                PedidoAEditar.PedidoProducto.Remove(tempPedidoProducto);
+                custom.Remove(tempPedidoProducto);
                 ActualizarDataGrid();
             }
         }
