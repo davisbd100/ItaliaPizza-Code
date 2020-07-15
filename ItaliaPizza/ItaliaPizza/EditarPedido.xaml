@@ -29,7 +29,7 @@
 
         <DataGrid x:Name="dgProductosDePedido" HorizontalAlignment="Left" Height="412" Margin="385,130,0,0" VerticalAlignment="Top" Width="341" Grid.Column="3" FontSize="12" ColumnWidth="*" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Producto" Binding="{Binding ProductoVenta.Producto.Nombre}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Producto" Binding="{Binding NombreProducto}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="PrecioUnitario" Binding="{Binding ProductoVenta.PrecioPublico}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="PrecioTotal" Binding="{Binding Precio}" IsReadOnly="True"/>

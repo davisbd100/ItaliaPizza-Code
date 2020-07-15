@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static BusinessLogic.ResultadoOperacionEnum;
+using DataAccess;
+using System.Data.Entity.Core;
 
 namespace BusinessLogic
 {
@@ -83,6 +85,24 @@ namespace BusinessLogic
                 connection.Close();
             }
             return listaProductos;
+        }
+
+        public DataAccess.Producto GetProductoPorID(int id)
+        {
+            DataAccess.Producto resultado = new DataAccess.Producto();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    resultado = context.Producto.Where(b => b.idProducto == id).FirstOrDefault();
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener el producto");
+                }
+            }
+
+            return resultado;
         }
 
     }

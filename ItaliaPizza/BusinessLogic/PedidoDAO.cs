@@ -44,7 +44,7 @@ namespace BusinessLogic
             throw new NotImplementedException();
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int pedido, ICollection<DataAccess.PedidoProducto> productos)
+        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int pedido, List<DataAccess.PedidoProducto> productos)
         {
             ResultadoOperacionEnum.ResultadoOperacion resultado = ResultadoOperacionEnum.ResultadoOperacion.FallaDesconocida;
             using (var context = new PizzaEntities())
@@ -380,7 +380,7 @@ namespace BusinessLogic
                         pedido.PedidoProducto = pedido.PedidoProducto;
                     }
                 }
-                catch (EntityException e)
+                catch (EntityException)
                 {
                     throw new Exception("Error al obtener los pedidos");
                 }

@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using Controller;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
@@ -24,8 +25,14 @@ namespace ItaliaPizza
     /// </summary>
     public partial class EditarPedido : Window
     {
+        private class CustomPedidoProducto: DataAccess.PedidoProducto
+        {
+            public String NombreProducto { get; set; }
+        }
+
         int PedidoID { get; set; }
         public DataAccess.Pedido PedidoAEditar;
+        List<CustomPedidoProducto> custom = new List<CustomPedidoProducto>();
         PedidoController controller = new PedidoController();
         public EditarPedido()
         {
@@ -83,7 +90,21 @@ namespace ItaliaPizza
         private void ActualizarDataGrid()
         {
             dgProductosDePedido.ItemsSource = null;
-            dgProductosDePedido.ItemsSource = PedidoAEditar.PedidoProducto;
+            foreach (var item in PedidoAEditar.PedidoProducto)
+            {
+                CustomPedidoProducto productoVenta = new CustomPedidoProducto()
+                {
+                    Cantidad = item.Cantidad,
+                    idPedido = item.idPedido,
+                    idProductoVenta = item.idProductoVenta,
+                    Precio = item.Precio,
+                    ProductoVenta = item.ProductoVenta
+                };
+                ProductoController productoController = new ProductoController();
+                productoVenta.NombreProducto = productoController.ObtenerProductoPorId(productoVenta.idProductoVenta).Nombre;
+                custom.Add(productoVenta);
+            }
+            dgProductosDePedido.ItemsSource = custom;
         }
 
         private void Quitar_Click(object sender, RoutedEventArgs e)
@@ -116,7 +137,7 @@ namespace ItaliaPizza
 
         private void GuardarEdicionPedido()
         {
-            switch(controller.CambiarProductosPedido(PedidoAEditar.idPedido, PedidoAEditar.PedidoProducto))
+            switch(controller.CambiarProductosPedido(PedidoAEditar.idPedido, custom.ConvertAll(b => (PedidoProducto)b)))
             {
                 case (ResultadoOperacionEnum.ResultadoOperacion.Exito):
                     MessageBox.Show("Guardado con exito");
@@ -133,15 +154,15 @@ namespace ItaliaPizza
 
         private void ProductosUC_ProductoUserControlClicked(object sender, EventArgs e)
         {
-            ProductoVenta tempProducto = ((ProductoVenta)sender);
+            DataAccess.ProductoVenta tempProducto = ((DataAccess.ProductoVenta)sender);
             ProductoVentaController producto = new ProductoVentaController();
             int cantidad = 1;
             DataAccess.PedidoProducto tempPedidoProducto = new DataAccess.PedidoProducto()
             {
                 Cantidad = cantidad,
-                idPedido = PedidoAEditar.idPedido,
-                ProductoVenta = producto.ObtenerProductoPorIdEE(int.Parse(tempProducto.Código)),
-                Precio = cantidad * tempProducto.PrecioPúblico
+                idPedido = PedidoAEditar.idPedido
+                //ProductoVenta = producto.ObtenerProductoPorIdEE(int.Parse(tempProducto.Código)),
+                //Precio = cantidad * tempProducto.PrecioPúblico
             };
             foreach (DataAccess.PedidoProducto item in dgProductosDePedido.Items)
             {

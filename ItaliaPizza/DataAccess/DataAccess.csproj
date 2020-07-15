@@ -114,9 +114,6 @@
     <Compile Include="RecetaIngrediente.cs">
       <DependentUpon>ItaliaPizzaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TipoEmpleado.cs">
-      <DependentUpon>ItaliaPizzaModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="TipoProducto.cs">
       <DependentUpon>ItaliaPizzaModel.tt</DependentUpon>
     </Compile>

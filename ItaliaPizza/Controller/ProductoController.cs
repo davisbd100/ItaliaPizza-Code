@@ -22,11 +22,19 @@ namespace Controller
             return productos;
         }
 
-        public List<Producto> Buscarproducto (string busqueda)
+        public List<Producto> Buscarproducto(string busqueda)
         {
             ProductoDAO productoDAO = new ProductoDAO();
-            List < Producto >  productos = productoDAO.BuscarProducto(busqueda + "%");
+            List<Producto> productos = productoDAO.BuscarProducto(busqueda + "%");
             return productos;
+        }
+
+        public DataAccess.Producto ObtenerProductoPorId(int id)
+        {
+            DataAccess.Producto resultado;
+            ProductoDAO productoDAO = new ProductoDAO();
+            resultado = productoDAO.GetProductoPorID(id);
+            return resultado;
         }
     }
 }

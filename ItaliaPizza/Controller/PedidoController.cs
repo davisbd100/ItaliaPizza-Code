@@ -90,7 +90,7 @@ namespace Controller
             return pedido;
         }
 
-        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosPedido(int idPedido, ICollection<DataAccess.PedidoProducto> productos)
+        public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosPedido(int idPedido, List<DataAccess.PedidoProducto> productos)
         {
             ResultadoOperacionEnum.ResultadoOperacion resultado;
             PedidoDAO pedidoDAO = new PedidoDAO();
