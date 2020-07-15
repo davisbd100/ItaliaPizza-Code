@@ -40,5 +40,17 @@ namespace Controller
             return autenticacion.GetUserType(user, pass);
         }
 
+        public String GetIdEmpleado(String user, String pass)
+        {
+            Autenticacion autenticacion = new Autenticacion();
+            return autenticacion.GetIdEmpleado(user, pass);
+        }
+
+        public String GetNombreEmpleado(String idEmpleado)
+        {
+            Autenticacion autenticacion = new Autenticacion();
+            return autenticacion.GetNombreEmpleado(idEmpleado);
+        }
+
     }
 }

@@ -13,6 +13,7 @@ namespace ItaliaPizza
     /// </summary>
     public partial class Inicio : Window
     {
+
         public Inicio()
         {
             InitializeComponent();
@@ -41,8 +42,11 @@ namespace ItaliaPizza
                 ContraseñaPasswordBox.Password = String.Empty;
             } else if (datosLogin.Result.Equals(validationResult.Success))
             {
-                Properties.Settings.Default.EmpleadoID = autenticacion.GetUserName(NombreUsuarioTextBox.Text.ToString(), ContraseñaPasswordBox.Password);
+                Properties.Settings.Default.EmpleadoID = autenticacion.GetIdEmpleado(NombreUsuarioTextBox.Text.ToString(), ContraseñaPasswordBox.Password);
+                Properties.Settings.Default.NombreUsuarioEmpleado = autenticacion.GetUserName(NombreUsuarioTextBox.Text.ToString(), ContraseñaPasswordBox.Password);
                 Properties.Settings.Default.EmpleadoType = autenticacion.GetUserType(NombreUsuarioTextBox.Text.ToString(), ContraseñaPasswordBox.Password);
+                Properties.Settings.Default.NombreEmpleado = autenticacion.GetNombreEmpleado(Properties.Settings.Default.EmpleadoID);
+
                 AbrirVentana();
                 this.Close();
             }

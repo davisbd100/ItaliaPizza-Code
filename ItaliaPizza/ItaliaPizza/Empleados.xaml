@@ -24,7 +24,7 @@
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Content="Empleados" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132" Width="253" Background="{x:Null}"/>
+        <Label Content="Empleados" HorizontalAlignment="Left" Margin="245,6,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132" Width="253" Background="{x:Null}"/>
         <Button x:Name="NuevoButton" HorizontalAlignment="Left" Height="87" Margin="752,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="NuevoButton_Click" Background="Transparent">
             <StackPanel>
                 <Image Source="Recursos/Empleado.png" Stretch="Uniform" Height="82" Width="100"/>
@@ -86,5 +86,6 @@
         </Button>
         <Image HorizontalAlignment="Left" Height="87" Margin="125,27,0,0" VerticalAlignment="Top" Width="120" Source="Recursos/Empleados.png"/>
         <local:Menu HorizontalAlignment="Left" Height="776" VerticalAlignment="Top" Width="121" Margin="0,0,0,-124" Grid.RowSpan="2"/>
+        <Label x:Name="LabelNombre" Content="Label" HorizontalAlignment="Left" Margin="554,119,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20"/>
     </Grid>
 </Window>
