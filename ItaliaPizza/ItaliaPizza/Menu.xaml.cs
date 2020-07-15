@@ -23,6 +23,8 @@ namespace ItaliaPizza
         public Menu()
         {
             InitializeComponent();
+            LabelNombre.Content = Properties.Settings.Default.NombreEmpleado;
+            LabelTipoEmpleado.Content = Properties.Settings.Default.EmpleadoType;
         }
 
         private void ButtonProductos_Click(object sender, RoutedEventArgs e)

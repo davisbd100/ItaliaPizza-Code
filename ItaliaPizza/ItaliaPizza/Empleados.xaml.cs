@@ -16,7 +16,6 @@ namespace ItaliaPizza
         public Empleados()
         {
             InitializeComponent();
-            LabelNombre.Content = Properties.Settings.Default.NombreEmpleado;
             LlenarGrid();
         }
 
