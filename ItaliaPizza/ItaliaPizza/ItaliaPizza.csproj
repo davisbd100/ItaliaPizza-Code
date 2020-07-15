@@ -176,6 +176,9 @@
     <Compile Include="RespaldarInformacion.xaml.cs">
       <DependentUpon>RespaldarInformacion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlSalir.xaml.cs">
+      <DependentUpon>UserControlSalir.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValidarCampos.cs" />
     <Page Include="Controls\PedidosCallCenterUC.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -336,6 +339,10 @@
     <Page Include="RespaldarInformacion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControlSalir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
