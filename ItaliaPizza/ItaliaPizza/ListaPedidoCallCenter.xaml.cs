@@ -14,12 +14,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PrototiposItaliaPizza
+namespace ItaliaPizza
 {
     /// <summary>
     /// Lógica de interacción para Pedido.xaml
     /// </summary>
-    public partial class ListaPedidoVendedor : Window
+    public partial class ListaPedidoCallCenter : Window
     {
         private class CustomPedidoProducto : DataAccess.PedidoProducto
         {
@@ -29,7 +29,8 @@ namespace PrototiposItaliaPizza
         public List<DataAccess.Pedido> pedidos { get; set; }
         public DataAccess.Pedido pedidoActual { get; set; }
         PedidoController PedidoController = new PedidoController();
-        public ListaPedidoVendedor()
+
+        public ListaPedidoCallCenter()
         {
             InitializeComponent();
             pedidos = PedidoController.ObtenerPedidosVendedor();
@@ -122,23 +123,10 @@ namespace PrototiposItaliaPizza
             {
                 MessageBox.Show("No se ha seleccionado un pedido!!!");
             }
-            else if (PedidoController.EsADomicilio(pedidoActual.idPedido))
+            else if (pedidoActual.Estatus1.NombreEstatus != "Entregado")
             {
-                if (pedidoActual.Estatus1.NombreEstatus != "Entregado")
-                {
-                    MessageBox.Show("Es un pedido a domicilio, por lo que debe ser entregado primero");
-                }
-                else
-                {
-                    PedidoController.CambiarEstadoPedido(pedidoActual.idPedido, "Finalizado");
-                    MessageBox.Show("Se ha pagado el pedido");
-                    ucPedidos.UpdateGrid();
-                    pedidoActual = null;
-                    dgProductos.ItemsSource = null;
-                    lbidPedidoActual.Content = "Ninguno";
-                }
-            }
-            else if (pedidoActual.Estatus1.NombreEstatus == "Preparado")
+                MessageBox.Show("El pedido aun no ha sido entregado!");
+            }else
             {
                 PedidoController.CambiarEstadoPedido(pedidoActual.idPedido, "Finalizado");
                 MessageBox.Show("Se ha pagado el pedido");
@@ -146,10 +134,6 @@ namespace PrototiposItaliaPizza
                 pedidoActual = null;
                 dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
-            }
-            else
-            {
-                MessageBox.Show("El pedido se debe encontrar preparado");
             }
         }
 
@@ -164,6 +148,49 @@ namespace PrototiposItaliaPizza
             else
             {
                 MessageBox.Show("No se puede cerrar el dia con pedidos pendientes!!!");
+            }
+        }
+
+        private void btEnCamino_Click(object sender, RoutedEventArgs e)
+        {
+            if (pedidoActual == null)
+            {
+                MessageBox.Show("No se ha seleccionado un pedido!!!");
+            }
+            else if (pedidoActual.Estatus1.NombreEstatus != "Preparado")
+            {
+                MessageBox.Show("El pedido se debe encontrar preparado antes de enviarlo");
+            }
+            else
+            {
+                PedidoController.CambiarEstadoPedido(pedidoActual.idPedido, "En Camino");
+                MessageBox.Show("El pedido se encuentra en camino");
+                ucPedidos.UpdateGrid();
+                pedidoActual = null;
+                dgProductos.ItemsSource = null;
+                lbidPedidoActual.Content = "Ninguno";
+            }
+
+        }
+
+        private void btEntregado_Click(object sender, RoutedEventArgs e)
+        {
+            if (pedidoActual == null)
+            {
+                MessageBox.Show("No se ha seleccionado un pedido!!!");
+            }
+            else if (pedidoActual.Estatus1.NombreEstatus != "En Camino")
+            {
+                MessageBox.Show("El pedido no ha sido marcado como enviado");
+            }
+            else
+            {
+                PedidoController.CambiarEstadoPedido(pedidoActual.idPedido, "Entregado");
+                MessageBox.Show("Se ha Entregado el pedido, en espera del pago");
+                ucPedidos.UpdateGrid();
+                pedidoActual = null;
+                dgProductos.ItemsSource = null;
+                lbidPedidoActual.Content = "Ninguno";
             }
         }
     }

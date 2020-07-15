@@ -10,6 +10,7 @@ using System.Data.Entity.Core;
 using System.Data.Entity;
 using System.Management.Instrumentation;
 using static BusinessLogic.ResultadoOperacionEnum;
+using System.CodeDom.Compiler;
 
 namespace BusinessLogic
 {
@@ -38,7 +39,56 @@ namespace BusinessLogic
                 return resultado;
             }
         }
+        public ResultadoOperacionEnum.ResultadoOperacion AsignarEntrega(int id, String Repartidor)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado = new ResultadoOperacionEnum.ResultadoOperacion();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    int Estatus = context.Estatus.Where(b => b.NombreEstatus == "En Camino").FirstOrDefault().idEstatus;
 
+                    var tempPedido = context.Pedido
+                                    .Where(b => b.idPedido == id)
+                                    .FirstOrDefault();
+                    var tempPedidoDomicilio = context.PedidoDomicilio.Where(b => b.idPedido == id).FirstOrDefault();
+                    
+                    
+                    tempPedidoDomicilio.HoraSalida = DateTime.Now;
+                    tempPedidoDomicilio.Repartidor = Repartidor;
+                    tempPedido.Estatus = Estatus;
+
+                    context.SaveChanges();
+
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;
+                }
+                catch (EntityException)
+                {
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
+                }
+                return resultado;
+            }
+        }
+        public bool EsADomicilio(int id)
+        {
+            bool resultado = false;
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    var tempPedidoDomicilio = context.PedidoDomicilio.Where(b => b.idPedido == id).FirstOrDefault();
+                    if (tempPedidoDomicilio != null)
+                    {
+                        resultado = true;
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new EntityException("Error no identificado");
+                }
+                return resultado;
+            }
+        }
         public ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido)
         {
             throw new NotImplementedException();
