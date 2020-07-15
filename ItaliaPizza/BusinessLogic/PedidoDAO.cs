@@ -10,6 +10,7 @@ using System.Data.Entity.Core;
 using System.Data.Entity;
 using System.Management.Instrumentation;
 using static BusinessLogic.ResultadoOperacionEnum;
+using System.CodeDom.Compiler;
 
 namespace BusinessLogic
 {
@@ -38,7 +39,56 @@ namespace BusinessLogic
                 return resultado;
             }
         }
+        public ResultadoOperacionEnum.ResultadoOperacion AsignarEntrega(int id, String Repartidor)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado = new ResultadoOperacionEnum.ResultadoOperacion();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    int Estatus = context.Estatus.Where(b => b.NombreEstatus == "En Camino").FirstOrDefault().idEstatus;
 
+                    var tempPedido = context.Pedido
+                                    .Where(b => b.idPedido == id)
+                                    .FirstOrDefault();
+                    var tempPedidoDomicilio = context.PedidoDomicilio.Where(b => b.idPedido == id).FirstOrDefault();
+                    
+                    
+                    tempPedidoDomicilio.HoraSalida = DateTime.Now;
+                    tempPedidoDomicilio.Repartidor = Repartidor;
+                    tempPedido.Estatus = Estatus;
+
+                    context.SaveChanges();
+
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;
+                }
+                catch (EntityException)
+                {
+                    resultado = ResultadoOperacionEnum.ResultadoOperacion.FalloSQL;
+                }
+                return resultado;
+            }
+        }
+        public bool EsADomicilio(int id)
+        {
+            bool resultado = false;
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    var tempPedidoDomicilio = context.PedidoDomicilio.Where(b => b.idPedido == id).FirstOrDefault();
+                    if (tempPedidoDomicilio != null)
+                    {
+                        resultado = true;
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new EntityException("Error no identificado");
+                }
+                return resultado;
+            }
+        }
         public ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido)
         {
             throw new NotImplementedException();
@@ -420,6 +470,31 @@ namespace BusinessLogic
                     DataAccess.Estatus estatusCancelado = context.Estatus.Where(b => b.NombreEstatus == "Cancelado").FirstOrDefault();
                     DataAccess.Estatus estatusFinalizado = context.Estatus.Where(b => b.NombreEstatus == "Finalizado").FirstOrDefault();
                     pedidos = context.Pedido.Where(b => b.Estatus != estatusCancelado.idEstatus && b.Estatus != estatusFinalizado.idEstatus).ToList();
+                    foreach (var pedido in pedidos)
+                    {
+                        pedido.PedidoProducto = pedido.PedidoProducto;
+                        pedido.Estatus1 = pedido.Estatus1;
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los pedidos");
+                }
+            }
+
+            return pedidos;
+        }
+        public List<DataAccess.Pedido> ObtenerListaPedidosCallCenter()
+        {
+            List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    DataAccess.Estatus estatusCancelado = context.Estatus.Where(b => b.NombreEstatus == "Cancelado").FirstOrDefault();
+                    DataAccess.Estatus estatusFinalizado = context.Estatus.Where(b => b.NombreEstatus == "Finalizado").FirstOrDefault();
+
+                    pedidos = context.Pedido.Where(b => b.Estatus != estatusCancelado.idEstatus && b.Estatus != estatusFinalizado.idEstatus && context.PedidoDomicilio.Where(p=> p.idPedido == b.idPedido).FirstOrDefault() != null).ToList();
                     foreach (var pedido in pedidos)
                     {
                         pedido.PedidoProducto = pedido.PedidoProducto;

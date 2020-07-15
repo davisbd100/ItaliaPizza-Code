@@ -65,6 +65,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\PedidosCallCenterUC.xaml.cs">
+      <DependentUpon>PedidosCallCenterUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PedidoEnCamino.xaml.cs">
+      <DependentUpon>PedidoEnCamino.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CancelarPedido.xaml.cs">
       <DependentUpon>CancelarPedido.xaml</DependentUpon>
     </Compile>
@@ -97,6 +103,9 @@
     </Compile>
     <Compile Include="EditarEmpleado.xaml.cs">
       <DependentUpon>EditarEmpleado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListaPedidoCallCenter.xaml.cs">
+      <DependentUpon>ListaPedidoCallCenter.xaml</DependentUpon>
     </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
@@ -171,6 +180,14 @@
       <DependentUpon>UserControlSalir.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValidarCampos.cs" />
+    <Page Include="Controls\PedidosCallCenterUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PedidoEnCamino.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CancelarPedido.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -251,6 +268,10 @@
       <DependentUpon>Inicio.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ListaPedidoCallCenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

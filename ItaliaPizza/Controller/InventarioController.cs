@@ -28,7 +28,7 @@ namespace Controller
 
         public List<DataAccess.Inventario> ObtenerTodosLosInventarios()
         {
-            List<DataAccess.Inventario> resultado = new List<DataAccess.Inventario>();
+            List<DataAccess.Inventario> resultado;
             InventarioDAO inventarioDAO = new InventarioDAO();
             resultado = inventarioDAO.ObtenerTodosLosInventarios();
             return resultado;

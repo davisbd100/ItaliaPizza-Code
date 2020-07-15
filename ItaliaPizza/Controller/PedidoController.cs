@@ -32,12 +32,40 @@ namespace Controller
             resultado = pedidoDAO.CambiarEstadoPedido(tempPedido, pedidoDAO.ObtenerEstatusPorNombre(Estado));
             return resultado;
         }
+        public ResultadoOperacionEnum.ResultadoOperacion AsignarEntrega(int id, String Repartidor)
+        {
+            ResultadoOperacionEnum.ResultadoOperacion resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.AsignarEntrega(id, Repartidor);
+            return resultado;
+        }
+        public bool EsADomicilio(int id)
+        {
+            bool resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.EsADomicilio(id);
+            return resultado;
+        }
 
         public List<DataAccess.Pedido> ObtenerPedidosCocina()
         {
             List<DataAccess.Pedido> resultado;
             PedidoDAO pedidoDAO = new PedidoDAO();
             resultado = pedidoDAO.ObtenerListaPedidosDisponiblesCocina();
+            return resultado;
+        }
+        public List<DataAccess.Pedido> ObtenerPedidosVendedor()
+        {
+            List<DataAccess.Pedido> resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.ObtenerListaPedidosDisponibles();
+            return resultado;
+        }
+        public List<DataAccess.Pedido> ObtenerPedidosCallCenter()
+        {
+            List<DataAccess.Pedido> resultado;
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.ObtenerListaPedidosCallCenter();
             return resultado;
         }
         public List<DataAccess.PedidoProducto> ObtenerPedidoProducto(int id)
@@ -48,13 +76,6 @@ namespace Controller
             return resultado;
         }
 
-        public List<DataAccess.Pedido> ObtenerPedidosVendedor()
-        {
-            List<DataAccess.Pedido> resultado;
-            PedidoDAO pedidoDAO = new PedidoDAO();
-            resultado = pedidoDAO.ObtenerListaPedidosDisponibles();
-            return resultado;
-        }
 
         public DataAccess.Estatus ObtenerEstatusPorId(int id)
         {
