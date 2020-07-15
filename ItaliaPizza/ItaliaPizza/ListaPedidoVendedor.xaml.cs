@@ -24,8 +24,7 @@ namespace PrototiposItaliaPizza
         private class CustomPedidoProducto : DataAccess.PedidoProducto
         {
             public String NombreProducto { get; set; }
-            public String CodigoProducto { get; set; }
-            public Double PrecioPublico { get; set; }
+            public double PrecioPublico { get; set; }
         }
         public List<DataAccess.Pedido> pedidos { get; set; }
         public DataAccess.Pedido pedidoActual { get; set; }
@@ -55,7 +54,6 @@ namespace PrototiposItaliaPizza
                 ProductoVentaController productoVentaController = new ProductoVentaController();
                 DataAccess.ProductoVenta productoVenta = productoVentaController.ObtenerProductoPorIdEE(tempPedidoProducto.idProductoVenta);
                 tempPedidoProducto.NombreProducto = producto.Nombre;
-                tempPedidoProducto.CodigoProducto = producto.Codigo;
                 tempPedidoProducto.PrecioPublico = (double)productoVenta.PrecioPublico;
                 custom.Add(tempPedidoProducto);
             }
@@ -131,6 +129,20 @@ namespace PrototiposItaliaPizza
                 pedidoActual = null;
                 dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
+            }
+        }
+
+        private void btCerrarDia_Click(object sender, RoutedEventArgs e)
+        {
+            if (!pedidos.Any())
+            {
+                InventarioController inventario = new InventarioController();
+                inventario.CerrarDia();
+                MessageBox.Show("Se cerro el dia!");
+            }
+            else
+            {
+                MessageBox.Show("No se puede cerrar el dia con pedidos pendientes!!!");
             }
         }
     }
