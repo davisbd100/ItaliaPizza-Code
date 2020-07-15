@@ -330,6 +330,26 @@ namespace BusinessLogic
                 return resultado;
             }
         }
+        public DataAccess.Estatus ObtenerEstatusPorId(int id)
+        {
+            DataAccess.Estatus resultado = new DataAccess.Estatus();
+            using (var context = new PizzaEntities())
+            {
+                try
+                {
+                    var tempEstatus = context.Estatus
+                                    .Where(b => b.idEstatus == id)
+                                    .FirstOrDefault();
+
+                    resultado = tempEstatus;
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("No se pudo obtener el estatus");
+                }
+                return resultado;
+            }
+        }
 
         public List<DataAccess.Pedido> ObtenerListaPedidos()
         {
@@ -378,6 +398,7 @@ namespace BusinessLogic
                     foreach (var pedido in pedidos)
                     {
                         pedido.PedidoProducto = pedido.PedidoProducto;
+                        pedido.Estatus1 = pedido.Estatus1;
                     }
                 }
                 catch (EntityException)

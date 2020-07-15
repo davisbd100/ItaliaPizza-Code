@@ -61,6 +61,14 @@ namespace Controller
             return resultado;
         }
 
+        public DataAccess.Estatus ObtenerEstatusPorId(int id)
+        {
+            DataAccess.Estatus resultado = new DataAccess.Estatus();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            resultado = pedidoDAO.ObtenerEstatusPorId(id);
+            return resultado;
+        }
+
         public DataAccess.Pedido ObtenerPedidoConProductos(int idPedido)
         {
             DataAccess.Pedido resultado;

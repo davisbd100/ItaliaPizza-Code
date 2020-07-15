@@ -22,6 +22,10 @@ namespace ItaliaPizza.Controls
     /// </summary>
     public partial class PedidosCocinaUC : UserControl
     {
+        private class CustomPedido: DataAccess.Pedido
+        {
+            public String NombreEstatus { get; set; }
+        }
         public event EventHandler PedidosUserControlClicked;
         PedidoController Controller = new PedidoController();
         List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
