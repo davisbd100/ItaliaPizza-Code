@@ -422,6 +422,7 @@ namespace BusinessLogic
                     foreach (var pedido in pedidos)
                     {
                         pedido.PedidoProducto = pedido.PedidoProducto;
+                        pedido.Estatus1 = pedido.Estatus1;
                     }
                 }
                 catch (EntityException)
