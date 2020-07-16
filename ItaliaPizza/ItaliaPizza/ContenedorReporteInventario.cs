@@ -14,7 +14,7 @@ namespace ItaliaPizza
     {
         public ContenedorReporteInventario()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             PrintDialog printDialog = new PrintDialog();
             if (printDialog.ShowDialog() == DialogResult.OK)
             {
