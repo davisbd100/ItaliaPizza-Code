@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace ItaliaPizza
 {
@@ -137,34 +139,7 @@ namespace ItaliaPizza
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocument flow = new FlowDocument(new Paragraph(new Run("Some text goes here")));
-
-            foreach (var item in controller.ObtenerTodosLosInventarios())
-            {
-                Paragraph p = new Paragraph(new Run(item.Producto.ToString() + "No existen movimientos"))
-                {
-                    TextAlignment = TextAlignment.Center,
-                    Margin = new Thickness(200,0,0,0),
-                    
-                };
-                flow.Blocks.Add(p);
-            }
-            flow.Name = "FlowDoc";
-            try
-            {
-                IDocumentPaginatorSource idpsorc = flow;
-                this.IsEnabled = false;
-                
-                PrintDialog printDialog = new PrintDialog();
-                if(printDialog.ShowDialog() == true)
-                {
-                    printDialog.PrintDocument(idpsorc.DocumentPaginator, "Invoice");
-                }
-            }
-            finally
-            {
-                this.IsEnabled = true;
-            }
+            ContenedorReporteInventario reporteInventario = new ContenedorReporteInventario();
         }
 
         private void SalirButton_Click(object sender, RoutedEventArgs e)
@@ -175,7 +150,7 @@ namespace ItaliaPizza
         private void btIngresarManualmente_Click(object sender, RoutedEventArgs e)
         {
             InventarioActual inventarioActual = new InventarioActual();
-            inventarioActual.Show();
+            inventarioActual.ShowDialog();
             this.Close();
         }
     }

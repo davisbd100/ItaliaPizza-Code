@@ -77,6 +77,7 @@
             </StackPanel>
         </Button>
         <Button x:Name="btIngresarManualmente" Content="Ingresar Manualmente" HorizontalAlignment="Left" Height="54" Margin="860,555,0,0" VerticalAlignment="Top" Width="368" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Click="btIngresarManualmente_Click"/>
+        <Button x:Name="btPrint" Content="IMPRIMIR" HorizontalAlignment="Left" Height="44" Margin="696,560,0,0" VerticalAlignment="Top" Width="129" Background="#0058B4" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Click="PrintButton_Click"/>
 
     </Grid>
 </Window>
