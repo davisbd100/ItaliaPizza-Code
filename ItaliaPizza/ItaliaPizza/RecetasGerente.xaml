@@ -69,5 +69,6 @@
                 <DataGridTextColumn Header="Descripción" Binding="{Binding Rendimiento}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="btn_VerReceta" Content="Ver receta" HorizontalAlignment="Left" Height="32" Margin="900,515,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="VerReceta_Click"/>
     </Grid>
 </Window>
