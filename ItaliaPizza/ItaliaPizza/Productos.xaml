@@ -66,20 +66,16 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="btn_actualizarBusqueda" Content="Actualizar tabla" HorizontalAlignment="Left" Margin="649,190,0,0" VerticalAlignment="Top" Width="216" Height="29" Click="btn_actualizarBusqueda_Click" Background="#FF008050" Foreground="White" FontSize="16" />
-        <Rectangle HorizontalAlignment="Left" Height="74" Margin="0,131,0,0" VerticalAlignment="Top" Width="120">
+        <Rectangle HorizontalAlignment="Left" Height="74" Margin="0,161,0,0" VerticalAlignment="Top" Width="120">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
         <local1:Menu HorizontalAlignment="Left" Height="724" VerticalAlignment="Top" Width="125" Margin="0,0,0,-72" Grid.RowSpan="2"/>
-        <Button x:Name="SalirButton" HorizontalAlignment="Left" Height="86" Margin="1124,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="SalirButton_Click" Background="Transparent">
-            <StackPanel>
-                <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
-            </StackPanel>
-        </Button>
         <Label Content="Buscar por:" HorizontalAlignment="Left" Margin="205,147,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}"/>
         <TextBlock x:Name="txb_Pagina" HorizontalAlignment="Left" Height="32" Margin="927,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
         <Button x:Name="btn_SigPag" Content="Siguiente" HorizontalAlignment="Left" Height="32" Margin="972,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btn_SigPag_Click_1"/>
         <Button x:Name="btn_AntPag" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="715,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" IsDefault="True"/>
+        <local1:UserControlSalir HorizontalAlignment="Left" Height="100" Margin="1124,24,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

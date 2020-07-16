@@ -14,7 +14,7 @@
             <RowDefinition Height="652"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <Rectangle HorizontalAlignment="Left" Margin="0,492,0,86" Width="120">
+        <Rectangle HorizontalAlignment="Left" Margin="0,522,0,56" Width="120">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
@@ -24,7 +24,7 @@
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Content="Empleados" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132" Width="253" Background="{x:Null}"/>
+        <Label Content="Empleados" HorizontalAlignment="Left" Margin="245,6,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132" Width="253" Background="{x:Null}"/>
         <Button x:Name="NuevoButton" HorizontalAlignment="Left" Height="87" Margin="752,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="NuevoButton_Click" Background="Transparent">
             <StackPanel>
                 <Image Source="Recursos/Empleado.png" Stretch="Uniform" Height="82" Width="100"/>
@@ -79,12 +79,8 @@
         <TextBlock x:Name="TextBlockPagina" HorizontalAlignment="Left" Height="32" Margin="927,588,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Text="1" Foreground="#FF6D7276" Background="White" TextAlignment="Center" FontFamily="Calibri Light" FontSize="24" FontWeight="Bold"/>
         <Button x:Name="ButtonSiguierntePagina" Content="Siguiente" HorizontalAlignment="Left" Height="32" Margin="972,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonSiguierntePagina_Click"/>
         <Button x:Name="ButtonAnteriorPagina" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="715,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="ButtonAnteriorPagina_Click" IsDefault="True"/>
-        <Button x:Name="SalirButton" HorizontalAlignment="Left" Height="86" Margin="1124,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="SalirButton_Click" Background="Transparent">
-            <StackPanel>
-                <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
-            </StackPanel>
-        </Button>
         <Image HorizontalAlignment="Left" Height="87" Margin="125,27,0,0" VerticalAlignment="Top" Width="120" Source="Recursos/Empleados.png"/>
         <local:Menu HorizontalAlignment="Left" Height="776" VerticalAlignment="Top" Width="121" Margin="0,0,0,-124" Grid.RowSpan="2"/>
+        <local:UserControlSalir HorizontalAlignment="Left" Height="100" Margin="1124,27,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

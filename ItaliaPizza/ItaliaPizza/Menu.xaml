@@ -13,41 +13,43 @@
             </Rectangle.Fill>
         </Rectangle>
         <Image HorizontalAlignment="Left" Height="104" Margin="6,10,0,0" VerticalAlignment="Top" Width="110" Source="Recursos/LogoItaliaPizza.png"/>
-        <Button x:Name="ButtonProductos" HorizontalAlignment="Left" Height="74" Margin="0,130,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonProductos_Click">
+        <Button x:Name="ButtonProductos" HorizontalAlignment="Left" Height="74" Margin="0,160,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonProductos_Click">
             <StackPanel>
                 <Image Source="Recursos/Producto.png"/>
             </StackPanel>
         </Button>
-        <Button x:Name="ButtonRecetas" HorizontalAlignment="Left" Height="74" Margin="0,203,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonRecetas_Click">
+        <Button x:Name="ButtonRecetas" HorizontalAlignment="Left" Height="74" Margin="0,233,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonRecetas_Click">
             <StackPanel>
                 <Image Source="Recursos/Receta.png"/>
             </StackPanel>
         </Button>
-        <Button x:Name="ButtonInventario" HorizontalAlignment="Left" Height="74" Margin="0,275,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonInventario_Click">
+        <Button x:Name="ButtonInventario" HorizontalAlignment="Left" Height="74" Margin="0,305,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonInventario_Click">
             <StackPanel>
                 <Image Source="Recursos/Inventario.png"/>
             </StackPanel>
         </Button>
-        <Button x:Name="ButtonVentas" HorizontalAlignment="Left" Height="74" Margin="0,347,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonVentas_Click">
+        <Button x:Name="ButtonVentas" HorizontalAlignment="Left" Height="74" Margin="0,377,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonVentas_Click">
             <StackPanel>
                 <Image Source="Recursos/Ventas.png"/>
             </StackPanel>
         </Button>
-        <Button x:Name="ButtonClientes" HorizontalAlignment="Left" Height="74" Margin="0,419,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonClientes_Click">
+        <Button x:Name="ButtonClientes" HorizontalAlignment="Left" Height="74" Margin="0,449,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonClientes_Click">
             <StackPanel>
                 <Image Source="Recursos/Clientes.png"/>
             </StackPanel>
         </Button>
-        <Button x:Name="ButtonEmpleados" HorizontalAlignment="Left" Height="74" Margin="0,491,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonEmpleados_Click">
+        <Button x:Name="ButtonEmpleados" HorizontalAlignment="Left" Height="74" Margin="0,521,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" Background="Transparent" Click="ButtonEmpleados_Click">
             <StackPanel>
                 <Image Source="Recursos/Empleados.png"/>
             </StackPanel>
         </Button>
-        <Label Content="PRODUCTOS" HorizontalAlignment="Left" Margin="32,186,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8" RenderTransformOrigin="0.515,0.466"/>
-        <Label Content="RECETAS" HorizontalAlignment="Left" Margin="40,259,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
-        <Label Content="INVENTARIO" HorizontalAlignment="Left" Margin="33,331,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
-        <Label Content="VENTAS" HorizontalAlignment="Left" Margin="42,404,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
-        <Label Content="CLIENTES" HorizontalAlignment="Left" Margin="39,475,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8"/>
-        <Label Content="EMPLEADOS" HorizontalAlignment="Left" Margin="33,547,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8"/>
+        <Label Content="PRODUCTOS" HorizontalAlignment="Left" Margin="32,216,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8" RenderTransformOrigin="0.515,0.466"/>
+        <Label Content="RECETAS" HorizontalAlignment="Left" Margin="40,289,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
+        <Label Content="INVENTARIO" HorizontalAlignment="Left" Margin="33,361,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
+        <Label Content="VENTAS" HorizontalAlignment="Left" Margin="42,434,0,0" VerticalAlignment="Top" Foreground="White" Height="35" Background="{x:Null}" FontSize="8"/>
+        <Label Content="CLIENTES" HorizontalAlignment="Left" Margin="39,505,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8"/>
+        <Label Content="EMPLEADOS" HorizontalAlignment="Left" Margin="33,577,0,0" VerticalAlignment="Top" Foreground="White" Height="34" Background="{x:Null}" FontSize="8"/>
+        <Label x:Name="LabelNombre" Content="Label" HorizontalAlignment="Left" Margin="6,114,0,0" VerticalAlignment="Top" Width="104" FontSize="14" Foreground="White" FontWeight="Bold"/>
+        <Label x:Name="LabelTipoEmpleado" Content="Label" HorizontalAlignment="Left" Margin="6,137,0,0" VerticalAlignment="Top" Width="104" FontSize="10" Foreground="White"/>
     </Grid>
 </UserControl>

@@ -107,5 +107,48 @@ namespace AutenticacionInicioSesion
             }
             return result;
         }
+
+        public String GetIdEmpleado(String user, String pass)
+        {
+            String result = "";
+            DbConnection dbConnection = new DbConnection();
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand("SELECT [idEmpleado] FROM [dbo].[Empleado] WHERE NombreUsuario = @NombreUsuario AND Contrasena = @Contraseña", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@NombreUsuario", user));
+                    command.Parameters.Add(new SqlParameter("@Contraseña", PassHash(pass)));
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result = reader["idEmpleado"].ToString();
+                    }
+
+                }
+            }
+            return result;
+        }
+
+        public String GetNombreEmpleado(String idEmpleado)
+        {
+            String result = "";
+            DbConnection dbConnection = new DbConnection();
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand("SELECT [Nombre] FROM [dbo].[Persona] WHERE idPersona = @idEmpleado", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@idEmpleado", idEmpleado));
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result = reader["Nombre"].ToString();
+                    }
+                }
+            }
+            return result;
+        }
     }
 }
