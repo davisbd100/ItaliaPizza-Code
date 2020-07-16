@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,11 @@ namespace ItaliaPizza
             InitializeComponent();
             receta = recetaEnviada;
             llenarCampos();
+            llenarReceta();
         }
 
         Receta receta = new Receta();
+        List<ListaIngredientesReceta> listaIngredientesReceta = new List<ListaIngredientesReceta>();
 
 
         private void llenarCampos()
@@ -35,6 +38,15 @@ namespace ItaliaPizza
             tb_Nombre.Text = receta.Nombre;
             tb_Rendimiento.Text = receta.Rendimiento.ToString();
             tb_Procedimiento.Text = receta.Procedimiento.ToString();
+        }
+
+        private void llenarReceta()
+        {
+            dtg_IngredientesReceta.ItemsSource = null;
+            RecetaController recetaController = new RecetaController();
+            listaIngredientesReceta = recetaController.obtenerIngredientesReceta(receta.IdReceta);
+            dtg_IngredientesReceta.ItemsSource = listaIngredientesReceta;
+
         }
 
 
