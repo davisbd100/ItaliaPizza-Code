@@ -139,7 +139,14 @@ namespace ItaliaPizza
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            ContenedorReporteInventario reporteInventario = new ContenedorReporteInventario();
+            if (true)
+            {
+                MessageBox.Show("Funcion no implementada");
+            }
+            else
+            {
+                ContenedorReporteInventario reporteInventario = new ContenedorReporteInventario();
+            }
         }
 
         private void SalirButton_Click(object sender, RoutedEventArgs e)
