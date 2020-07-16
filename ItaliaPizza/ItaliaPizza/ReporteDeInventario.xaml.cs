@@ -13,8 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
 
 namespace ItaliaPizza
 {
@@ -139,14 +137,7 @@ namespace ItaliaPizza
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            if (true)
-            {
-                MessageBox.Show("Funcion no implementada");
-            }
-            else
-            {
-                ContenedorReporteInventario reporteInventario = new ContenedorReporteInventario();
-            }
+            ContenedorReporteInventario reporteInventario = new ContenedorReporteInventario();
         }
 
         private void SalirButton_Click(object sender, RoutedEventArgs e)
