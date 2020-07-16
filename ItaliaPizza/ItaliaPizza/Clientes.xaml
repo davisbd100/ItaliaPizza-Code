@@ -27,18 +27,18 @@
             </Rectangle.Fill>
         </Rectangle>
         <Image HorizontalAlignment="Left" Height="87.11" Margin="125.001,26.732,0,0" VerticalAlignment="Top" Width="120.251" Source="Recursos/Clientes.png"/>
-        <DataGrid x:Name="DataGridClientes" HorizontalAlignment="Left" Height="335" Margin="185,235,0,0" VerticalAlignment="Top" Width="1003" FontFamily="Calibri Light" FontSize="16"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Background="White" Foreground="#FF6D7276" BorderBrush="#FF98171F" GridLinesVisibility="Vertical">
+        <DataGrid x:Name="DataGridClientes" HorizontalAlignment="Left" Height="335" Margin="185,235,0,0" VerticalAlignment="Top" Width="1003" FontFamily="Calibri Light" FontSize="16"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Background="White" Foreground="#FF6D7276" BorderBrush="#FF98171F">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding idPersona}" IsReadOnly="True" Foreground="#FF6D7276"/>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True" Foreground="#FF6D7276"/>
-                <DataGridTextColumn Header="Apellido" Binding="{Binding Apellido}" IsReadOnly="True" Foreground="#FF6D7276"/>
-                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" IsReadOnly="True" Foreground="#FF6D7276"/>
-                <DataGridTextColumn Header="Correo" Binding="{Binding Email}" IsReadOnly="True" Foreground="#FF6D7276"/>
-                <DataGridTextColumn Header="Calle" Binding="{Binding Calle}" IsReadOnly="True" Foreground="#FF6D7276"/>
-                <DataGridTextColumn Header="Número" Binding="{Binding Numero}" IsReadOnly="True" Foreground="#FF6D7276"/>
-                <DataGridTextColumn Header="Colonia" Binding="{Binding Colonia}" IsReadOnly="True" Foreground="#FF6D7276"/>
-                <DataGridTextColumn Header="Codigo Postal" Binding="{Binding CodigoPostal}" IsReadOnly="True" Foreground="#FF6D7276"/>
-                <DataGridTextColumn Header="Ciudad" Binding="{Binding Ciudad}" IsReadOnly="True" Foreground="#FF6D7276"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding idPersona}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Apellido" Binding="{Binding Apellido}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Correo" Binding="{Binding Email}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Calle" Binding="{Binding Calle}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Número" Binding="{Binding Numero}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Colonia" Binding="{Binding Colonia}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Codigo Postal" Binding="{Binding CodigoPostal}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Ciudad" Binding="{Binding Ciudad}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="NuevoButton" HorizontalAlignment="Left" Height="87" Margin="752,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="NuevoButton_Click" Background="Transparent">
