@@ -53,19 +53,31 @@ namespace ItaliaPizza
         {
             dtg_IngredientesReceta.ItemsSource = null;
 
-            foreach(ProductoIngrediente ingrediente in listaIngredinetes)
+            List<ListaIngredientesReceta> listaIngredientesRecetas2 = new List<ListaIngredientesReceta>();
+
+            foreach (ProductoIngrediente ingrediente in listaIngredinetes)
             {
                 ListaIngredientesReceta ingredientesReceta = new ListaIngredientesReceta();
+
                 ingredientesReceta.IdIngrediente = ingrediente.idProducto;
                 ingredientesReceta.Nombre = ingrediente.Nombre;
                 ingredientesReceta.Descripción = ingrediente.Descripción;
                 ingredientesReceta.Cantidad = 1;
                 ingredientesReceta.Código = ingrediente.Código;
                 ingredientesReceta.PrecioUnitario = 0;
-                listaIngredientesRecetas.Add(ingredientesReceta);
+                listaIngredientesRecetas2.Add(ingredientesReceta);
+                listaIngredientesRecetas = listaIngredientesRecetas2;
             }
 
 
+            dtg_IngredientesReceta.ItemsSource = listaIngredientesRecetas;
+
+        }
+
+        private void actualizarGrid()
+        {
+
+            dtg_IngredientesReceta.ItemsSource = null;
             dtg_IngredientesReceta.ItemsSource = listaIngredientesRecetas;
 
         }
@@ -101,7 +113,9 @@ namespace ItaliaPizza
 
                 var ingredienteSeleccionado = dtg_Ingredientes.SelectedItem as ProductoIngrediente;
 
+
                 listaIngredinetes.Add(ingredienteSeleccionado);
+
                 LlenarGridIngredienteReceta();
             }
         }
@@ -112,9 +126,17 @@ namespace ItaliaPizza
 
             if(posicion != POSICION_FUERA_RANGO && ValidarSeleccionReceta())
             {
-                Console.WriteLine(listaIngredinetes[0].idProducto);
-                var ingredienteSeleccionado = dtg_IngredientesReceta.SelectedItem as Producto;
-                listaIngredinetes.RemoveAll(r => r.idProducto == ingredienteSeleccionado.idProducto);
+                var ingredienteSeleccionado = dtg_IngredientesReceta.SelectedItem as ListaIngredientesReceta;
+                listaIngredinetes.RemoveAll(r => r.idProducto == ingredienteSeleccionado.IdIngrediente);
+
+                //foreach (ProductoIngrediente productoIngrediente in listaIngredinetes)
+                //{
+                //    if(productoIngrediente.idProducto == ingredienteSeleccionado.IdIngrediente)
+                //    {
+                //        listaIngredinetes.Remove(productoIngrediente);
+                //    }
+                //}
+
                 LlenarGridIngredienteReceta();
 
             }
