@@ -37,7 +37,7 @@ namespace ItaliaPizza
         Producto productoMandado = new Producto();
         const int POSICION_FUERA_RANGO = -1;
         List<ProductoIngrediente> listaIngredinetes = new List<ProductoIngrediente>();
-
+        List<ListaIngredientesReceta> listaIngredientesRecetas = new List<ListaIngredientesReceta>();
 
         private void LlenarGridIngrediente()
         {
@@ -52,7 +52,21 @@ namespace ItaliaPizza
         private void LlenarGridIngredienteReceta()
         {
             dtg_IngredientesReceta.ItemsSource = null;
-            dtg_IngredientesReceta.ItemsSource = listaIngredinetes;
+
+            foreach(ProductoIngrediente ingrediente in listaIngredinetes)
+            {
+                ListaIngredientesReceta ingredientesReceta = new ListaIngredientesReceta();
+                ingredientesReceta.IdIngrediente = ingrediente.idProducto;
+                ingredientesReceta.Nombre = ingrediente.Nombre;
+                ingredientesReceta.Descripción = ingrediente.Descripción;
+                ingredientesReceta.Cantidad = 1;
+                ingredientesReceta.Código = ingrediente.Código;
+                ingredientesReceta.PrecioUnitario = 0;
+                listaIngredientesRecetas.Add(ingredientesReceta);
+            }
+
+
+            dtg_IngredientesReceta.ItemsSource = listaIngredientesRecetas;
 
         }
 
@@ -121,7 +135,7 @@ namespace ItaliaPizza
         private void RegistarReceta()
         {
             RecetaController recetaController = new RecetaController();
-            var resultado = recetaController.CrearReceta(txb_Nombre.Text, txb_Procedimiento.Text, txb_Rendimiento.Text, listaIngredinetes, productoMandado.idProducto);
+            var resultado = recetaController.CrearReceta(txb_Nombre.Text, txb_Procedimiento.Text, txb_Rendimiento.Text, listaIngredientesRecetas, productoMandado.idProducto);
             if(resultado == ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
                 MessageBox.Show("Receta registrada con éxito");
@@ -136,6 +150,8 @@ namespace ItaliaPizza
 
         private void btn_Registrar_Click(object sender, RoutedEventArgs e)
         {
+
+
             if (VerificarCampos())
             {
                 RegistarReceta();

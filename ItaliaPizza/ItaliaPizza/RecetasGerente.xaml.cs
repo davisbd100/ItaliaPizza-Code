@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogic;
+using Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,18 @@ namespace ItaliaPizza
         public RecetasGerente()
         {
             InitializeComponent();
+            llenarGrid();
+        }
+        List<Receta> recetas = new List<Receta>();
+
+
+        private void llenarGrid()
+        {
+            dtg_Recetas.ItemsSource = null;
+            RecetaController recetaController = new RecetaController();
+            recetas = recetaController.ObtenerTodasRecetas(1);
+            dtg_Recetas.ItemsSource = recetas;
+
         }
 
         private void btn_Nuevo_Click(object sender, RoutedEventArgs e)

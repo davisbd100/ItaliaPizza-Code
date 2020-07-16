@@ -36,11 +36,11 @@
         </DataGrid>
         <Button x:Name="btn_agregarAGrid" Content="AGREGAR" HorizontalAlignment="Left" Margin="747,210,0,0" VerticalAlignment="Top"  Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="12" FontWeight="Bold" Width="84" Height="60" Click="btn_agregarAGrid_Click" />
         <Button x:Name="btn_ElimiarDeGrid" Content="QUITAR" HorizontalAlignment="Left" Margin="747,294,0,0" VerticalAlignment="Top" Width="84" Height="60"  Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="12" Click="btn_ElimiarDeGrid_Click"/>
-        <DataGrid x:Name="dtg_IngredientesReceta" HorizontalAlignment="Left" Height="280" Margin="855,145,0,0" VerticalAlignment="Top" Width="325" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" FontFamily="Calibri Light" FontSize="16">
+        <DataGrid x:Name="dtg_IngredientesReceta" HorizontalAlignment="Left" Height="280" Margin="855,145,0,0" VerticalAlignment="Top" Width="325" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserAddRows="False" FontFamily="Calibri Light" FontSize="16">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Código" Binding="{Binding Código}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Código" Binding="{Binding IdIngrediente}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Cantidad"  />
+                <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}" />
             </DataGrid.Columns>
         </DataGrid>
 
