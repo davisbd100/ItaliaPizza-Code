@@ -40,13 +40,8 @@
         </Button>
         <Label Content="EDITAR" HorizontalAlignment="Left" Margin="899.541,86.752,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="50.407"/>
         <Label Content="ELIMINAR" HorizontalAlignment="Left" Margin="1007.211,86.328,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="14" Background="{x:Null}" Foreground="White" RenderTransformOrigin="2.863,0.727" Height="27.09" Width="66.483"/>
-        <ListView HorizontalAlignment="Left" Height="355" Margin="185,221,0,0" VerticalAlignment="Top" Width="1003">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+
+        
         <Image HorizontalAlignment="Left" Height="87.11" Margin="125.001,26.732,0,0" VerticalAlignment="Top" Width="120.251" Source="Recursos/Receta.png"/>
         <local:Menu HorizontalAlignment="Left" Height="730" VerticalAlignment="Top" Width="120" Margin="0,0,0,-78"/>
         <Rectangle HorizontalAlignment="Left" Height="49" Margin="185,155,0,0" VerticalAlignment="Top" Width="1003">
@@ -68,5 +63,11 @@
         <Button x:Name="ButtonSiguierntePagina" Content="Siguiente" HorizontalAlignment="Left" Height="32" Margin="972,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
         <Button x:Name="ButtonAnteriorPagina" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="715,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" IsDefault="True"/>
         <local:UserControlSalir HorizontalAlignment="Left" Height="100" Margin="1126,23,0,0" VerticalAlignment="Top" Width="100"/>
+        <DataGrid x:Name="dtg_Recetas" HorizontalAlignment="Left" Height="264" Margin="185,235,0,0" VerticalAlignment="Top" Width="999" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Descripción" Binding="{Binding Rendimiento}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

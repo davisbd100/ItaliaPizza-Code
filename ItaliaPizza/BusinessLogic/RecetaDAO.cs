@@ -238,16 +238,17 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Receta ORDER BY Nombre LIMIT 20 OFFSET @Rango", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Receta ORDER BY Nombre offset @Rango rows fetch next 20 rows only", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         Receta receta = new Receta();
-                        receta.IdReceta = int.Parse(reader["Codigo"].ToString());
+                        receta.IdReceta = int.Parse(reader["idReceta"].ToString());
                         receta.Nombre = reader["Nombre"].ToString();
-
+                        receta.Procedimiento = reader["Procedimiento"].ToString();
+                        receta.Rendimiento = float.Parse(reader["Rendimiento"].ToString());
                         listaReceta.Add(receta);
                     }
                 }

@@ -17,18 +17,6 @@ namespace Controller
 
             List <ListaIngredientesReceta> listaIngredientesReceta = new List<ListaIngredientesReceta>();
 
-            //foreach(ProductoIngrediente productoIngrediente in productos)
-            //{
-            //    ListaIngredientesReceta ingredientesReceta = new ListaIngredientesReceta();
-            //    ingredientesReceta.IdIngrediente = productoIngrediente.idProducto;
-            //    ingredientesReceta.Cantidad = 1;
-            //    ingredientesReceta.PrecioUnitario = 0;
-            //    listaIngredientesReceta.Add(ingredientesReceta);
-                
-            //}
-
-
-
             Receta receta = new Receta();
             receta.Nombre = nombre;
             receta.Procedimiento = procedimiento;
@@ -39,6 +27,14 @@ namespace Controller
             resultadoOperacion = recetaDAO.AddReceta(receta, productoVenta);
 
             return resultadoOperacion;
+        }
+
+
+        public List<Receta> ObtenerTodasRecetas(int pagina)
+        {
+            pagina--;
+            RecetaDAO recetaDAO = new RecetaDAO();
+            return recetaDAO.GetRecetas(pagina);
         }
     }
 }
