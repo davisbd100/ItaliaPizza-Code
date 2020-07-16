@@ -139,17 +139,7 @@ namespace ItaliaPizza
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            ReporteInventario reporte = new ReporteInventario();
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == true)
-            {
-                reporte.PrintOptions.PrinterName = printDialog.PrintQueue.Name;
-                reporte.PrintOptions.PaperSize = (CrystalDecisions.Shared.PaperSize)System.Drawing.Printing.PaperKind.A5;
-                reporte.PrintToPrinter(2, true, 0, 0);
-                crystarepo
-                crystalReportsViewer.ViewerCore.ReportSource = reporte;
-                crystalReportsViewer.ToggleSidePanel = SAPBusinessObjects.WPF.Viewer.Constants.SidePanelKind.None;
-            }
+            ContenedorReporteInventario reporteInventario = new ContenedorReporteInventario();
         }
 
         private void SalirButton_Click(object sender, RoutedEventArgs e)
@@ -160,7 +150,7 @@ namespace ItaliaPizza
         private void btIngresarManualmente_Click(object sender, RoutedEventArgs e)
         {
             InventarioActual inventarioActual = new InventarioActual();
-            inventarioActual.Show();
+            inventarioActual.ShowDialog();
             this.Close();
         }
     }
