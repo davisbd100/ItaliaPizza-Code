@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace ItaliaPizza
 {
@@ -137,33 +139,16 @@ namespace ItaliaPizza
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            FlowDocument flow = new FlowDocument(new Paragraph(new Run("Some text goes here")));
-
-            foreach (var item in controller.ObtenerTodosLosInventarios())
+            ReporteInventario reporte = new ReporteInventario();
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
             {
-                Paragraph p = new Paragraph(new Run(item.Producto.ToString() + "No existen movimientos"))
-                {
-                    TextAlignment = TextAlignment.Center,
-                    Margin = new Thickness(200,0,0,0),
-                    
-                };
-                flow.Blocks.Add(p);
-            }
-            flow.Name = "FlowDoc";
-            try
-            {
-                IDocumentPaginatorSource idpsorc = flow;
-                this.IsEnabled = false;
-                
-                PrintDialog printDialog = new PrintDialog();
-                if(printDialog.ShowDialog() == true)
-                {
-                    printDialog.PrintDocument(idpsorc.DocumentPaginator, "Invoice");
-                }
-            }
-            finally
-            {
-                this.IsEnabled = true;
+                reporte.PrintOptions.PrinterName = printDialog.PrintQueue.Name;
+                reporte.PrintOptions.PaperSize = (CrystalDecisions.Shared.PaperSize)System.Drawing.Printing.PaperKind.A5;
+                reporte.PrintToPrinter(2, true, 0, 0);
+                crystarepo
+                crystalReportsViewer.ViewerCore.ReportSource = reporte;
+                crystalReportsViewer.ToggleSidePanel = SAPBusinessObjects.WPF.Viewer.Constants.SidePanelKind.None;
             }
         }
 
