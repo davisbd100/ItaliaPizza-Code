@@ -1,10 +1,11 @@
-﻿<Window x:Class="ItaliaPizza.ListaPedidoCocinero"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrototiposItaliaPizza"
         xmlns:uc="clr-namespace:ItaliaPizza.Controls"
+        xmlns:local1="clr-namespace:ItaliaPizza" x:Class="ItaliaPizza.ListaPedidoCocinero"
         mc:Ignorable="d"
         Title="Pedido" Height="680" Width="1280" ResizeMode="NoResize" WindowState="Maximized" WindowStartupLocation="CenterScreen" Icon="Recursos/LogoItaliaPizza.png">
     <Window.Background>
@@ -22,37 +23,6 @@
         <Grid HorizontalAlignment="Left" Height="479" Margin="139,130,0,0"  VerticalAlignment="Top" Width="527">
             <uc:PedidosCocinaUC x:Name="ucPedidos" Margin="4,0,-3.057,-0.458" PedidosUserControlClicked="PedidosUC_PedidoUserControlClicked"/>
         </Grid>
-        <Rectangle HorizontalAlignment="Left" Height="725" Stroke="White" VerticalAlignment="Top" Width="120" Margin="0,0,0,-73">
-            <Rectangle.Fill>
-                <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,130,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" UseLayoutRounding="True">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Pizza.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,203,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Ensalada.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Image HorizontalAlignment="Left" Height="104" Margin="6,10,0,0" VerticalAlignment="Top" Width="110" Source="Recursos/LogoItaliaPizza.png"/>
-        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,277,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Pasta.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,349,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Postre.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="74" Margin="0,422,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Bebidas.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
         <Label Content="Pedidos" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132" Width="253" Background="{x:Null}"/>
         <Image HorizontalAlignment="Left" Height="60" Margin="163,41,0,0" VerticalAlignment="Top" Width="84" Source="Recursos/Pedido.png"/>
         <Rectangle HorizontalAlignment="Left" Height="411" Margin="687,130,0,0" Stroke="#FFB31423" VerticalAlignment="Top" Width="527">
@@ -69,11 +39,6 @@
                 <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="PIZZA" HorizontalAlignment="Left" Margin="49,187,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="ENSALADA" HorizontalAlignment="Left" Margin="34,261,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="PASTA" HorizontalAlignment="Left" Margin="44,333,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="POSTRES / HELADO" HorizontalAlignment="Left" Margin="19,406,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="BEBIDAS" HorizontalAlignment="Left" Margin="42,478,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Label Content="Productos:" HorizontalAlignment="Left" Margin="704,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="112"/>
         <Label x:Name="lbPedidoActual" Content="Pedido Actual:" HorizontalAlignment="Left" Margin="904,141,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="149"/>
         <Label x:Name="lbidPedidoActual" Content="" HorizontalAlignment="Left" Margin="1053,140,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="149"/>
@@ -82,5 +47,6 @@
                 <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
             </StackPanel>
         </Button>
+        <local1:UserControlPedidos HorizontalAlignment="Left" Height="724" Margin="0,-4,0,-68" VerticalAlignment="Top" Width="121"/>
     </Grid>
 </Window>

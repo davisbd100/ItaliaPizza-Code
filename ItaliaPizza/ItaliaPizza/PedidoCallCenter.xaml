@@ -17,41 +17,10 @@
             </Rectangle.Fill>
         </Rectangle>
         <Image HorizontalAlignment="Left" Height="74" Margin="1037,33,0,0" VerticalAlignment="Top" Width="80" Source="Recursos/Pedidos.png" RenderTransformOrigin="0.579,0.373"/>
-        <Rectangle HorizontalAlignment="Left" Height="724.666" Stroke="White" VerticalAlignment="Top" Width="120.001" Margin="0,0,0,-73.333">
-            <Rectangle.Fill>
-                <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
-            </Rectangle.Fill>
-        </Rectangle>
         <Button x:Name="SalirButton" HorizontalAlignment="Left" Height="86" Margin="1124,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="SalirButton_Click" Background="Transparent">
             <StackPanel>
                 <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
             </StackPanel>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,130,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" UseLayoutRounding="True">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Pizza.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,203.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Ensalada.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Image HorizontalAlignment="Left" Height="103.842" Margin="6,10,0,0" VerticalAlignment="Top" Width="110.001" Source="Recursos/LogoItaliaPizza.png"/>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,276.897,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Pasta.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,349.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Postre.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="73.936" Margin="0,422.396,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Bebidas.png" Stretch="Uniform"/>
-            </Button.Background>
         </Button>
         <Label Content="Pedidos" HorizontalAlignment="Left" Margin="250.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132.397" Width="253.143" Background="{x:Null}"/>
         <Image HorizontalAlignment="Left" Height="60.443" Margin="163.001,40.821,0,0" VerticalAlignment="Top" Width="84.251" Source="Recursos/Pedido.png"/>
@@ -72,11 +41,6 @@
         <Button Content="CANCELAR" HorizontalAlignment="Left" Height="36.667" Margin="686,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFE53B28" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <Button Content="ESPERA" HorizontalAlignment="Left" Height="36.667" Margin="821.724,562.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFF4A643" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
         <Button Content="NOTA" HorizontalAlignment="Left" Height="36.667" Margin="1075.934,136.588,0,0" VerticalAlignment="Top" Width="128.943" Background="Gray" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
-        <Label Content="PIZZA" HorizontalAlignment="Left" Margin="48.611,187.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="ENSALADA" HorizontalAlignment="Left" Margin="34.33,260.595,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="PASTA" HorizontalAlignment="Left" Margin="43.942,333.081,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="POSTRES / HELADO" HorizontalAlignment="Left" Margin="19.266,406.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="BEBIDAS" HorizontalAlignment="Left" Margin="42.278,478.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <ComboBox x:Name="cbb_NombreCliente" HorizontalAlignment="Left" Margin="769,217,0,0"  VerticalAlignment="Top" Text="Nombre del cliente" FontFamily="Calibri Light" FontSize="20" Width="302" Foreground="#FF6D7276" Height="26" Background="White"  ItemsSource="{Binding Cliente}" DisplayMemberPath="Nombre" SelectedValuePath="idCliente">
 
         </ComboBox>
@@ -100,10 +64,11 @@
                 <DataGridTemplateColumn>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-            
+
         </DataGrid>
 
         <Button x:Name="btn_Actualizar" Content="Actualizar" HorizontalAlignment="Left" Height="37" Margin="1085,206,0,0" VerticalAlignment="Top" Width="77" Background="Gray" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="btn_Actualizar_Click" />
+        <local:UserControlPedidos HorizontalAlignment="Left" Height="724" Margin="0,-4,0,-68" VerticalAlignment="Top" Width="121"/>
 
 
 

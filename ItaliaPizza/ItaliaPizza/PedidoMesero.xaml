@@ -16,37 +16,6 @@
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="724.666" Stroke="White" VerticalAlignment="Top" Width="120.001" Margin="0,0,0,-73.999">
-            <Rectangle.Fill>
-                <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Button Content="" HorizontalAlignment="Left" Height="74" Margin="0,130,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" UseLayoutRounding="True">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Pizza.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,203.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Ensalada.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Image HorizontalAlignment="Left" Height="103.842" Margin="6,10,0,0" VerticalAlignment="Top" Width="110.001" Source="Recursos/LogoItaliaPizza.png"/>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,276.897,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Pasta.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73.936" Margin="0,349.397,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Postre.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button HorizontalAlignment="Left" Height="73.936" Margin="0,422.396,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Bebidas.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
         <Label Content="Pedidos" HorizontalAlignment="Left" Margin="250.252,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132.397" Width="253.143" Background="{x:Null}"/>
         <Image HorizontalAlignment="Left" Height="60.443" Margin="163.001,40.821,0,0" VerticalAlignment="Top" Width="84.251" Source="Recursos/Pedido.png"/>
         <Rectangle HorizontalAlignment="Left" Height="313.049" Margin="686,260.595,0,0" Stroke="#FFB31423" VerticalAlignment="Top" Width="526.943">
@@ -75,11 +44,6 @@
         <Button Content="ESPERA" HorizontalAlignment="Left" Height="36.667" Margin="821.724,592.644,0,0" VerticalAlignment="Top" Width="128.943" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
 
         <Button Content="NOTA" HorizontalAlignment="Left" Height="36.667" Margin="1075.934,214.588,0,0" VerticalAlignment="Top" Width="128.943" Background="Gray" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22"/>
-        <Label Content="PIZZA" HorizontalAlignment="Left" Margin="48.611,187.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="ENSALADA" HorizontalAlignment="Left" Margin="34.33,260.595,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="PASTA" HorizontalAlignment="Left" Margin="43.942,333.081,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="POSTRES / HELADO" HorizontalAlignment="Left" Margin="19.266,406.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="BEBIDAS" HorizontalAlignment="Left" Margin="42.278,478.397,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
         <Rectangle HorizontalAlignment="Left" Height="0" Margin="163.001,130,0,0" Stroke="#FFB31423" VerticalAlignment="Top" Width="0">
             <Rectangle.Fill>
                 <SolidColorBrush Color="White" Opacity="0.8"/>
@@ -125,6 +89,7 @@
         <Label Content="TOTAL:" HorizontalAlignment="Left" Margin="954.567,529.369,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" FontSize="20"/>
 
         <Controls:ProductosUC HorizontalAlignment="Left" Height="357" Margin="139,217,0,0" VerticalAlignment="Top" Width="523"  ProductoUserControlClicked="ProductosUC_ProductoUserControlClicked"/>
+        <local:UserControlPedidos HorizontalAlignment="Left" Height="724" Margin="0,-4,0,-68" VerticalAlignment="Top" Width="121"/>
 
     </Grid>
 </Window>
