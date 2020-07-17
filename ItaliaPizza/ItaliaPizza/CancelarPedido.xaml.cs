@@ -23,6 +23,7 @@ namespace ItaliaPizza
     {
 
         BusinessLogic.Pedido LocalPedido { get; set; }
+        public bool Flag { get; set; } = false
         public CancelarPedido()
         {
             LocalPedido = new BusinessLogic.Pedido()
@@ -35,23 +36,51 @@ namespace ItaliaPizza
         {
             LocalPedido = new BusinessLogic.Pedido()
             {
-                idPedido = 1
+                idPedido = idPedido
             };
             InitializeComponent();
+        }
+        public CancelarPedido(int idPedido, bool flag)
+        {
+            LocalPedido = new BusinessLogic.Pedido()
+            {
+                idPedido = idPedido
+            };
+            Flag = flag;
+            InitializeComponent();
+            lbMessage.Content = "El pedido ya no se puede cancelar, por lo que se marcara como no entregado, \n ¿Desea continuar?";
         }
 
         private void btAceptar_Click(object sender, RoutedEventArgs e)
         {
-            PedidoController controller = new PedidoController();
-            ResultadoOperacionEnum.ResultadoOperacion resultado = controller.CancelarPedido(LocalPedido);
-            if (resultado == ResultadoOperacionEnum.ResultadoOperacion.Exito)
+            if (Flag)
             {
-                MessageBox.Show("Pedido Cancelado");
-            }else if(resultado == ResultadoOperacionEnum.ResultadoOperacion.FalloSQL)
-            {
-                MessageBox.Show("Error con la base de datos, reintentar mas tarde");
+                PedidoController controller = new PedidoController();
+                ResultadoOperacionEnum.ResultadoOperacion resultado = controller.CancelarPedido(LocalPedido);
+                if (resultado == ResultadoOperacionEnum.ResultadoOperacion.Exito)
+                {
+                    MessageBox.Show("Pedido Cancelado");
+                }
+                else if (resultado == ResultadoOperacionEnum.ResultadoOperacion.FalloSQL)
+                {
+                    MessageBox.Show("Error con la base de datos, reintentar mas tarde");
+                }
+                this.Close();
             }
-            this.Close();
+            else
+            {
+                PedidoController controller = new PedidoController();
+                ResultadoOperacionEnum.ResultadoOperacion resultado = controller.CancelarPedido(LocalPedido);
+                if (resultado == ResultadoOperacionEnum.ResultadoOperacion.Exito)
+                {
+                    MessageBox.Show("Pedido Cancelado");
+                }
+                else if (resultado == ResultadoOperacionEnum.ResultadoOperacion.FalloSQL)
+                {
+                    MessageBox.Show("Error con la base de datos, reintentar mas tarde");
+                }
+                this.Close();
+            }
         }
 
         private void btCancelar_Click(object sender, RoutedEventArgs e)
