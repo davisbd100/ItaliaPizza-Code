@@ -179,5 +179,12 @@ namespace ItaliaPizza
             mesas.Add(last + 1);
             llenarComboBoxMesas();
         }
+
+        private void btn_Cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            listaproductos.Clear();
+            ActualizarDataGrid();
+            lbNuevoPrecio.Text = "";
+        }
     }
 }
