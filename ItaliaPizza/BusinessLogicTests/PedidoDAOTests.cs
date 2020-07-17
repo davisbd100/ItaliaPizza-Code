@@ -82,16 +82,17 @@ namespace BusinessLogic.Tests
         public void CambiarProductosDePedidoTest()
         {
             PedidoDAO pedidoDAO = new PedidoDAO();
+            ProductoVentaDAO productoDAO = new ProductoVentaDAO();
             List<DataAccess.PedidoProducto> pedidos = new List<DataAccess.PedidoProducto>();
             pedidos.Add(new DataAccess.PedidoProducto()
             {
                 Cantidad = 2,
                 idProductoVenta = 1,
                 Precio = 64, 
-                idPedido = 283
+                idPedido = 283,
+                ProductoVenta = productoDAO.ObtenerProductoVentaPoridEE(1)
             });
-            pedidoDAO.CambiarProductosDePedido(283, pedidos);
-            Assert.AreEqual(pedidoDAO.ObtenerListaPedidos().ToList().Where(b => b.idPedido == 283).FirstOrDefault().PedidoProducto.Where(x => x.idProductoVenta == 1).FirstOrDefault().Precio, 64);
+            Assert.AreEqual(pedidoDAO.CambiarProductosDePedido(283, pedidos), ResultadoOperacionEnum.ResultadoOperacion.Exito);
         }
 
         [TestMethod()]
@@ -143,7 +144,7 @@ namespace BusinessLogic.Tests
         {
             PedidoDAO pedidoDAO = new PedidoDAO();
             var listaPedidos = pedidoDAO.ObtenerListaPedidos();
-            Assert.IsTrue((listaPedidos.Any() && listaPedidos[0].GetType().Equals(new DataAccess.Pedido())));
+            Assert.IsTrue(listaPedidos.Any());
         }
 
         [TestMethod()]
@@ -151,7 +152,7 @@ namespace BusinessLogic.Tests
         {
             PedidoDAO pedidoDAO = new PedidoDAO();
             var listaPedidos = pedidoDAO.ObtenerListaPedidoProducto(283);
-            Assert.IsTrue((listaPedidos.Any() && listaPedidos[0].GetType().Equals(new DataAccess.PedidoProducto())));
+            Assert.IsTrue(listaPedidos.Any());
         }
 
         [TestMethod()]
@@ -190,7 +191,7 @@ namespace BusinessLogic.Tests
         public void ObtenerListaPedidosCallCenterTest()
         {
             PedidoDAO pedidoDAO = new PedidoDAO();
-            var listaPedidos = pedidoDAO.ObtenerListaPedidos();
+            var listaPedidos = pedidoDAO.ObtenerListaPedidosCallCenter();
             bool resultado = true;
             foreach (var item in listaPedidos)
             {

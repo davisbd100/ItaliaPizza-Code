@@ -565,10 +565,10 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT CEILING((COUNT(*) / @elementos)) AS total FROM dbo.Pedido", connection))
+                using (SqlCommand command = new SqlCommand("SELECT CEILING ((COUNT(*) / @elementos)) AS total FROM dbo.Pedido", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@elementos", (float)elementosPorPagina));
-                    paginas = (int)command.ExecuteScalar();
+                    paginas = int.Parse(command.ExecuteScalar().ToString());
                 }
                 connection.Close();
             }
@@ -614,6 +614,7 @@ namespace BusinessLogic
                 {
                     pedidos = context.Pedido
                         .Where(b => b.Estatus1.NombreEstatus == "En espera" || b.Estatus1.NombreEstatus == "En preparación")
+                        .OrderBy(b=> b.FechaPedido)
                         .Skip(rango * pagina)
                         .Take(rango)
                         .ToList();

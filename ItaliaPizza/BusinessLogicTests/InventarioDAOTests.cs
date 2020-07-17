@@ -46,7 +46,7 @@ namespace BusinessLogic.Tests
         {
             InventarioDAO inventarioDAO = new InventarioDAO();
             var listaInventarios = inventarioDAO.ObtenerTodosLosInventarios();
-            Assert.IsTrue(listaInventarios.Any() && listaInventarios[0].GetType().Equals(new DataAccess.Inventario()));
+            Assert.IsTrue(listaInventarios.Any());
         }
 
         [TestMethod()]
@@ -54,7 +54,7 @@ namespace BusinessLogic.Tests
         {
             InventarioDAO inventarioDAO = new InventarioDAO();
             var listaInventarios = inventarioDAO.ObtenerProductoInventario(1);
-            Assert.IsTrue(listaInventarios.Any() && listaInventarios[0].GetType().Equals(new DataAccess.ProductoInventario()));
+            Assert.IsTrue(listaInventarios.Any());
         }
 
         [TestMethod()]
@@ -95,7 +95,7 @@ namespace BusinessLogic.Tests
             InventarioDAO diaVentaDAO = new InventarioDAO();
             var listaDiaVenta = diaVentaDAO.ObtenerDiaVentaPorRango(20, 1);
             bool resultado = true;
-            if (listaDiaVenta.Count < 19)
+            if (listaDiaVenta.Count > 19 || listaDiaVenta.Count < 0)
             {
                 resultado = false;
             }
@@ -107,7 +107,7 @@ namespace BusinessLogic.Tests
         {
             InventarioDAO inventarioDAO = new InventarioDAO();
             var listaDiaVenta = inventarioDAO.ObtenerProductoVentaDia(1);
-            Assert.IsTrue(listaDiaVenta.Any() && listaDiaVenta[0].GetType().Equals(new DataAccess.DiaVenta()));
+            Assert.IsTrue(listaDiaVenta.Any());
         }
 
         [TestMethod()]
