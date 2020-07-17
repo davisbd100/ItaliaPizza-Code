@@ -127,10 +127,6 @@ namespace BusinessLogic
                 return resultado;
             }
         }
-        public ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido)
-        {
-            throw new NotImplementedException();
-        }
 
         public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int pedido, List<DataAccess.PedidoProducto> productos)
         {
@@ -629,11 +625,6 @@ namespace BusinessLogic
             }
 
             return pedidos;
-        }
-
-        public List<DataAccess.Pedido> ObtenerPedidosPorRangoCocinero(int rango)
-        {
-            throw new NotImplementedException();
         }
     }
 }

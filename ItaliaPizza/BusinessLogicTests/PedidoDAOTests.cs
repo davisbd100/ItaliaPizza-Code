@@ -52,31 +52,46 @@ namespace BusinessLogic.Tests
         [TestMethod()]
         public void AsignarEntregaTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            pedidoDAO.AsignarEntrega(283, "Chuchito");
+            Assert.AreEqual(pedidoDAO.ObtenerListaPedidos().Where(b => b.idPedido == 283).FirstOrDefault().Estatus1.NombreEstatus, "En Camino");
         }
 
         [TestMethod()]
         public void PonerEnPreparacionTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            pedidoDAO.PonerEnPreparacion(283);
+            Assert.AreEqual(pedidoDAO.ObtenerListaPedidos().Where(b => b.idPedido == 283).FirstOrDefault().Estatus1.NombreEstatus, "En Preparación");
         }
 
         [TestMethod()]
-        public void EsADomicilioTest()
+        public void EsADomicilioFalseTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            Assert.IsFalse(pedidoDAO.EsADomicilio(283));
         }
-
         [TestMethod()]
-        public void CambiarPedidoTest()
+        public void EsADomicilioTrueTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            Assert.IsTrue(pedidoDAO.EsADomicilio(543));
         }
 
         [TestMethod()]
         public void CambiarProductosDePedidoTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            List<DataAccess.PedidoProducto> pedidos = new List<DataAccess.PedidoProducto>();
+            pedidos.Add(new DataAccess.PedidoProducto()
+            {
+                Cantidad = 2,
+                idProductoVenta = 1,
+                Precio = 64, 
+                idPedido = 283
+            });
+            pedidoDAO.CambiarProductosDePedido(283, pedidos);
+            Assert.AreEqual(pedidoDAO.ObtenerListaPedidos().ToList().Where(b => b.idPedido == 283).FirstOrDefault().PedidoProducto.Where(x => x.idProductoVenta == 1).FirstOrDefault().Precio, 64);
         }
 
         [TestMethod()]
@@ -94,61 +109,110 @@ namespace BusinessLogic.Tests
         [TestMethod()]
         public void GetPedidoConProductoPorIdTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            DataAccess.Pedido tempPedido = pedidoDAO.GetPedidoConProductoPorId(283);
+            Assert.AreEqual(tempPedido.idPedido, 283);
         }
 
         [TestMethod()]
         public void GetPedidoPorIdTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            DataAccess.Pedido tempPedido = pedidoDAO.GetPedidoConProductoPorId(283);
+            Assert.AreEqual(tempPedido.idPedido, 283);
         }
 
         [TestMethod()]
         public void ObtenerEstatusPorNombreTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            DataAccess.Estatus tempEstatus = pedidoDAO.ObtenerEstatusPorNombre("Cancelado");
+            Assert.AreEqual(tempEstatus.NombreEstatus, "Cancelado");
         }
 
         [TestMethod()]
         public void ObtenerEstatusPorIdTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            DataAccess.Estatus tempEstatus = pedidoDAO.ObtenerEstatusPorId(1);
+            Assert.AreEqual(tempEstatus.idEstatus, 1);
         }
 
         [TestMethod()]
         public void ObtenerListaPedidosTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            var listaPedidos = pedidoDAO.ObtenerListaPedidos();
+            Assert.IsTrue((listaPedidos.Any() && listaPedidos[0].GetType().Equals(new DataAccess.Pedido())));
         }
 
         [TestMethod()]
         public void ObtenerListaPedidoProductoTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            var listaPedidos = pedidoDAO.ObtenerListaPedidoProducto(283);
+            Assert.IsTrue((listaPedidos.Any() && listaPedidos[0].GetType().Equals(new DataAccess.PedidoProducto())));
         }
 
         [TestMethod()]
         public void ObtenerListaPedidosDisponiblesCocinaTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            var listaPedidos = pedidoDAO.ObtenerListaPedidosDisponiblesCocina();
+            bool resultado = true;
+            foreach (var item in listaPedidos)
+            {
+                if (item.Estatus1.NombreEstatus == "Cancelado" || item.Estatus1.NombreEstatus == "Finalizado" || item.Estatus1.NombreEstatus == "En Camino" || item.Estatus1.NombreEstatus == "Entregado" || item.Estatus1.NombreEstatus == "Preparado")
+                {
+                    resultado = false;
+                }
+            }
+            Assert.IsTrue(resultado);
         }
 
         [TestMethod()]
         public void ObtenerListaPedidosDisponiblesTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            var listaPedidos = pedidoDAO.ObtenerListaPedidosDisponibles();
+            bool resultado = true;
+            foreach (var item in listaPedidos)
+            {
+                if (item.Estatus1.NombreEstatus == "Cancelado" || item.Estatus1.NombreEstatus == "Finalizado")
+                {
+                    resultado = false;
+                }
+            }
+            Assert.IsTrue(resultado);
         }
 
         [TestMethod()]
         public void ObtenerListaPedidosCallCenterTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            var listaPedidos = pedidoDAO.ObtenerListaPedidos();
+            bool resultado = true;
+            foreach (var item in listaPedidos)
+            {
+                if (item.Estatus1.NombreEstatus == "Cancelado" || item.Estatus1.NombreEstatus == "Finalizado")
+                {
+                    resultado = false;
+                }
+            }
+            Assert.IsTrue(resultado);
         }
 
         [TestMethod()]
         public void ObtenerPaginasDeTablaPedidoTest()
         {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            var listaPedidos = pedidoDAO.ObtenerPaginasDeTablaPedido(20);
+            bool resultado = false;
+            if (listaPedidos> -1)
+            {
+                resultado = true;
+            }
+            Assert.IsTrue(resultado);
         }
 
         [TestMethod()]
@@ -160,13 +224,17 @@ namespace BusinessLogic.Tests
         [TestMethod()]
         public void ObtenerPedidosPorRangoCocineroTest()
         {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void ObtenerPedidosPorRangoCocineroTest1()
-        {
-            Assert.Fail();
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            var listaPedidos = pedidoDAO.ObtenerPedidosPorRangoCocinero(20, 1);
+            bool resultado = true;
+            foreach (var item in listaPedidos)
+            {
+                if (item.Estatus1.NombreEstatus == "Cancelado" || item.Estatus1.NombreEstatus == "Finalizado")
+                {
+                    resultado = false;
+                }
+            }
+            Assert.IsTrue(resultado);
         }
     }
 }

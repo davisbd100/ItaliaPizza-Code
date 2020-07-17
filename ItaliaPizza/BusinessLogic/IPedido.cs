@@ -13,7 +13,6 @@ namespace BusinessLogic
         ResultadoOperacionEnum.ResultadoOperacion CrearPedidoDomicilio(DataAccess.Pedido pedido, List<DataAccess.PedidoProducto> productos);
         ResultadoOperacionEnum.ResultadoOperacion CrearPedidoMesero(DataAccess.Pedido pedido, List<DataAccess.PedidoProducto> productos);
         ResultadoOperacionEnum.ResultadoOperacion CambiarEstadoPedido(Pedido pedido, DataAccess.Estatus estatus);
-        ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido);
         ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int idPedido, List<DataAccess.PedidoProducto> productos);
         int ObtenerPaginasDeTablaPedido(int elementosPorPagina);
         DataAccess.Estatus ObtenerEstatusPorNombre(String estatus);
