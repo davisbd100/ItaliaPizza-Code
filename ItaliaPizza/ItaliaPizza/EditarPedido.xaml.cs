@@ -32,8 +32,8 @@ namespace ItaliaPizza
 
         int PedidoID { get; set; }
         public DataAccess.Pedido PedidoAEditar;
-        List<CustomPedidoProducto> custom = new List<CustomPedidoProducto>();
-        PedidoController controller = new PedidoController();
+        readonly List<CustomPedidoProducto> custom = new List<CustomPedidoProducto>();
+        readonly PedidoController controller = new PedidoController();
         public EditarPedido()
         {
             InitializeComponent();

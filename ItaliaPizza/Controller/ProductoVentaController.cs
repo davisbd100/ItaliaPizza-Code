@@ -14,7 +14,7 @@ namespace Controller
             string restriccion, string unidadMedida, float precioVenta, bool requiereReceta, string foto, string ubicacion, int cantidad,
             string caducidad, string tipoProduct)
         {
-            ResultadoOperacion resultadoOperacion = new ResultadoOperacion();
+            ResultadoOperacion resultadoOperacion;
             Receta receta = new Receta();
             ProductoVentaDAO productoVentaDAO = new ProductoVentaDAO();
             InventarioDAO inventarioDAO = new InventarioDAO();
@@ -97,7 +97,7 @@ namespace Controller
             const int NUM_RESULTADOS = 19;
             pagina -= 1;
             pagina *= NUM_RESULTADOS;
-            List<ProductoVenta> resultado = new List<ProductoVenta>();
+            List<ProductoVenta> resultado;
             ProductoVentaDAO inventarioDAO = new ProductoVentaDAO();
             resultado = inventarioDAO.ProductoVentaBusquedaRango(pagina, producto);
             return resultado;

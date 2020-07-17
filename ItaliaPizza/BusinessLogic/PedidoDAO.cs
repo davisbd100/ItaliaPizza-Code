@@ -127,10 +127,6 @@ namespace BusinessLogic
                 return resultado;
             }
         }
-        public ResultadoOperacionEnum.ResultadoOperacion CambiarPedido(Pedido pedido)
-        {
-            throw new NotImplementedException();
-        }
 
         public ResultadoOperacionEnum.ResultadoOperacion CambiarProductosDePedido(int pedido, List<DataAccess.PedidoProducto> productos)
         {
@@ -446,7 +442,12 @@ namespace BusinessLogic
             {
                 try
                 {
-                    pedidos = context.Pedido.ToList();
+                    foreach (var item in context.Pedido)
+                    {
+                        item.Estatus1 = item.Estatus1;
+                        pedidos.Add(item);
+                    }
+                    
                 }
                 catch (EntityException)
                 {
@@ -564,10 +565,10 @@ namespace BusinessLogic
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT CEILING((COUNT(*) / @elementos)) AS total FROM dbo.Pedido", connection))
+                using (SqlCommand command = new SqlCommand("SELECT CEILING ((COUNT(*) / @elementos)) AS total FROM dbo.Pedido", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@elementos", (float)elementosPorPagina));
-                    paginas = (int)command.ExecuteScalar();
+                    paginas = int.Parse(command.ExecuteScalar().ToString());
                 }
                 connection.Close();
             }
@@ -613,6 +614,7 @@ namespace BusinessLogic
                 {
                     pedidos = context.Pedido
                         .Where(b => b.Estatus1.NombreEstatus == "En espera" || b.Estatus1.NombreEstatus == "En preparación")
+                        .OrderBy(b=> b.FechaPedido)
                         .Skip(rango * pagina)
                         .Take(rango)
                         .ToList();
@@ -624,11 +626,6 @@ namespace BusinessLogic
             }
 
             return pedidos;
-        }
-
-        public List<DataAccess.Pedido> ObtenerPedidosPorRangoCocinero(int rango)
-        {
-            throw new NotImplementedException();
         }
     }
 }

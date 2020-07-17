@@ -23,7 +23,8 @@ namespace ItaliaPizza.Controls
     public partial class ProductosUC : UserControl
     {
         public event EventHandler ProductoUserControlClicked;
-        ProductoVentaController Controller = new ProductoVentaController();
+
+        readonly ProductoVentaController Controller = new ProductoVentaController();
         List<ProductoVenta> productos = new List<ProductoVenta>();
         int PaginaActual = 1;
         int PaginaTotal = 1;
