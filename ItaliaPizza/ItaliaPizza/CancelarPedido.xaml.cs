@@ -23,7 +23,7 @@ namespace ItaliaPizza
     {
 
         BusinessLogic.Pedido LocalPedido { get; set; }
-        public bool Flag { get; set; } = false
+        public bool Flag { get; set; } = false;
         public CancelarPedido()
         {
             LocalPedido = new BusinessLogic.Pedido()

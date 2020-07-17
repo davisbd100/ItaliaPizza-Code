@@ -446,7 +446,12 @@ namespace BusinessLogic
             {
                 try
                 {
-                    pedidos = context.Pedido.ToList();
+                    foreach (var item in context.Pedido)
+                    {
+                        item.Estatus1 = item.Estatus1;
+                        pedidos.Add(item);
+                    }
+                    
                 }
                 catch (EntityException)
                 {
