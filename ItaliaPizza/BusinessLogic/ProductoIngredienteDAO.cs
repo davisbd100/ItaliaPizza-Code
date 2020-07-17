@@ -57,6 +57,7 @@ namespace BusinessLogic
                     command.Parameters.Add(new SqlParameter("@Caducidad", inventario.Caducidad));
                     command.ExecuteNonQuery();
 
+                    command.Parameters.Clear();
                     command.CommandText =
                         "INSERT INTO dbo.Inventario VALUES (@idInventario, @Producto, @ExistenciaInicial, @ExistenciaTotal, @UnidadMedida)";
                     command.Parameters.Add(new SqlParameter("@idInventario", id));

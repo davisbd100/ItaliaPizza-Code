@@ -35,6 +35,7 @@ namespace ItaliaPizza
         public PedidoMesero()
         {
             InitializeComponent();
+            tbNombreMesero.Text = Properties.Settings.Default.NombreEmpleado;
             llenarMesas();
             llenarComboBoxMesas();
         }

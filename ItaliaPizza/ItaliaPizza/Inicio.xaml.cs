@@ -1,5 +1,6 @@
 ﻿using AutenticacionInicioSesion;
 using Controller;
+using PrototiposItaliaPizza;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -72,7 +73,7 @@ namespace ItaliaPizza
                     this.Close();
                     break;
                 case "Cajero":
-                    Pedido pedido = new Pedido();
+                    ListaPedidoVendedor pedido = new ListaPedidoVendedor();
                     pedido.Show();
                     this.Close();
                     break;

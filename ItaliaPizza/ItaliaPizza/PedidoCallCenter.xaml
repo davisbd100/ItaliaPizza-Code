@@ -51,8 +51,11 @@
         </Button>
         <TextBox x:Name="lbNuevoPrecio" HorizontalAlignment="Left" Height="27.601" Margin="1029.058,498.869,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" FontSize="20"/>
         <Label Content="TOTAL:" HorizontalAlignment="Left" Margin="954.567,494.869,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" FontSize="20"/>
-        <Image HorizontalAlignment="Left" Height="74" Margin="952,33,0,0" VerticalAlignment="Top" Width="80" Source="Recursos/Cocina.png" RenderTransformOrigin="0.579,0.373"/>
-
+        <Button x:Name="btn_ListaPedido" Background="Transparent" HorizontalAlignment="Left" Height="74" Margin="947,32,0,0" VerticalAlignment="Top" Width="80" BorderBrush="{x:Null}" RenderTransformOrigin="2.342,0.65" Click="btn_ListaPedido_Click" >
+            <StackPanel>
+                <Image Source="Recursos/Cocina.png" Stretch="Uniform"/>
+            </StackPanel>
+        </Button>
         <Controls:ProductosUC HorizontalAlignment="Left" Height="360" Margin="139,139,0,0" VerticalAlignment="Top" Width="527" ProductoUserControlClicked="ProductosUC_ProductoUserControlClicked" Foreground="Gray"/>
         <DataGrid x:Name="dgProductosDePedido" HorizontalAlignment="Left" Height="182" Margin="686,261,0,0" VerticalAlignment="Top" Width="517" CanUserReorderColumns="False" AutoGenerateColumns="False"  CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
             <DataGrid.Columns>

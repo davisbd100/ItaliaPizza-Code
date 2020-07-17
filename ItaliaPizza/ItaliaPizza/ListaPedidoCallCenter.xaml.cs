@@ -167,7 +167,7 @@ namespace ItaliaPizza
             }
             else
             {
-                PedidoEnCamino pedidoEnCamino = new PedidoEnCamino();
+                PedidoEnCamino pedidoEnCamino = new PedidoEnCamino(pedidoActual.idPedido);
                 pedidoEnCamino.ShowDialog();
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
@@ -195,6 +195,13 @@ namespace ItaliaPizza
                 dgProductos.ItemsSource = null;
                 lbidPedidoActual.Content = "Ninguno";
             }
+        }
+
+        private void btn_CrearPedido_Click(object sender, RoutedEventArgs e)
+        {
+            PedidoCallCenter pedido = new PedidoCallCenter();
+            pedido.Show();
+            this.Close();
         }
     }
 }

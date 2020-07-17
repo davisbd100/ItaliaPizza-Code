@@ -35,7 +35,7 @@ namespace ItaliaPizza
         {
             LocalPedido = new BusinessLogic.Pedido()
             {
-                idPedido = 1
+                idPedido = idPedido
             };
             InitializeComponent();
         }

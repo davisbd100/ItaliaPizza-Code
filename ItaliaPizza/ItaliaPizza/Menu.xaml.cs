@@ -41,12 +41,14 @@ namespace ItaliaPizza
 
         private void ButtonInventario_Click(object sender, RoutedEventArgs e)
         {
-            InventarioActual inventarioActual = new InventarioActual();
-            abrirVentana(inventarioActual);
+            ReporteDeInventario reporteDeInventario = new ReporteDeInventario();
+            abrirVentana(reporteDeInventario);
         }
 
         private void ButtonVentas_Click(object sender, RoutedEventArgs e)
         {
+            ReporteDeVentas reporteDeVentas = new ReporteDeVentas();
+            abrirVentana(reporteDeVentas);
 
         }
 

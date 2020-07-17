@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto" MinHeight="651.333"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <Rectangle HorizontalAlignment="Left" Margin="0,273,0,304.333" Width="120">
+        <Rectangle HorizontalAlignment="Left" Margin="0,305,0,272.2" Width="120">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
@@ -76,7 +76,7 @@
                 <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
             </StackPanel>
         </Button>
-        <Button x:Name="btIngresarManualmente" Content="Ingresar Manualmente" HorizontalAlignment="Left" Height="54" Margin="860,555,0,0" VerticalAlignment="Top" Width="368" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Click="btIngresarManualmente_Click"/>
+        <Button x:Name="btIngresarManualmente" Content="Ingresar manualmente" HorizontalAlignment="Left" Height="54" Margin="860,555,0,0" VerticalAlignment="Top" Width="368" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Click="btIngresarManualmente_Click"/>
         <Button x:Name="btPrint" Content="IMPRIMIR" HorizontalAlignment="Left" Height="44" Margin="696,560,0,0" VerticalAlignment="Top" Width="129" Background="#0058B4" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Click="PrintButton_Click"/>
 
     </Grid>

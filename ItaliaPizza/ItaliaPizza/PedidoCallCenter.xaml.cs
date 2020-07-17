@@ -185,5 +185,12 @@ namespace ItaliaPizza
             ActualizarDataGrid();
             lbNuevoPrecio.Text = "";
         }
+
+        private void btn_ListaPedido_Click(object sender, RoutedEventArgs e)
+        {
+            ListaPedidoCallCenter lista = new ListaPedidoCallCenter();
+            lista.Show();
+            this.Close();
+        }
     }
 }

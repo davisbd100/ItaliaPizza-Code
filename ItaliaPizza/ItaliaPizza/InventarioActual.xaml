@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto" MinHeight="651.333"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <Rectangle HorizontalAlignment="Left" Height="74" Margin="0,276,0,0" VerticalAlignment="Top" Width="120">
+        <Rectangle HorizontalAlignment="Left" Height="74" Margin="0,306,0,0" VerticalAlignment="Top" Width="120">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
