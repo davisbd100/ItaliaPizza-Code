@@ -36,5 +36,16 @@ namespace Controller
             RecetaDAO recetaDAO = new RecetaDAO();
             return recetaDAO.GetRecetas(pagina);
         }
+
+
+        public List<ListaIngredientesReceta> obtenerIngredientesReceta(int id)
+        {
+            List<ListaIngredientesReceta> listaIngredientesRecetas = new List<ListaIngredientesReceta>();
+
+            RecetaDAO recetaDAO = new RecetaDAO();
+
+            listaIngredientesRecetas = recetaDAO.obtenerProductosReceta(id);
+            return listaIngredientesRecetas;
+        }
     }
 }

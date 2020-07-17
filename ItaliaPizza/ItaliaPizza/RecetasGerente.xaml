@@ -63,11 +63,12 @@
         <Button x:Name="ButtonSiguierntePagina" Content="Siguiente" HorizontalAlignment="Left" Height="32" Margin="972,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16"/>
         <Button x:Name="ButtonAnteriorPagina" Content="Anterior" HorizontalAlignment="Left" Height="32" Margin="715,588,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FFB31423" Background="#FFB31423" Foreground="White" FontFamily="Calibri Light" FontSize="16" IsDefault="True"/>
         <local:UserControlSalir HorizontalAlignment="Left" Height="100" Margin="1126,23,0,0" VerticalAlignment="Top" Width="100"/>
-        <DataGrid x:Name="dtg_Recetas" HorizontalAlignment="Left" Height="264" Margin="185,235,0,0" VerticalAlignment="Top" Width="999" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+        <DataGrid x:Name="dtg_Recetas" HorizontalAlignment="Left" Height="264" Margin="185,235,0,0" VerticalAlignment="Top" Width="999" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" BorderBrush="#FF98171F" Foreground="#FF6D7276" FontFamily="Calibri Light" FontSize="16">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Descripción" Binding="{Binding Rendimiento}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="btn_VerReceta" Content="Ver receta" HorizontalAlignment="Left" Height="32" Margin="900,515,0,0" VerticalAlignment="Top" Width="212" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="16" Click="VerReceta_Click"/>
     </Grid>
 </Window>
