@@ -122,7 +122,7 @@ namespace ItaliaPizza
             {
                 DataAccess.Pedido pedido = new DataAccess.Pedido();
                 pedido.FechaPedido = DateTime.UtcNow;
-                pedido.Estatus = 1;
+                pedido.Estatus = 2;
                 BusinessLogic.Cliente cliente1 = clientes[cbb_NombreCliente.SelectedIndex];
                 //string cliente = cbb_NombreCliente.SelectedIndex;
                 pedido.Cliente = cliente1.idPersona;

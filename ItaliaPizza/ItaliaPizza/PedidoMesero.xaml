@@ -49,47 +49,25 @@
                 <SolidColorBrush Color="White" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="73" Margin="139.057,124,0,0" Stroke="White" VerticalAlignment="Top" Width="1073.886">
-            <Rectangle.Fill>
-                <SolidColorBrush Color="#FFC3CCD4" Opacity="0.8"/>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Button Content="" HorizontalAlignment="Left" Height="73" Margin="250.252,124,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/MesaBlanca.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="73" Margin="369.253,124,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/MesaBlanca.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Label Content="MESAS:" HorizontalAlignment="Left" Margin="163.001,141,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34.413" FontWeight="Bold" Background="{x:Null}" Width="78.267"/>
-        <Label Content="MESA 1" HorizontalAlignment="Left" Margin="293.277,181.11,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Label Content="MESA 2" HorizontalAlignment="Left" Margin="411.054,181.11,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Button Content="" HorizontalAlignment="Left" Height="73" Margin="489.254,124,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/MesaBlanca.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Label Content="MESA 3" HorizontalAlignment="Left" Margin="534.054,181.11,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
-        <Button Content="" HorizontalAlignment="Left" Height="73" Margin="608.254,124,0,0" VerticalAlignment="Top" Width="120.001" BorderBrush="White">
-            <Button.Background>
-                <ImageBrush ImageSource="Recursos/Mas.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
+        <Label Content="MESA:" HorizontalAlignment="Left" Margin="163,135,0,0" VerticalAlignment="Top" Foreground="White" FontSize="28" Height="49" FontWeight="Bold" Background="{x:Null}" Width="113"/>
         <Button x:Name="SalirButton" HorizontalAlignment="Left" Height="86" Margin="1124,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="SalirButton_Click" Background="Transparent">
             <StackPanel>
                 <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
             </StackPanel>
         </Button>
-        <Label Content="NUEVA MESA" HorizontalAlignment="Left" Margin="638.715,181.11,0,0" VerticalAlignment="Top" Foreground="White" FontSize="8" Background="{x:Null}"/>
+        <Rectangle HorizontalAlignment="Left" Height="60" Margin="555,130,0,0" VerticalAlignment="Top" Width="55" Fill="#FF008050" RenderTransformOrigin="0.65,1.711"/>
+        <Button x:Name="btn_NuevaMesa" Content="" HorizontalAlignment="Left" Height="60" Margin="555,130,0,0" VerticalAlignment="Top" Width="55" BorderBrush="{x:Null}" RenderTransformOrigin="2.342,0.65" Click="btn_NuevaMesa_Click"  >
+            <Button.Background>
+                <ImageBrush ImageSource="Recursos/Mas.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
         <Image HorizontalAlignment="Left" Height="74" Margin="1032,30,0,0" VerticalAlignment="Top" Width="80" Source="Recursos/Cocina.png" RenderTransformOrigin="0.579,0.373"/>
         <TextBox x:Name="lbNuevoPrecio" HorizontalAlignment="Left" Height="27.601" Margin="1029.058,533.369,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" FontSize="20"/>
         <Label Content="TOTAL:" HorizontalAlignment="Left" Margin="954.567,529.369,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" FontSize="20"/>
 
         <Controls:ProductosUC HorizontalAlignment="Left" Height="357" Margin="139,217,0,0" VerticalAlignment="Top" Width="523"  ProductoUserControlClicked="ProductosUC_ProductoUserControlClicked"/>
         <local:UserControlPedidos HorizontalAlignment="Left" Height="724" Margin="0,-4,0,-68" VerticalAlignment="Top" Width="121"/>
+        <ComboBox x:Name="cbb_mesas" HorizontalAlignment="Left" Margin="281,130,0,0" VerticalAlignment="Top" Width="225" Height="60" RenderTransformOrigin="0.16,0.845" FontSize="36"/>
 
     </Grid>
 </Window>

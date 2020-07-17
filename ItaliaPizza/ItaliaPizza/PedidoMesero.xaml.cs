@@ -28,10 +28,15 @@ namespace ItaliaPizza
         public List<BusinessLogic.ProductoVenta> productoVentas = new List<BusinessLogic.ProductoVenta>();
         List<DataAccess.PedidoProducto> listaproductos = new List<PedidoProducto>();
         List<BusinessLogic.Cliente> clientes = new List<BusinessLogic.Cliente>();
+        List<int> mesas = new List<int>();
+        
+        
 
         public PedidoMesero()
         {
             InitializeComponent();
+            llenarMesas();
+            llenarComboBoxMesas();
         }
 
 
@@ -95,43 +100,84 @@ namespace ItaliaPizza
 
         private void btn_NuevoPedido_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.Pedido pedido = new DataAccess.Pedido();
-            pedido.FechaPedido = DateTime.UtcNow;
-            pedido.Estatus = 1;
-            pedido.NumeroMesa = 1;
-
-            foreach (BusinessLogic.ProductoVenta producto in productoVentas)
+            if (valdiarCampos())
             {
-                if (dgProductosDePedido.Items != null)
+
+                DataAccess.Pedido pedido = new DataAccess.Pedido();
+                pedido.FechaPedido = DateTime.UtcNow;
+                pedido.Estatus = 2;
+                pedido.NumeroMesa = (int)cbb_mesas.SelectedItem;
+
+                foreach (BusinessLogic.ProductoVenta producto in productoVentas)
                 {
-                    foreach (BusinessLogic.ProductoVenta pedido1 in dgProductosDePedido.Items)
+                    if (dgProductosDePedido.Items != null)
                     {
-                        DataAccess.PedidoProducto pedidoProducto = new PedidoProducto();
-                        pedidoProducto.idProductoVenta = pedido1.idProducto;
-                        pedidoProducto.Precio = pedido1.PrecioPúblico;
-                        listaproductos.Add(pedidoProducto);
+                        foreach (BusinessLogic.ProductoVenta pedido1 in dgProductosDePedido.Items)
+                        {
+                            DataAccess.PedidoProducto pedidoProducto = new PedidoProducto();
+                            pedidoProducto.idProductoVenta = pedido1.idProducto;
+                            pedidoProducto.Precio = pedido1.PrecioPúblico;
+                            listaproductos.Add(pedidoProducto);
+                        }
                     }
+
                 }
 
+                PedidoController pedidoController = new PedidoController();
+                if (pedidoController.crearPedidoMesero(pedido, listaproductos) == ResultadoOperacionEnum.ResultadoOperacion.Exito)
+                {
+                    MessageBox.Show("El Pedido se registró correctamente");
+                    listaproductos.Clear();
+                    ActualizarDataGrid();
+                    lbNuevoPrecio.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("No se puede registar el Pedido");
+                }
             }
 
-            PedidoController pedidoController = new PedidoController();
-            if (pedidoController.crearPedidoMesero(pedido, listaproductos) == ResultadoOperacionEnum.ResultadoOperacion.Exito)
-            {
-                MessageBox.Show("El Pedido se registró correctamente");
-                listaproductos.Clear();
-                ActualizarDataGrid();
-                lbNuevoPrecio.Text = "";
-            }
-            else
-            {
-                MessageBox.Show("No se puede registar el Pedido");
-            }
         }
 
         private void SalirButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void llenarComboBoxMesas()
+        {
+            cbb_mesas.ItemsSource = null;
+            cbb_mesas.ItemsSource = mesas;
+        }
+
+        private void llenarMesas()
+        {
+            mesas.Add(1);
+            mesas.Add(2);
+            mesas.Add(3);
+            mesas.Add(4);
+            mesas.Add(5);
+            mesas.Add(6);
+
+        }
+
+        private bool valdiarCampos()
+        {
+            bool resultado = true;
+            if(cbb_mesas.SelectedItem == null)
+            {
+                resultado = false;
+                MessageBox.Show("selecciona una mesa");
+            }
+
+            return resultado;
+        }
+
+        private void btn_NuevaMesa_Click(object sender, RoutedEventArgs e)
+        {
+            int last = mesas.Count();
+            mesas.Add(last + 1);
+            llenarComboBoxMesas();
         }
     }
 }
