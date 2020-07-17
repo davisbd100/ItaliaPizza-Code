@@ -257,6 +257,73 @@ namespace BusinessLogic
             return listaReceta;
         }
 
+        public List<ListaIngredientesReceta> obtenerProductosReceta(int id)
+        {
+
+            List<ListaIngredientesReceta> listaIngredientes = new List<ListaIngredientesReceta>();
+            DbConnection dbConnection = new DbConnection();
+
+
+            using (SqlConnection connection = dbConnection.GetConnection())
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+                transaction = connection.BeginTransaction("ObtenerIngredientesReceta");
+                command.Connection = connection;
+                command.Transaction = transaction;
+                try
+                {
+
+                    command.CommandText =
+                        "SELECT * FROM dbo.RecetaIngrediente WHERE idReceta = @idReceta";
+                    command.Parameters.Add(new SqlParameter("@idReceta", id));
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        ListaIngredientesReceta listaIngredientesReceta = new ListaIngredientesReceta();
+                        listaIngredientesReceta.IdIngrediente = int.Parse(reader["idProductoIngrediente"].ToString());
+                        listaIngredientesReceta.Cantidad = int.Parse(reader["Cantidad"].ToString());
+                        listaIngredientesReceta.PrecioUnitario = float.Parse(reader["PrecioUnitario"].ToString());
+
+                        listaIngredientes.Add(listaIngredientesReceta);
+
+                    }
+
+                    reader.Close();
+
+                    foreach (ListaIngredientesReceta ingredientesReceta in listaIngredientes)
+                    {
+                        command.CommandText =
+                        "SELECT * FROM dbo.Producto WHERE idProducto = @id";
+                        command.Parameters.Add(new SqlParameter("@id", ingredientesReceta.IdIngrediente));
+                        SqlDataReader reader2 = command.ExecuteReader();
+
+                        while (reader2.Read())
+                        {
+                            ingredientesReceta.Nombre = reader2["Nombre"].ToString();
+                        }
+
+                        reader2.Close();
+
+                    }
+
+                   
+
+                    transaction.Commit();
+                }
+                catch (SqlException)
+                {
+                    transaction.Rollback();
+                }
+            }
+
+
+            return listaIngredientes;
+
+        }
+
         public Receta ObtenerRecetaPorId(int idReceta)
         {
             Receta receta = new Receta();
@@ -301,6 +368,8 @@ namespace BusinessLogic
                         receta.Ingredientes.Add(listaIngredientesReceta);
 
                     }
+
+
                     transaction.Commit();
                 }
                 catch (SqlException)

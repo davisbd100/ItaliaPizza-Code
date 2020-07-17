@@ -15,6 +15,7 @@ namespace BusinessLogic
         ResultadoOperacion ElimiarReceta(Receta receta);
         ResultadoOperacion ElimiarRecetaConProductos(Receta receta);
         ResultadoOperacion EditarReceta(Receta receta);
+        List<ListaIngredientesReceta> obtenerProductosReceta(int id);
 
 
     }
