@@ -44,19 +44,30 @@ namespace BusinessLogic.Tests
         [TestMethod()]
         public void ObtenerTodosLosInventariosConIngresoTest()
         {
-            Assert.Fail();
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            var listaInventarios = inventarioDAO.ObtenerTodosLosInventarios();
+            Assert.IsTrue(listaInventarios.Any() && listaInventarios[0].GetType().Equals(new DataAccess.Inventario()));
         }
 
         [TestMethod()]
         public void ObtenerProductoInventarioTest()
         {
-            Assert.Fail();
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            var listaInventarios = inventarioDAO.ObtenerProductoInventario(1);
+            Assert.IsTrue(listaInventarios.Any() && listaInventarios[0].GetType().Equals(new DataAccess.ProductoInventario()));
         }
 
         [TestMethod()]
         public void ObtenerPaginasDeTablaInventarioTest()
         {
-            Assert.Fail();
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            var paginas = inventarioDAO.ObtenerPaginasDeTablaInventario(20);
+            bool resultado = false;
+            if (paginas > -1)
+            {
+                resultado = true;
+            }
+            Assert.IsTrue(resultado);
         }
 
         [TestMethod()]
@@ -68,19 +79,35 @@ namespace BusinessLogic.Tests
         [TestMethod()]
         public void ObtenerPaginasDeTablaDiaVentaTest()
         {
-            Assert.Fail();
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            var paginas = inventarioDAO.ObtenerPaginasDeTablaDiaVenta(20);
+            bool resultado = false;
+            if (paginas > -1)
+            {
+                resultado = true;
+            }
+            Assert.IsTrue(resultado);
         }
 
         [TestMethod()]
         public void ObtenerDiaVentaPorRangoTest()
         {
-            Assert.Fail();
+            InventarioDAO diaVentaDAO = new InventarioDAO();
+            var listaDiaVenta = diaVentaDAO.ObtenerDiaVentaPorRango(20, 1);
+            bool resultado = true;
+            if (listaDiaVenta.Count < 19)
+            {
+                resultado = false;
+            }
+            Assert.IsTrue(resultado);
         }
 
         [TestMethod()]
         public void ObtenerProductoVentaDiaTest()
         {
-            Assert.Fail();
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            var listaDiaVenta = inventarioDAO.ObtenerProductoVentaDia(1);
+            Assert.IsTrue(listaDiaVenta.Any() && listaDiaVenta[0].GetType().Equals(new DataAccess.DiaVenta()));
         }
 
         [TestMethod()]
