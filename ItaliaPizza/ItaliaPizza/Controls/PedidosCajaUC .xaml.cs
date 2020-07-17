@@ -23,7 +23,8 @@ namespace ItaliaPizza.Controls
     public partial class PedidosCajaUC : UserControl
     {
         public event EventHandler PedidosCajaUserControlClicked;
-        PedidoController Controller = new PedidoController();
+
+        readonly PedidoController Controller = new PedidoController();
         List<DataAccess.Pedido> pedidos = new List<DataAccess.Pedido>();
         public PedidosCajaUC()
         {
