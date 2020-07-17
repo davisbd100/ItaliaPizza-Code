@@ -60,7 +60,7 @@ namespace BusinessLogic
                     command.CommandText =
                         "INSERT INTO dbo.Inventario VALUES (@idInventario, @Producto, @ExistenciaInicial, @ExistenciaTotal, @UnidadMedida)";
                     command.Parameters.Add(new SqlParameter("@idInventario", id));
-                    command.Parameters.Add(new SqlParameter("@idProducto", id));
+                    command.Parameters.Add(new SqlParameter("@Producto", id));
                     command.Parameters.Add(new SqlParameter("@ExistenciaInicial", 1));
                     command.Parameters.Add(new SqlParameter("@ExistenciaTotal", 1));
                     command.Parameters.Add(new SqlParameter("@UnidadMedida", inventario.UnidadDeMedida));
