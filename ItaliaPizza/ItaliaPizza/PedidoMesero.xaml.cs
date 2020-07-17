@@ -119,6 +119,9 @@ namespace ItaliaPizza
             if (pedidoController.crearPedidoMesero(pedido, listaproductos) == ResultadoOperacionEnum.ResultadoOperacion.Exito)
             {
                 MessageBox.Show("El Pedido se registró correctamente");
+                listaproductos.Clear();
+                ActualizarDataGrid();
+                lbNuevoPrecio.Text = "";
             }
             else
             {

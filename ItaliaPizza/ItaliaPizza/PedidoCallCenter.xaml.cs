@@ -142,10 +142,15 @@ namespace ItaliaPizza
 
                 }
 
+
+
                 PedidoController pedidoController = new PedidoController();
-                if(pedidoController.crearPedidoDomicilio(pedido, listaproductos) == ResultadoOperacionEnum.ResultadoOperacion.Exito)
+                if (pedidoController.crearPedidoDomicilio(pedido, listaproductos) == ResultadoOperacionEnum.ResultadoOperacion.Exito)
                 {
                     MessageBox.Show("El Pedido se registró correctamente");
+                    listaproductos.Clear();
+                    ActualizarDataGrid();
+                    lbNuevoPrecio.Text = "";
                 }
                 else
                 {
