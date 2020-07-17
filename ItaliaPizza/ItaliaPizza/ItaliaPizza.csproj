@@ -212,6 +212,9 @@
     <Compile Include="InventarioActual.xaml.cs">
       <DependentUpon>InventarioActual.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReporteDeVentas.xaml.cs">
+      <DependentUpon>ReporteDeVentas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReporteDeInventario.xaml.cs">
       <DependentUpon>ReporteDeInventario.xaml</DependentUpon>
     </Compile>
@@ -371,6 +374,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="InventarioActual.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ReporteDeVentas.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
