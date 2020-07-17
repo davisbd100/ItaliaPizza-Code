@@ -99,6 +99,28 @@ namespace Controller
             resultado = inventarioDAO.ObtenerPaginasDeTablaInventario(ElementosPorPagina);
             return resultado;
         }
+        public List<DataAccess.DiaVenta> ObtenerDiaVentaPorRango(int pagina)
+        {
+            List<DataAccess.DiaVenta> resultado = new List<DataAccess.DiaVenta>();
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            resultado = inventarioDAO.ObtenerDiaVentaPorRango(ElementosPorPagina, pagina);
+            return resultado;
+        }
+
+        public int ObtenerPaginasDeTablaDiaVenta()
+        {
+            int resultado;
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            resultado = inventarioDAO.ObtenerPaginasDeTablaDiaVenta(ElementosPorPagina);
+            return resultado;
+        }
+        public List<BusinessLogic.InventarioDAO.CustomProducto> ObtenerProductoVentaDia(int id)
+        {
+            List<BusinessLogic.InventarioDAO.CustomProducto> resultado;
+            InventarioDAO inventarioDAO = new InventarioDAO();
+            resultado = inventarioDAO.ObtenerProductoVentaDia(id);
+            return resultado;
+        }
 
     }
 }

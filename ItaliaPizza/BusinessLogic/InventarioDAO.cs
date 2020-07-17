@@ -13,6 +13,12 @@ namespace BusinessLogic
 {
     public class InventarioDAO : IInventario
     {
+        public class CustomProducto : DataAccess.Producto
+        {
+            public int UnidadesVendidas { get; set; } = 0;
+            public double IngresosGenerados { get; set; } = 0;
+        }
+
         public ResultadoOperacionEnum.ResultadoOperacion AddInventario(Inventario inventario)
         {
             const int VALORES_DUPLICADOS = 2601;
@@ -283,7 +289,7 @@ namespace BusinessLogic
             {
                 try
                 {
-                    foreach (var inventario in context.Inventario)
+                    foreach (var inventario in context.Inventario.OrderBy(b => b.idInventario).Skip((pagina - 1) * rango))
                     {
                         inventarios.Add(inventario);
                     }
@@ -295,6 +301,96 @@ namespace BusinessLogic
             }
 
             return inventarios;
+        }
+        public int ObtenerPaginasDeTablaDiaVenta(int elementosPorPagina)
+        {
+            int paginas = 0;
+
+            DbConnection dbconnection = new DbConnection();
+
+            using (SqlConnection connection = dbconnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (SqlException ex)
+                {
+                    throw (ex);
+                }
+                using (SqlCommand command = new SqlCommand("SELECT CEILING((COUNT(*) / @elementos)) AS total FROM dbo.DiaVenta", connection))
+                {
+                    command.Parameters.Add(new SqlParameter("@elementos", (float)elementosPorPagina));
+                    paginas = int.Parse(command.ExecuteScalar().ToString());
+                }
+                connection.Close();
+            }
+            return paginas;
+        }
+
+        public List<DataAccess.DiaVenta> ObtenerDiaVentaPorRango(int rango, int pagina)
+        {
+            List<DataAccess.DiaVenta> DiaVentas = new List<DataAccess.DiaVenta>();
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var DiaVenta in context.DiaVenta.OrderBy(b=> b.idVentaDiaria).Skip((pagina-1)*rango))
+                    {
+                        DiaVentas.Add(DiaVenta);
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los DiaVentas");
+                }
+            }
+
+            return DiaVentas;
+        }
+        public List<CustomProducto> ObtenerProductoVentaDia(int id)
+        {
+            List<CustomProducto> listaCustomProductos = new List<CustomProducto>();
+            List<DataAccess.Producto> productos = new List<DataAccess.Producto>();
+            using (var context = new DataAccess.PizzaEntities())
+            {
+                try
+                {
+                    foreach (var pedido in context.DiaVenta.Where(b=> b.idVentaDiaria == id).FirstOrDefault().Pedido)
+                    {
+                        foreach (var pedidoProducto in pedido.PedidoProducto)
+                        {
+                            if (productos.Contains(context.Producto.Where(b=> b.idProducto == pedidoProducto.idProductoVenta).FirstOrDefault()))
+                            {
+                                listaCustomProductos.Where(b => b.idProducto == pedidoProducto.idProductoVenta).FirstOrDefault().IngresosGenerados += (double)pedidoProducto.Precio;
+                                listaCustomProductos.Where(b => b.idProducto == pedidoProducto.idProductoVenta).FirstOrDefault().UnidadesVendidas += (int)pedidoProducto.Cantidad;
+                            }
+                            else
+                            {
+                                DataAccess.Producto tempProducto = context.Producto.Where(b => b.idProducto == pedidoProducto.idProductoVenta).FirstOrDefault();
+                                CustomProducto custom = new CustomProducto()
+                                {
+                                    Codigo = tempProducto.Codigo,
+                                    Descripcion = tempProducto.Descripcion,
+                                    idProducto = tempProducto.idProducto,
+                                    Nombre = tempProducto.Nombre,
+                                    Restriccion = tempProducto.Restriccion,
+                                    IngresosGenerados = (double)pedidoProducto.Precio,
+                                    UnidadesVendidas = (int)pedidoProducto.Cantidad
+                                };
+                                productos.Add(tempProducto);
+                                listaCustomProductos.Add(custom);
+                            }
+                        }
+                    }
+                }
+                catch (EntityException)
+                {
+                    throw new Exception("Error al obtener los DiaVentas");
+                }
+            }
+
+            return listaCustomProductos;
         }
         public ResultadoOperacion CerrarDia()
         {
