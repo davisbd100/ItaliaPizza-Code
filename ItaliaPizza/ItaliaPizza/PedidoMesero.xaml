@@ -63,6 +63,17 @@
         <TextBox x:Name="lbNuevoPrecio" HorizontalAlignment="Left" Height="27.601" Margin="1029.058,533.369,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171.209" FontSize="20"/>
         <Label Content="TOTAL:" HorizontalAlignment="Left" Margin="954.567,529.369,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" FontSize="20"/>
 
+
+        <Button x:Name="btn_verPedidos" Content="" HorizontalAlignment="Left" Height="60" Margin="1029,41,0,0" VerticalAlignment="Top" Width="55" BorderBrush="{x:Null}" RenderTransformOrigin="2.342,0.65" Click="btn_verPedidos_Click"   >
+            <Button.Background>
+                <ImageBrush   ImageSource="Recursos/Mesa.png"/>
+            </Button.Background>
+        </Button>
+
+
+        
+
+
         <Controls:ProductosUC HorizontalAlignment="Left" Height="357" Margin="139,217,0,0" VerticalAlignment="Top" Width="523"  ProductoUserControlClicked="ProductosUC_ProductoUserControlClicked"/>
         <local:UserControlPedidos HorizontalAlignment="Left" Height="724" Margin="0,-4,0,-68" VerticalAlignment="Top" Width="121"/>
         <ComboBox x:Name="cbb_mesas" HorizontalAlignment="Left" Margin="281,130,0,0" VerticalAlignment="Top" Width="225" Height="60" RenderTransformOrigin="0.16,0.845" FontSize="36"/>
