@@ -22,9 +22,8 @@
         <Label Content="Ingredientes en la receta:&#xA;" HorizontalAlignment="Left" Margin="458,114,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" Height="37"/>
         <DataGrid x:Name="dtg_IngredientesReceta" HorizontalAlignment="Left" Height="253" Margin="458,175,0,0" VerticalAlignment="Top" Width="324" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserAddRows="False" FontFamily="Calibri Light" FontSize="16">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Código" Binding="{Binding IdIngrediente}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}" />
+                <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}" IsReadOnly="True" />
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock x:Name="tb_Nombre" HorizontalAlignment="Left" Height="23" Margin="75,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="16"/>
