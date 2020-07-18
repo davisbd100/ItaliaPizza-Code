@@ -49,11 +49,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <Label Content="MESA:" HorizontalAlignment="Left" Margin="163,135,0,0" VerticalAlignment="Top" Foreground="White" FontSize="28" Height="49" FontWeight="Bold" Background="{x:Null}" Width="113"/>
-        <Button x:Name="SalirButton" HorizontalAlignment="Left" Height="86" Margin="1124,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="SalirButton_Click" Background="Transparent">
-            <StackPanel>
-                <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
-            </StackPanel>
-        </Button>
+        <local:UserControlSalir HorizontalAlignment="Left" Height="100" Margin="1124,27,0,0" VerticalAlignment="Top" Width="100"/>
         <Rectangle HorizontalAlignment="Left" Height="60" Margin="555,130,0,0" VerticalAlignment="Top" Width="55" Fill="#FF008050" RenderTransformOrigin="0.65,1.711"/>
         <Button x:Name="btn_NuevaMesa" Content="" HorizontalAlignment="Left" Height="60" Margin="555,130,0,0" VerticalAlignment="Top" Width="55" BorderBrush="{x:Null}" RenderTransformOrigin="2.342,0.65" Click="btn_NuevaMesa_Click"  >
             <Button.Background>

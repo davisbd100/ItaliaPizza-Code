@@ -168,6 +168,12 @@ namespace ItaliaPizza
             }
         }
 
+        private void btVolver_Click(object sender, RoutedEventArgs e)
+        {
+            PedidoMesero pedidoMesero = new PedidoMesero();
+            pedidoMesero.Show();
+            this.Close();
 
+        }
     }
 }

@@ -192,6 +192,7 @@ namespace ItaliaPizza
         {
             ListaPedidoMesero listaPedidoMesero = new ListaPedidoMesero();
             listaPedidoMesero.Show();
+            this.Close();
         }
     }
 }
