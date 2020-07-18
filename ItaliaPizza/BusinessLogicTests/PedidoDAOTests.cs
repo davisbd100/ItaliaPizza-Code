@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccess;
 
 namespace BusinessLogic.Tests
 {
@@ -88,7 +89,7 @@ namespace BusinessLogic.Tests
             {
                 Cantidad = 2,
                 idProductoVenta = 1,
-                Precio = 64, 
+                Precio = 64,
                 idPedido = 283,
                 ProductoVenta = productoDAO.ObtenerProductoVentaPoridEE(1)
             });
@@ -209,7 +210,7 @@ namespace BusinessLogic.Tests
             PedidoDAO pedidoDAO = new PedidoDAO();
             var listaPedidos = pedidoDAO.ObtenerPaginasDeTablaPedido(20);
             bool resultado = false;
-            if (listaPedidos> -1)
+            if (listaPedidos > -1)
             {
                 resultado = true;
             }
@@ -236,6 +237,37 @@ namespace BusinessLogic.Tests
                 }
             }
             Assert.IsTrue(resultado);
+        }
+
+        [TestMethod()]
+        public void FallaCrearPedidoDomicilioTest1()
+        {
+            List<PedidoProducto> pedidoProductos = new List<PedidoProducto>();
+            DataAccess.Cliente cliente = new DataAccess.Cliente();
+            DataAccess.Pedido pedido = new DataAccess.Pedido();
+            pedido.Cliente1 = cliente;
+            pedido.Estatus = 2;
+            pedido.FechaPedido = DateTime.Now;
+
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            Assert.AreEqual(pedidoDAO.CrearPedidoDomicilio(pedido, pedidoProductos), ResultadoOperacionEnum.ResultadoOperacion.FalloSQL);
+
+        }
+
+        [TestMethod()]
+        public void CrearPedidoMeseroTest1()
+        {
+            List<PedidoProducto> pedidoProductos = new List<PedidoProducto>();
+            DataAccess.Cliente cliente = new DataAccess.Cliente();
+            DataAccess.Pedido pedido = new DataAccess.Pedido();
+            pedido.Cliente1 = cliente;
+            pedido.Estatus = 2;
+            pedido.NumeroMesa = 2;
+            pedido.FechaPedido = DateTime.Now;
+
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            Assert.AreEqual(pedidoDAO.CrearPedidoMesero(pedido, pedidoProductos), ResultadoOperacionEnum.ResultadoOperacion.FalloSQL);
+
         }
     }
 }
