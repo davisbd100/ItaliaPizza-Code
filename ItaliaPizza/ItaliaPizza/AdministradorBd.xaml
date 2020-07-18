@@ -1,0 +1,30 @@
+﻿<Window x:Class="ItaliaPizza.AdministradorBd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ItaliaPizza"
+        mc:Ignorable="d"
+       Title="Respaldar información" Height="680" Width="1280" Icon="Recursos/LogoItaliaPizza.png" ResizeMode="NoResize" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="Recursos/FondoInicioPizzaInvertido.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1003">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label Content="Respaldar información" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132" Width="535" Background="{x:Null}"/>
+        <Image HorizontalAlignment="Left" Height="60.443" Margin="163.001,40.821,0,0" VerticalAlignment="Top" Width="84.251" Source="Recursos/RespaldarInformacion.png"/>
+        <Rectangle HorizontalAlignment="Left" Height="0" Margin="163.001,130,0,0" Stroke="#FFB31423" VerticalAlignment="Top" Width="0">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="White" Opacity="0.8"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <local:UserControlPedidos HorizontalAlignment="Left" Height="724" Margin="0,-4,0,-68" VerticalAlignment="Top" Width="121"/>
+        <local:UserControlSalir HorizontalAlignment="Left" Height="100" Margin="1124,19,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="ButtonNuevo" Content="Nuevo respaldo de infomación" HorizontalAlignment="Left" Height="72" Margin="212,194,0,0" VerticalAlignment="Top" Width="334" BorderBrush="#FF008050" Background="#FF008050" Foreground="White" FontFamily="Calibri Light" FontSize="22" Click="ButtonNuevo_Click"/>
+
+    </Grid>
+</Window>

@@ -68,8 +68,8 @@ namespace ItaliaPizza
                     this.Close();
                     break;
                 case "Administrador BD":
-                    RespaldarInformacion respaldarInformacion = new RespaldarInformacion();
-                    respaldarInformacion.Show();
+                    AdministradorBd administradorBd = new AdministradorBd();
+                    administradorBd.Show();
                     this.Close();
                     break;
                 case "Cajero":
