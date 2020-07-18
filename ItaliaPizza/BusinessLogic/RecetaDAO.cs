@@ -295,6 +295,7 @@ namespace BusinessLogic
 
                     foreach (ListaIngredientesReceta ingredientesReceta in listaIngredientes)
                     {
+                        command.Parameters.Clear();
                         command.CommandText =
                         "SELECT * FROM dbo.Producto WHERE idProducto = @id";
                         command.Parameters.Add(new SqlParameter("@id", ingredientesReceta.IdIngrediente));
@@ -313,8 +314,9 @@ namespace BusinessLogic
 
                     transaction.Commit();
                 }
-                catch (SqlException)
+                catch (SqlException e)
                 {
+                    Console.WriteLine(e);
                     transaction.Rollback();
                 }
             }
