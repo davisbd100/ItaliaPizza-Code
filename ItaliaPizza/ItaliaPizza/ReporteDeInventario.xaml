@@ -25,7 +25,7 @@
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1002.5">
+        <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1003">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
@@ -71,11 +71,7 @@
                 <ImageBrush ImageSource="Recursos/Buscar.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="SalirButton" HorizontalAlignment="Left" Height="86" Margin="1124,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="SalirButton_Click" Background="Transparent">
-            <StackPanel>
-                <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
-            </StackPanel>
-        </Button>
+        <local:UserControlSalir HorizontalAlignment="Left" Height="100" Margin="1124,27,0,0" VerticalAlignment="Top" Width="100"/>
         <Button x:Name="btIngresarManualmente" Content="Ingresar manualmente" HorizontalAlignment="Left" Height="54" Margin="860,555,0,0" VerticalAlignment="Top" Width="368" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Click="btIngresarManualmente_Click"/>
         <Button x:Name="btPrint" Content="IMPRIMIR" HorizontalAlignment="Left" Height="44" Margin="696,560,0,0" VerticalAlignment="Top" Width="129" Background="#0058B4" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Click="PrintButton_Click"/>
 

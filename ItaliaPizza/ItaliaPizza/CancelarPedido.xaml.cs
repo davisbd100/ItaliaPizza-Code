@@ -23,15 +23,7 @@ namespace ItaliaPizza
     {
 
         BusinessLogic.Pedido LocalPedido { get; set; }
-        public bool Flag { get; set; } = false;
-        public CancelarPedido()
-        {
-            LocalPedido = new BusinessLogic.Pedido()
-            {
-                idPedido = 1
-            };
-            InitializeComponent();
-        }        
+        public bool Flag { get; set; } = false;   
         public CancelarPedido(int idPedido)
         {
             LocalPedido = new BusinessLogic.Pedido()
@@ -48,7 +40,7 @@ namespace ItaliaPizza
             };
             Flag = flag;
             InitializeComponent();
-            lbMessage.Content = "El pedido ya no se puede cancelar, por lo que se marcara como no entregado, \n ¿Desea continuar?";
+            lbMessage.Content = "El pedido ya no se puede cancelar,\n por lo que se marcara como no entregado, \n ¿Desea continuar?";
         }
 
         private void btAceptar_Click(object sender, RoutedEventArgs e)
