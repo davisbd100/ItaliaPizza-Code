@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PrototiposItaliaPizza"
+        xmlns:local="clr-namespace:ItaliaPizza"
         xmlns:uc="clr-namespace:ItaliaPizza.Controls"
         xmlns:local1="clr-namespace:ItaliaPizza" x:Class="ItaliaPizza.ListaPedidoCallCenter"
         mc:Ignorable="d"
@@ -13,10 +13,10 @@
     </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="683*"/>
-            <ColumnDefinition Width="590*"/>
+            <ColumnDefinition Width="678*"/>
+            <ColumnDefinition Width="595*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle HorizontalAlignment="Left" Height="87" Margin="121,27,0,0" VerticalAlignment="Top" Width="940" Grid.ColumnSpan="2">
+        <Rectangle HorizontalAlignment="Left" Height="87" Margin="121,27,0,0" VerticalAlignment="Top" Width="1003" Grid.ColumnSpan="2">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
@@ -26,15 +26,15 @@
         </Grid>
         <Label Content="Pedidos" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132" Width="253" Background="{x:Null}"/>
         <Image HorizontalAlignment="Left" Height="60" Margin="163,41,0,0" VerticalAlignment="Top" Width="84" Source="Recursos/Pedido.png"/>
-        <Rectangle HorizontalAlignment="Left" Height="411" Margin="9.8,130,0,0" Stroke="#FFB31423" VerticalAlignment="Top" Width="527" Grid.Column="1">
+        <Rectangle HorizontalAlignment="Left" Height="411" Margin="9.6,130,0,0" Stroke="#FFB31423" VerticalAlignment="Top" Width="527" Grid.Column="1">
             <Rectangle.Fill>
                 <SolidColorBrush Color="White" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Button x:Name="btPagar" Content="Pagar" HorizontalAlignment="Left" Height="86" Margin="327.8,555,0,0" VerticalAlignment="Top" Width="257" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1" Click="btPagar_Click"/>
-        <Button x:Name="btCancelar" Content="CANCELAR PEDIDO" HorizontalAlignment="Left" Height="44" Margin="10.8,544,0,0" VerticalAlignment="Top" Width="173" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btCancelar_Click"/>
-        <Button x:Name="btEditar" Content="EDITAR" HorizontalAlignment="Left" Height="44" Margin="188.8,544,0,0" VerticalAlignment="Top" Width="129" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btEditar_Click"/>
-        <DataGrid x:Name="dgProductos" HorizontalAlignment="Left" Height="243" Margin="26.8,167,0,0" VerticalAlignment="Top" Width="497" Grid.Column="1" FontSize="15" ColumnWidth="*" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" BorderBrush="#FF98171F" Foreground="#FF6D7276">
+        <Button x:Name="btPagar" Content="Pagar" HorizontalAlignment="Left" Height="86" Margin="327.6,555,0,0" VerticalAlignment="Top" Width="257" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="36" Grid.Column="1" Click="btPagar_Click"/>
+        <Button x:Name="btCancelar" Content="CANCELAR PEDIDO" HorizontalAlignment="Left" Height="44" Margin="10.6,544,0,0" VerticalAlignment="Top" Width="173" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btCancelar_Click"/>
+        <Button x:Name="btEditar" Content="EDITAR" HorizontalAlignment="Left" Height="44" Margin="188.6,544,0,0" VerticalAlignment="Top" Width="129" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btEditar_Click"/>
+        <DataGrid x:Name="dgProductos" HorizontalAlignment="Left" Height="243" Margin="26.6,167,0,0" VerticalAlignment="Top" Width="497" Grid.Column="1" FontSize="15" ColumnWidth="*" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" BorderBrush="#FF98171F" Foreground="#FF6D7276">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Producto" Binding="{Binding NombreProducto}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="PrecioUnitario" Binding="{Binding PrecioPublico}" IsReadOnly="True"/>
@@ -42,22 +42,23 @@
                 <DataGridTextColumn Header="PrecioTotal" Binding="{Binding Precio}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_CrearPedido" Background="Transparent" HorizontalAlignment="Left" Height="74" Margin="279.8,32,0,0" VerticalAlignment="Top" Width="80" BorderBrush="{x:Null}" RenderTransformOrigin="2.342,0.65" Click="btn_CrearPedido_Click" Grid.Column="1" >
+        <Button x:Name="btn_CrearPedido" Background="Transparent" HorizontalAlignment="Left" Height="74" Margin="349.6,32,0,0" VerticalAlignment="Top" Width="80" BorderBrush="{x:Null}" RenderTransformOrigin="2.342,0.65" Click="btn_CrearPedido_Click" Grid.Column="1" >
             <StackPanel>
                 <Image Source="Recursos/Mesa.png" Stretch="Uniform"/>
             </StackPanel>
         </Button>
-        <TextBox x:Name="tbSubtotal" HorizontalAlignment="Left" Height="19" Margin="352.8,452,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171" Grid.Column="1" IsReadOnly="True"/>
-        <TextBox x:Name="tbIva" HorizontalAlignment="Left" Height="18" Margin="352.8,476,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171" Grid.Column="1" IsReadOnly="True"/>
-        <TextBox x:Name="tbTotal" HorizontalAlignment="Left" Height="27" Margin="352.8,499,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171" FontSize="20" Grid.Column="1" IsReadOnly="True"/>
-        <Label Content="Subtotal:" HorizontalAlignment="Left" Margin="290.8,448,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" Grid.Column="1" Height="26" Width="58"/>
-        <Label Content="IVA (16%):" HorizontalAlignment="Left" Margin="284.8,472,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" Grid.Column="1" Height="25" Width="64"/>
-        <Label Content="TOTAL:" HorizontalAlignment="Left" Margin="278.8,495,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" FontSize="20" Grid.Column="1" Height="37" Width="69"/>
-        <Label Content="Productos:" HorizontalAlignment="Left" Margin="26.8,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="112" Grid.Column="1"/>
-        <Label x:Name="lbPedidoActual" Content="Pedido Seleccionado:" HorizontalAlignment="Left" Margin="145.8,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="204" Grid.Column="1"/>
-        <Label x:Name="lbidPedidoActual" Content="" HorizontalAlignment="Left" Margin="354.8,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="149" Grid.Column="1"/>
-        <Button x:Name="btEnCamino" Content="EN CAMINO" HorizontalAlignment="Left" Height="44" Margin="9.8,596,0,0" VerticalAlignment="Top" Width="173" Background="#00A0D8" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btEnCamino_Click"/>
-        <Button x:Name="btEntregado" Content="ENTREGADO" HorizontalAlignment="Left" Height="44" Margin="188.8,596,0,0" VerticalAlignment="Top" Width="129" Background="#0058B4" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btEntregado_Click"/>
+        <local:UserControlSalir HorizontalAlignment="Left" Height="100" Margin="434.6,27,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+        <TextBox x:Name="tbSubtotal" HorizontalAlignment="Left" Height="19" Margin="352.6,452,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox x:Name="tbIva" HorizontalAlignment="Left" Height="18" Margin="352.6,476,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox x:Name="tbTotal" HorizontalAlignment="Left" Height="27" Margin="352.6,499,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="171" FontSize="20" Grid.Column="1" IsReadOnly="True"/>
+        <Label Content="Subtotal:" HorizontalAlignment="Left" Margin="290.6,448,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" Grid.Column="1" Height="26" Width="58"/>
+        <Label Content="IVA (16%):" HorizontalAlignment="Left" Margin="284.6,472,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" Grid.Column="1" Height="25" Width="64"/>
+        <Label Content="TOTAL:" HorizontalAlignment="Left" Margin="278.6,495,0,0" VerticalAlignment="Top" Foreground="Black" Background="{x:Null}" FontSize="20" Grid.Column="1" Height="37" Width="69"/>
+        <Label Content="Productos:" HorizontalAlignment="Left" Margin="26.6,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="112" Grid.Column="1"/>
+        <Label x:Name="lbPedidoActual" Content="Pedido Seleccionado:" HorizontalAlignment="Left" Margin="145.6,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="204" Grid.Column="1"/>
+        <Label x:Name="lbidPedidoActual" Content="" HorizontalAlignment="Left" Margin="354.6,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="149" Grid.Column="1"/>
+        <Button x:Name="btEnCamino" Content="EN CAMINO" HorizontalAlignment="Left" Height="44" Margin="9.6,596,0,0" VerticalAlignment="Top" Width="173" Background="#00A0D8" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btEnCamino_Click"/>
+        <Button x:Name="btEntregado" Content="ENTREGADO" HorizontalAlignment="Left" Height="44" Margin="188.6,596,0,0" VerticalAlignment="Top" Width="129" Background="#0058B4" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" Grid.Column="1" Click="btEntregado_Click"/>
         <local1:UserControlPedidos HorizontalAlignment="Left" Height="724" Margin="0,-4,0,-69.6" VerticalAlignment="Top" Width="121"/>
     </Grid>
 </Window>

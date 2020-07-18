@@ -17,7 +17,15 @@ namespace BusinessLogic
             {
                 try
                 {
-                    context.DiaVenta.Add(venta);
+                    foreach (var item in venta.Pedido)
+                    {
+                        context.Pedido.Where(b => b.idPedido == item.idPedido).FirstOrDefault().DiaVenta = venta.idVentaDiaria;
+                    }                   
+                    context.DiaVenta.Add(new DiaVenta
+                    {
+                        Fecha = venta.Fecha,
+                        Ingresos = venta.Ingresos
+                    });
                     context.SaveChanges();
                     resultado = ResultadoOperacionEnum.ResultadoOperacion.Exito;
                 }

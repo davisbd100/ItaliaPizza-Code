@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrototiposItaliaPizza"
         mc:Ignorable="d"
-        Title="Reespaldar Información" Height="375.6" Width="470.4" Icon="Recursos/Editar.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Reespaldar información" Height="375.6" Width="470.4" Icon="Recursos/Editar.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="43*"/>
             <RowDefinition Height="305*"/>
         </Grid.RowDefinitions>
         <Rectangle HorizontalAlignment="Left" Height="69" Margin="0,15,0,0" VerticalAlignment="Top" Width="465" Fill="#FFB31423" Grid.RowSpan="2"/>
-        <Label Content="Respaldar Información" HorizontalAlignment="Left" Margin="87,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}" Grid.RowSpan="2"/>
-        <Button Content="" HorizontalAlignment="Left" Height="73" Margin="10,15,0,0" VerticalAlignment="Top" Width="72" BorderBrush="{x:Null}" Grid.RowSpan="2">
+        <Label Content="Respaldar información" HorizontalAlignment="Left" Margin="87,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="48" Foreground="White" Background="{x:Null}" Grid.RowSpan="2"/>
+        <Button Content="" HorizontalAlignment="Left" Height="69" Margin="10,15,0,0" VerticalAlignment="Top" Width="72" BorderBrush="{x:Null}" Grid.RowSpan="2">
             <Button.Background>
-                <ImageBrush ImageSource="Recursos/Inventario.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Recursos/RespaldarInformacion.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Label Content="Ubicación de&#xD;&#xA; descarga" HorizontalAlignment="Left" Margin="68,64.333,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF707880" FontSize="20" Grid.Row="1"/>
         <Button x:Name="btGuardar" Content="GUARDAR" HorizontalAlignment="Left" Margin="235,238.333,0,0" VerticalAlignment="Top" Background="#FF008050" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="37" Width="159" IsEnabled="False" Click="btGuardar_Click" Grid.Row="1"/>
-        <Button x:Name="btCancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="68,238.333,0,0" VerticalAlignment="Top" Width="121" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Grid.Row="1"/>
+        <Button x:Name="btCancelar" Content="CANCELAR" HorizontalAlignment="Left" Height="37" Margin="68,238.333,0,0" VerticalAlignment="Top" Width="121" Background="#FFE53B28" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="16" Grid.Row="1" Click="btCancelar_Click"/>
         <TextBox x:Name="tbRuta" HorizontalAlignment="Left" Height="33" Margin="198,85.333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
         <Button x:Name="btExaminar" Content="Examinar" HorizontalAlignment="Left" Margin="323,83.333,0,0" VerticalAlignment="Top" Background="#FFF4A643" BorderBrush="White" Foreground="White" FontFamily="Calibri Light" FontSize="22" FontWeight="Bold" Height="35" Width="101" Click="btExaminar_Click" Grid.Row="1"/>
 

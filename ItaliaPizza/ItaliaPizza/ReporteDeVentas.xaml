@@ -19,7 +19,7 @@
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1002.5">
+        <Rectangle HorizontalAlignment="Left" Height="87.021" Margin="121,26.732,0,0" VerticalAlignment="Top" Width="1004">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFB31423" Opacity="0.8"/>
             </Rectangle.Fill>
@@ -42,7 +42,7 @@
                 <DataGridTextColumn Header="Producto" Binding="{Binding Nombre}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Codigo" Binding="{Binding Codigo}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Unidades vendidas" Binding="{Binding UnidadesVendidas}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Unidades vendidas" Binding="{Binding IngresosGenerados}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Ingresos Generados" Binding="{Binding IngresosGenerados}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
         <Rectangle HorizontalAlignment="Left" Height="49" Margin="696,121,0,0" VerticalAlignment="Top" Width="532">
@@ -50,6 +50,7 @@
                 <SolidColorBrush Color="Brown" Opacity="0.4"/>
             </Rectangle.Fill>
         </Rectangle>
+        <local:UserControlSalir HorizontalAlignment="Left" Height="100" Margin="1124,27,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Ventas por Producto" HorizontalAlignment="Right" Margin="0,114,327.6,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="36" Foreground="White" Height="58" Width="250" Background="{x:Null}"/>
         <TextBlock x:Name="tbPaginaActual" Text="1" HorizontalAlignment="Left" Margin="455,574,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
         <Button x:Name="btPaginaAnterior" Content="Anterior" HorizontalAlignment="Left" Margin="346,575,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.513,1.575" Click="btPaginaAnterior_Click" Background="#FFB31423" Foreground="White"/>

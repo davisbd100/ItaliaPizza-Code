@@ -1,0 +1,8 @@
+[ODBC]
+DRIVER=SQL Server Native Client 11.0
+UID=UserTest01
+PWD=UserPassword01
+WSID=DAVISN-PC
+APP=Sistema operativo Microsoft� Windows�
+SERVER=localhost
+Description=ItaliaPizzaDatabase

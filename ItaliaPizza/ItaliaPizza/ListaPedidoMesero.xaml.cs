@@ -83,7 +83,7 @@ namespace ItaliaPizza
             }
             else
             {
-                CancelarPedido cancelar = new CancelarPedido();
+                CancelarPedido cancelar = new CancelarPedido(pedidoActual.idPedido);
                 cancelar.ShowDialog();
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
