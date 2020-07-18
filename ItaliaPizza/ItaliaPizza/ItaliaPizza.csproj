@@ -227,9 +227,6 @@
     <Compile Include="RecetasGerente.xaml.cs">
       <DependentUpon>RecetasGerente.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pedido.xaml.cs">
-      <DependentUpon>Pedido.xaml</DependentUpon>
-    </Compile>
     <Compile Include="RegistrarCliente.xaml.cs">
       <DependentUpon>RegistrarCliente.xaml</DependentUpon>
     </Compile>
@@ -399,10 +396,6 @@
     <Page Include="RecetasGerente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pedido.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="RegistrarCliente.xaml">
       <SubType>Designer</SubType>

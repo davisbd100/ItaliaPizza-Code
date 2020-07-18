@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PrototiposItaliaPizza"
+        xmlns:local="clr-namespace:ItaliaPizza"
         xmlns:uc="clr-namespace:ItaliaPizza.Controls"
         xmlns:local1="clr-namespace:ItaliaPizza" x:Class="ItaliaPizza.ListaPedidoCocinero"
         mc:Ignorable="d"
@@ -42,11 +42,7 @@
         <Label Content="Productos:" HorizontalAlignment="Left" Margin="704,133,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="112"/>
         <Label x:Name="lbPedidoActual" Content="Pedido Actual:" HorizontalAlignment="Left" Margin="904,141,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="149"/>
         <Label x:Name="lbidPedidoActual" Content="" HorizontalAlignment="Left" Margin="1053,140,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="34" FontWeight="Bold" Background="{x:Null}" Width="149"/>
-        <Button x:Name="SalirButton" HorizontalAlignment="Left" Height="86" Margin="1124,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="SalirButton_Click" Background="Transparent">
-            <StackPanel>
-                <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
-            </StackPanel>
-        </Button>
+        <local:UserControlSalir HorizontalAlignment="Left" Height="100" Margin="1124,27,0,0" VerticalAlignment="Top" Width="100"/>
         <local1:UserControlPedidos HorizontalAlignment="Left" Height="724" Margin="0,-4,0,-68" VerticalAlignment="Top" Width="121"/>
     </Grid>
 </Window>

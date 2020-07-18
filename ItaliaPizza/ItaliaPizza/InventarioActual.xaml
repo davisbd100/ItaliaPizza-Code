@@ -39,11 +39,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="749,546,0,0" TextWrapping="Wrap" Text="De" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
         <TextBlock x:Name="tbPaginaTotal" HorizontalAlignment="Left" Margin="794,547,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="20" FontSize="18" Foreground="#FFD4D5DA"/>
         <local:Menu HorizontalAlignment="Left" Height="726" VerticalAlignment="Top" Width="121" Margin="0,0,0,-74" Grid.RowSpan="2"/>
-        <Button x:Name="SalirButton" HorizontalAlignment="Left" Height="86" Margin="1124,27,0,0" VerticalAlignment="Top" Width="113" BorderBrush="{x:Null}" Click="SalirButton_Click" Background="Transparent">
-            <StackPanel>
-                <Image Source="Recursos/Salir.png" Stretch="Uniform" Height="76" Width="107"/>
-            </StackPanel>
-        </Button>
+        <local:UserControlSalir HorizontalAlignment="Left" Height="100" Margin="1124,27,0,0" VerticalAlignment="Top" Width="100"/>
         <Rectangle HorizontalAlignment="Left" Height="49" Margin="185,155,0,0" VerticalAlignment="Top" Width="1003">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFC3CCD4" Opacity="0.4"/>
