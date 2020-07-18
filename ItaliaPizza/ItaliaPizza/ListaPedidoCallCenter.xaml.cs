@@ -76,18 +76,23 @@ namespace ItaliaPizza
             else if (pedidoActual.Estatus1.NombreEstatus == "En Preparación")
             {
                 MessageBox.Show("El pedido entro en preparación, por lo que ya no se puede cancelar");
+            }else if(pedidoActual.Estatus1.NombreEstatus == "En Camino")
+            {
+                CancelarPedido cancelar = new CancelarPedido(pedidoActual.idPedido, true);
+                cancelar.ShowDialog();
+                ucPedidos.UpdateGrid();
+                pedidoActual = null;
+                dgProductos.ItemsSource = null;
+                lbidPedidoActual.Content = "Ninguno";
+
             }
             else if (pedidoActual.Estatus1.NombreEstatus != "En Espera")
             {
                 MessageBox.Show("El pedido solo se puede cancelar en espera de preparación");
-            }else if(pedidoActual.Estatus1.NombreEstatus == "En Camino")
-            {
-                CancelarPedido cancelar = new CancelarPedido();
-                cancelar.ShowDialog();
             }
             else
             {
-                CancelarPedido cancelar = new CancelarPedido();
+                CancelarPedido cancelar = new CancelarPedido(pedidoActual.idPedido);
                 cancelar.ShowDialog();
                 ucPedidos.UpdateGrid();
                 pedidoActual = null;
