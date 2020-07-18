@@ -164,13 +164,13 @@ namespace BusinessLogic
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                         "UPDATE dbo.ProductoInventario SET VISIBILIDAD = 'FALSE' WHERE Producto = @Producto ";
+                         "DELETE FROM dbo.ProductoInventario WHERE Producto = @Producto ";
                     command.Parameters.Add(new SqlParameter("@Producto", productoIngrediente));
 
                     command.ExecuteNonQuery();
 
                     command.CommandText =
-                        "UPDATE dbo.Inventario SET VISIBILIDAD = 'FALSE' WHERE idInventario = @idInventario";
+                        "DELETE FROM dbo.Inventario WHERE idInventario = @idInventario";
                     command.Parameters.Add(new SqlParameter("@idInventario", productoIngrediente));
 
 
