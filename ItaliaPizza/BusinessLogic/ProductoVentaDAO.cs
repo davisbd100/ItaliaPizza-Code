@@ -417,7 +417,7 @@ namespace BusinessLogic
                     throw (ex);
                 }
                 using (SqlCommand command = new SqlCommand("select Codigo, Nombre, PrecioPublico from dbo.ProductoVenta left join dbo.Producto  on" +
-                    " dbo.Producto.Codigo = dbo.ProductoVenta.idProductoVenta WHERE Nombre LIKE @Busqueda order by Nombre offset @Rango rows fetch next 20 rows only ", connection))
+                    " dbo.Producto.idProducto = dbo.ProductoVenta.idProductoVenta WHERE Nombre LIKE @Busqueda order by Nombre offset @Rango rows fetch next 20 rows only ", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@Rango", rango));
                     command.Parameters.Add(new SqlParameter("@Busqueda", busqueda));
