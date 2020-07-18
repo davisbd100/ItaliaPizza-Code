@@ -140,6 +140,9 @@
     <Compile Include="Controls\PedidosCallCenterUC.xaml.cs">
       <DependentUpon>PedidosCallCenterUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListaPedidoMesero.xaml.cs">
+      <DependentUpon>ListaPedidoMesero.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PedidoEnCamino.xaml.cs">
       <DependentUpon>PedidoEnCamino.xaml</DependentUpon>
     </Compile>
@@ -271,6 +274,10 @@
     <Page Include="Controls\PedidosCallCenterUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ListaPedidoMesero.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PedidoEnCamino.xaml">
       <Generator>MSBuild:Compile</Generator>
