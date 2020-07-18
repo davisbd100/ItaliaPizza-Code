@@ -42,7 +42,7 @@
                 <DataGridTextColumn Header="Producto" Binding="{Binding Nombre}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Codigo" Binding="{Binding Codigo}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Unidades vendidas" Binding="{Binding UnidadesVendidas}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Unidades vendidas" Binding="{Binding IngresosGenerados}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Ingresos Generados" Binding="{Binding IngresosGenerados}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
         <Rectangle HorizontalAlignment="Left" Height="49" Margin="696,121,0,0" VerticalAlignment="Top" Width="532">
