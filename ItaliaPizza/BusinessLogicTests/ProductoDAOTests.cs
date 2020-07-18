@@ -17,5 +17,12 @@ namespace BusinessLogic.Tests
             ProductoDAO productoDAO = new ProductoDAO();
             Assert.AreEqual(productoDAO.GetProductoPorID(1).idProducto, 1);
         }
+
+        [TestMethod()]
+        public void BuscarProductoTest()
+        {
+            ProductoDAO productoDAO = new ProductoDAO();
+            Assert.IsTrue(productoDAO.BuscarProducto("papa").Any());
+        }
     }
 }
