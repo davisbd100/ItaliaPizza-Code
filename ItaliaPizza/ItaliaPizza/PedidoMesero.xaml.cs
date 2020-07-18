@@ -190,8 +190,8 @@ namespace ItaliaPizza
 
         private void btn_verPedidos_Click(object sender, RoutedEventArgs e)
         {
-            //    ListaPedidoMesero listaPedidoMesero = new ListaPedidoMesero();
-            //    listaPedidoMesero.Show();
+            ListaPedidoMesero listaPedidoMesero = new ListaPedidoMesero();
+            listaPedidoMesero.Show();
         }
     }
 }

@@ -20,7 +20,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <Grid HorizontalAlignment="Left" Height="478.542" Margin="139.057,130,0,0"  VerticalAlignment="Top" Width="526.943">
-            <uc:PedidosCajaUC x:Name="ucPedidos" Margin="4,0,-3.057,-0.458" PedidosCajaUserControlClicked="PedidosUC_PedidoUserControlClicked"/>
+            <uc:PedidosMeseroUC x:Name="ucPedidos" Margin="4,0,-3.057,-0.458" PedidosMeseroUserControlClicked="PedidosUC_PedidoUserControlClicked"/>
         </Grid>
         <Label Content="Pedidos Mesero" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" FontFamily="Gabriola" FontSize="72" Foreground="White" Height="132" Width="416" Background="{x:Null}"/>
         <Image HorizontalAlignment="Left" Height="60.443" Margin="163.001,40.821,0,0" VerticalAlignment="Top" Width="84.251" Source="Recursos/Pedido.png"/>

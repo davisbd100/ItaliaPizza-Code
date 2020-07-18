@@ -140,6 +140,9 @@
     <Compile Include="ContenedorReporteInventario.Designer.cs">
       <DependentUpon>ContenedorReporteInventario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PedidosMeseroUC.xaml.cs">
+      <DependentUpon>PedidosMeseroUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PedidosCallCenterUC.xaml.cs">
       <DependentUpon>PedidosCallCenterUC.xaml</DependentUpon>
     </Compile>
@@ -275,12 +278,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\PedidosMeseroUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\PedidosCallCenterUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ListaPedidoMesero.xaml">
-            <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PedidoEnCamino.xaml">
